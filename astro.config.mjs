@@ -43,7 +43,7 @@ export default defineConfig({
       ],
       social: [
         // Fill in once the GitHub repo exists:
-        // { icon: 'github', label: 'GitHub', href: 'https://github.com/YOUR-ORG/circuit-dessert' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/rhino9686/circuitdessert' },
       ],
       sidebar: [
         { label: 'Recipes', link: '/recipes/' },
