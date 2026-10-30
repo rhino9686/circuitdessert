@@ -1,0 +1,100 @@
+---
+// Starlight's header, plus a row of section links on the home page only.
+// On every other page this renders exactly what Starlight's default header does (those pages have the sidebar).
+import config from 'virtual:starlight/user-config';
+import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
+import Search from 'virtual:starlight/components/Search';
+import SiteTitle from 'virtual:starlight/components/SiteTitle';
+import SocialIcons from 'virtual:starlight/components/SocialIcons';
+import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+import { url } from '../lib/url';
+
+const shouldRenderSearch =
+  config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+
+const isHome = Astro.url.pathname === url('');
+const links = [
+  { label: 'Recipes', href: url('recipes/') },
+  { label: 'Parts', href: url('parts/') },
+  { label: 'Pantry', href: url('pantry/') },
+  { label: 'Contribute', href: url('contribute/') },
+];
+---
+
+{isHome ? (
+  <div class="cd-header cd-header--home">
+    <div class="cd-title"><SiteTitle /></div>
+    <nav class="cd-topnav" aria-label="Main">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+    <div class="cd-header-end print:hidden">
+      {shouldRenderSearch && <Search />}
+      <SocialIcons />
+      <ThemeSelect />
+    </div>
+  </div>
+) : (
+  <div class="header">
+    <div class="title-wrapper sl-flex">
+      <SiteTitle />
+    </div>
+    <div class="sl-flex print:hidden">
+      {shouldRenderSearch && <Search />}
+    </div>
+    <div class="sl-hidden md:sl-flex print:hidden right-group">
+      <div class="sl-flex social-icons">
+        <SocialIcons />
+      </div>
+      <ThemeSelect />
+      <LanguageSelect />
+    </div>
+  </div>
+)}
+
+<style>
+  /* ---- Home page bar ---- */
+  .cd-header { display: flex; align-items: center; gap: 0.75rem 1.5rem; height: 100%; flex-wrap: wrap; }
+  /* SiteTitle sizes the logo from the nav height, which is taller on phones (two rows), so pin it. */
+  .cd-title { --sl-nav-height: 3.5rem; min-width: 0; overflow: clip; padding: 0.25rem; margin: -0.25rem; }
+  .cd-topnav { display: flex; gap: 0.25rem; align-items: stretch; }
+  .cd-topnav a {
+    display: inline-flex; align-items: center; padding: 0.35rem 0.75rem; border-radius: 0.5rem;
+    color: var(--sl-color-gray-2); font-size: var(--sl-text-sm); font-weight: 500; text-decoration: none;
+  }
+  .cd-topnav a:hover { color: var(--sl-color-white); background: var(--sl-color-gray-6); }
+  .cd-header-end { display: flex; align-items: center; gap: 0.75rem; margin-inline-start: auto; }
+  @media (min-width: 50rem) { .cd-header { flex-wrap: nowrap; } }
+  /* Phones: logo and controls on the first row, the links on a second row. */
+  @media (max-width: 49.99rem) {
+    .cd-header { align-content: center; row-gap: 0.25rem; column-gap: 0.5rem; }
+    .cd-header-end { order: 2; gap: 0.5rem; }
+    .cd-title { order: 1; flex: 1 1 0; }
+    .cd-topnav { order: 3; justify-content: space-between; margin-inline: -0.5rem; width: calc(100% + 1rem); }
+    .cd-topnav a { flex: 1; justify-content: center; padding-inline: 0.25rem; }
+  }
+
+  /* ---- Every other page: Starlight's default header, unchanged ---- */
+  @layer starlight.core {
+    .header { display: flex; gap: var(--sl-nav-gap); justify-content: space-between; align-items: center; height: 100%; }
+    .title-wrapper { overflow: clip; padding: 0.25rem; margin: -0.25rem; min-width: 0; }
+    .right-group, .social-icons { gap: 1rem; align-items: center; }
+    .social-icons::after { content: ''; height: 2rem; border-inline-end: 1px solid var(--sl-color-gray-5); }
+    @media (min-width: 50rem) {
+      :global(:root[data-has-sidebar]) { --__sidebar-pad: calc(2 * var(--sl-nav-pad-x)); }
+      :global(:root:not([data-has-toc])) { --__toc-width: 0rem; }
+      .header {
+        --__sidebar-width: max(0rem, var(--sl-content-inline-start, 0rem) - var(--sl-nav-pad-x));
+        --__main-column-fr: calc(
+          (100% + var(--__sidebar-pad, 0rem) - var(--__toc-width, var(--sl-sidebar-width)) -
+            (2 * var(--__toc-width, var(--sl-nav-pad-x))) - var(--sl-content-inline-start, 0rem) - var(--sl-content-width)) / 2
+        );
+        display: grid;
+        grid-template-columns:
+          minmax(calc(var(--__sidebar-width) + max(0rem, var(--__main-column-fr) - var(--sl-nav-gap))), auto)
+          1fr
+          auto;
+        align-content: center;
+      }
+    }
+  }
+</style>

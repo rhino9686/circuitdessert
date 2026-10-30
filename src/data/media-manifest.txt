@@ -1,0 +1,2 @@
+# Files already uploaded to the media host, one per line. The upload Action appends to this file.
+# CI uses it to check that every media: reference points at a file that exists.

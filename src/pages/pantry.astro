@@ -1,0 +1,54 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../lib/url';
+import { count } from '../lib/plural';
+
+const items = await getCollection('pantry');
+// Pantry entries that also have a full recipe link to it. A recipe names its card with `pantry_id`;
+// older recipes are matched by design ID instead.
+const recipes = await getCollection('recipes');
+const recipeByPantry = new Map(recipes.filter((r) => r.data.pantry_id).map((r) => [r.data.pantry_id!, r.id]));
+const recipeByDesign = new Map(recipes.filter((r) => r.data.design_id).map((r) => [r.data.design_id!.toLowerCase(), r.id]));
+const recipeFor = (i: (typeof items)[number]) => recipeByPantry.get(i.id) ?? recipeByDesign.get(i.data.design_id.toLowerCase());
+const byBrand = new Map<string, typeof items>();
+for (const i of items.sort((a, b) => a.data.design_id.localeCompare(b.data.design_id))) {
+  if (!byBrand.has(i.data.brand)) byBrand.set(i.data.brand, []);
+  byBrand.get(i.data.brand)!.push(i);
+}
+const brands = [...byBrand.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'The Pantry',
+    description: 'Manufacturer reference designs from across the industry, linked to their source.',
+    tableOfContents: false,
+  }}
+>
+  <p class="cd-lede">
+    {count(items.length, 'reference design')} from across the industry, each shown as published by its maker: original titles, design IDs, and part numbers, with a link back to the source.
+  </p>
+  {brands.map(([brand, list]) => (
+    <section class="cd-group">
+      <span class="cd-eyebrow">{brand} <span class="count">({list.length})</span></span>
+      <div class="cd-grid">
+        {list.map((i) => (
+          <div class="cd-card">
+            <span class="tag">{i.data.category}</span>
+            <h3>{i.data.title}</h3>
+            <p class="spec"><strong>{i.data.brand}</strong> · {i.data.design_id}</p>
+            <p class="spec">{i.data.summary}</p>
+            {i.data.parts.length > 0 && <p class="spec">{i.data.parts.join(', ')}{i.data.more_parts ? ` +${i.data.more_parts} more` : ''}</p>}
+            <p class="spec">
+              {recipeFor(i) && (
+                <><a class="cd-link" href={url(`recipes/${recipeFor(i)}/`)}>Read the recipe</a>{' · '}</>
+              )}
+              <a class="cd-link" href={i.data.source} target="_blank" rel="noopener noreferrer">View source ↗</a>
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+</StarlightPage>

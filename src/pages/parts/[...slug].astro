@@ -1,0 +1,26 @@
+---
+import PartPage from '../../components/PartPage.astro';
+import FamilyPage from '../../components/FamilyPage.astro';
+import { getFamilies, partPath } from '../../lib/parts';
+
+export async function getStaticPaths() {
+  const families = await getFamilies();
+  const paths: { params: { slug: string }; props: Record<string, unknown> }[] = [];
+  const seen = new Map<string, string>();
+  const add = (slug: string, what: string, props: Record<string, unknown>) => {
+    if (seen.has(slug)) throw new Error(`URL clash on /parts/${slug}/: ${what} and ${seen.get(slug)}. Rename the family or part.`);
+    seen.set(slug, what);
+    paths.push({ params: { slug }, props });
+  };
+  for (const family of families) {
+    for (const entry of family.parts) add(partPath(entry.data), `part ${entry.data.part}`, { kind: 'part', entry, family });
+    // Families with several parts also get a comparison page.
+    if (family.parts.length > 1) add(family.key, `family ${family.family}`, { kind: 'family', family });
+  }
+  return paths;
+}
+
+const { kind, entry, family } = Astro.props;
+---
+
+{kind === 'part' ? <PartPage entry={entry} family={family} /> : <FamilyPage family={family} />}

@@ -1,0 +1,123 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection, render } from 'astro:content';
+import { getPartLinks } from '../../lib/parts';
+import { buildToc, type Sec } from '../../lib/doc';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('recipes');
+  return recipes.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content, headings: bodyHeadings } = await render(entry);
+const partLinks = await getPartLinks();
+
+// Optional inline SVG illustration from src/assets/recipes/<hero>
+const heroes = import.meta.glob('/src/assets/recipes/*.svg', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const heroSvg = data.hero ? heroes[`/src/assets/recipes/${data.hero}`] : undefined;
+// Reference circuit drawing (see scripts/schematics/); shown with the bill of materials.
+const schematicSvg = data.schematic ? heroes[`/src/assets/recipes/${data.schematic}`] : undefined;
+
+// A recipe with a schematic gets a "Reference circuit" section that holds the drawing and the parts list;
+// otherwise the parts list is a "Key components" section on its own.
+const hasRef = data.components.some((c) => c.ref);
+const hasMaker = data.components.some((c) => c.maker);
+const bomId = schematicSvg ? 'reference-circuit' : 'key-components';
+const bomTitle = schematicSvg ? 'Reference circuit' : 'Key components';
+
+const pre: Sec[] = [{ id: 'overview', title: 'Overview' }];
+if (schematicSvg || data.components.length) pre.push({ id: bomId, title: bomTitle });
+const post: Sec[] = [{ id: 'community-notes', title: 'Community build notes' }];
+const headings = buildToc(pre, bodyHeadings.filter((h) => h.depth <= 3), post);
+---
+
+<StarlightPage
+  frontmatter={{
+    title: data.title,
+    description: data.summary,
+    tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
+  }}
+  headings={headings}
+>
+  <div class="cd-doc">
+    <div class="cd-chip-row">
+      {data.manufacturer && <span class="cd-chip is-ember">{data.manufacturer}</span>}
+      <span class="cd-chip is-gold">{data.category}</span>
+      <span class="cd-chip">{data.kind === 'tutorial' ? 'Tutorial' : 'Reference design'}</span>
+      {data.draft && <span class="cd-chip is-draft">Draft notes</span>}
+    </div>
+    {data.design_id && <p class="cd-byline">{data.design_id}{data.manufacturer ? ` · Reference design by ${data.manufacturer}` : ''}</p>}
+    <p class="cd-byline">
+      {data.author && <>By {data.author} · </>}
+      {data.license && <>Design license: {data.license} · </>}
+      Write-up: <a href={url('licenses/')}>CC BY 4.0</a>
+    </p>
+    {data.source_revision && <p class="cd-byline">Checked against {data.source_revision}</p>}
+
+    <section class="cd-section">
+      <h2 id="overview">Overview</h2>
+      {heroSvg && <div class="cd-hero" set:html={heroSvg} />}
+      {data.hero_caption && <p class="cd-caption">{data.hero_caption}</p>}
+      <p class="cd-abstract">{data.abstract ?? data.summary}</p>
+      {data.stats.length > 0 && (
+        <div class="cd-glance">
+          {data.stats.map((s) => <div class="cd-stat"><span class="num">{s.value}</span><span class="label">{s.label}</span></div>)}
+        </div>
+      )}
+      {data.source && (
+        <p style="margin-top:1.25rem"><a class="cd-btn is-primary" href={data.source} target="_blank" rel="noopener noreferrer">View source ↗</a></p>
+      )}
+    </section>
+
+    {(schematicSvg || data.components.length > 0) && (
+      <section class="cd-section">
+        <h2 id={bomId}>{bomTitle}</h2>
+        {schematicSvg && (
+          <figure class="cd-schematic">
+            <div class="cd-schematic-scroll" tabindex="0" role="region" aria-label="Schematic drawing (scrolls sideways on narrow screens)" set:html={schematicSvg} />
+            {data.schematic_caption && <figcaption class="cd-caption">{data.schematic_caption}</figcaption>}
+          </figure>
+        )}
+        {data.components.length > 0 && (
+          <div class="cd-table-wrap">
+            <table class="cd-table">
+              <thead>
+                <tr>
+                  {hasRef && <th scope="col">Ref</th>}
+                  <th scope="col">{schematicSvg ? 'Part' : 'Component'}</th>
+                  <th scope="col">{hasRef ? 'Description' : 'Role'}</th>
+                  {hasMaker && <th scope="col">Maker</th>}
+                </tr>
+              </thead>
+              <tbody>
+                {data.components.map((c) => {
+                  const href = partLinks.get(c.part.toLowerCase());
+                  return (
+                    <tr>
+                      {hasRef && <td class="cd-nowrap">{c.ref ?? ''}</td>}
+                      <td class={hasRef ? undefined : 'cd-nowrap'}>{href ? <a href={href}>{c.part}</a> : hasRef ? c.part : <strong>{c.part}</strong>}</td>
+                      <td>{c.description}</td>
+                      {hasMaker && <td>{c.maker ?? ''}</td>}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+    )}
+
+    <Content />
+
+    <section class="cd-section">
+      <h2 id="community-notes">Community build notes</h2>
+      <p>No build notes yet. Built this one? Share your measurements, layout and lessons learned: <a href={url('contribute/recipe/')}>how to add to a recipe</a>.</p>
+    </section>
+
+    <p style="margin-top:1.5rem"><a href={url('recipes/')}>← Back to the Recipe Book</a></p>
+  </div>
+</StarlightPage>

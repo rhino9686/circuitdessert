@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Extra content checks
+        run: npm run validate
+      - name: Schematic drawings are up to date
+        run: |
+          npm run schematics
+          git diff --exit-code -- src/assets/recipes || { echo "Run 'npm run schematics' and commit the regenerated drawings."; exit 1; }
+      - name: Build (fails on schema errors)
+        run: npm run build
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links in changed content
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --max-concurrency 4 --accept 200,206,403,429 --exclude '^site:' --exclude '^media:' 'src/content/**/*.md' 'src/data/*.yaml'
+          fail: false   # report broken links without blocking; flip to true when the site is stable

@@ -1,0 +1,48 @@
+name: Upload media to R2
+
+# When a PR that adds images is merged, move the images from the repo to the media host.
+on:
+  push:
+    branches: [main]
+    paths: ['media-incoming/**']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: upload-media
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload new images
+        id: upload
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          shopt -s nullglob
+          files=(media-incoming/*)
+          real=0
+          for f in "${files[@]}"; do
+            case "$(basename "$f")" in README.md|.gitkeep) ;; *) real=1 ;; esac
+          done
+          if [ "$real" = "0" ]; then echo "No images to upload."; echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          ./scripts/upload-media.sh
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Remove uploaded images from the repo and record them
+        if: steps.upload.outputs.changed == 'true'
+        run: |
+          find media-incoming -type f ! -name README.md ! -name .gitkeep -delete
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A media-incoming src/data/media-manifest.txt
+          git commit -m "Move uploaded media to R2 [skip ci]"
+          git push

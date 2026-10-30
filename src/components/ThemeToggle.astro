@@ -1,0 +1,38 @@
+---
+// Replaces Starlight's theme dropdown with a single light/dark button.
+// Uses Starlight's own storage key, so its inline provider applies the saved choice before first paint.
+---
+<button class="cd-theme-toggle" type="button" data-cd-theme-toggle aria-label="Switch color theme" title="Switch color theme">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+</button>
+
+<script>
+  const KEY = 'starlight-theme';
+  const current = () => (document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
+
+  function label() {
+    const next = current() === 'light' ? 'dark' : 'light';
+    for (const b of document.querySelectorAll<HTMLButtonElement>('[data-cd-theme-toggle]')) {
+      b.setAttribute('aria-label', `Switch to ${next} theme`);
+      b.title = `Switch to ${next} theme`;
+    }
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as Element | null)?.closest('[data-cd-theme-toggle]');
+    if (!btn) return;
+    const next = current() === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem(KEY, next); } catch { /* private mode: the choice just won't persist */ }
+    label();
+  });
+
+  label();
+  document.addEventListener('astro:after-swap', label);
+</script>

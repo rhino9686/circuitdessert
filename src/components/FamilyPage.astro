@@ -1,0 +1,51 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { CATEGORY_LABELS, range, formatFreq, partUrl, formatPackage } from '../lib/parts';
+import { url } from '../lib/url';
+
+const { family } = Astro.props;
+const names = family.parts.map((p) => p.data.part).join(', ');
+const cell = (a?: number, b?: number) => (a != null || b != null ? range(a, b) : '–');
+---
+
+<StarlightPage
+  frontmatter={{
+    title: `${family.family} (${family.manufacturer})`,
+    description: `Related parts in this family: ${names}.`,
+    tableOfContents: false,
+  }}
+>
+  <div class="cd-doc">
+    <div class="cd-chip-row">
+      <span class="cd-chip is-ember">{family.manufacturer}</span>
+      <span class="cd-chip is-gold">{CATEGORY_LABELS[family.parts[0].data.category]}</span>
+    </div>
+    <p class="cd-lede">Related parts in this family: {names}. Open a part for its full specifications, design notes and datasheet link.</p>
+
+    <section class="cd-section">
+      <h2 id="variants">Compare variants</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table is-nowrap">
+          <thead><tr><th scope="col">Part</th><th scope="col">Vin (V)</th><th scope="col">Vout (V)</th><th scope="col">Iout (A)</th><th scope="col">Frequency</th><th scope="col">Package</th></tr></thead>
+          <tbody>
+            {family.parts.map((p) => (
+              <tr>
+                <td><a href={partUrl(p.data)}>{p.data.part}</a></td>
+                <td>{cell(p.data.specs.vin_min_v, p.data.specs.vin_max_v)}</td>
+                <td>{cell(p.data.specs.vout_min_v, p.data.specs.vout_max_v)}</td>
+                <td>{p.data.specs.iout_max_a ?? '–'}</td>
+                <td>{formatFreq(p.data.specs.fsw_khz) ?? '–'}</td>
+                <td>{p.data.packages.map(formatPackage).join(', ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <ul>
+        {family.parts.map((p) => <li><a href={partUrl(p.data)}><strong>{p.data.part}</strong></a>: {p.data.summary}</li>)}
+      </ul>
+    </section>
+
+    <p style="margin-top:1.5rem"><a href={url('parts/')}>← All parts</a></p>
+  </div>
+</StarlightPage>

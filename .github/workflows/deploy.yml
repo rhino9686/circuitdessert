@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      # Until circuitdessert.org is live, deploy to the project URL:
+      #   SITE_URL: https://YOUR-ORG.github.io
+      #   BASE_PATH: /circuit-dessert
+      # Once the custom domain is set up, delete both lines (defaults apply).
+      - run: npm run build
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          BASE_PATH: ${{ vars.BASE_PATH }}
+          MEDIA_BASE_URL: ${{ vars.MEDIA_BASE_URL }}
+      - name: Check published size
+        run: |
+          size=$(du -sm dist | cut -f1)
+          echo "Built site: ${size} MB (GitHub Pages limit: 1000 MB)"
+          if [ "$size" -gt 700 ]; then echo "::warning::Built site is over 700 MB; plan the move to sharded data or another host."; fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

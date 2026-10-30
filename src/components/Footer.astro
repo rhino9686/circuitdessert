@@ -1,0 +1,22 @@
+---
+// Starlight's footer, plus one quiet line saying how the site is licensed.
+import Default from '@astrojs/starlight/components/Footer.astro';
+import { url } from '../lib/url';
+---
+<Default><slot /></Default>
+<p class="cd-license-line print:hidden">
+  Written content and drawings: <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a> ·
+  Code: MIT · Manufacturers' documents, designs and trademarks belong to their owners ·{' '}
+  <a href={url('licenses/')}>License details</a>
+</p>
+
+<style>
+  .cd-license-line {
+    margin: 1.25rem 0 0;
+    font-size: var(--sl-text-xs);
+    line-height: 1.6;
+    color: var(--sl-color-gray-3);
+  }
+  .cd-license-line a { color: inherit; text-decoration: underline; text-underline-offset: 0.15em; }
+  .cd-license-line a:hover { color: var(--sl-color-white); }
+</style>

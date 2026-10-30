@@ -1,0 +1,296 @@
+/* =================================================================
+   Circuit Dessert — Starlight theme
+   Dark (default) and light palettes share one set of semantic tokens (--cd-*).
+   Starlight picks the theme: data-theme="dark" | "light" on <html>.
+   ================================================================= */
+
+/* ---------- Tokens: dark ---------- */
+:root,
+:root[data-theme='dark'] {
+  --cd-bg: #121212;
+  --cd-surface: #1a1a1a;
+  --cd-surface-2: #222222;
+  --cd-text: #f2f0ea;
+  --cd-muted: #a8a8a4;
+  --cd-faint: #85827b;
+  --cd-border: #2c2c2c;
+  --cd-border-strong: #4d4a45;
+  --cd-accent: #e2542a;
+  --cd-accent-hover: #ef6b45;
+  --cd-on-accent: #121212;
+  --cd-gold: #d8b45a;
+  --cd-gold-border: #4a3f22;
+  --cd-ok: #7cc58a;
+  --cd-card-shadow: none;
+
+  --sl-color-white: var(--cd-text);
+  --sl-color-gray-1: #dcd9d1;
+  --sl-color-gray-2: var(--cd-muted);
+  --sl-color-gray-3: var(--cd-faint);
+  --sl-color-gray-4: #4d4a45;
+  --sl-color-gray-5: var(--cd-border);
+  --sl-color-gray-6: var(--cd-surface);
+  --sl-color-black: var(--cd-bg);
+  --sl-color-accent-low: #3a1a10;
+  --sl-color-accent: var(--cd-accent);
+  --sl-color-accent-high: #f2a58a;
+  color-scheme: dark;
+}
+
+/* ---------- Tokens: light ---------- */
+:root[data-theme='light'] {
+  --cd-bg: #f5f2ea;
+  --cd-surface: #ffffff;
+  --cd-surface-2: #efebe0;
+  --cd-text: #1a1a1a;
+  --cd-muted: #5a574f;
+  --cd-faint: #6f6b62;
+  --cd-border: #ddd8cc;
+  --cd-border-strong: #b9b3a5;
+  --cd-accent: #bf3b12;
+  --cd-accent-hover: #9c2f0d;
+  --cd-on-accent: #ffffff;
+  --cd-gold: #80610c;
+  --cd-gold-border: #e3d4a3;
+  --cd-ok: #23723a;
+  --cd-card-shadow: 0 1px 2px rgb(26 26 26 / 6%), 0 2px 8px rgb(26 26 26 / 5%);
+
+  --sl-color-white: var(--cd-text);
+  --sl-color-gray-1: #2b2a27;
+  --sl-color-gray-2: var(--cd-muted);
+  --sl-color-gray-3: var(--cd-faint);
+  --sl-color-gray-4: #a39e92;
+  --sl-color-gray-5: var(--cd-border);
+  --sl-color-gray-6: #ebe7dc;
+  --sl-color-gray-7: var(--cd-bg);
+  --sl-color-black: #ffffff;
+  --sl-color-accent-low: #fbe3d8;
+  --sl-color-accent: var(--cd-accent);
+  --sl-color-accent-high: #8f2d0e;
+  color-scheme: light;
+}
+
+/* ---------- Shared Starlight variables ---------- */
+:root {
+  --sl-font: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --cd-font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --sl-color-bg: var(--cd-bg);
+  --sl-color-bg-nav: var(--cd-bg);
+  --sl-color-bg-sidebar: var(--cd-bg);
+  --sl-color-hairline: var(--cd-border);
+  --sl-content-width: 54rem;
+}
+
+h1, h2, h3,
+.sl-markdown-content h1, .sl-markdown-content h2, .sl-markdown-content h3 {
+  font-family: var(--cd-font-display);
+  font-weight: 500;
+}
+
+/* ---------- Theme toggle (header button) ---------- */
+.cd-theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--cd-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cd-text);
+  cursor: pointer;
+}
+.cd-theme-toggle:hover { border-color: var(--cd-accent); color: var(--cd-accent); }
+.cd-theme-toggle:focus-visible { outline: 2px solid var(--cd-accent); outline-offset: 2px; }
+.cd-theme-toggle svg { width: 1.15rem; height: 1.15rem; }
+:root[data-theme='dark'] .cd-theme-toggle .icon-moon,
+:root:not([data-theme]) .cd-theme-toggle .icon-moon { display: none; }
+:root[data-theme='light'] .cd-theme-toggle .icon-sun { display: none; }
+
+/* ---------- Shared bits ---------- */
+.cd-eyebrow {
+  font-size: 0.78rem; color: var(--cd-muted); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.09em;
+}
+.cd-lede { color: var(--cd-muted); font-size: 1.1rem; max-width: 62ch; }
+.cd-byline { color: var(--cd-muted); font-size: 0.85rem; margin: 0.25rem 0 0; }
+
+.cd-chip-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.cd-chip {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600;
+  padding: 0.35em 0.85em; border: 1px solid var(--cd-border); border-radius: 999px; color: var(--cd-muted);
+}
+.cd-chip.is-ember { color: var(--cd-accent); border-color: var(--cd-accent); }
+.cd-chip.is-gold { color: var(--cd-gold); border-color: var(--cd-gold-border); }
+.cd-chip.is-draft { color: var(--cd-gold); border-style: dashed; border-color: var(--cd-gold-border); }
+.cd-chip.is-ok { color: var(--cd-ok); border-color: var(--cd-ok); }
+
+.cd-btn {
+  display: inline-block; padding: 0.7em 1.3em; font-weight: 600;
+  border: 1px solid var(--cd-border-strong); color: var(--cd-text); text-decoration: none; border-radius: 4px;
+}
+.cd-btn:hover { border-color: var(--cd-text); }
+.cd-btn.is-primary { background: var(--cd-accent); border-color: var(--cd-accent); color: var(--cd-on-accent); }
+.cd-btn.is-primary:hover { background: var(--cd-accent-hover); border-color: var(--cd-accent-hover); }
+
+.cd-link { color: var(--cd-accent); text-decoration: none; font-weight: 500; }
+.cd-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Document pages: accent rule under the title ---------- */
+body:has(.cd-doc) h1#_top { position: relative; padding-bottom: 1rem; margin-bottom: 0.5rem; }
+body:has(.cd-doc) h1#_top::after {
+  content: ''; position: absolute; left: 0; bottom: 0; width: 5rem; height: 2px; background: var(--cd-accent);
+}
+
+/* ---------- Numbered section cards ---------- */
+.cd-doc { counter-reset: sec; }
+.cd-section {
+  counter-increment: sec; counter-reset: sub;
+  background: var(--cd-surface); border: 1px solid var(--cd-border); border-radius: 8px;
+  padding: 1.5rem 1.75rem; margin-top: 1.25rem; box-shadow: var(--cd-card-shadow);
+}
+.cd-section h2 {
+  margin: 0 0 1rem; font-size: 1.5rem; line-height: 1.2;
+  display: flex; align-items: baseline; gap: 0.7rem; border: 0; padding: 0;
+}
+.cd-section h2::before {
+  content: counter(sec); color: var(--cd-accent); font-family: var(--sl-font);
+  font-size: 0.9rem; font-weight: 700; min-width: 1.1rem;
+}
+.cd-section h3 {
+  counter-increment: sub; margin: 1.6rem 0 0.6rem; font-size: 1.1rem; line-height: 1.3;
+  display: flex; align-items: baseline; gap: 0.6rem;
+}
+.cd-section h3:first-of-type { margin-top: 0.25rem; }
+.cd-section h3::before {
+  content: counter(sec) '.' counter(sub); color: var(--cd-accent); font-family: var(--sl-font);
+  font-size: 0.78rem; font-weight: 700;
+}
+.cd-section > :last-child { margin-bottom: 0; }
+.cd-section p, .cd-section ul, .cd-section ol { margin-top: 0; }
+.cd-section p + p, .cd-section p + ul, .cd-section ul + p { margin-top: 0.8rem; }
+.cd-section li + li { margin-top: 0.4rem; }
+.cd-section .cd-note:first-child { margin-top: 0; }
+
+/* abstract under the title (like the TI app-note intro) */
+.cd-abstract { font-size: 1.05rem; line-height: 1.65; margin: 0 0 1.25rem; max-width: 70ch; }
+
+/* ---------- At-a-glance tiles & stat rows ---------- */
+.cd-stat-row, .cd-glance {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  border-top: 1px solid var(--cd-border); margin-block: 1.5rem;
+}
+.cd-glance { margin-block: 0 1.25rem; }
+.cd-glance + .cd-note { margin-top: 0; }
+.cd-stat { padding: 1.1rem 0.75rem 0; border-left: 1px solid var(--cd-border); }
+.cd-stat:first-child { border-left: 0; padding-left: 0; }
+.cd-stat .num { font-family: var(--cd-font-display); font-size: 1.5rem; display: block; line-height: 1.15; }
+.cd-stat .label { color: var(--cd-muted); font-size: 0.85rem; margin-top: 0.3rem; display: block; }
+
+/* ---------- Features ---------- */
+.cd-features { columns: 2 18rem; column-gap: 2.5rem; padding: 0; margin: 0; list-style: none; }
+.cd-features li { break-inside: avoid; position: relative; padding-left: 1.3rem; margin: 0 0 0.55rem !important; }
+.cd-features li::before {
+  content: ''; position: absolute; left: 0; top: 0.62em; width: 0.5rem; height: 0.5rem;
+  border-radius: 50%; background: var(--cd-accent);
+}
+
+/* ---------- Tables ---------- */
+.cd-table-wrap { overflow-x: auto; margin-block: 0.75rem 0.25rem; }
+.cd-table { display: table; width: 100%; border-collapse: collapse; font-size: 0.92rem; line-height: 1.5; }
+.cd-table th, .cd-table td { text-align: left; padding: 0.55rem 0.9rem 0.55rem 0; border-bottom: 1px solid var(--cd-border); vertical-align: top; }
+.cd-table thead th {
+  color: var(--cd-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.06em; white-space: nowrap;
+}
+.cd-table td a { color: var(--cd-accent); text-decoration: none; }
+.cd-table td a:hover { text-decoration: underline; }
+.cd-table.is-nowrap td, .cd-table.is-nowrap th { white-space: nowrap; }
+.cd-table tbody tr:last-child th, .cd-table tbody tr:last-child td { border-bottom: 0; }
+.cd-kv th { width: 36%; color: var(--cd-muted); font-weight: 500; }
+.cd-kv td { font-weight: 500; }
+
+/* ---------- Notes ---------- */
+.cd-note {
+  border: 1px solid var(--cd-border); border-left: 3px solid var(--cd-border-strong); border-radius: 4px;
+  padding: 0.8rem 1rem; color: var(--cd-muted); font-size: 0.92rem; margin-block: 1rem;
+}
+.cd-note strong { color: var(--cd-text); }
+.cd-note.is-warn { border-left-color: var(--cd-gold); }
+.cd-note.is-ok { border-left-color: var(--cd-ok); }
+
+/* ---------- Cards / grids (Recipe Book, Pantry, Parts, Home) ---------- */
+.cd-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2.25rem 2rem; border-top: 1px solid var(--cd-border); padding-top: 2rem; margin-top: 1rem;
+}
+.cd-card { display: flex; flex-direction: column; }
+.cd-card .tag {
+  font-size: 0.75rem; color: var(--cd-accent); font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.07em; margin-bottom: 0.45rem;
+}
+.cd-card h3 { font-size: 1.3rem; margin: 0 0 0.35rem; line-height: 1.25; }
+.cd-card h3 a { color: var(--cd-text); text-decoration: none; }
+.cd-card h3 a:hover { color: var(--cd-accent); }
+.cd-card .spec { color: var(--cd-muted); font-size: 0.92rem; margin: 0.4rem 0 0; }
+.cd-card .spec strong { color: var(--cd-text); font-weight: 600; }
+.cd-card .cd-link { margin-top: 0.9rem; }
+.cd-group { margin-top: 3rem; }
+.cd-group > .cd-eyebrow .count { font-weight: 400; text-transform: none; letter-spacing: normal; color: var(--cd-faint); }
+
+/* ---------- Key components list ---------- */
+.cd-components { border-top: 1px solid var(--cd-border); margin: 1rem 0 2rem; padding: 0; list-style: none; }
+.cd-components li { padding-block: 0.9rem; border-bottom: 1px solid var(--cd-border); }
+.cd-components .name { font-weight: 600; color: var(--cd-text); }
+.cd-components .desc { display: block; color: var(--cd-muted); font-size: 0.9rem; margin-top: 0.15rem; }
+
+.cd-hero { border: 1px solid var(--cd-border); border-radius: 6px; margin-bottom: 1.25rem; aspect-ratio: 16 / 9; overflow: hidden; }
+.cd-hero svg, .cd-hero img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.cd-caption { color: var(--cd-faint); font-size: 0.8rem; margin: -0.75rem 0 1.25rem; }
+
+/* ---------- Home page ---------- */
+.cd-home-hero { padding-block: 2rem 1rem; }
+.cd-home-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.08; margin: 0 0 1rem; }
+.cd-home-hero h1 em { color: var(--cd-accent); font-style: italic; }
+.cd-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.cd-cta { border-top: 1px solid var(--cd-border); padding-top: 2rem; }
+
+/* ---------- Layout containers: cancel Starlight's sibling spacing ----------
+   Starlight adds a top margin to every element that follows another one inside the page content.
+   That's right for prose, but inside a grid it pushes every item except the first down by one gap,
+   so the first item of each grid sits higher than the rest of its row. */
+.cd-grid > *, .cd-stat-row > *, .cd-glance > *, .cd-components > * { margin-top: 0; }
+
+.cd-nowrap { white-space: nowrap; font-weight: 600; }
+
+.cd-section .cd-table-wrap + ul, .cd-section .cd-table-wrap + p { margin-top: 1rem; }
+.cd-section a:not(.cd-btn):not(.cd-link) { text-underline-offset: 3px; }
+
+/* ---------- Schematic drawings ----------
+   The drawings are inline SVG made by scripts/schematics/. They use classes instead of colours so they
+   follow the light and dark themes. On narrow screens the drawing keeps a readable size and scrolls
+   sideways inside its own frame instead of shrinking. */
+.cd-schematic { margin: 0 0 1.25rem; }
+.cd-schematic-scroll {
+  overflow-x: auto; border: 1px solid var(--cd-border); border-radius: 6px;
+  background: var(--cd-bg); padding: 0.75rem 0.5rem;
+}
+.cd-schematic-scroll:focus-visible { outline: 2px solid var(--cd-accent); outline-offset: 2px; }
+.cd-schematic-scroll svg { display: block; width: 100%; min-width: 620px; height: auto; }
+.cd-schematic .cd-caption { margin: 0.6rem 0 0; }
+.sch-w, .sch-flag, .sch-ic { fill: none; stroke: var(--cd-text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sch-ic { fill: var(--cd-surface-2); }
+.sch-flag { stroke: var(--cd-accent); stroke-width: 1.4; }
+.sch-dot { fill: var(--cd-text); }
+.sch-ref, .sch-val, .sch-pin, .sch-net, .sch-ictitle { font-family: var(--sl-font); font-size: 11.5px; }
+.sch-ref { fill: var(--cd-text); font-weight: 600; }
+.sch-val, .sch-pin { fill: var(--cd-muted); }
+.sch-pin { font-weight: 600; }
+.sch-net { fill: var(--cd-accent); font-weight: 700; }
+.sch-ictitle { fill: var(--cd-text); font-weight: 700; font-size: 13px; }
+.sch-sub { font-size: 8.5px; }
+
+/* ---------- Home page top navigation: taller header on phones (second row for the links) ---------- */
+@media (max-width: 49.99rem) {
+  :root:has(.cd-header--home) { --sl-nav-height: 6rem; }
+}

@@ -1,0 +1,39 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../../lib/url';
+
+const recipes = (await getCollection('recipes')).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'The Recipe Book',
+    description: 'Reference designs and tutorials with full write-ups.',
+    tableOfContents: false,
+  }}
+>
+  <p class="cd-lede">
+    Full write-ups of reference designs and tutorials: what it does, what's in it, and where to find the source.
+  </p>
+  {recipes.length === 0 ? (
+    <p class="cd-note">No recipes yet. See <a href={url('contribute/')}>how to contribute</a>.</p>
+  ) : (
+    <div class="cd-grid">
+      {recipes.map((r) => (
+        <div class="cd-card">
+          <span class="tag">{r.data.category}</span>
+          <h3><a href={url(`recipes/${r.id}/`)}>{r.data.title}</a></h3>
+          <p class="spec">
+            {r.data.manufacturer && <strong>{r.data.manufacturer}</strong>}
+            {r.data.manufacturer && r.data.design_id && ' · '}
+            {r.data.design_id}
+          </p>
+          <p class="spec">{r.data.summary}</p>
+        </div>
+      ))}
+    </div>
+  )}
+</StarlightPage>

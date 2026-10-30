@@ -1,0 +1,194 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection, render } from 'astro:content';
+import { CATEGORY_LABELS, range, formatFreq, partUrl, familyUrl, formatPackage } from '../lib/parts';
+import { buildToc, type Sec } from '../lib/doc';
+import { slugify, url } from '../lib/url';
+
+const { entry, family } = Astro.props;
+const d = entry.data;
+const { Content, headings: bodyHeadings } = await render(entry);
+const recipes = await getCollection('recipes');
+const usedIn = recipes.filter((r) => r.data.components.some((c) => c.part.toLowerCase() === d.part.toLowerCase()));
+const siblings = family.parts.filter((p) => p.id !== entry.id);
+
+// ---- facts shown in several places
+const s = d.specs;
+const vin = s.vin_min_v != null || s.vin_max_v != null ? range(s.vin_min_v, s.vin_max_v, ' V') : undefined;
+const vout = s.vout_min_v != null || s.vout_max_v != null ? range(s.vout_min_v, s.vout_max_v, ' V') : undefined;
+const iout = s.iout_max_a != null ? `${s.iout_max_a} A` : undefined;
+const fsw = formatFreq(s.fsw_khz);
+const iq = s.iq_ua != null ? `${s.iq_ua} µA typical` : undefined;
+const packages = d.packages.map(formatPackage).join(', ');
+
+const glance = [
+  vin && { num: vin, label: 'Input voltage' },
+  vout && { num: vout, label: 'Output voltage' },
+  iout && { num: iout, label: 'Output current' },
+  fsw && { num: fsw, label: 'Switching frequency' },
+  { num: packages, label: 'Package' },
+].filter(Boolean) as { num: string; label: string }[];
+
+// ---- specification groups: a generated "Key specifications" table first, then the authored groups
+const keyItems = [
+  { label: 'Category', value: CATEGORY_LABELS[d.category] },
+  s.topology && { label: 'Topology', value: s.topology },
+  vin && { label: 'Input voltage', value: vin },
+  vout && { label: 'Output voltage', value: vout },
+  iout && { label: 'Maximum output current', value: iout },
+  fsw && { label: 'Switching frequency', value: fsw },
+  iq && { label: 'Quiescent current', value: iq },
+  { label: 'Package', value: packages },
+].filter(Boolean) as { label: string; value: string }[];
+const groups = [
+  { id: 'spec-key', title: 'Key specifications', items: keyItems },
+  ...d.spec_groups.map((g) => ({ id: `spec-${slugify(g.title)}`, title: g.title, items: g.items })),
+  ...(s.extra.length ? [{ id: 'spec-other', title: 'Other specifications', items: s.extra }] : []),
+];
+const tables = d.design_tables.map((t, i) => ({ ...t, id: `table-${i + 1}-${slugify(t.title)}` }));
+
+// ---- numbered sections and the contents panel
+const pre: Sec[] = [{ id: 'overview', title: 'Overview' }];
+if (d.features.length) pre.push({ id: 'features', title: 'Features' });
+pre.push({ id: 'specifications', title: 'Specifications', subs: groups.map((g) => ({ id: g.id, title: g.title })) });
+if (tables.length) pre.push({ id: 'recommended-components', title: 'Recommended components', subs: tables.map((t) => ({ id: t.id, title: t.title })) });
+const post: Sec[] = [];
+if (siblings.length) post.push({ id: 'family', title: 'Related parts in this family' });
+post.push({ id: 'ordering', title: 'Ordering and documents' });
+if (usedIn.length) post.push({ id: 'recipes', title: 'Used in recipes' });
+const headings = buildToc(pre, bodyHeadings.filter((h) => h.depth <= 3), post);
+
+const cell = (p: typeof entry) => ({
+  vin: p.data.specs.vin_min_v != null || p.data.specs.vin_max_v != null ? range(p.data.specs.vin_min_v, p.data.specs.vin_max_v) : '–',
+  vout: p.data.specs.vout_min_v != null || p.data.specs.vout_max_v != null ? range(p.data.specs.vout_min_v, p.data.specs.vout_max_v) : '–',
+  iout: p.data.specs.iout_max_a ?? '–',
+  fsw: formatFreq(p.data.specs.fsw_khz) ?? '–',
+});
+const lcscUrl = d.lcsc ? `https://www.lcsc.com/product-detail/${d.lcsc}.html` : undefined;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: d.part,
+    description: d.summary,
+    tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
+  }}
+  headings={headings}
+>
+  <div class="cd-doc">
+    <div class="cd-chip-row">
+      <span class="cd-chip is-ember">{d.manufacturer}</span>
+      <span class="cd-chip is-gold">{CATEGORY_LABELS[d.category]}</span>
+      {d.status !== 'unknown' && <span class="cd-chip">{d.status === 'nrnd' ? 'Not recommended for new designs' : d.status}</span>}
+      {d.verified ? <span class="cd-chip is-ok">Specs verified</span> : <span class="cd-chip is-draft">Specs unverified</span>}
+      {d.draft && <span class="cd-chip is-draft">Draft notes</span>}
+    </div>
+    <p class="cd-lede">{d.summary}</p>
+
+    <section class="cd-section">
+      <h2 id="overview">Overview</h2>
+      {d.abstract && <p class="cd-abstract">{d.abstract}</p>}
+      <div class="cd-glance">
+        {glance.map((g) => <div class="cd-stat"><span class="num">{g.num}</span><span class="label">{g.label}</span></div>)}
+      </div>
+      {d.verified ? (
+        <p class="cd-note is-ok"><strong>Specifications verified.</strong> Every value in the specifications was checked against the manufacturer's datasheet{d.datasheet_revision ? ` (${d.datasheet_revision})` : ''}.</p>
+      ) : (
+        <p class="cd-note is-warn"><strong>Specifications not fully verified.</strong> Some values haven't been checked against the datasheet yet. Check it before designing in.</p>
+      )}
+    </section>
+
+    {d.features.length > 0 && (
+      <section class="cd-section">
+        <h2 id="features">Features</h2>
+        <ul class="cd-features">{d.features.map((f) => <li>{f}</li>)}</ul>
+      </section>
+    )}
+
+    <section class="cd-section">
+      <h2 id="specifications">Specifications</h2>
+      {groups.map((g) => (
+        <>
+          <h3 id={g.id}>{g.title}</h3>
+          <div class="cd-table-wrap">
+            <table class="cd-table cd-kv"><tbody>
+              {g.items.map((i) => <tr><th scope="row">{i.label}</th><td>{i.value}</td></tr>)}
+            </tbody></table>
+          </div>
+        </>
+      ))}
+    </section>
+
+    {tables.length > 0 && (
+      <section class="cd-section">
+        <h2 id="recommended-components">Recommended components</h2>
+        {tables.map((t) => (
+          <>
+            <h3 id={t.id}>{t.title}</h3>
+            {t.note && <p>{t.note}</p>}
+            <div class="cd-table-wrap">
+              <table class="cd-table is-nowrap">
+                <thead><tr>{t.columns.map((c) => <th scope="col">{c}</th>)}</tr></thead>
+                <tbody>{t.rows.map((r) => <tr>{r.map((c) => <td>{c}</td>)}</tr>)}</tbody>
+              </table>
+            </div>
+          </>
+        ))}
+      </section>
+    )}
+
+    <Content />
+
+    {siblings.length > 0 && (
+      <section class="cd-section">
+        <h2 id="family">Related parts in this family</h2>
+        <div class="cd-table-wrap">
+          <table class="cd-table is-nowrap">
+            <thead><tr><th scope="col">Part</th><th scope="col">Vin (V)</th><th scope="col">Vout (V)</th><th scope="col">Iout (A)</th><th scope="col">Frequency</th><th scope="col">Package</th></tr></thead>
+            <tbody>
+              {family.parts.map((p) => {
+                const c = cell(p);
+                return (
+                  <tr>
+                    <td>{p.id === entry.id ? <strong aria-current="page">{p.data.part}</strong> : <a href={partUrl(p.data)}>{p.data.part}</a>}</td>
+                    <td>{c.vin}</td><td>{c.vout}</td><td>{c.iout}</td><td>{c.fsw}</td><td>{p.data.packages.map(formatPackage).join(', ')}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p><a class="cd-link" href={familyUrl(family.key)}>Compare this family →</a></p>
+      </section>
+    )}
+
+    <section class="cd-section">
+      <h2 id="ordering">Ordering and documents</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table cd-kv"><tbody>
+          <tr><th scope="row">Part number</th><td>{d.part}</td></tr>
+          <tr><th scope="row">Package</th><td>{packages}</td></tr>
+          {d.status !== 'unknown' && <tr><th scope="row">Status</th><td>{d.status}</td></tr>}
+          <tr>
+            <th scope="row">Datasheet</th>
+            <td><a class="cd-link" href={d.datasheet} target="_blank" rel="noopener noreferrer">Manufacturer datasheet ↗</a>{d.datasheet_revision ? ` · ${d.datasheet_revision}` : ''}</td>
+          </tr>
+          <tr>
+            <th scope="row">LCSC</th>
+            <td>{lcscUrl ? <a class="cd-link" href={lcscUrl} target="_blank" rel="noopener noreferrer">{d.lcsc} ↗</a> : 'No LCSC listing confirmed yet'}</td>
+          </tr>
+          <tr><th scope="row">Verification</th><td>{d.verified ? 'Specifications checked against the datasheet' : 'Not fully verified'}</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    {usedIn.length > 0 && (
+      <section class="cd-section">
+        <h2 id="recipes">Used in recipes</h2>
+        <ul>{usedIn.map((r) => <li><a href={url(`recipes/${r.id}/`)}>{r.data.title}</a></li>)}</ul>
+      </section>
+    )}
+
+    <p style="margin-top:1.5rem"><a href={url('parts/')}>← All parts</a></p>
+  </div>
+</StarlightPage>

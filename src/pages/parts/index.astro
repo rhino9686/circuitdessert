@@ -1,0 +1,52 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getFamilies, CATEGORY_LABELS, partUrl, familyUrl } from '../../lib/parts';
+import { url } from '../../lib/url';
+
+const families = await getFamilies();
+const byMaker = new Map<string, typeof families>();
+for (const f of families) {
+  if (!byMaker.has(f.manufacturer)) byMaker.set(f.manufacturer, []);
+  byMaker.get(f.manufacturer)!.push(f);
+}
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Parts',
+    description: 'Parts used in the designs, with specs checked against the datasheet.',
+    tableOfContents: false,
+  }}
+>
+  <p class="cd-lede">
+    One page per part, with specifications checked against the datasheet and our own notes on using them.
+  </p>
+  {families.length === 0 ? (
+    <p class="cd-note">No parts yet. See <a href={url('contribute/')}>how to contribute</a>.</p>
+  ) : (
+    [...byMaker.entries()].map(([maker, fams]) => (
+      <section class="cd-group">
+        <span class="cd-eyebrow">{maker} <span class="count">({fams.reduce((n, f) => n + f.parts.length, 0)})</span></span>
+        <div class="cd-grid">
+          {fams.map((f) => {
+            const single = f.parts.length === 1;
+            const first = f.parts[0];
+            return (
+              <div class="cd-card">
+                <span class="tag">{CATEGORY_LABELS[first.data.category]}</span>
+                <h3><a href={single ? partUrl(first.data) : familyUrl(f.key)}>{single ? first.data.part : f.family}</a></h3>
+                {single ? (
+                  <p class="spec">{first.data.summary}</p>
+                ) : (
+                  <p class="spec">
+                    {f.parts.map((p, i) => (<>{i > 0 && ', '}<a class="cd-link" href={partUrl(p.data)}>{p.data.part}</a></>))}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    ))
+  )}
+</StarlightPage>

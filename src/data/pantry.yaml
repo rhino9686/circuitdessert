@@ -1,0 +1,12 @@
+- id: silergy-sy21219-ds
+  brand: Silergy
+  title: SY21219 synchronous buck reference design (4.5V to 30V)
+  design_id: SY21219-DS
+  category: Power / DC-DC Buck
+  summary: Synchronous buck regulator reference design for 4.5V to 30V input. Datasheet provides 5V application schematic, BOM, and extensive L/COUT/RFF/CFF selection tables for 1.2V, 3.3V, 5V, 12V outputs, plus measured efficiency curves.
+  parts:
+  - SY21219
+  - PCMB104T-4R7MS
+  - GRM31CR61H106KA12L
+  - GRM31CR61C226ME15L
+  source: https://www.silergy.com/download/downloadFile?id=6062&type=product&ftype=note
