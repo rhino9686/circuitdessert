@@ -252,6 +252,14 @@ body:has(.cd-doc) h1#_top::after {
 .cd-home-hero { padding-block: 2rem 1rem; }
 .cd-home-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.08; margin: 0 0 1rem; }
 .cd-home-hero h1 em { color: var(--cd-accent); font-style: italic; }
+/* Home: the hero below carries the page's visible heading, so Starlight's own title block ("Circuit Dessert")
+   stays in the page for screen readers and search but is taken out of the layout. */
+body:has(.cd-home-hero) .content-panel:has(> .sl-container > h1#_top) {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+body:has(.cd-home-hero) .content-panel:has(> .sl-container > h1#_top) + .content-panel { border-top: 0; }
+
 .cd-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
 .cd-cta { border-top: 1px solid var(--cd-border); padding-top: 2rem; }
 
