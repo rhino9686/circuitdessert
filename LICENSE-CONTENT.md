@@ -10,7 +10,6 @@ Unless a page or file says otherwise, the written content and drawings in this r
 ## What this covers
 
 - Recipes, part pages, guides and notes: `src/content/`
-- The Pantry listing and other data tables: `src/data/`
 - Schematic and other drawings: `src/assets/recipes/`
 - Images contributors add (hosted on the media server after merge)
 

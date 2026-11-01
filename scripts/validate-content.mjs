@@ -71,8 +71,6 @@ for (const [key, n] of familyCount) if (n > 1) partPages.add(key); // family com
 // ---- Recipes ----
 const recipeFiles = walk(join(root, 'recipes')).filter((f) => f.endsWith('.md') && !/(^|\/)_/.test(relative(join(root, 'recipes'), f)));
 const recipeIds = new Set(recipeFiles.map((f) => relative(join(root, 'recipes'), f).replace(/\.md$/, '')));
-const pantryIds = new Set([...content(new URL('../src/data/pantry.yaml', import.meta.url).pathname).matchAll(/^- id:\s*(\S+)/gm)].map((m) => m[1]));
-const pantryClaimed = new Map();
 const assetExists = (name) => { try { statSync(new URL(`../src/assets/recipes/${name}`, import.meta.url)); return true; } catch { return false; } };
 
 // Links written as site:<path> must point at a recipe or part page that exists.
@@ -84,7 +82,7 @@ function checkSiteLinks(rel, text) {
       if (!recipeIds.has(rest[0])) err(rel, `link site:${m[1]} points at a recipe that doesn't exist`);
     } else if (kind === 'parts' && rest.length === 2) {
       if (!partPages.has(rest.join('/'))) err(rel, `link site:${m[1]} points at a part page that doesn't exist`);
-    } else if (!['recipes', 'parts', 'pantry', 'contribute'].includes(kind)) {
+    } else if (!['recipes', 'parts', 'about', 'licenses', 'contribute'].includes(kind)) {
       warn(rel, `link site:${m[1]}: can't check this kind of link`);
     }
   }
@@ -101,12 +99,6 @@ for (const f of recipeFiles) {
   if (hero && !assetExists(hero)) err(rel, `hero file src/assets/recipes/${hero} not found`);
   const schematic = field(fm, 'schematic');
   if (schematic && !assetExists(schematic)) err(rel, `schematic file src/assets/recipes/${schematic} not found (run npm run schematics?)`);
-  const pantryId = field(fm, 'pantry_id');
-  if (pantryId) {
-    if (!pantryIds.has(pantryId)) err(rel, `pantry_id "${pantryId}" is not an id in src/data/pantry.yaml`);
-    else if (pantryClaimed.has(pantryId)) err(rel, `pantry_id "${pantryId}" is already used by ${pantryClaimed.get(pantryId)}`);
-    else pantryClaimed.set(pantryId, rel);
-  }
   if (/^components:/m.test(fm)) {
     const refs = [...fm.matchAll(/(?<![\w-])ref:\s*["']?([^"',}\n]+)/g)].map((m) => m[1].trim());
     const dup = refs.find((r, i) => refs.indexOf(r) !== i);

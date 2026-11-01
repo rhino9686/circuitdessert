@@ -48,7 +48,7 @@ export default defineConfig({
       sidebar: [
         { label: 'Recipes', link: '/recipes/' },
         { label: 'Parts', link: '/parts/' },
-        { label: 'The Pantry', link: '/pantry/' },
+        { label: 'About', link: '/about/' },
         { label: 'Contribute', items: [{ autogenerate: { directory: 'contribute' } }] },
       ],
       lastUpdated: true,

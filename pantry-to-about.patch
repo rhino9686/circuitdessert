@@ -1,0 +1,348 @@
+diff --git a/LICENSE-CONTENT.md b/LICENSE-CONTENT.md
+index 19ced34..16d9f16 100644
+--- a/LICENSE-CONTENT.md
++++ b/LICENSE-CONTENT.md
+@@ -10,7 +10,6 @@ Unless a page or file says otherwise, the written content and drawings in this r
+ ## What this covers
+ 
+ - Recipes, part pages, guides and notes: `src/content/`
+-- The Pantry listing and other data tables: `src/data/`
+ - Schematic and other drawings: `src/assets/recipes/`
+ - Images contributors add (hosted on the media server after merge)
+ 
+diff --git a/README.md b/README.md
+index 0683c8d..8cd1b71 100644
+--- a/README.md
++++ b/README.md
+@@ -20,7 +20,6 @@ npm run schematics # regenerate the schematic drawings in src/assets/recipes/
+ | --- | --- | --- |
+ | Recipes (reference designs, tutorials) | `src/content/recipes/<id>.md` | `/recipes/<id>/` |
+ | Parts | `src/content/parts/<manufacturer>/<family>/<part>.md` | one page per family: `/parts/<manufacturer>/<family>/` |
+-| The Pantry (manufacturer design listing) | `src/data/pantry.yaml` | `/pantry/` |
+ | Guides and contribution docs | `src/content/docs/` | Starlight pages |
+ | New images (merged, then moved to R2) | `media-incoming/` | `media:` links in Markdown |
+ 
+diff --git a/SETUP.md b/SETUP.md
+index bef2bc7..baaff29 100644
+--- a/SETUP.md
++++ b/SETUP.md
+@@ -47,10 +47,9 @@ Use a branch protection rule or ruleset:
+ 
+ ## 6. Content still to do
+ 
+-- Part pages: all 14 are marked `draft: true`. The specs are checked against datasheets, but the prose is first-draft and wants a human rewrite. Feature lists and component tables were written from the datasheets in the same pass and are worth a second look.
++- Part pages: all are marked `draft: true`. The specs are checked against datasheets, but the prose is first-draft and wants a human rewrite. Feature lists and component tables were written from the datasheets in the same pass and are worth a second look.
+ - LCSC part numbers are empty on every part.
+-- Recipe pages: the body text is carried over from the old site and based on manufacturer material. The Pantry's `category` values are inconsistent (about 45 variants). Normalising them would allow filtering.
+-- Pantry: the SY82853 entry was removed because that part couldn't be confirmed to exist.
++- Recipe pages: the body text is carried over from the old site and based on manufacturer material.
+ - There is no tutorial recipe yet; the schema supports `kind: tutorial`.
+ 
+ ## 7. Known limitations
+diff --git a/astro.config.mjs b/astro.config.mjs
+index 22fa1a1..5ecd25d 100644
+--- a/astro.config.mjs
++++ b/astro.config.mjs
+@@ -48,7 +48,7 @@ export default defineConfig({
+       sidebar: [
+         { label: 'Recipes', link: '/recipes/' },
+         { label: 'Parts', link: '/parts/' },
+-        { label: 'The Pantry', link: '/pantry/' },
++        { label: 'About', link: '/about/' },
+         { label: 'Contribute', items: [{ autogenerate: { directory: 'contribute' } }] },
+       ],
+       lastUpdated: true,
+diff --git a/scripts/validate-content.mjs b/scripts/validate-content.mjs
+index 815f5c3..22b37c9 100644
+--- a/scripts/validate-content.mjs
++++ b/scripts/validate-content.mjs
+@@ -71,8 +71,6 @@ for (const [key, n] of familyCount) if (n > 1) partPages.add(key); // family com
+ // ---- Recipes ----
+ const recipeFiles = walk(join(root, 'recipes')).filter((f) => f.endsWith('.md') && !/(^|\/)_/.test(relative(join(root, 'recipes'), f)));
+ const recipeIds = new Set(recipeFiles.map((f) => relative(join(root, 'recipes'), f).replace(/\.md$/, '')));
+-const pantryIds = new Set([...content(new URL('../src/data/pantry.yaml', import.meta.url).pathname).matchAll(/^- id:\s*(\S+)/gm)].map((m) => m[1]));
+-const pantryClaimed = new Map();
+ const assetExists = (name) => { try { statSync(new URL(`../src/assets/recipes/${name}`, import.meta.url)); return true; } catch { return false; } };
+ 
+ // Links written as site:<path> must point at a recipe or part page that exists.
+@@ -84,7 +82,7 @@ function checkSiteLinks(rel, text) {
+       if (!recipeIds.has(rest[0])) err(rel, `link site:${m[1]} points at a recipe that doesn't exist`);
+     } else if (kind === 'parts' && rest.length === 2) {
+       if (!partPages.has(rest.join('/'))) err(rel, `link site:${m[1]} points at a part page that doesn't exist`);
+-    } else if (!['recipes', 'parts', 'pantry', 'contribute'].includes(kind)) {
++    } else if (!['recipes', 'parts', 'about', 'licenses', 'contribute'].includes(kind)) {
+       warn(rel, `link site:${m[1]}: can't check this kind of link`);
+     }
+   }
+@@ -101,12 +99,6 @@ for (const f of recipeFiles) {
+   if (hero && !assetExists(hero)) err(rel, `hero file src/assets/recipes/${hero} not found`);
+   const schematic = field(fm, 'schematic');
+   if (schematic && !assetExists(schematic)) err(rel, `schematic file src/assets/recipes/${schematic} not found (run npm run schematics?)`);
+-  const pantryId = field(fm, 'pantry_id');
+-  if (pantryId) {
+-    if (!pantryIds.has(pantryId)) err(rel, `pantry_id "${pantryId}" is not an id in src/data/pantry.yaml`);
+-    else if (pantryClaimed.has(pantryId)) err(rel, `pantry_id "${pantryId}" is already used by ${pantryClaimed.get(pantryId)}`);
+-    else pantryClaimed.set(pantryId, rel);
+-  }
+   if (/^components:/m.test(fm)) {
+     const refs = [...fm.matchAll(/(?<![\w-])ref:\s*["']?([^"',}\n]+)/g)].map((m) => m[1].trim());
+     const dup = refs.find((r, i) => refs.indexOf(r) !== i);
+diff --git a/src/components/Header.astro b/src/components/Header.astro
+index 2dbbbbe..554181c 100644
+--- a/src/components/Header.astro
++++ b/src/components/Header.astro
+@@ -16,7 +16,7 @@ const isHome = Astro.url.pathname === url('');
+ const links = [
+   { label: 'Recipes', href: url('recipes/') },
+   { label: 'Parts', href: url('parts/') },
+-  { label: 'Pantry', href: url('pantry/') },
++  { label: 'About', href: url('about/') },
+   { label: 'Contribute', href: url('contribute/') },
+ ];
+ ---
+diff --git a/src/content.config.ts b/src/content.config.ts
+index a377805..7edfa00 100644
+--- a/src/content.config.ts
++++ b/src/content.config.ts
+@@ -1,5 +1,5 @@
+ import { defineCollection } from 'astro:content';
+-import { glob, file } from 'astro/loaders';
++import { glob } from 'astro/loaders';
+ import { z } from 'astro/zod';
+ import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
+ import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
+@@ -96,8 +96,6 @@ const recipes = defineCollection({
+     source: httpsUrl.optional(),
+     // Which revision of the source document the numbers were checked against, e.g. "Rev 1.0 (May 2026)".
+     source_revision: z.string().optional(),
+-    // The Pantry card this recipe expands (its `id` in src/data/pantry.yaml). The card then links here.
+-    pantry_id: z.string().optional(),
+     // `draft` marks prose that still needs a human rewrite or a build to confirm it.
+     draft: z.boolean().default(false),
+     stats: z.array(z.object({ value: z.string(), label: z.string() })).max(4).default([]),
+@@ -129,23 +127,7 @@ const recipes = defineCollection({
+   }),
+ });
+ 
+-/** THE PANTRY: lightweight listing of manufacturer reference designs, one data file. */
+-const pantry = defineCollection({
+-  loader: file('./src/data/pantry.yaml'),
+-  schema: z.object({
+-    id: z.string(),
+-    brand: z.string(),
+-    title: z.string(),
+-    design_id: z.string(),
+-    category: z.string(),
+-    summary: z.string(),
+-    parts: z.array(z.string()).default([]),
+-    more_parts: z.number().int().positive().optional(), // "+N more" components not listed
+-    source: httpsUrl,
+-  }),
+-});
+-
+ const docs = defineCollection({ loader: docsLoader(), schema: docsSchema() });
+ const i18n = defineCollection({ loader: i18nLoader(), schema: i18nSchema() });
+ 
+-export const collections = { docs, i18n, parts, recipes, pantry };
++export const collections = { docs, i18n, parts, recipes };
+diff --git a/src/content/docs/404.md b/src/content/docs/404.md
+index bb23440..6a871f0 100644
+--- a/src/content/docs/404.md
++++ b/src/content/docs/404.md
+@@ -4,4 +4,4 @@ description: "That page doesn't exist."
+ tableOfContents: false
+ ---
+ 
+-We couldn't find that page. Use the search box at the top, or browse the Recipe Book, Parts or the Pantry from the menu.
++We couldn't find that page. Use the search box at the top, or browse the Recipe Book or Parts from the menu.
+diff --git a/src/content/docs/about.md b/src/content/docs/about.md
+new file mode 100644
+index 0000000..e918828
+--- /dev/null
++++ b/src/content/docs/about.md
+@@ -0,0 +1,25 @@
++---
++title: About
++description: "Why Circuit Dessert exists and what it is trying to do."
++---
++
++Datasheets tell you what a part can do. Reference designs show you how to use it. But reference designs are scattered across manufacturers' websites as PDFs, each laid out its own way, and they rarely explain why a value was chosen. Circuit Dessert is an attempt to gather them in one open, searchable place and write them up like recipes.
++
++## Why this exists
++
++- **A schematic shows what was built, not why.** A recipe page adds the reasoning behind each part value, a worked example with the numbers, and the layout advice that usually sits in a footnote.
++- **Designs are spread across many sites.** Every manufacturer publishes in its own format. Putting them in one place makes it easier to compare approaches and to find a starting point for a part you already have.
++- **Specs should be checked.** Part pages are checked against the datasheet, and recipes say which revision of the source their numbers came from.
++
++## What it aims to do
++
++- **Plate designs like recipes.** The parts list is the ingredients, and the reasoning and calculations are the method.
++- **Credit every design to its maker** and link back to the original source.
++- **Be upfront about confidence.** Say what was checked, which values we calculated ourselves, and mark prose that still needs a human review as a draft.
++- **Stay open.** Hobbyists, students and working engineers can all [contribute a recipe or a part](site:contribute/) through GitHub, and anyone can copy the site.
++
++Circuit Dessert is not a substitute for the manufacturer's datasheet. Check the source document before you build a board or place an order.
++
++## Open to use and reuse
++
++The written content and drawings are CC BY 4.0 and the code is MIT, so you can fork the repository and run your own copy, including an internal version for your company. The manufacturers' own documents, figures and trademarks stay with them. The full details are on the [Licenses](site:licenses/) page.
+diff --git a/src/content/docs/contribute/recipe.md b/src/content/docs/contribute/recipe.md
+index 69feba6..a3a1f8b 100644
+--- a/src/content/docs/contribute/recipe.md
++++ b/src/content/docs/contribute/recipe.md
+@@ -37,7 +37,6 @@ A recipe is a Markdown file with a short block of structured details at the top
+ | `source` | A link to the original (required for reference designs). |
+ | `stats` | Up to four headline numbers, each with a label. |
+ | `source_revision` | The revision of the source document your numbers were checked against, such as `Rev 1.0 (May 2026)` (optional). |
+-| `pantry_id` | The `id` of the [Pantry](../../pantry/) card this recipe expands. The card then shows a "Read the recipe" link (optional). |
+ | `draft` | `true` while the prose still needs a human review or a build to confirm it. The page shows a "Draft notes" tag. |
+ | `components` | The parts, each with `part` and a short `description` of its role. Add `ref` (the reference designator on the schematic) and `maker` to make a full bill of materials. For a generic part, put its value in `part`, such as `100 kΩ, 1%, 0603`. |
+ | `schematic` and `schematic_caption` | A drawing in `src/assets/recipes/` and its caption (optional). See *Schematic drawings* below. |
+diff --git a/src/content/recipes/_template.md b/src/content/recipes/_template.md
+index ee33086..64a81ee 100644
+--- a/src/content/recipes/_template.md
++++ b/src/content/recipes/_template.md
+@@ -10,7 +10,6 @@ summary: One or two sentences, under 300 characters. Used on cards and in search
+ abstract: A longer intro shown under the title (plain text). Optional; the summary is used if you leave it out.
+ source: https://example.com/source
+ source_revision: Rev 1.0 (May 2026)  # which revision of the source your numbers were checked against (optional)
+-pantry_id: example-pantry-id    # the id of the Pantry card this expands, in src/data/pantry.yaml (optional)
+ draft: false                    # true while the prose still needs a human review
+ stats:                          # up to 4 headline numbers
+   - { value: "5 V, 8 A", label: configured output }
+diff --git a/src/content/recipes/sy21219.md b/src/content/recipes/sy21219.md
+index 480ee47..78c3178 100644
+--- a/src/content/recipes/sy21219.md
++++ b/src/content/recipes/sy21219.md
+@@ -2,7 +2,6 @@
+ title: "SY21219 6 A synchronous buck: 5 V at 6 A from up to 30 V"
+ design_id: SY21219-DS
+ manufacturer: Silergy
+-pantry_id: silergy-sy21219-ds
+ kind: reference-design
+ category: Power / DC-DC Buck
+ summary: "Reference circuit from the SY21219 datasheet: a 6 A synchronous buck for 5 V from 4.5–30 V at 500 kHz in QFN2×3-14, with the full bill of materials, design equations, a worked example and layout notes."
+diff --git a/src/data/pantry.yaml b/src/data/pantry.yaml
+deleted file mode 100644
+index 98d67a1..0000000
+--- a/src/data/pantry.yaml
++++ /dev/null
+@@ -1,12 +0,0 @@
+-- id: silergy-sy21219-ds
+-  brand: Silergy
+-  title: SY21219 synchronous buck reference design (4.5V to 30V)
+-  design_id: SY21219-DS
+-  category: Power / DC-DC Buck
+-  summary: Synchronous buck regulator reference design for 4.5V to 30V input. Datasheet provides 5V application schematic, BOM, and extensive L/COUT/RFF/CFF selection tables for 1.2V, 3.3V, 5V, 12V outputs, plus measured efficiency curves.
+-  parts:
+-  - SY21219
+-  - PCMB104T-4R7MS
+-  - GRM31CR61H106KA12L
+-  - GRM31CR61C226ME15L
+-  source: https://www.silergy.com/download/downloadFile?id=6062&type=product&ftype=note
+diff --git a/src/pages/index.astro b/src/pages/index.astro
+index 1d3061f..f297adc 100644
+--- a/src/pages/index.astro
++++ b/src/pages/index.astro
+@@ -5,14 +5,13 @@ import { url } from '../lib/url';
+ import { count } from '../lib/plural';
+ 
+ const recipes = await getCollection('recipes');
+-const pantry = await getCollection('pantry');
+ const parts = await getCollection('parts');
+ 
+ const FEATURED = ['sy21219'];
+ const featured = FEATURED.map((id) => recipes.find((r) => r.id === id)).filter((r) => r !== undefined);
+ 
+ const brandCounts = new Map<string, number>();
+-for (const p of pantry) brandCounts.set(p.data.brand, (brandCounts.get(p.data.brand) ?? 0) + 1);
++for (const r of recipes) if (r.data.manufacturer) brandCounts.set(r.data.manufacturer, (brandCounts.get(r.data.manufacturer) ?? 0) + 1);
+ const brands = [...brandCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+ ---
+ 
+@@ -56,9 +55,9 @@ const brands = [...brandCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].loc
+         </div>
+       ))}
+       <div class="cd-card">
+-        <span class="tag">The Pantry</span>
+-        <h3><a href={url('pantry/')}>{count(pantry.length, 'reference design')} in the Pantry</a></h3>
+-        <p class="spec">Grouped by brand, shown as published, and linked to their sources.</p>
++        <span class="tag">About</span>
++        <h3><a href={url('about/')}>Why Circuit Dessert exists</a></h3>
++        <p class="spec">What this site is for, who it is for, and how it is licensed.</p>
+       </div>
+       <div class="cd-card">
+         <span class="tag">Parts</span>
+diff --git a/src/pages/pantry.astro b/src/pages/pantry.astro
+deleted file mode 100644
+index 4dd8de7..0000000
+--- a/src/pages/pantry.astro
++++ /dev/null
+@@ -1,54 +0,0 @@
+----
+-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+-import { getCollection } from 'astro:content';
+-import { url } from '../lib/url';
+-import { count } from '../lib/plural';
+-
+-const items = await getCollection('pantry');
+-// Pantry entries that also have a full recipe link to it. A recipe names its card with `pantry_id`;
+-// older recipes are matched by design ID instead.
+-const recipes = await getCollection('recipes');
+-const recipeByPantry = new Map(recipes.filter((r) => r.data.pantry_id).map((r) => [r.data.pantry_id!, r.id]));
+-const recipeByDesign = new Map(recipes.filter((r) => r.data.design_id).map((r) => [r.data.design_id!.toLowerCase(), r.id]));
+-const recipeFor = (i: (typeof items)[number]) => recipeByPantry.get(i.id) ?? recipeByDesign.get(i.data.design_id.toLowerCase());
+-const byBrand = new Map<string, typeof items>();
+-for (const i of items.sort((a, b) => a.data.design_id.localeCompare(b.data.design_id))) {
+-  if (!byBrand.has(i.data.brand)) byBrand.set(i.data.brand, []);
+-  byBrand.get(i.data.brand)!.push(i);
+-}
+-const brands = [...byBrand.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+----
+-
+-<StarlightPage
+-  frontmatter={{
+-    title: 'The Pantry',
+-    description: 'Manufacturer reference designs from across the industry, linked to their source.',
+-    tableOfContents: false,
+-  }}
+->
+-  <p class="cd-lede">
+-    {count(items.length, 'reference design')} from across the industry, each shown as published by its maker: original titles, design IDs, and part numbers, with a link back to the source.
+-  </p>
+-  {brands.map(([brand, list]) => (
+-    <section class="cd-group">
+-      <span class="cd-eyebrow">{brand} <span class="count">({list.length})</span></span>
+-      <div class="cd-grid">
+-        {list.map((i) => (
+-          <div class="cd-card">
+-            <span class="tag">{i.data.category}</span>
+-            <h3>{i.data.title}</h3>
+-            <p class="spec"><strong>{i.data.brand}</strong> · {i.data.design_id}</p>
+-            <p class="spec">{i.data.summary}</p>
+-            {i.data.parts.length > 0 && <p class="spec">{i.data.parts.join(', ')}{i.data.more_parts ? ` +${i.data.more_parts} more` : ''}</p>}
+-            <p class="spec">
+-              {recipeFor(i) && (
+-                <><a class="cd-link" href={url(`recipes/${recipeFor(i)}/`)}>Read the recipe</a>{' · '}</>
+-              )}
+-              <a class="cd-link" href={i.data.source} target="_blank" rel="noopener noreferrer">View source ↗</a>
+-            </p>
+-          </div>
+-        ))}
+-      </div>
+-    </section>
+-  ))}
+-</StarlightPage>
+diff --git a/src/styles/circuit-dessert.css b/src/styles/circuit-dessert.css
+index a100300..04dab07 100644
+--- a/src/styles/circuit-dessert.css
++++ b/src/styles/circuit-dessert.css
+@@ -219,7 +219,7 @@ body:has(.cd-doc) h1#_top::after {
+ .cd-note.is-warn { border-left-color: var(--cd-gold); }
+ .cd-note.is-ok { border-left-color: var(--cd-ok); }
+ 
+-/* ---------- Cards / grids (Recipe Book, Pantry, Parts, Home) ---------- */
++/* ---------- Cards / grids (Recipe Book, Parts, Home) ---------- */
+ .cd-grid {
+   display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+   gap: 2.25rem 2rem; border-top: 1px solid var(--cd-border); padding-top: 2rem; margin-top: 1rem;

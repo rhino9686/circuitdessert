@@ -219,7 +219,7 @@ body:has(.cd-doc) h1#_top::after {
 .cd-note.is-warn { border-left-color: var(--cd-gold); }
 .cd-note.is-ok { border-left-color: var(--cd-ok); }
 
-/* ---------- Cards / grids (Recipe Book, Pantry, Parts, Home) ---------- */
+/* ---------- Cards / grids (Recipe Book, Parts, Home) ---------- */
 .cd-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 2.25rem 2rem; border-top: 1px solid var(--cd-border); padding-top: 2rem; margin-top: 1rem;

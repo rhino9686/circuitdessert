@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { glob, file } from 'astro/loaders';
+import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
 import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
@@ -96,8 +96,6 @@ const recipes = defineCollection({
     source: httpsUrl.optional(),
     // Which revision of the source document the numbers were checked against, e.g. "Rev 1.0 (May 2026)".
     source_revision: z.string().optional(),
-    // The Pantry card this recipe expands (its `id` in src/data/pantry.yaml). The card then links here.
-    pantry_id: z.string().optional(),
     // `draft` marks prose that still needs a human rewrite or a build to confirm it.
     draft: z.boolean().default(false),
     stats: z.array(z.object({ value: z.string(), label: z.string() })).max(4).default([]),
@@ -129,23 +127,7 @@ const recipes = defineCollection({
   }),
 });
 
-/** THE PANTRY: lightweight listing of manufacturer reference designs, one data file. */
-const pantry = defineCollection({
-  loader: file('./src/data/pantry.yaml'),
-  schema: z.object({
-    id: z.string(),
-    brand: z.string(),
-    title: z.string(),
-    design_id: z.string(),
-    category: z.string(),
-    summary: z.string(),
-    parts: z.array(z.string()).default([]),
-    more_parts: z.number().int().positive().optional(), // "+N more" components not listed
-    source: httpsUrl,
-  }),
-});
-
 const docs = defineCollection({ loader: docsLoader(), schema: docsSchema() });
 const i18n = defineCollection({ loader: i18nLoader(), schema: i18nSchema() });
 
-export const collections = { docs, i18n, parts, recipes, pantry };
+export const collections = { docs, i18n, parts, recipes };

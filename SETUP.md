@@ -47,10 +47,9 @@ Use a branch protection rule or ruleset:
 
 ## 6. Content still to do
 
-- Part pages: all 14 are marked `draft: true`. The specs are checked against datasheets, but the prose is first-draft and wants a human rewrite. Feature lists and component tables were written from the datasheets in the same pass and are worth a second look.
+- Part pages: all are marked `draft: true`. The specs are checked against datasheets, but the prose is first-draft and wants a human rewrite. Feature lists and component tables were written from the datasheets in the same pass and are worth a second look.
 - LCSC part numbers are empty on every part.
-- Recipe pages: the body text is carried over from the old site and based on manufacturer material. The Pantry's `category` values are inconsistent (about 45 variants). Normalising them would allow filtering.
-- Pantry: the SY82853 entry was removed because that part couldn't be confirmed to exist.
+- Recipe pages: the body text is carried over from the old site and based on manufacturer material.
 - There is no tutorial recipe yet; the schema supports `kind: tutorial`.
 
 ## 7. Known limitations

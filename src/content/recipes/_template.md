@@ -10,7 +10,6 @@ summary: One or two sentences, under 300 characters. Used on cards and in search
 abstract: A longer intro shown under the title (plain text). Optional; the summary is used if you leave it out.
 source: https://example.com/source
 source_revision: Rev 1.0 (May 2026)  # which revision of the source your numbers were checked against (optional)
-pantry_id: example-pantry-id    # the id of the Pantry card this expands, in src/data/pantry.yaml (optional)
 draft: false                    # true while the prose still needs a human review
 stats:                          # up to 4 headline numbers
   - { value: "5 V, 8 A", label: configured output }

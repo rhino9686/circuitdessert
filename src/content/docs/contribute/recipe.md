@@ -37,7 +37,6 @@ A recipe is a Markdown file with a short block of structured details at the top 
 | `source` | A link to the original (required for reference designs). |
 | `stats` | Up to four headline numbers, each with a label. |
 | `source_revision` | The revision of the source document your numbers were checked against, such as `Rev 1.0 (May 2026)` (optional). |
-| `pantry_id` | The `id` of the [Pantry](../../pantry/) card this recipe expands. The card then shows a "Read the recipe" link (optional). |
 | `draft` | `true` while the prose still needs a human review or a build to confirm it. The page shows a "Draft notes" tag. |
 | `components` | The parts, each with `part` and a short `description` of its role. Add `ref` (the reference designator on the schematic) and `maker` to make a full bill of materials. For a generic part, put its value in `part`, such as `100 kΩ, 1%, 0603`. |
 | `schematic` and `schematic_caption` | A drawing in `src/assets/recipes/` and its caption (optional). See *Schematic drawings* below. |

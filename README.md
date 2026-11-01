@@ -20,7 +20,6 @@ npm run schematics # regenerate the schematic drawings in src/assets/recipes/
 | --- | --- | --- |
 | Recipes (reference designs, tutorials) | `src/content/recipes/<id>.md` | `/recipes/<id>/` |
 | Parts | `src/content/parts/<manufacturer>/<family>/<part>.md` | one page per family: `/parts/<manufacturer>/<family>/` |
-| The Pantry (manufacturer design listing) | `src/data/pantry.yaml` | `/pantry/` |
 | Guides and contribution docs | `src/content/docs/` | Starlight pages |
 | New images (merged, then moved to R2) | `media-incoming/` | `media:` links in Markdown |
 

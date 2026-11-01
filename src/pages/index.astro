@@ -5,14 +5,13 @@ import { url } from '../lib/url';
 import { count } from '../lib/plural';
 
 const recipes = await getCollection('recipes');
-const pantry = await getCollection('pantry');
 const parts = await getCollection('parts');
 
 const FEATURED = ['sy21219'];
 const featured = FEATURED.map((id) => recipes.find((r) => r.id === id)).filter((r) => r !== undefined);
 
 const brandCounts = new Map<string, number>();
-for (const p of pantry) brandCounts.set(p.data.brand, (brandCounts.get(p.data.brand) ?? 0) + 1);
+for (const r of recipes) if (r.data.manufacturer) brandCounts.set(r.data.manufacturer, (brandCounts.get(r.data.manufacturer) ?? 0) + 1);
 const brands = [...brandCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 ---
 
@@ -56,9 +55,9 @@ const brands = [...brandCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].loc
         </div>
       ))}
       <div class="cd-card">
-        <span class="tag">The Pantry</span>
-        <h3><a href={url('pantry/')}>{count(pantry.length, 'reference design')} in the Pantry</a></h3>
-        <p class="spec">Grouped by brand, shown as published, and linked to their sources.</p>
+        <span class="tag">About</span>
+        <h3><a href={url('about/')}>Why Circuit Dessert exists</a></h3>
+        <p class="spec">What this site is for, who it is for, and how it is licensed.</p>
       </div>
       <div class="cd-card">
         <span class="tag">Parts</span>
