@@ -19,7 +19,7 @@ export default defineConfig({
     starlight({
       title: 'Circuit Dessert',
       description:
-        'An open repository of reference designs and parts, plated like recipes.',
+        'An open repository of reference designs and parts, ready for your kitchen.',
       logo: { src: './src/assets/mark.svg', alt: 'Circuit Dessert' },
       favicon: '/favicon.svg',
       customCss: ['./src/styles/circuit-dessert.css'],

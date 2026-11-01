@@ -1,6 +1,6 @@
 # Circuit Dessert
 
-An open repository of reference designs and parts, plated like recipes. Built with
+An open repository of reference designs and parts, ready for your kitchen. Built with
 [Astro Starlight](https://starlight.astro.build), hosted on GitHub Pages, with images on
 Cloudflare R2.
 
