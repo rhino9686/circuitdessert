@@ -16,9 +16,9 @@ Circuit Dessert is an open repository of fun circuits and reference designs. If 
 
 ## Pick what you're adding
 
-- [**A recipe**](../recipe/): a reference design or tutorial with a write-up.
-- [**A part**](../part/): one page of specs checked against the datasheet, plus your notes on using it.
-- [**Images**](../images/): how to add pictures, scope captures and diagrams without bloating the repository.
+- [**A recipe**](site:contribute/recipe/): a reference design or tutorial with a write-up.
+- [**A part**](site:contribute/part/): one page of specs checked against the datasheet, plus your notes on using it.
+- [**Images**](site:contribute/images/): how to add pictures, scope captures and diagrams without bloating the repository.
 
 ## The short version
 
