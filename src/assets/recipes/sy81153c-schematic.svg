@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 846 270" role="img" aria-labelledby="sy81153c-t sy81153c-d">
+<title id="sy81153c-t">SY81153C reference circuit</title>
+<desc id="sy81153c-d">Typical application of the SY81153C buck converter. VIN (4–18 V) feeds the IN pin through 47 µF and 10 µF input capacitors. A 10 kΩ / 1 MΩ divider from VIN sets the enable level on EN. The 0.1 µF bootstrap capacitor connects BS to LX. LX drives a 2.2 µH inductor to the 3.3 V output, which has 2 output capacitors of 22 µF. RH (100 kΩ) and RL (22.1 kΩ) form the feedback divider to FB, with a 220 pF feedforward capacitor across RH.</desc>
+<rect class="sch-ic" x="290" y="90" width="110" height="100" rx="3"/>
+<path class="sch-w" d="M278 120 L290 120"/>
+<text class="sch-pin" x="298" y="124" text-anchor="start">IN</text>
+<path class="sch-w" d="M278 160 L290 160"/>
+<text class="sch-pin" x="298" y="164" text-anchor="start">EN</text>
+<path class="sch-w" d="M400 120 L412 120"/>
+<text class="sch-pin" x="392" y="124" text-anchor="end">LX</text>
+<path class="sch-w" d="M400 160 L412 160"/>
+<text class="sch-pin" x="392" y="164" text-anchor="end">FB</text>
+<path class="sch-w" d="M330 78 L330 90"/>
+<text class="sch-pin" x="330" y="106" text-anchor="middle">BS</text>
+<path class="sch-w" d="M345 190 L345 202"/>
+<text class="sch-pin" x="345" y="182" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="345" y="144" text-anchor="middle">SY81153C</text>
+<path class="sch-w" d="M345 202 L345 230"/>
+<path class="sch-w" d="M345 230 L345 238"/>
+<path class="sch-w" d="M334 238 L356 238"/>
+<path class="sch-w" d="M338 243 L352 243"/>
+<path class="sch-w" d="M342 248 L348 248"/>
+<path class="sch-flag" d="M54 120 L46 112 L8 112 L8 128 L46 128 Z"/>
+<text class="sch-net" x="27" y="124" text-anchor="middle">VIN</text>
+<text class="sch-net" x="10" y="146" text-anchor="start">4–18 V</text>
+<path class="sch-w" d="M54 120 L220 120 L278 120"/>
+<path class="sch-w" d="M90 120 L90 171"/>
+<path class="sch-w" d="M90 230 L90 179"/>
+<path class="sch-w" d="M79 171 L101 171"/>
+<path class="sch-w" d="M79 183 Q90 174 101 183"/>
+<text class="sch-ref" x="75" y="167" text-anchor="end">+</text>
+<path class="sch-w" d="M90 230 L90 238"/>
+<path class="sch-w" d="M79 238 L101 238"/>
+<path class="sch-w" d="M83 243 L97 243"/>
+<path class="sch-w" d="M87 248 L93 248"/>
+<circle class="sch-dot" cx="90" cy="120" r="3"/>
+<text class="sch-ref" x="106" y="176" text-anchor="start">C<tspan class="sch-sub" dy="2.5">IN1</tspan></text>
+<text class="sch-val" x="106" y="189" text-anchor="start">47 µF</text>
+<path class="sch-w" d="M150 120 L150 171"/>
+<path class="sch-w" d="M150 230 L150 179"/>
+<path class="sch-w" d="M139 171 L161 171"/>
+<path class="sch-w" d="M139 179 L161 179"/>
+<path class="sch-w" d="M150 230 L150 238"/>
+<path class="sch-w" d="M139 238 L161 238"/>
+<path class="sch-w" d="M143 243 L157 243"/>
+<path class="sch-w" d="M147 248 L153 248"/>
+<circle class="sch-dot" cx="150" cy="120" r="3"/>
+<text class="sch-ref" x="166" y="176" text-anchor="start">C<tspan class="sch-sub" dy="2.5">IN2</tspan></text>
+<text class="sch-val" x="166" y="189" text-anchor="start">10 µF</text>
+<path class="sch-w" d="M220 120 L220 125 L214 127.5 L226 132.5 L214 137.5 L226 142.5 L214 147.5 L226 152.5 L220 155 L220 160"/>
+<circle class="sch-dot" cx="220" cy="120" r="3"/>
+<text class="sch-ref" x="236" y="138" text-anchor="start">R<tspan class="sch-sub" dy="2.5">ENH</tspan></text>
+<text class="sch-val" x="236" y="151" text-anchor="start">10 kΩ</text>
+<path class="sch-w" d="M220 160 L278 160"/>
+<circle class="sch-dot" cx="220" cy="160" r="3"/>
+<path class="sch-w" d="M220 160 L220 180 L214 182.5 L226 187.5 L214 192.5 L226 197.5 L214 202.5 L226 207.5 L220 210 L220 230"/>
+<path class="sch-w" d="M220 230 L220 238"/>
+<path class="sch-w" d="M209 238 L231 238"/>
+<path class="sch-w" d="M213 243 L227 243"/>
+<path class="sch-w" d="M217 248 L223 248"/>
+<text class="sch-ref" x="236" y="194" text-anchor="start">R<tspan class="sch-sub" dy="2.5">ENL</tspan></text>
+<text class="sch-val" x="236" y="207" text-anchor="start">1 MΩ</text>
+<path class="sch-w" d="M330 78 L330 50"/>
+<path class="sch-w" d="M330 50 L381 50"/>
+<path class="sch-w" d="M440 50 L389 50"/>
+<path class="sch-w" d="M381 39 L381 61"/>
+<path class="sch-w" d="M389 39 L389 61"/>
+<path class="sch-w" d="M440 50 L440 120"/>
+<text class="sch-ref" x="385" y="19" text-anchor="middle">C<tspan class="sch-sub" dy="2.5">BS</tspan></text>
+<text class="sch-val" x="385" y="32" text-anchor="middle">0.1 µF</text>
+<path class="sch-w" d="M412 120 L440 120"/>
+<circle class="sch-dot" cx="440" cy="120" r="3"/>
+<path class="sch-w" d="M440 120 L456 120 A6 6 0 0 1 468 120 A6 6 0 0 1 480 120 A6 6 0 0 1 492 120 A6 6 0 0 1 504 120 L520 120"/>
+<text class="sch-ref" x="480" y="89" text-anchor="middle">L</text>
+<text class="sch-val" x="480" y="102" text-anchor="middle">2.2 µH</text>
+<path class="sch-w" d="M520 120 L790 120"/>
+<path class="sch-flag" d="M790 120 L798 112 L836 112 L836 128 L798 128 Z"/>
+<text class="sch-net" x="817" y="124" text-anchor="middle">VOUT</text>
+<text class="sch-net" x="836" y="146" text-anchor="end">3.3 V</text>
+<circle class="sch-dot" cx="540" cy="120" r="3"/>
+<path class="sch-w" d="M540 120 L540 125 L534 127.5 L546 132.5 L534 137.5 L546 142.5 L534 147.5 L546 152.5 L540 155 L540 160"/>
+<text class="sch-ref" x="524" y="138" text-anchor="end">R<tspan class="sch-sub" dy="2.5">H</tspan></text>
+<text class="sch-val" x="524" y="151" text-anchor="end">100 kΩ</text>
+<path class="sch-w" d="M412 160 L540 160"/>
+<circle class="sch-dot" cx="540" cy="160" r="3"/>
+<path class="sch-w" d="M540 160 L540 180 L534 182.5 L546 187.5 L534 192.5 L546 197.5 L534 202.5 L546 207.5 L540 210 L540 230"/>
+<path class="sch-w" d="M540 230 L540 238"/>
+<path class="sch-w" d="M529 238 L551 238"/>
+<path class="sch-w" d="M533 243 L547 243"/>
+<path class="sch-w" d="M537 248 L543 248"/>
+<text class="sch-ref" x="524" y="194" text-anchor="end">R<tspan class="sch-sub" dy="2.5">L</tspan></text>
+<text class="sch-val" x="524" y="207" text-anchor="end">22.1 kΩ</text>
+<path class="sch-w" d="M540 160 L590 160"/>
+<path class="sch-w" d="M590 120 L590 136"/>
+<path class="sch-w" d="M590 160 L590 144"/>
+<path class="sch-w" d="M579 136 L601 136"/>
+<path class="sch-w" d="M579 144 L601 144"/>
+<circle class="sch-dot" cx="590" cy="120" r="3"/>
+<text class="sch-ref" x="606" y="138" text-anchor="start">C<tspan class="sch-sub" dy="2.5">FF</tspan></text>
+<text class="sch-val" x="606" y="151" text-anchor="start">220 pF</text>
+<path class="sch-w" d="M670 120 L670 171"/>
+<path class="sch-w" d="M670 230 L670 179"/>
+<path class="sch-w" d="M659 171 L681 171"/>
+<path class="sch-w" d="M659 179 L681 179"/>
+<path class="sch-w" d="M670 230 L670 238"/>
+<path class="sch-w" d="M659 238 L681 238"/>
+<path class="sch-w" d="M663 243 L677 243"/>
+<path class="sch-w" d="M667 248 L673 248"/>
+<circle class="sch-dot" cx="670" cy="120" r="3"/>
+<text class="sch-ref" x="686" y="176" text-anchor="start">C<tspan class="sch-sub" dy="2.5">OUT1</tspan></text>
+<text class="sch-val" x="686" y="189" text-anchor="start">22 µF</text>
+<path class="sch-w" d="M740 120 L740 171"/>
+<path class="sch-w" d="M740 230 L740 179"/>
+<path class="sch-w" d="M729 171 L751 171"/>
+<path class="sch-w" d="M729 179 L751 179"/>
+<path class="sch-w" d="M740 230 L740 238"/>
+<path class="sch-w" d="M729 238 L751 238"/>
+<path class="sch-w" d="M733 243 L747 243"/>
+<path class="sch-w" d="M737 248 L743 248"/>
+<circle class="sch-dot" cx="740" cy="120" r="3"/>
+<text class="sch-ref" x="756" y="176" text-anchor="start">C<tspan class="sch-sub" dy="2.5">OUT2</tspan></text>
+<text class="sch-val" x="756" y="189" text-anchor="start">22 µF</text>
+</svg>
