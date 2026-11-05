@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { chargerBoost, compactBuck, modePinBuck, usbPowerBank, vccBuck } from './designs.mjs';
 import { pfcLlc } from './designs-sy23505.mjs';
 import { hBridge } from './designs-sy2a58215.mjs';
+import { boostConverter } from './designs-sy26533.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -33,6 +34,7 @@ const designs = {
   'sy20718c-schematic.svg': chargerBoost({ id: 'sy20718c', part: 'SY20718C', vin: '4.5–5.35 V' }),
   'sy20757-schematic.svg': usbPowerBank({ id: 'sy20757', part: 'SY20757' }),
   'sy2a58215-schematic.svg': hBridge({ id: 'sy2a58215', part: 'SY2A58215' }),
+  'sy26533-schematic.svg': boostConverter({ id: 'sy26533', part: 'SY26533' }),
   'sy23505b-schematic.svg': pfcLlc({ id: 'sy23505b', part: 'SY23505B' }),
   'sy8113b-schematic.svg': compactBuck({
     id: 'sy8113b', part: 'SY8113B', vin: '4.5–18 V', vout: '3.3 V', enPort: 'EN',
