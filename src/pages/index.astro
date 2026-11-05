@@ -2,16 +2,25 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { getCollection } from 'astro:content';
 import { url } from '../lib/url';
+import { CATEGORY_LABELS, partUrl } from '../lib/parts';
 import { count } from '../lib/plural';
 
 const recipes = await getCollection('recipes');
 const parts = await getCollection('parts');
 
-const FEATURED = ['sy21219'];
-const featured = FEATURED.map((id) => recipes.find((r) => r.id === id)).filter((r) => r !== undefined);
+// Recipe ids and part numbers to feature on the home page, in order.
+const FEATURED_RECIPES: string[] = [];
+const FEATURED_PARTS = ['SY21219'];
+const featured = FEATURED_RECIPES.map((id) => recipes.find((r) => r.id === id)).filter((r) => r !== undefined);
+const featuredParts = FEATURED_PARTS.map((n) => parts.find((p) => p.data.part === n)).filter((p) => p !== undefined);
+
+// The main button goes to the Recipe Book once it has something in it, and to the parts until then.
+const browse = recipes.length > 0 ? { label: 'Browse the Recipe Book', href: url('recipes/') } : { label: 'Browse parts', href: url('parts/') };
 
 const brandCounts = new Map<string, number>();
-for (const r of recipes) if (r.data.manufacturer) brandCounts.set(r.data.manufacturer, (brandCounts.get(r.data.manufacturer) ?? 0) + 1);
+for (const m of [...recipes.map((r) => r.data.manufacturer), ...parts.map((p) => p.data.manufacturer)]) {
+  if (m) brandCounts.set(m, (brandCounts.get(m) ?? 0) + 1);
+}
 const brands = [...brandCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 ---
 
@@ -30,7 +39,7 @@ const brands = [...brandCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].loc
       Every design is credited to its maker, laid out like a recipe, and linked back to the original source.
     </p>
     <p class="cd-actions">
-      <a class="cd-btn is-primary" href={url('recipes/')}>Browse the Recipe Book</a>
+      <a class="cd-btn is-primary" href={browse.href}>{browse.label}</a>
       <a class="cd-btn" href={url('contribute/')}>Contribute a design</a>
     </p>
   </section>
@@ -52,6 +61,13 @@ const brands = [...brandCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].loc
           <span class="tag">{r.data.category}</span>
           <h3><a href={url(`recipes/${r.id}/`)}>{r.data.design_id ? `${r.data.design_id}: ` : ''}{r.data.title}</a></h3>
           <p class="spec">{r.data.summary}</p>
+        </div>
+      ))}
+      {featuredParts.map((p) => (
+        <div class="cd-card">
+          <span class="tag">{CATEGORY_LABELS[p.data.category]}</span>
+          <h3><a href={partUrl(p.data)}>{p.data.manufacturer} {p.data.part}</a></h3>
+          <p class="spec">{p.data.summary}</p>
         </div>
       ))}
       <div class="cd-card">

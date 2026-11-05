@@ -7,6 +7,8 @@ sidebar:
 
 A recipe is a Markdown file with a short block of structured details at the top and your write-up below. The site lays it out as numbered section cards, with a contents panel on the right.
 
+Recipes are for complete, worked-out boards and reference designs: something with a layout, a build or measurements behind it. A circuit that comes straight from a part's datasheet doesn't need its own recipe. Add it to that part's page as an *Example application* instead; see [Add a part](site:contribute/part/).
+
 ## Steps
 
 1. Copy `src/content/recipes/_template.md` to `src/content/recipes/<short-id>.md`. Use a lowercase, hyphenated name such as `my-buck-boost.md`; it becomes the page address.
@@ -49,12 +51,12 @@ The body is ordinary Markdown with a few extras:
 
 - **Tables** are styled automatically and scroll sideways on a narrow screen.
 - **Callouts:** start a paragraph with `>` to make it a note, for a warning or a point you want to stand out.
-- **Links to other pages on this site** use the `site:` prefix, so they work wherever the site is hosted: `[the SY21219 recipe](site:recipes/sy21219/)` or `[SY21219](site:parts/silergy/sy21219/)`. `npm run validate` checks that the target exists.
+- **Links to other pages on this site** use the `site:` prefix, so they work wherever the site is hosted: `[a recipe](site:recipes/<id>/)` or `[SY21219](site:parts/silergy/sy21219/)`. `npm run validate` checks that the target exists.
 - **Calculated values:** if a number comes from your own calculation rather than the source document, say so, and show the formula or inputs.
 
 ## Schematic drawings
 
-The reference circuit section can show a schematic. Drawings are SVG files in `src/assets/recipes/` that use classes (`sch-w`, `sch-ic`, `sch-ref` and so on) instead of colors, so they follow the light and dark themes. You can draw one in any editor that lets you set classes, or generate it:
+The reference circuit section can show a schematic, and a part page can show the same drawings (see [Add a part](site:contribute/part/)). Drawings are SVG files in `src/assets/recipes/` that use classes (`sch-w`, `sch-ic`, `sch-ref` and so on) instead of colors, so they follow the light and dark themes. You can draw one in any editor that lets you set classes, or generate it:
 
 1. Open `scripts/schematics/designs.mjs`. It holds drawing functions built on a small kit in `lib.mjs` (resistors, capacitors, inductors, grounds, IC boxes, net flags).
 2. Add your drawing function, then list it in `scripts/schematics/build.mjs`.

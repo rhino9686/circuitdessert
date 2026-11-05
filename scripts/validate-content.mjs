@@ -87,7 +87,13 @@ function checkSiteLinks(rel, text) {
     }
   }
 }
-for (const f of partFiles) checkSiteLinks(relative(root, f), content(f));
+// Drawings shown with ![caption](schematic:<file>.svg) must exist in src/assets/recipes/.
+function checkSchematics(rel, text) {
+  for (const m of text.matchAll(/!\[[^\]]*\]\(schematic:([^)\s]+)\)/g)) {
+    if (!assetExists(m[1])) err(rel, `schematic:${m[1]} not found in src/assets/recipes/ (run npm run schematics?)`);
+  }
+}
+for (const f of partFiles) { checkSiteLinks(relative(root, f), content(f)); checkSchematics(relative(root, f), content(f)); }
 
 for (const f of recipeFiles) {
   const rel = relative(root, f);
@@ -95,6 +101,7 @@ for (const f of recipeFiles) {
   checkYamlHazards(rel, fm);
   checkBodyStartsWithSection(rel, content(f));
   checkSiteLinks(rel, content(f));
+  checkSchematics(rel, content(f));
   const hero = field(fm, 'hero');
   if (hero && !assetExists(hero)) err(rel, `hero file src/assets/recipes/${hero} not found`);
   const schematic = field(fm, 'schematic');

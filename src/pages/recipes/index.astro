@@ -19,7 +19,10 @@ const recipes = (await getCollection('recipes')).sort((a, b) =>
     Full write-ups of reference designs and tutorials: what it does, what's in it, and where to find the source.
   </p>
   {recipes.length === 0 ? (
-    <p class="cd-note">No recipes yet. See <a href={url('contribute/')}>how to contribute</a>.</p>
+    <p class="cd-note">
+      No recipes yet. Recipes are for complete, worked-out boards and reference designs. A circuit that comes from a part's datasheet is on that part's page, under
+      <em>Example application</em>; see <a href={url('parts/')}>Parts</a>. Have a board to share? See <a href={url('contribute/')}>how to contribute</a>.
+    </p>
   ) : (
     <div class="cd-grid">
       {recipes.map((r) => (

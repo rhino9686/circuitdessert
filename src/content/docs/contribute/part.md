@@ -24,7 +24,7 @@ Every part gets its own page. Parts that share a `family` value are also compare
 | 2 Features | `features` |
 | 3 Specifications | A generated "Key specifications" table, then one table per entry in `spec_groups` |
 | 4 Recommended components | `design_tables` (optional) |
-| 5 and later | Your Markdown body: each `##` heading becomes a numbered section, each `###` a numbered subsection |
+| 5 and later | Your Markdown body: each `##` heading becomes a numbered section, each `###` a numbered subsection. Typical sections are *How it works*, *Example application*, *Layout* and *Things to watch* |
 | Last sections | Related parts in the family, ordering and documents, and the recipes that use the part (all generated) |
 
 ## The details at the top
@@ -46,7 +46,23 @@ Every part gets its own page. Parts that share a `family` value are also compare
 
 ## Your notes
 
-The body must start with a `##` heading. A good set of sections is **Design notes** (with `###` subsections such as *Before you build*), **Layout guidance** and **Datasheet notes**.
+The body must start with a `##` heading. A good set of sections is **How it works**, **Example application**, **Layout** and **Things to watch**. Keep each fact in one place: the specs are already in the tables above, so the notes say what the datasheet doesn't.
+
+## Example application
+
+If the datasheet gives a typical or reference circuit, add it to the part page as a `##` section called **Example application**, with `###` subsections. A good one has:
+
+- **The circuit:** a drawing and a parts table (ref, part, description, maker), plus the conditions it was built for.
+- **How each value was chosen,** and a worked example. Say which numbers you calculated yourself and which came from the datasheet.
+- **Variants,** such as other output voltages. Point to the *Recommended components* tables instead of copying them, and add only what you calculated.
+
+To show a drawing, put an image line on its own line:
+
+```md
+![Reference circuit redrawn from the datasheet (VOUT = 5 V)](schematic:my-circuit-schematic.svg)
+```
+
+The file is an SVG in `src/assets/recipes/`, and the text in the brackets becomes the caption. The drawing is inlined, so it follows the light and dark themes. `npm run validate` checks that the file exists. See [Schematic drawings](site:contribute/recipe/) in the recipe guide for how to draw or generate one, and the [SY21219 page](site:parts/silergy/sy21219/) for a finished example.
 
 Write what the datasheet doesn't say: where this part shines, gotchas, layout tips, good alternatives. Use your own words. Mention datasheet errors you've spotted, such as a pin table that contradicts the layout section. Keep `draft: true` until a human has rewritten the prose, then set it to `false`.
 
