@@ -5,7 +5,8 @@
 // one of the drawing functions in designs.mjs (or a new one you build from the kit in lib.mjs).
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { compactBuck, modePinBuck, vccBuck } from './designs.mjs';
+import { chargerBoost, compactBuck, modePinBuck, usbPowerBank, vccBuck } from './designs.mjs';
+import { hBridge } from './designs-sy2a58215.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -28,6 +29,9 @@ const designs = {
     id: 'sy80082x', part: 'SY80082x', vin: '2.5–5.5 V', vout: '1.8 V', bs: false, rpg: '100 kΩ',
     cin1: '47 µF', cin2: '10 µF', couts: ['10 µF'], cff: '22 pF', l: '1.0 µH', rh: '30 kΩ', rl: '15 kΩ', renh: '10 kΩ', renl: '1 MΩ',
   }),
+  'sy20718c-schematic.svg': chargerBoost({ id: 'sy20718c', part: 'SY20718C', vin: '4.5–5.35 V' }),
+  'sy20757-schematic.svg': usbPowerBank({ id: 'sy20757', part: 'SY20757' }),
+  'sy2a58215-schematic.svg': hBridge({ id: 'sy2a58215', part: 'SY2A58215' }),
   'sy21219-schematic.svg': vccBuck({
     id: 'sy21219', part: 'SY21219', vin: '4.5–30 V', vout: '5 V',
     cin1: '47 µF', cin2: '10 µF', cin3: '0.1 µF', couts: ['22 µF', '22 µF', '22 µF'], cbs: '0.1 µF', cvcc: '2.2 µF', cff: '220 pF', rff: '1 kΩ',

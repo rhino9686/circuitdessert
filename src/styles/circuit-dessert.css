@@ -166,6 +166,8 @@ body:has(.cd-doc) h1#_top::after {
   content: counter(sec) '.' counter(sub); color: var(--cd-accent); font-family: var(--sl-font);
   font-size: 0.78rem; font-weight: 700;
 }
+/* #### headings (the steps inside a worked example) are plain, unnumbered sub-headings */
+.cd-section h4 { margin: 1.4rem 0 0.5rem; font-size: 0.98rem; line-height: 1.35; font-weight: 600; }
 .cd-section > :last-child { margin-bottom: 0; }
 .cd-section p, .cd-section ul, .cd-section ol { margin-top: 0; }
 .cd-section p + p, .cd-section p + ul, .cd-section ul + p { margin-top: 0.8rem; }

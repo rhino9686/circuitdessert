@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 530" role="img" aria-labelledby="sy2a58215-t sy2a58215-d">
+<title id="sy2a58215-t">SY2A58215 reference circuit</title>
+<desc id="sy2a58215-d">Application schematic of the SY2A58215 H-bridge motor driver, redrawn from the datasheet. The battery supply VBAT (4–28 V) feeds the VCC pin, with a 100 µF, 50 V electrolytic capacitor E1 and three 10 µF, 50 V ceramic capacitors C1, C2 and C3 in parallel to ground. The four logic inputs PWM, INA, INB and SEL0 each reach their pin through a 1 kΩ series resistor (R4, R1, R2 and R3). The CS pin feeds a current-sense network: R7 (270 Ω) from CS to a junction, R8 (270 Ω) from the junction to ground, and R9 (4.7 kΩ) from the junction to the output that goes to the microcontroller's ADC, which has a 1 µF, 16 V capacitor C8 to ground. The OUTA and OUTB pins connect to a brushed DC motor, and each has a 100 nF, 50 V capacitor to ground (C4 and C5). GND goes to ground.</desc>
+<rect class="sch-ic" x="330" y="110" width="160" height="330" rx="3"/>
+<path class="sch-w" d="M318 170 L330 170"/>
+<text class="sch-pin" x="338" y="174" text-anchor="start">PWM</text>
+<path class="sch-w" d="M318 226 L330 226"/>
+<text class="sch-pin" x="338" y="230" text-anchor="start">INA</text>
+<path class="sch-w" d="M318 282 L330 282"/>
+<text class="sch-pin" x="338" y="286" text-anchor="start">INB</text>
+<path class="sch-w" d="M318 338 L330 338"/>
+<text class="sch-pin" x="338" y="342" text-anchor="start">SEL0</text>
+<path class="sch-w" d="M318 400 L330 400"/>
+<text class="sch-pin" x="338" y="404" text-anchor="start">CS</text>
+<path class="sch-w" d="M490 170 L502 170"/>
+<text class="sch-pin" x="482" y="174" text-anchor="end">OUTA</text>
+<path class="sch-w" d="M490 400 L502 400"/>
+<text class="sch-pin" x="482" y="404" text-anchor="end">OUTB</text>
+<path class="sch-w" d="M410 98 L410 110"/>
+<text class="sch-pin" x="410" y="126" text-anchor="middle">VCC</text>
+<path class="sch-w" d="M410 440 L410 452"/>
+<text class="sch-pin" x="410" y="432" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="410" y="273" text-anchor="middle">SY2A58215</text>
+<text class="sch-val" x="410" y="289" text-anchor="middle">15 A H-bridge</text>
+<path class="sch-flag" d="M54 40 L46 32 L8 32 L8 48 L46 48 Z"/>
+<text class="sch-net" x="27" y="44" text-anchor="middle">VBAT</text>
+<text class="sch-net" x="10" y="66" text-anchor="start">4–28 V</text>
+<path class="sch-w" d="M54 40 L410 40 L410 98"/>
+<circle class="sch-dot" cx="110" cy="40" r="3"/>
+<path class="sch-w" d="M110 40 L110 66"/>
+<path class="sch-w" d="M110 100 L110 74"/>
+<path class="sch-w" d="M99 66 L121 66"/>
+<path class="sch-w" d="M99 78 Q110 69 121 78"/>
+<text class="sch-ref" x="95" y="62" text-anchor="end">+</text>
+<circle class="sch-dot" cx="110" cy="100" r="3"/>
+<text class="sch-ref" x="126" y="72" text-anchor="start">E<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="126" y="85" text-anchor="start">100 µF, 50 V</text>
+<circle class="sch-dot" cx="260" cy="40" r="3"/>
+<path class="sch-w" d="M260 40 L260 66"/>
+<path class="sch-w" d="M260 100 L260 74"/>
+<path class="sch-w" d="M249 66 L271 66"/>
+<path class="sch-w" d="M249 74 L271 74"/>
+<circle class="sch-dot" cx="260" cy="100" r="3"/>
+<text class="sch-ref" x="276" y="72" text-anchor="start">C1–C3</text>
+<text class="sch-val" x="276" y="85" text-anchor="start">3 × 10 µF, 50 V</text>
+<path class="sch-w" d="M110 100 L260 100"/>
+<path class="sch-w" d="M110 100 L110 108"/>
+<path class="sch-w" d="M99 108 L121 108"/>
+<path class="sch-w" d="M103 113 L117 113"/>
+<path class="sch-w" d="M107 118 L113 118"/>
+<path class="sch-flag" d="M54 170 L46 162 L8 162 L8 178 L46 178 Z"/>
+<text class="sch-net" x="27" y="174" text-anchor="middle">PWM</text>
+<path class="sch-w" d="M54 170 L160 170"/>
+<path class="sch-w" d="M160 170 L185 170 L187.5 164 L192.5 176 L197.5 164 L202.5 176 L207.5 164 L212.5 176 L215 170 L240 170"/>
+<path class="sch-w" d="M240 170 L318 170"/>
+<text class="sch-ref" x="200" y="139" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="200" y="152" text-anchor="middle">1 kΩ</text>
+<path class="sch-flag" d="M54 226 L46 218 L8 218 L8 234 L46 234 Z"/>
+<text class="sch-net" x="27" y="230" text-anchor="middle">INA</text>
+<path class="sch-w" d="M54 226 L160 226"/>
+<path class="sch-w" d="M160 226 L185 226 L187.5 220 L192.5 232 L197.5 220 L202.5 232 L207.5 220 L212.5 232 L215 226 L240 226"/>
+<path class="sch-w" d="M240 226 L318 226"/>
+<text class="sch-ref" x="200" y="195" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="200" y="208" text-anchor="middle">1 kΩ</text>
+<path class="sch-flag" d="M54 282 L46 274 L8 274 L8 290 L46 290 Z"/>
+<text class="sch-net" x="27" y="286" text-anchor="middle">INB</text>
+<path class="sch-w" d="M54 282 L160 282"/>
+<path class="sch-w" d="M160 282 L185 282 L187.5 276 L192.5 288 L197.5 276 L202.5 288 L207.5 276 L212.5 288 L215 282 L240 282"/>
+<path class="sch-w" d="M240 282 L318 282"/>
+<text class="sch-ref" x="200" y="251" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="200" y="264" text-anchor="middle">1 kΩ</text>
+<path class="sch-flag" d="M54 338 L46 330 L8 330 L8 346 L46 346 Z"/>
+<text class="sch-net" x="27" y="342" text-anchor="middle">SEL0</text>
+<path class="sch-w" d="M54 338 L160 338"/>
+<path class="sch-w" d="M160 338 L185 338 L187.5 332 L192.5 344 L197.5 332 L202.5 344 L207.5 332 L212.5 344 L215 338 L240 338"/>
+<path class="sch-w" d="M240 338 L318 338"/>
+<text class="sch-ref" x="200" y="307" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="200" y="320" text-anchor="middle">1 kΩ</text>
+<path class="sch-w" d="M250 400 L269 400 L271.5 394 L276.5 406 L281.5 394 L286.5 406 L291.5 394 L296.5 406 L299 400 L318 400"/>
+<text class="sch-ref" x="284" y="369" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">7</tspan></text>
+<text class="sch-val" x="284" y="382" text-anchor="middle">270 Ω</text>
+<circle class="sch-dot" cx="250" cy="400" r="3"/>
+<path class="sch-w" d="M250 400 L250 435 L244 437.5 L256 442.5 L244 447.5 L256 452.5 L244 457.5 L256 462.5 L250 465 L250 500"/>
+<text class="sch-ref" x="266" y="448" text-anchor="start">R<tspan class="sch-sub" dy="2.5">8</tspan></text>
+<text class="sch-val" x="266" y="461" text-anchor="start">270 Ω</text>
+<path class="sch-w" d="M110 400 L165 400 L167.5 394 L172.5 406 L177.5 394 L182.5 406 L187.5 394 L192.5 406 L195 400 L250 400"/>
+<text class="sch-ref" x="180" y="369" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">9</tspan></text>
+<text class="sch-val" x="180" y="382" text-anchor="middle">4.7 kΩ</text>
+<circle class="sch-w" cx="96" cy="400" r="3"/>
+<path class="sch-w" d="M99 400 L110 400"/>
+<text class="sch-net" x="96" y="388" text-anchor="middle">to ADC</text>
+<circle class="sch-dot" cx="110" cy="400" r="3"/>
+<path class="sch-w" d="M110 400 L110 446"/>
+<path class="sch-w" d="M110 500 L110 454"/>
+<path class="sch-w" d="M99 446 L121 446"/>
+<path class="sch-w" d="M99 454 L121 454"/>
+<text class="sch-ref" x="126" y="448" text-anchor="start">C<tspan class="sch-sub" dy="2.5">8</tspan></text>
+<text class="sch-val" x="126" y="461" text-anchor="start">1 µF, 16 V</text>
+<circle class="sch-dot" cx="110" cy="500" r="3"/>
+<circle class="sch-dot" cx="250" cy="500" r="3"/>
+<path class="sch-w" d="M410 452 L410 500"/>
+<path class="sch-w" d="M110 500 L410 500"/>
+<path class="sch-w" d="M410 500 L410 508"/>
+<path class="sch-w" d="M399 508 L421 508"/>
+<path class="sch-w" d="M403 513 L417 513"/>
+<path class="sch-w" d="M407 518 L413 518"/>
+<path class="sch-w" d="M502 170 L640 170 L640 255"/>
+<path class="sch-w" d="M502 400 L640 400 L640 315"/>
+<circle class="sch-w" cx="640" cy="285" r="30"/>
+<text class="sch-ictitle" x="640" y="290" text-anchor="middle">M</text>
+<text class="sch-val" x="628" y="335" text-anchor="end">Brushed DC motor</text>
+<circle class="sch-dot" cx="570" cy="170" r="3"/>
+<path class="sch-w" d="M570 170 L570 144"/>
+<path class="sch-w" d="M570 110 L570 136"/>
+<path class="sch-w" d="M559 144 L581 144"/>
+<path class="sch-w" d="M559 136 L581 136"/>
+<path class="sch-w" d="M570 110 L570 102"/>
+<path class="sch-w" d="M559 102 L581 102"/>
+<path class="sch-w" d="M563 97 L577 97"/>
+<path class="sch-w" d="M567 92 L573 92"/>
+<text class="sch-ref" x="586" y="138" text-anchor="start">C<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="586" y="151" text-anchor="start">100 nF, 50 V</text>
+<circle class="sch-dot" cx="570" cy="400" r="3"/>
+<path class="sch-w" d="M570 400 L570 426"/>
+<path class="sch-w" d="M570 460 L570 434"/>
+<path class="sch-w" d="M559 426 L581 426"/>
+<path class="sch-w" d="M559 434 L581 434"/>
+<path class="sch-w" d="M570 460 L570 468"/>
+<path class="sch-w" d="M559 468 L581 468"/>
+<path class="sch-w" d="M563 473 L577 473"/>
+<path class="sch-w" d="M567 478 L573 478"/>
+<text class="sch-ref" x="586" y="428" text-anchor="start">C<tspan class="sch-sub" dy="2.5">5</tspan></text>
+<text class="sch-val" x="586" y="441" text-anchor="start">100 nF, 50 V</text>
+</svg>
