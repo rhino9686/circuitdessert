@@ -240,6 +240,63 @@ body:has(.cd-doc) h1#_top::after {
 .cd-group { margin-top: 3rem; }
 .cd-group > .cd-eyebrow .count { font-weight: 400; text-transform: none; letter-spacing: normal; color: var(--cd-faint); }
 
+/* ---------- Parts page: categories as drawers ---------- */
+.cd-parts [hidden] { display: none !important; }
+.cd-parts-tools { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0 1rem; }
+.cd-parts-filter {
+  flex: 1 1 18rem; max-width: 26rem; font: inherit; font-size: 0.95rem; color: var(--cd-text);
+  background: var(--cd-surface); border: 1px solid var(--cd-border-strong); border-radius: 4px; padding: 0.55rem 0.8rem;
+}
+.cd-parts-filter::placeholder { color: var(--cd-faint); }
+.cd-parts-filter:focus-visible { outline: 2px solid var(--cd-accent); outline-offset: 1px; }
+.cd-parts-status { color: var(--cd-muted); font-size: 0.88rem; }
+.cd-linkbtn {
+  margin-left: auto; font: inherit; font-size: 0.88rem; font-weight: 600; color: var(--cd-accent);
+  background: none; border: 0; padding: 0.3rem 0; cursor: pointer;
+}
+.cd-linkbtn:hover { text-decoration: underline; text-underline-offset: 3px; }
+.cd-parts-group + .cd-parts-group { margin-top: 2.5rem; }
+.cd-parts-grouphead { margin: 0 0 0.5rem; border: 0; padding: 0; }
+.cd-cat { border-top: 1px solid var(--cd-border); scroll-margin-top: calc(var(--sl-nav-height) + 1rem); }
+.cd-parts-group .cd-cat:last-of-type { border-bottom: 1px solid var(--cd-border); }
+.cd-cat > summary {
+  list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr auto; align-items: center;
+  gap: 0.3rem 1rem; padding: 1.05rem 0.25rem;
+}
+.cd-cat > summary::-webkit-details-marker { display: none; }
+.cd-cat > summary:hover .cd-cat-name { color: var(--cd-accent); }
+.cd-cat > summary:focus-visible { outline: 2px solid var(--cd-accent); outline-offset: -2px; }
+.cd-cat-main { display: flex; align-items: baseline; gap: 0.75rem; }
+.cd-cat-name { font-family: var(--cd-font-display); font-size: 1.35rem; line-height: 1.25; color: var(--cd-text); }
+.cd-cat-count {
+  font-size: 0.78rem; font-weight: 600; color: var(--cd-muted); border: 1px solid var(--cd-border-strong);
+  border-radius: 999px; padding: 0.1em 0.7em; font-variant-numeric: tabular-nums;
+}
+.cd-cat-sub { grid-column: 1; display: flex; gap: 0.5rem 1.1rem; min-width: 0; color: var(--cd-muted); font-size: 0.88rem; }
+.cd-cat-meta { flex: none; color: var(--cd-text); font-variant-numeric: tabular-nums; }
+.cd-cat-preview { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--cd-faint); }
+.cd-cat[open] .cd-cat-preview { display: none; }
+.cd-cat-chev {
+  grid-column: 2; grid-row: 1 / span 2; width: 0.6rem; height: 0.6rem; margin-right: 0.4rem;
+  border-right: 2px solid var(--cd-muted); border-bottom: 2px solid var(--cd-muted);
+  transform: rotate(45deg); transition: transform 0.15s ease;
+}
+.cd-cat[open] > summary .cd-cat-chev { transform: rotate(-135deg); }
+.cd-cat > .cd-table-wrap { margin: 0 0 1.25rem; padding-left: 0.25rem; }
+.cd-parts-table { font-size: 0.9rem; }
+.cd-parts-table td, .cd-parts-table th[scope='row'] { vertical-align: top; }
+.cd-parts-table td { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cd-parts-table .cd-part-cell { font-weight: 400; min-width: 15rem; }
+.cd-part-cell > a { font-weight: 600; color: var(--cd-text); text-decoration: none; }
+.cd-part-cell > a:hover { color: var(--cd-accent); }
+.cd-part-sum { display: block; color: var(--cd-muted); font-size: 0.85rem; max-width: 46ch; margin-top: 0.1rem; }
+.cd-part-fam { display: block; color: var(--cd-faint); font-size: 0.8rem; margin-top: 0.2rem; }
+.cd-part-fam a { color: var(--cd-muted); text-decoration: underline; text-underline-offset: 3px; }
+.cd-part-fam a:hover { color: var(--cd-accent); }
+@media (max-width: 45rem) { .cd-parts-table .is-opt { display: none; } .cd-parts-table .cd-part-cell { min-width: 11rem; } }
+a.cd-chip { text-decoration: none; }
+a.cd-chip:hover { border-color: currentColor; }
+
 /* ---------- Key components list ---------- */
 .cd-components { border-top: 1px solid var(--cd-border); margin: 1rem 0 2rem; padding: 0; list-style: none; }
 .cd-components li { padding-block: 0.9rem; border-bottom: 1px solid var(--cd-border); }

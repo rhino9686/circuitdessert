@@ -1,7 +1,7 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { getCollection, render } from 'astro:content';
-import { CATEGORY_LABELS, range, formatFreq, partUrl, familyUrl, formatPackage } from '../lib/parts';
+import { CATEGORY_LABELS, categoryUrl, range, formatFreq, partUrl, familyUrl, formatPackage } from '../lib/parts';
 import { buildToc, type Sec } from '../lib/doc';
 import { slugify, url } from '../lib/url';
 
@@ -78,7 +78,7 @@ const lcscUrl = d.lcsc ? `https://www.lcsc.com/product-detail/${d.lcsc}.html` : 
   <div class="cd-doc">
     <div class="cd-chip-row">
       <span class="cd-chip is-ember">{d.manufacturer}</span>
-      <span class="cd-chip is-gold">{CATEGORY_LABELS[d.category]}</span>
+      <a class="cd-chip is-gold" href={categoryUrl(d.category)}>{CATEGORY_LABELS[d.category]}</a>
       {d.status !== 'unknown' && <span class="cd-chip">{d.status === 'nrnd' ? 'Not recommended for new designs' : d.status}</span>}
       {d.verified ? <span class="cd-chip is-ok">Specs verified</span> : <span class="cd-chip is-draft">Specs unverified</span>}
       {d.draft && <span class="cd-chip is-draft">Draft notes</span>}

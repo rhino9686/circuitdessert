@@ -1,6 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { CATEGORY_LABELS, range, formatFreq, partUrl, formatPackage } from '../lib/parts';
+import { CATEGORY_LABELS, categoryUrl, range, formatFreq, partUrl, formatPackage } from '../lib/parts';
 import { url } from '../lib/url';
 
 const { family } = Astro.props;
@@ -18,7 +18,7 @@ const cell = (a?: number, b?: number) => (a != null || b != null ? range(a, b) :
   <div class="cd-doc">
     <div class="cd-chip-row">
       <span class="cd-chip is-ember">{family.manufacturer}</span>
-      <span class="cd-chip is-gold">{CATEGORY_LABELS[family.parts[0].data.category]}</span>
+      <a class="cd-chip is-gold" href={categoryUrl(family.parts[0].data.category)}>{CATEGORY_LABELS[family.parts[0].data.category]}</a>
     </div>
     <p class="cd-lede">Related parts in this family: {names}. Open a part for its full specifications, design notes and datasheet link.</p>
 

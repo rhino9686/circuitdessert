@@ -30,6 +30,8 @@ const parts = defineCollection({
       'ac-dc-controller',
       'gate-driver',
       'power-stage',
+      'amplifier',
+      'processor',
       'other',
     ]),
     summary: z.string().max(200),

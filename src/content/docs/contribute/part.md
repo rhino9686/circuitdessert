@@ -29,6 +29,7 @@ Every part gets its own page. Parts that share a `family` value are also compare
 
 ## The details at the top
 
+- **`category`** decides where the part is listed on the Parts page, which groups parts by category and not by maker. Pick one of the values in the template. For a new kind of part, add it to `CATEGORIES` in `src/lib/parts.ts` and to the `category` list in `src/content.config.ts`.
 - **`summary`** is one sentence, used on cards and in search. **`abstract`** is a short paragraph shown under the title.
 - **`specs`** holds the headline numbers (`vin_min_v`, `vin_max_v`, `vout_min_v`, `vout_max_v`, `iout_max_a`, `fsw_khz`, `iq_ua`, `topology`). Leave out any that don't apply.
 - **`features`** is the datasheet's headline features, in your own words.

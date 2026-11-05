@@ -1,52 +1,167 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { getFamilies, CATEGORY_LABELS, partUrl, familyUrl } from '../../lib/parts';
+import { getByCategory, familySizes, familyKey, familyUrl, partUrl, range, formatFreq, formatPackage } from '../../lib/parts';
 import { url } from '../../lib/url';
 
-const families = await getFamilies();
-const byMaker = new Map<string, typeof families>();
-for (const f of families) {
-  if (!byMaker.has(f.manufacturer)) byMaker.set(f.manufacturer, []);
-  byMaker.get(f.manufacturer)!.push(f);
+const categories = await getByCategory();
+const total = categories.reduce((n, c) => n + c.parts.length, 0);
+
+// Group headings only appear once the catalogue spans more than one group (Power, Analog, ...).
+const groups: { name: string; cats: typeof categories }[] = [];
+for (const c of categories) {
+  let g = groups.find((x) => x.name === c.group);
+  if (!g) groups.push((g = { name: c.group, cats: [] }));
+  g.cats.push(c);
+}
+const showGroups = groups.length > 1;
+
+type P = (typeof categories)[number]['parts'][number];
+// Columns of the table inside each category. A column is left out when none of the category's parts has a value for it.
+const COLUMNS: { label: string; opt?: boolean; get: (p: P) => string | undefined }[] = [
+  { label: 'Input', get: (p) => hasAny(p.data.specs.vin_min_v, p.data.specs.vin_max_v) ? range(p.data.specs.vin_min_v, p.data.specs.vin_max_v, ' V') : undefined },
+  { label: 'Output', opt: true, get: (p) => hasAny(p.data.specs.vout_min_v, p.data.specs.vout_max_v) ? range(p.data.specs.vout_min_v, p.data.specs.vout_max_v, ' V') : undefined },
+  { label: 'Current', get: (p) => (p.data.specs.iout_max_a != null ? `${p.data.specs.iout_max_a} A` : undefined) },
+  { label: 'Frequency', opt: true, get: (p) => formatFreq(p.data.specs.fsw_khz) },
+  { label: 'Package', opt: true, get: (p) => p.data.packages.map(formatPackage).join(', ') },
+];
+function hasAny(...v: (number | undefined)[]) { return v.some((x) => x != null); }
+
+/** "4.5–30 V in · up to 6 A", the headline range of a category, shown on its collapsed row. */
+function headline(parts: P[]) {
+  const vin = parts.flatMap((p) => [p.data.specs.vin_min_v, p.data.specs.vin_max_v]).filter((x): x is number => x != null);
+  const amps = parts.map((p) => p.data.specs.iout_max_a).filter((x): x is number => x != null);
+  const bits: string[] = [];
+  if (vin.length) bits.push(`${range(Math.min(...vin), Math.max(...vin), ' V')} in`);
+  if (amps.length) bits.push(`up to ${Math.max(...amps)} A`);
+  return bits.join(' · ');
 }
 ---
 
 <StarlightPage
   frontmatter={{
     title: 'Parts',
-    description: 'Parts used in the designs, with specs checked against the datasheet.',
+    description: 'Parts used in the designs, grouped by category, with specs checked against the datasheet.',
     tableOfContents: false,
   }}
 >
   <p class="cd-lede">
-    One page per part, with specifications checked against the datasheet and our own notes on using them.
+    One page per part, with specifications checked against the datasheet and our own notes on using them. Open a category to see its parts side by side.
   </p>
-  {families.length === 0 ? (
+  {total === 0 ? (
     <p class="cd-note">No parts yet. See <a href={url('contribute/')}>how to contribute</a>.</p>
   ) : (
-    [...byMaker.entries()].map(([maker, fams]) => (
-      <section class="cd-group">
-        <span class="cd-eyebrow">{maker} <span class="count">({fams.reduce((n, f) => n + f.parts.length, 0)})</span></span>
-        <div class="cd-grid">
-          {fams.map((f) => {
-            const single = f.parts.length === 1;
-            const first = f.parts[0];
+    <div class="cd-parts not-content" data-parts data-total={total}>
+      <div class="cd-parts-tools" data-tools hidden>
+        <input class="cd-parts-filter" type="search" placeholder="Filter by part number, maker or keyword" aria-label="Filter parts" data-filter autocomplete="off" />
+        <span class="cd-parts-status" data-status aria-live="polite"></span>
+        <button type="button" class="cd-linkbtn" data-toggle>Expand all</button>
+      </div>
+
+      {groups.map((g) => (
+        <section class="cd-parts-group">
+          {showGroups && <h2 class="cd-eyebrow cd-parts-grouphead">{g.name}</h2>}
+          {g.cats.map((c) => {
+            const cols = COLUMNS.filter((col) => c.parts.some((p) => col.get(p)));
+            const sizes = familySizes(c.parts);
+            const meta = headline(c.parts);
             return (
-              <div class="cd-card">
-                <span class="tag">{CATEGORY_LABELS[first.data.category]}</span>
-                <h3><a href={single ? partUrl(first.data) : familyUrl(f.key)}>{single ? first.data.part : f.family}</a></h3>
-                {single ? (
-                  <p class="spec">{first.data.summary}</p>
-                ) : (
-                  <p class="spec">
-                    {f.parts.map((p, i) => (<>{i > 0 && ', '}<a class="cd-link" href={partUrl(p.data)}>{p.data.part}</a></>))}
-                  </p>
-                )}
-              </div>
+              <details class="cd-cat" id={c.key} data-cat>
+                <summary>
+                  <span class="cd-cat-main">
+                    <span class="cd-cat-name">{c.plural}</span>
+                    <span class="cd-cat-count" data-count>{c.parts.length}</span>
+                  </span>
+                  <span class="cd-cat-sub">
+                    {meta && <span class="cd-cat-meta">{meta}</span>}
+                    <span class="cd-cat-preview">{c.parts.map((p) => p.data.part).join(' · ')}</span>
+                  </span>
+                  <span class="cd-cat-chev" aria-hidden="true"></span>
+                </summary>
+                <div class="cd-table-wrap">
+                  <table class="cd-table cd-parts-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Part</th>
+                        <th scope="col">Maker</th>
+                        {cols.map((col) => <th scope="col" class={col.opt ? 'is-opt' : undefined}>{col.label}</th>)}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {c.parts.map((p) => (
+                        <tr data-row data-s={[p.data.part, p.data.family, p.data.manufacturer, p.data.summary, ...p.data.packages, ...p.data.tags].join(' ').toLowerCase()}>
+                          <th scope="row" class="cd-part-cell">
+                            <a href={partUrl(p.data)}>{p.data.part}</a>
+                            <span class="cd-part-sum">{p.data.summary}</span>
+                            {sizes.get(familyKey(p.data))! > 1 && (
+                              <span class="cd-part-fam">Family: <a href={familyUrl(familyKey(p.data))}>{p.data.family}</a></span>
+                            )}
+                          </th>
+                          <td>{p.data.manufacturer}</td>
+                          {cols.map((col) => <td class={col.opt ? 'is-opt' : undefined}>{col.get(p) ?? '–'}</td>)}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </details>
             );
           })}
-        </div>
-      </section>
-    ))
+        </section>
+      ))}
+      <p class="cd-note" data-empty hidden>No parts match that filter.</p>
+    </div>
   )}
 </StarlightPage>
+
+<script>
+  // Progressive enhancement: the categories open and close without this script. It adds the filter box,
+  // "Expand all", and opening a category from a link such as /parts/#buck-converter.
+  const root = document.querySelector<HTMLElement>('[data-parts]');
+  if (root) {
+    const cats = [...root.querySelectorAll<HTMLDetailsElement>('[data-cat]')];
+    const tools = root.querySelector<HTMLElement>('[data-tools]')!;
+    const filter = root.querySelector<HTMLInputElement>('[data-filter]')!;
+    const status = root.querySelector<HTMLElement>('[data-status]')!;
+    const toggle = root.querySelector<HTMLButtonElement>('[data-toggle]')!;
+    const empty = root.querySelector<HTMLElement>('[data-empty]')!;
+    const total = Number(root.dataset.total);
+    tools.hidden = false;
+
+    const syncToggle = () => { toggle.textContent = cats.every((c) => c.open || c.hidden) ? 'Collapse all' : 'Expand all'; };
+    toggle.addEventListener('click', () => {
+      const open = !cats.every((c) => c.open || c.hidden);
+      cats.forEach((c) => { if (!c.hidden) c.open = open; });
+      syncToggle();
+    });
+    cats.forEach((c) => c.addEventListener('toggle', syncToggle));
+
+    // Filtering opens the categories that have matches; clearing the box puts them back as they were.
+    let saved: boolean[] | null = null;
+    filter.addEventListener('input', () => {
+      const q = filter.value.trim().toLowerCase();
+      if (q && !saved) saved = cats.map((c) => c.open);
+      let shown = 0;
+      cats.forEach((c) => {
+        const rows = [...c.querySelectorAll<HTMLElement>('[data-row]')];
+        let n = 0;
+        rows.forEach((r) => { const hit = !q || q.split(/\s+/).every((w) => r.dataset.s!.includes(w)); r.hidden = !hit; if (hit) n++; });
+        shown += n;
+        c.hidden = n === 0;
+        c.querySelector<HTMLElement>('[data-count]')!.textContent = q ? `${n} of ${rows.length}` : String(rows.length);
+        if (q) c.open = n > 0;
+      });
+      if (!q && saved) { cats.forEach((c, i) => { c.open = saved![i]; }); saved = null; }
+      status.textContent = q ? `${shown} of ${total} parts` : '';
+      empty.hidden = shown > 0;
+      syncToggle();
+    });
+
+    const openFromHash = () => {
+      const el = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+      if (el instanceof HTMLDetailsElement && cats.includes(el)) { el.open = true; el.scrollIntoView({ block: 'start' }); }
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+    syncToggle();
+  }
+</script>

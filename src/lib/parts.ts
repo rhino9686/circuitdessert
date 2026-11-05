@@ -32,16 +32,59 @@ export async function getPartLinks(): Promise<Map<string, string>> {
   return new Map(parts.map((p) => [p.data.part.toLowerCase(), partUrl(p.data)]));
 }
 
-export const CATEGORY_LABELS: Record<string, string> = {
-  'buck-converter': 'Buck converter',
-  'boost-converter': 'Boost converter',
-  'buck-boost-converter': 'Buck-boost converter',
-  'battery-charger': 'Battery charger',
-  ldo: 'LDO',
-  'ac-dc-controller': 'AC-DC controller',
-  'gate-driver': 'Gate driver',
-  'power-stage': 'Power stage',
-  other: 'Other',
+/**
+ * Part categories, in the order the Parts page lists them. To add one: add it here, add its key to the
+ * `category` enum in src/content.config.ts, and use it in a part's frontmatter. `group` only matters once
+ * parts span more than one group: then the Parts page adds a heading per group.
+ */
+export interface CategoryInfo { label: string; plural: string; group: string }
+export const CATEGORIES: Record<string, CategoryInfo> = {
+  'buck-converter': { label: 'Buck converter', plural: 'Buck converters', group: 'Power' },
+  'boost-converter': { label: 'Boost converter', plural: 'Boost converters', group: 'Power' },
+  'buck-boost-converter': { label: 'Buck-boost converter', plural: 'Buck-boost converters', group: 'Power' },
+  ldo: { label: 'LDO', plural: 'Linear regulators (LDO)', group: 'Power' },
+  'battery-charger': { label: 'Battery charger', plural: 'Battery chargers', group: 'Power' },
+  'ac-dc-controller': { label: 'AC-DC controller', plural: 'AC-DC controllers', group: 'Power' },
+  'gate-driver': { label: 'Gate driver', plural: 'Gate drivers', group: 'Power' },
+  'power-stage': { label: 'Power stage', plural: 'Power stages', group: 'Power' },
+  amplifier: { label: 'Amplifier', plural: 'Amplifiers', group: 'Analog' },
+  processor: { label: 'Processor', plural: 'Processors', group: 'Digital' },
+  other: { label: 'Other', plural: 'Other parts', group: 'Other' },
+};
+export const CATEGORY_LABELS: Record<string, string> = Object.fromEntries(
+  Object.entries(CATEGORIES).map(([k, v]) => [k, v.label]),
+);
+/** Where a category sits on the Parts page. */
+export const categoryUrl = (key: string) => url(`parts/#${key}`);
+
+/** Parts grouped by category, in CATEGORIES order. Inside a category: by maker, family, then part number. */
+export async function getByCategory() {
+  const parts = await getCollection('parts');
+  const order = Object.keys(CATEGORIES);
+  const byKey = new Map<string, Part[]>();
+  for (const p of parts) {
+    if (!byKey.has(p.data.category)) byKey.set(p.data.category, []);
+    byKey.get(p.data.category)!.push(p);
+  }
+  return [...byKey.entries()]
+    .sort(([a], [b]) => order.indexOf(a) - order.indexOf(b))
+    .map(([key, list]) => ({
+      key,
+      ...CATEGORIES[key],
+      parts: list.sort(
+        (a, b) =>
+          a.data.manufacturer.localeCompare(b.data.manufacturer) ||
+          a.data.family.localeCompare(b.data.family) ||
+          a.data.part.localeCompare(b.data.part),
+      ),
+    }));
+}
+
+/** Count of parts per family, to tell single parts from families. */
+export const familySizes = (parts: Part[]) => {
+  const n = new Map<string, number>();
+  for (const p of parts) n.set(familyKey(p.data), (n.get(familyKey(p.data)) ?? 0) + 1);
+  return n;
 };
 
 export function range(min?: number, max?: number, unit = ''): string {
