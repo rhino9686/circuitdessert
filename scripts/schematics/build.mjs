@@ -6,6 +6,7 @@
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { chargerBoost, compactBuck, modePinBuck, usbPowerBank, vccBuck } from './designs.mjs';
+import { pfcLlc } from './designs-sy23505.mjs';
 import { hBridge } from './designs-sy2a58215.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
@@ -32,6 +33,7 @@ const designs = {
   'sy20718c-schematic.svg': chargerBoost({ id: 'sy20718c', part: 'SY20718C', vin: '4.5–5.35 V' }),
   'sy20757-schematic.svg': usbPowerBank({ id: 'sy20757', part: 'SY20757' }),
   'sy2a58215-schematic.svg': hBridge({ id: 'sy2a58215', part: 'SY2A58215' }),
+  'sy23505b-schematic.svg': pfcLlc({ id: 'sy23505b', part: 'SY23505B' }),
   'sy21219-schematic.svg': vccBuck({
     id: 'sy21219', part: 'SY21219', vin: '4.5–30 V', vout: '5 V',
     cin1: '47 µF', cin2: '10 µF', cin3: '0.1 µF', couts: ['22 µF', '22 µF', '22 µF'], cbs: '0.1 µF', cvcc: '2.2 µF', cff: '220 pF', rff: '1 kΩ',
