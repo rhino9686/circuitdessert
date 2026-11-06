@@ -6,7 +6,7 @@ import { url } from '../../lib/url';
 const categories = await getByCategory();
 const total = categories.reduce((n, c) => n + c.parts.length, 0);
 
-// Group headings only appear once the catalogue spans more than one group (Power, Analog, ...).
+// Group headings only appear once the catalogue spans more than one group (Power, Signal Chain, ...).
 const groups: { name: string; cats: typeof categories }[] = [];
 for (const c of categories) {
   let g = groups.find((x) => x.name === c.group);
