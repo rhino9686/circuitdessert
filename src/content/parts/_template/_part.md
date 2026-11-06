@@ -61,3 +61,18 @@ Write what the datasheet doesn't say: where this part shines, gotchas, good alte
 ## Datasheet notes
 
 Mention datasheet errors or contradictions you spotted, such as a pin table that disagrees with the layout section. Delete this section if there are none.
+
+<!--
+Optional: if the part has an I2C, SPI or UART interface, add a section that lets an ESP32-S3 talk to it.
+Copy the skeleton, wiring table, level and pull-up check and sketch blocks from src/content/docs/contribute/arduino.md
+(published at /contribute/arduino/), and put the section before "Layout guidance".
+
+## Talk to it from an ESP32-S3
+
+### What the datasheet gives
+### Wiring
+### Level and pull-up check
+### The sketch
+### Using it
+### Pitfalls with the ESP32-S3
+-->

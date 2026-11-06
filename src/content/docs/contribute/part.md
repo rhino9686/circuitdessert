@@ -47,7 +47,7 @@ Every part gets its own page. Parts that share a `family` value are also compare
 
 ## Your notes
 
-The body must start with a `##` heading. A good set of sections is **How it works**, **Example application**, **Layout** and **Things to watch**. Keep each fact in one place: the specs are already in the tables above, so the notes say what the datasheet doesn't.
+The body must start with a `##` heading. A good set of sections is **How it works**, **Example application**, **Layout** and **Things to watch**. Keep each fact in one place: the specs are already in the tables above, so the notes say what the datasheet doesn't. If the part has an I2C, SPI or UART interface, you can also add a **Talk to it from an ESP32-S3** section, with wiring, a level and pull-up check and a sketch. [Add an Arduino interface](site:contribute/arduino/) has the template.
 
 ## Example application
 

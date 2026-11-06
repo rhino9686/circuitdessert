@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 640 400" role="img" aria-labelledby="sy7t6xx-esp32s3-i2c-t sy7t6xx-esp32s3-i2c-d">
+<title id="sy7t6xx-esp32s3-i2c-t">SY7T6xx wired to an ESP32-S3 over I2C</title>
+<desc id="sy7t6xx-esp32s3-i2c-d">Wiring for talking to an SY7T6xx part from an ESP32-S3 dev board. Everything runs at 3.3 V, so no level shifter is needed. The board's 3V3 pin feeds the SY7T6xx and the pull-ups. ESP32-S3 GPIO9 (SCL) goes to DIO5 and GPIO8 (SDA) goes to both DIO3 (SDAo) and DIO2 (SDAi), which are tied together. Each of the two bus lines has a 4.7 kΩ pull-up to 3.3 V. DIO8, the interface select pin, has a 10 kΩ resistor to 3.3 V so it reads high at reset. RESETB (SY7T611 and SY7T612 only) has a 10 kΩ resistor to 3.3 V and can be pulled low by GPIO4. Both supply pins of the part go to 3.3 V and both grounds to ground.</desc>
+<rect class="sch-ic" x="10" y="90" width="120" height="240" rx="3"/>
+<path class="sch-w" d="M130 150 L142 150"/>
+<text class="sch-pin" x="122" y="154" text-anchor="end">GPIO9 (SCL)</text>
+<path class="sch-w" d="M130 180 L142 180"/>
+<text class="sch-pin" x="122" y="184" text-anchor="end">GPIO8 (SDA)</text>
+<path class="sch-w" d="M130 270 L142 270"/>
+<text class="sch-pin" x="122" y="274" text-anchor="end">GPIO4</text>
+<path class="sch-w" d="M130 300 L142 300"/>
+<text class="sch-pin" x="122" y="304" text-anchor="end">GND</text>
+<path class="sch-w" d="M70 78 L70 90"/>
+<text class="sch-pin" x="70" y="106" text-anchor="middle">3V3</text>
+<text class="sch-ictitle" x="70" y="208" text-anchor="middle">ESP32-S3</text>
+<text class="sch-val" x="70" y="224" text-anchor="middle">dev board, 3.3 V</text>
+<path class="sch-w" d="M142 300 L142 308"/>
+<path class="sch-w" d="M131 308 L153 308"/>
+<path class="sch-w" d="M135 313 L149 313"/>
+<path class="sch-w" d="M139 318 L145 318"/>
+<text class="sch-net" x="10" y="42" text-anchor="start">3.3 V</text>
+<path class="sch-w" d="M70 78 L70 50"/>
+<path class="sch-w" d="M70 50 L600 50"/>
+<rect class="sch-ic" x="360" y="90" width="130" height="240" rx="3"/>
+<path class="sch-w" d="M348 150 L360 150"/>
+<text class="sch-pin" x="368" y="154" text-anchor="start">DIO5 (SCL)</text>
+<path class="sch-w" d="M348 180 L360 180"/>
+<text class="sch-pin" x="368" y="184" text-anchor="start">DIO3 (SDAo)</text>
+<path class="sch-w" d="M348 250 L360 250"/>
+<text class="sch-pin" x="368" y="254" text-anchor="start">DIO2 (SDAi)</text>
+<path class="sch-w" d="M490 130 L502 130"/>
+<text class="sch-pin" x="482" y="134" text-anchor="end">DIO8 (select)</text>
+<path class="sch-w" d="M490 290 L502 290"/>
+<text class="sch-pin" x="482" y="294" text-anchor="end">RESETB</text>
+<path class="sch-w" d="M395 78 L395 90"/>
+<text class="sch-pin" x="395" y="106" text-anchor="middle">V3P3D</text>
+<path class="sch-w" d="M455 78 L455 90"/>
+<text class="sch-pin" x="455" y="106" text-anchor="middle">V3P3A</text>
+<path class="sch-w" d="M395 330 L395 342"/>
+<text class="sch-pin" x="395" y="322" text-anchor="middle">GNDD</text>
+<path class="sch-w" d="M455 330 L455 342"/>
+<text class="sch-pin" x="455" y="322" text-anchor="middle">GNDA</text>
+<text class="sch-ictitle" x="425" y="208" text-anchor="middle">SY7T6xx</text>
+<text class="sch-val" x="425" y="224" text-anchor="middle">610 / 611 / 612</text>
+<path class="sch-w" d="M395 78 L395 50"/>
+<circle class="sch-dot" cx="395" cy="50" r="3"/>
+<path class="sch-w" d="M455 78 L455 50"/>
+<circle class="sch-dot" cx="455" cy="50" r="3"/>
+<path class="sch-w" d="M395 342 L395 360 L455 360 L455 342"/>
+<circle class="sch-dot" cx="425" cy="360" r="3"/>
+<path class="sch-w" d="M425 360 L425 368"/>
+<path class="sch-w" d="M414 368 L436 368"/>
+<path class="sch-w" d="M418 373 L432 373"/>
+<path class="sch-w" d="M422 378 L428 378"/>
+<path class="sch-w" d="M142 150 L270 150 A5 5 0 0 1 280 150 L348 150"/>
+<circle class="sch-dot" cx="230" cy="150" r="3"/>
+<path class="sch-w" d="M230 150 L230 115 L224 112.5 L236 107.5 L224 102.5 L236 97.5 L224 92.5 L236 87.5 L230 85 L230 50"/>
+<circle class="sch-dot" cx="230" cy="50" r="3"/>
+<text class="sch-ref" x="214" y="98" text-anchor="end">R<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="214" y="111" text-anchor="end">4.7 kΩ</text>
+<path class="sch-w" d="M142 180 L348 180"/>
+<circle class="sch-dot" cx="275" cy="180" r="3"/>
+<path class="sch-w" d="M275 180 L275 130 L269 127.5 L281 122.5 L269 117.5 L281 112.5 L269 107.5 L281 102.5 L275 100 L275 50"/>
+<circle class="sch-dot" cx="275" cy="50" r="3"/>
+<text class="sch-ref" x="291" y="113" text-anchor="start">R<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="291" y="126" text-anchor="start">4.7 kΩ</text>
+<circle class="sch-dot" cx="330" cy="180" r="3"/>
+<path class="sch-w" d="M330 180 L330 250 L348 250"/>
+<text class="sch-val" x="320" y="254" text-anchor="end">DIO2, DIO3 tied</text>
+<path class="sch-w" d="M502 130 L540 130"/>
+<circle class="sch-dot" cx="540" cy="130" r="3"/>
+<path class="sch-w" d="M540 130 L540 105 L534 102.5 L546 97.5 L534 92.5 L546 87.5 L534 82.5 L546 77.5 L540 75 L540 50"/>
+<circle class="sch-dot" cx="540" cy="50" r="3"/>
+<text class="sch-ref" x="556" y="88" text-anchor="start">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="556" y="101" text-anchor="start">10 kΩ</text>
+<path class="sch-w" d="M502 290 L600 290"/>
+<circle class="sch-dot" cx="600" cy="290" r="3"/>
+<path class="sch-w" d="M600 290 L600 185 L594 182.5 L606 177.5 L594 172.5 L606 167.5 L594 162.5 L606 157.5 L600 155 L600 50"/>
+<circle class="sch-dot" cx="600" cy="50" r="3"/>
+<text class="sch-ref" x="584" y="168" text-anchor="end">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="584" y="181" text-anchor="end">10 kΩ</text>
+<path class="sch-w" d="M142 270 L170 270 L170 395 L600 395 L600 290"/>
+<text class="sch-val" x="176" y="388" text-anchor="start">optional reset: GPIO4 is only ever pulled low</text>
+</svg>

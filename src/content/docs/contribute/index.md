@@ -18,6 +18,7 @@ Circuit Dessert is an open repository of fun circuits and reference designs. If 
 
 - [**A recipe**](site:contribute/recipe/): a worked-out board or reference design, with its layout, build notes or measurements.
 - [**A part**](site:contribute/part/): one page of specs checked against the datasheet, plus your notes on using it and an example application when the datasheet gives a circuit.
+- [**An Arduino interface**](site:contribute/arduino/): a section on a part page that wires an ESP32-S3 to the part's I2C, SPI or UART bus, with a level and pull-up check and a sketch.
 - [**Images**](site:contribute/images/): how to add pictures, scope captures and diagrams without bloating the repository.
 
 ## The short version
