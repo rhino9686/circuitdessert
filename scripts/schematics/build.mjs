@@ -10,6 +10,7 @@ import { pfcLlc } from './designs-sy23505.mjs';
 import { hBridge } from './designs-sy2a58215.mjs';
 import { boostConverter } from './designs-sy26533.mjs';
 import { ldoWithReset } from './designs-sy2a27352.mjs';
+import { currentSenseAmp } from './designs-sy24642.mjs';
 import { esp32s3I2cWiring } from './designs-sy7t6xx.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
@@ -38,6 +39,7 @@ const designs = {
   'sy2a58215-schematic.svg': hBridge({ id: 'sy2a58215', part: 'SY2A58215' }),
   'sy26533-schematic.svg': boostConverter({ id: 'sy26533', part: 'SY26533' }),
   'sy2a27352-schematic.svg': ldoWithReset({ id: 'sy2a27352', part: 'SY2A27352' }),
+  'sy24642-schematic.svg': currentSenseAmp({ id: 'sy24642', part: 'SY24642' }),
   'sy7t6xx-esp32s3-i2c-wiring.svg': esp32s3I2cWiring({ id: 'sy7t6xx-esp32s3-i2c', part: 'SY7T6xx' }),
   'sy23505b-schematic.svg': pfcLlc({ id: 'sy23505b', part: 'SY23505B' }),
   'sy8113b-schematic.svg': compactBuck({

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 720 360" role="img" aria-labelledby="sy24642-t sy24642-d">
+<title id="sy24642-t">SY24642 reference circuit</title>
+<desc id="sy24642-d">Application schematic of the SY24642 current-sense amplifier, redrawn from the datasheet. A 10 mΩ sense resistor RSENSE sits in the current path. Its supply-side end goes to the CSP pin and its load-side end to the CSN pin. The VCC pin takes 3–5.5 V and has a 100 nF bypass capacitor CBYPASS to ground. The REF and GND pins are both tied to ground, which makes the output unidirectional: it is 0 V with no current and rises with the current. The OUT pin is the output, a voltage of gain times the voltage across RSENSE.</desc>
+<rect class="sch-ic" x="290" y="90" width="170" height="200" rx="3"/>
+<path class="sch-w" d="M278 130 L290 130"/>
+<text class="sch-pin" x="298" y="134" text-anchor="start">CSP</text>
+<path class="sch-w" d="M278 250 L290 250"/>
+<text class="sch-pin" x="298" y="254" text-anchor="start">CSN</text>
+<path class="sch-w" d="M460 130 L472 130"/>
+<text class="sch-pin" x="452" y="134" text-anchor="end">VCC</text>
+<path class="sch-w" d="M460 250 L472 250"/>
+<text class="sch-pin" x="452" y="254" text-anchor="end">OUT</text>
+<path class="sch-w" d="M345 290 L345 302"/>
+<text class="sch-pin" x="345" y="282" text-anchor="middle">REF</text>
+<path class="sch-w" d="M405 290 L405 302"/>
+<text class="sch-pin" x="405" y="282" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="375" y="188" text-anchor="middle">SY24642</text>
+<text class="sch-val" x="375" y="204" text-anchor="middle">U1</text>
+<path class="sch-flag" d="M60 130 L52 122 L14 122 L14 138 L52 138 Z"/>
+<text class="sch-net" x="33" y="134" text-anchor="middle">CSP</text>
+<path class="sch-w" d="M60 130 L278 130"/>
+<text class="sch-net" x="66" y="116" text-anchor="start">supply side</text>
+<path class="sch-flag" d="M60 250 L52 242 L14 242 L14 258 L52 258 Z"/>
+<text class="sch-net" x="33" y="254" text-anchor="middle">CSN</text>
+<path class="sch-w" d="M60 250 L278 250"/>
+<text class="sch-net" x="66" y="272" text-anchor="start">load side</text>
+<circle class="sch-dot" cx="150" cy="130" r="3"/>
+<circle class="sch-dot" cx="150" cy="250" r="3"/>
+<path class="sch-w" d="M150 130 L150 175 L144 177.5 L156 182.5 L144 187.5 L156 192.5 L144 197.5 L156 202.5 L150 205 L150 250"/>
+<text class="sch-ref" x="166" y="188" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SENSE</tspan></text>
+<text class="sch-val" x="166" y="201" text-anchor="start">10 mΩ</text>
+<path class="sch-w" d="M472 130 L600 130"/>
+<circle class="sch-dot" cx="520" cy="130" r="3"/>
+<path class="sch-w" d="M520 130 L520 156"/>
+<path class="sch-w" d="M520 190 L520 164"/>
+<path class="sch-w" d="M509 156 L531 156"/>
+<path class="sch-w" d="M509 164 L531 164"/>
+<path class="sch-w" d="M520 190 L520 198"/>
+<path class="sch-w" d="M509 198 L531 198"/>
+<path class="sch-w" d="M513 203 L527 203"/>
+<path class="sch-w" d="M517 208 L523 208"/>
+<text class="sch-ref" x="536" y="158" text-anchor="start">C<tspan class="sch-sub" dy="2.5">BYPASS</tspan></text>
+<text class="sch-val" x="536" y="171" text-anchor="start">100 nF</text>
+<path class="sch-flag" d="M600 130 L608 122 L646 122 L646 138 L608 138 Z"/>
+<text class="sch-net" x="627" y="134" text-anchor="middle">VCC</text>
+<text class="sch-net" x="656" y="116" text-anchor="end">3–5.5 V</text>
+<path class="sch-w" d="M472 250 L600 250"/>
+<path class="sch-flag" d="M600 250 L608 242 L646 242 L646 258 L608 258 Z"/>
+<text class="sch-net" x="627" y="254" text-anchor="middle">OUT</text>
+<text class="sch-net" x="656" y="236" text-anchor="end">to the ADC</text>
+<path class="sch-w" d="M345 302 L345 350 L405 350 L405 302"/>
+<circle class="sch-dot" cx="375" cy="350" r="3"/>
+<path class="sch-w" d="M375 350 L375 358"/>
+<path class="sch-w" d="M364 358 L386 358"/>
+<path class="sch-w" d="M368 363 L382 363"/>
+<path class="sch-w" d="M372 368 L378 368"/>
+</svg>
