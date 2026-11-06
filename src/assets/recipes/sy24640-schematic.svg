@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 800 370" role="img" aria-labelledby="sy24640-t sy24640-d">
+<title id="sy24640-t">SY24640 reference circuit</title>
+<desc id="sy24640-d">Typical application of the SY24640 current-sense comparator, redrawn from the datasheet. A shunt resistor RSENSE sits between the supply (0–36 V) and the load. The supply side goes to the IN+ pin and the load side to the IN− pin. The VS pin takes 2.7–5.5 V with a bypass capacitor to ground. The open-drain ALERT output has a 10 kΩ pull-up resistor to VS and goes to a processor input. The ENABLE and LATCH pins are driven by processor outputs. The LIMIT pin has a resistor RLIMIT to ground, which sets the alert threshold with the pin's 20 µA current source, or it can instead be driven by a DAC. DELAY and HYS are left open, which selects the 10 µs response time and 2 mV of hysteresis. The GND pin goes to ground.</desc>
+<rect class="sch-ic" x="320" y="100" width="180" height="240" rx="3"/>
+<path class="sch-w" d="M308 160 L320 160"/>
+<text class="sch-pin" x="328" y="164" text-anchor="start">IN+</text>
+<path class="sch-w" d="M308 280 L320 280"/>
+<text class="sch-pin" x="328" y="284" text-anchor="start">IN−</text>
+<path class="sch-w" d="M500 140 L512 140"/>
+<text class="sch-pin" x="492" y="144" text-anchor="end">ALERT</text>
+<path class="sch-w" d="M500 180 L512 180"/>
+<text class="sch-pin" x="492" y="184" text-anchor="end">ENABLE</text>
+<path class="sch-w" d="M500 220 L512 220"/>
+<text class="sch-pin" x="492" y="224" text-anchor="end">LATCH</text>
+<path class="sch-w" d="M500 260 L512 260"/>
+<text class="sch-pin" x="492" y="264" text-anchor="end">LIMIT</text>
+<path class="sch-w" d="M500 300 L512 300"/>
+<text class="sch-pin" x="492" y="304" text-anchor="end">DELAY</text>
+<path class="sch-w" d="M410 88 L410 100"/>
+<text class="sch-pin" x="410" y="116" text-anchor="middle">VS</text>
+<path class="sch-w" d="M370 340 L370 352"/>
+<text class="sch-pin" x="370" y="332" text-anchor="middle">HYS</text>
+<path class="sch-w" d="M450 340 L450 352"/>
+<text class="sch-pin" x="450" y="332" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="410" y="224" text-anchor="middle">SY24640</text>
+<path class="sch-flag" d="M60 160 L52 152 L14 152 L14 168 L52 168 Z"/>
+<text class="sch-net" x="33" y="164" text-anchor="middle">SUPPLY</text>
+<path class="sch-w" d="M60 160 L308 160"/>
+<text class="sch-net" x="66" y="146" text-anchor="start">0–36 V</text>
+<circle class="sch-dot" cx="150" cy="160" r="3"/>
+<circle class="sch-dot" cx="150" cy="280" r="3"/>
+<path class="sch-w" d="M150 160 L150 205 L144 207.5 L156 212.5 L144 217.5 L156 222.5 L144 227.5 L156 232.5 L150 235 L150 280"/>
+<text class="sch-ref" x="166" y="218" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SENSE</tspan></text>
+<text class="sch-val" x="166" y="231" text-anchor="start">shunt</text>
+<path class="sch-w" d="M150 280 L308 280"/>
+<path class="sch-w" d="M150 280 L150 330"/>
+<text class="sch-net" x="150" y="348" text-anchor="middle">to the load</text>
+<path class="sch-flag" d="M60 70 L52 62 L14 62 L14 78 L52 78 Z"/>
+<text class="sch-net" x="33" y="74" text-anchor="middle">VS</text>
+<text class="sch-net" x="10" y="56" text-anchor="start">2.7–5.5 V</text>
+<path class="sch-w" d="M60 70 L570 70"/>
+<circle class="sch-dot" cx="410" cy="70" r="3"/>
+<path class="sch-w" d="M410 70 L410 88"/>
+<circle class="sch-dot" cx="250" cy="70" r="3"/>
+<path class="sch-w" d="M250 70 L250 91"/>
+<path class="sch-w" d="M250 120 L250 99"/>
+<path class="sch-w" d="M239 91 L261 91"/>
+<path class="sch-w" d="M239 99 L261 99"/>
+<path class="sch-w" d="M250 120 L250 128"/>
+<path class="sch-w" d="M239 128 L261 128"/>
+<path class="sch-w" d="M243 133 L257 133"/>
+<path class="sch-w" d="M247 138 L253 138"/>
+<text class="sch-ref" x="266" y="96" text-anchor="start">C<tspan class="sch-sub" dy="2.5">BYPASS</tspan></text>
+<text class="sch-val" x="266" y="109" text-anchor="start">value not given</text>
+<path class="sch-w" d="M512 180 L650 180"/>
+<text class="sch-net" x="658" y="184" text-anchor="start">from a GPIO</text>
+<path class="sch-w" d="M512 220 L650 220"/>
+<text class="sch-net" x="658" y="224" text-anchor="start">from a GPIO</text>
+<path class="sch-w" d="M512 140 L650 140"/>
+<text class="sch-net" x="658" y="144" text-anchor="start">to a GPIO</text>
+<circle class="sch-dot" cx="570" cy="70" r="3"/>
+<path class="sch-w" d="M570 70 L570 90 L564 92.5 L576 97.5 L564 102.5 L576 107.5 L564 112.5 L576 117.5 L570 120 L570 140"/>
+<circle class="sch-dot" cx="570" cy="140" r="3"/>
+<text class="sch-ref" x="554" y="102" text-anchor="end">R<tspan class="sch-sub" dy="2.5">PULLUP</tspan></text>
+<text class="sch-val" x="554" y="115" text-anchor="end">10 kΩ</text>
+<path class="sch-w" d="M512 260 L650 260"/>
+<circle class="sch-dot" cx="610" cy="260" r="3"/>
+<text class="sch-net" x="658" y="264" text-anchor="start">or a DAC</text>
+<path class="sch-w" d="M610 260 L610 285 L604 287.5 L616 292.5 L604 297.5 L616 302.5 L604 307.5 L616 312.5 L610 315 L610 340"/>
+<path class="sch-w" d="M610 340 L610 348"/>
+<path class="sch-w" d="M599 348 L621 348"/>
+<path class="sch-w" d="M603 353 L617 353"/>
+<path class="sch-w" d="M607 358 L613 358"/>
+<text class="sch-ref" x="626" y="306" text-anchor="start">R<tspan class="sch-sub" dy="2.5">LIMIT</tspan></text>
+<text class="sch-val" x="626" y="319" text-anchor="start">sets the limit</text>
+<text class="sch-net" x="520" y="304" text-anchor="start">open: 10 µs</text>
+<text class="sch-net" x="370" y="372" text-anchor="middle">open: 2 mV</text>
+<path class="sch-w" d="M450 352 L450 372"/>
+<path class="sch-w" d="M450 372 L450 380"/>
+<path class="sch-w" d="M439 380 L461 380"/>
+<path class="sch-w" d="M443 385 L457 385"/>
+<path class="sch-w" d="M447 390 L453 390"/>
+</svg>
