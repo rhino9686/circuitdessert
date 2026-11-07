@@ -27,6 +27,7 @@ const parts = defineCollection({
       'buck-boost-converter',
       'battery-charger',
       'ldo',
+      'voltage-reference',
       'ac-dc-controller',
       'gate-driver',
       'motor-driver',

@@ -43,6 +43,7 @@ export const CATEGORIES: Record<string, CategoryInfo> = {
   'boost-converter': { label: 'Boost converter', plural: 'Boost converters', group: 'Power' },
   'buck-boost-converter': { label: 'Buck-boost converter', plural: 'Buck-boost converters', group: 'Power' },
   ldo: { label: 'LDO', plural: 'Linear regulators (LDO)', group: 'Power' },
+  'voltage-reference': { label: 'Voltage reference', plural: 'Voltage references', group: 'Power' },
   'battery-charger': { label: 'Battery charger', plural: 'Battery chargers', group: 'Power' },
   'ac-dc-controller': { label: 'AC-DC controller', plural: 'AC-DC controllers', group: 'Power' },
   'gate-driver': { label: 'Gate driver', plural: 'Gate drivers', group: 'Power' },

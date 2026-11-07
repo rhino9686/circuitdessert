@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 720 260" role="img" aria-labelledby="sq82550-t sq82550-d">
+<title id="sq82550-t">SQ82550 application schematic</title>
+<desc id="sq82550-d">Application schematic of the SQ82550 shunt voltage reference, redrawn from the datasheet with the values from its bill of materials. The input has a 1 µF capacitor C3 to ground and feeds the CATHODE pin through a 510 Ω resistor R2. ANODE goes to ground. The CATHODE is also the output, with a 10 µF capacitor C1 to ground and a position for a second capacitor C2, not fitted. The NC pin has a position for a resistor R1 to ground, not fitted.</desc>
+<rect class="sch-ic" x="300" y="90" width="150" height="120" rx="3"/>
+<path class="sch-w" d="M288 120 L300 120"/>
+<text class="sch-pin" x="308" y="124" text-anchor="start">CATHODE</text>
+<path class="sch-w" d="M288 180 L300 180"/>
+<text class="sch-pin" x="308" y="184" text-anchor="start">ANODE</text>
+<path class="sch-w" d="M450 150 L462 150"/>
+<text class="sch-pin" x="442" y="154" text-anchor="end">NC</text>
+<text class="sch-ictitle" x="375" y="154" text-anchor="middle">SQ82550</text>
+<circle class="sch-w" cx="56" cy="120" r="3.5"/>
+<text class="sch-net" x="46" y="124" text-anchor="end">Input</text>
+<path class="sch-w" d="M60 120 L180 120"/>
+<circle class="sch-dot" cx="110" cy="120" r="3"/>
+<path class="sch-w" d="M110 120 L110 146"/>
+<path class="sch-w" d="M110 180 L110 154"/>
+<path class="sch-w" d="M99 146 L121 146"/>
+<path class="sch-w" d="M99 158 Q110 149 121 158"/>
+<text class="sch-ref" x="95" y="142" text-anchor="end">+</text>
+<path class="sch-w" d="M110 180 L110 188"/>
+<path class="sch-w" d="M99 188 L121 188"/>
+<path class="sch-w" d="M103 193 L117 193"/>
+<path class="sch-w" d="M107 198 L113 198"/>
+<text class="sch-ref" x="94" y="158" text-anchor="end">C<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="94" y="171" text-anchor="end">1 µF</text>
+<path class="sch-w" d="M180 120 L200 120 L202.5 114 L207.5 126 L212.5 114 L217.5 126 L222.5 114 L227.5 126 L230 120 L250 120"/>
+<text class="sch-ref" x="215" y="89" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="215" y="102" text-anchor="middle">510 Ω</text>
+<path class="sch-w" d="M250 120 L288 120"/>
+<path class="sch-w" d="M288 180 L270 180"/>
+<path class="sch-w" d="M270 180 L270 188"/>
+<path class="sch-w" d="M259 188 L281 188"/>
+<path class="sch-w" d="M263 193 L277 193"/>
+<path class="sch-w" d="M267 198 L273 198"/>
+<circle class="sch-dot" cx="270" cy="120" r="3"/>
+<path class="sch-w" d="M270 120 L270 60 L640 60"/>
+<circle class="sch-w" cx="644" cy="60" r="3.5"/>
+<text class="sch-net" x="654" y="64" text-anchor="start">Output</text>
+<circle class="sch-dot" cx="540" cy="60" r="3"/>
+<path class="sch-w" d="M540 60 L540 91"/>
+<path class="sch-w" d="M540 130 L540 99"/>
+<path class="sch-w" d="M529 91 L551 91"/>
+<path class="sch-w" d="M529 99 L551 99"/>
+<path class="sch-w" d="M540 130 L540 138"/>
+<path class="sch-w" d="M529 138 L551 138"/>
+<path class="sch-w" d="M533 143 L547 143"/>
+<path class="sch-w" d="M537 148 L543 148"/>
+<text class="sch-ref" x="524" y="93" text-anchor="end">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="524" y="106" text-anchor="end">10 µF</text>
+<circle class="sch-dot" cx="600" cy="60" r="3"/>
+<path class="sch-w" d="M600 60 L600 91"/>
+<path class="sch-w" d="M600 130 L600 99"/>
+<path class="sch-w" d="M589 91 L611 91"/>
+<path class="sch-w" d="M589 99 L611 99"/>
+<path class="sch-w" d="M600 130 L600 138"/>
+<path class="sch-w" d="M589 138 L611 138"/>
+<path class="sch-w" d="M593 143 L607 143"/>
+<path class="sch-w" d="M597 148 L603 148"/>
+<text class="sch-ref" x="616" y="93" text-anchor="start">C<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="616" y="106" text-anchor="start">not fitted</text>
+<path class="sch-w" d="M462 150 L490 150"/>
+<path class="sch-w" d="M490 150 L490 170 L484 172.5 L496 177.5 L484 182.5 L496 187.5 L484 192.5 L496 197.5 L490 200 L490 220"/>
+<path class="sch-w" d="M490 220 L490 228"/>
+<path class="sch-w" d="M479 228 L501 228"/>
+<path class="sch-w" d="M483 233 L497 233"/>
+<path class="sch-w" d="M487 238 L493 238"/>
+<text class="sch-ref" x="506" y="183" text-anchor="start">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="506" y="196" text-anchor="start">not fitted</text>
+</svg>

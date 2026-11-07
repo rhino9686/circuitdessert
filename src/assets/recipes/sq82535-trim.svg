@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 600 300" role="img" aria-labelledby="sq82535-trim-t sq82535-trim-d">
+<title id="sq82535-trim-t">SQ82535 output trim circuit</title>
+<desc id="sq82535-trim-d">Output voltage adjustment circuit of the SQ82535, redrawn from the datasheet (Figure 3). A 10 kΩ potentiometer R1 in series with a 30 kΩ resistor R2 runs from VOUT to ground. The potentiometer's wiper connects through a 1 MΩ resistor R3 to the TRIM/NR pin. VIN feeds the VIN pin and GND goes to ground.</desc>
+<rect class="sch-ic" x="150" y="70" width="150" height="150" rx="3"/>
+<path class="sch-w" d="M138 110 L150 110"/>
+<text class="sch-pin" x="158" y="114" text-anchor="start">VIN</text>
+<path class="sch-w" d="M138 190 L150 190"/>
+<text class="sch-pin" x="158" y="194" text-anchor="start">GND</text>
+<path class="sch-w" d="M300 110 L312 110"/>
+<text class="sch-pin" x="292" y="114" text-anchor="end">VOUT</text>
+<path class="sch-w" d="M300 170 L312 170"/>
+<text class="sch-pin" x="292" y="174" text-anchor="end">TRIM/NR</text>
+<text class="sch-ictitle" x="225" y="149" text-anchor="middle">SQ82535</text>
+<path class="sch-flag" d="M70 110 L62 102 L24 102 L24 118 L62 118 Z"/>
+<text class="sch-net" x="43" y="114" text-anchor="middle">VIN</text>
+<path class="sch-w" d="M70 110 L138 110"/>
+<path class="sch-w" d="M138 190 L110 190"/>
+<path class="sch-w" d="M110 190 L110 198"/>
+<path class="sch-w" d="M99 198 L121 198"/>
+<path class="sch-w" d="M103 203 L117 203"/>
+<path class="sch-w" d="M107 208 L113 208"/>
+<path class="sch-w" d="M312 110 L520 110"/>
+<circle class="sch-w" cx="524" cy="110" r="3.5"/>
+<text class="sch-net" x="534" y="114" text-anchor="start">VOUT</text>
+<circle class="sch-dot" cx="450" cy="110" r="3"/>
+<path class="sch-w" d="M450 110 L450 140 L444 142.5 L456 147.5 L444 152.5 L456 157.5 L444 162.5 L456 167.5 L450 170 L450 200"/>
+<text class="sch-ref" x="466" y="138" text-anchor="start">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="466" y="151" text-anchor="start">10 kΩ</text>
+<path class="sch-w" d="M450 200 L450 225 L444 227.5 L456 232.5 L444 237.5 L456 242.5 L444 247.5 L456 252.5 L450 255 L450 280"/>
+<path class="sch-w" d="M450 280 L450 288"/>
+<path class="sch-w" d="M439 288 L461 288"/>
+<path class="sch-w" d="M443 293 L457 293"/>
+<path class="sch-w" d="M447 298 L453 298"/>
+<text class="sch-ref" x="466" y="238" text-anchor="start">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="466" y="251" text-anchor="start">30 kΩ</text>
+<path class="sch-w" d="M312 170 L350 170"/>
+<path class="sch-w" d="M350 170 L370 170 L372.5 164 L377.5 176 L382.5 164 L387.5 176 L392.5 164 L397.5 176 L400 170 L420 170"/>
+<path class="sch-w" d="M420 170 L436 155"/>
+<path class="sch-dot" d="M440 155 L432 152 L436 160 Z"/>
+<text class="sch-ref" x="385" y="139" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="385" y="152" text-anchor="middle">1 MΩ</text>
+<text class="sch-val" x="466" y="172" text-anchor="start">wiper</text>
+</svg>
