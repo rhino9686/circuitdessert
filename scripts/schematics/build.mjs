@@ -11,6 +11,7 @@ import { hBridge } from './designs-sy2a58215.mjs';
 import { boostConverter } from './designs-sy26533.mjs';
 import { buckBoost } from './designs-sy2a29311.mjs';
 import { inInHBridge } from './designs-sy67134.mjs';
+import { syncBoostDisconnect } from './designs-sy2a29117.mjs';
 import { ldoWithReset } from './designs-sy2a27352.mjs';
 import { currentSenseAmp } from './designs-sy24642.mjs';
 import { overcurrentComparator } from './designs-sy24640.mjs';
@@ -43,6 +44,7 @@ const designs = {
   'sy26533-schematic.svg': boostConverter({ id: 'sy26533', part: 'SY26533' }),
   'sy2a29311-schematic.svg': buckBoost({ id: 'sy2a29311', part: 'SY2A29311' }),
   'sy67134-schematic.svg': inInHBridge({ id: 'sy67134', part: 'SY67134' }),
+  'sy2a29117-schematic.svg': syncBoostDisconnect({ id: 'sy2a29117', part: 'SY2A29117' }),
   'sy2a27352-schematic.svg': ldoWithReset({ id: 'sy2a27352', part: 'SY2A27352' }),
   'sy24642-schematic.svg': currentSenseAmp({ id: 'sy24642', part: 'SY24642' }),
   'sy24640-schematic.svg': overcurrentComparator({ id: 'sy24640', part: 'SY24640' }),
