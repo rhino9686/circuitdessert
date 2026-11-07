@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 720 410" role="img" aria-labelledby="sa59401-esp32s3-spi-t sa59401-esp32s3-spi-d">
+<title id="sa59401-esp32s3-spi-t">SA59401 wired to an ESP32-S3 over SPI</title>
+<desc id="sa59401-esp32s3-spi-d">Wiring for talking to an SA59401 from an ESP32-S3 dev board. Everything runs at 3.3 V, so no level shifter is needed. The board's 3V3 pin feeds VDD, with a 0.1 µF bypass capacitor to ground. GPIO12 (SCK) goes to SCLK, GPIO11 (MOSI) to DIN and GPIO10 to CS_N, each through a 50 Ω resistor near the ESP32-S3. DOUT/DRDY_N goes to GPIO13 (MISO) through a 50 Ω resistor near the SA59401. The signal to measure connects to AIN0 (positive) and AIN1 (negative). AIN2 and AIN3 are left open. The grounds are joined.</desc>
+<rect class="sch-ic" x="10" y="90" width="130" height="290" rx="3"/>
+<path class="sch-w" d="M140 140 L152 140"/>
+<text class="sch-pin" x="132" y="144" text-anchor="end">GPIO12 (SCK)</text>
+<path class="sch-w" d="M140 200 L152 200"/>
+<text class="sch-pin" x="132" y="204" text-anchor="end">GPIO11 (MOSI)</text>
+<path class="sch-w" d="M140 270 L152 270"/>
+<text class="sch-pin" x="132" y="274" text-anchor="end">GPIO13 (MISO)</text>
+<path class="sch-w" d="M140 330 L152 330"/>
+<text class="sch-pin" x="132" y="334" text-anchor="end">GPIO10 (CS)</text>
+<path class="sch-w" d="M140 360 L152 360"/>
+<text class="sch-pin" x="132" y="364" text-anchor="end">GND</text>
+<path class="sch-w" d="M75 78 L75 90"/>
+<text class="sch-pin" x="75" y="106" text-anchor="middle">3V3</text>
+<text class="sch-ictitle" x="75" y="233" text-anchor="middle">ESP32-S3</text>
+<text class="sch-val" x="75" y="249" text-anchor="middle">dev board, 3.3 V</text>
+<path class="sch-w" d="M152 360 L152 368"/>
+<path class="sch-w" d="M141 368 L163 368"/>
+<path class="sch-w" d="M145 373 L159 373"/>
+<path class="sch-w" d="M149 378 L155 378"/>
+<text class="sch-net" x="10" y="42" text-anchor="start">3.3 V</text>
+<path class="sch-w" d="M75 78 L75 50 L620 50"/>
+<rect class="sch-ic" x="420" y="90" width="150" height="290" rx="3"/>
+<path class="sch-w" d="M408 140 L420 140"/>
+<text class="sch-pin" x="428" y="144" text-anchor="start">SCLK</text>
+<path class="sch-w" d="M408 200 L420 200"/>
+<text class="sch-pin" x="428" y="204" text-anchor="start">DIN</text>
+<path class="sch-w" d="M408 270 L420 270"/>
+<text class="sch-pin" x="428" y="274" text-anchor="start">DOUT/DRDY_N</text>
+<path class="sch-w" d="M408 330 L420 330"/>
+<text class="sch-pin" x="428" y="334" text-anchor="start">CS_N</text>
+<path class="sch-w" d="M570 150 L582 150"/>
+<text class="sch-pin" x="562" y="154" text-anchor="end">AIN0</text>
+<path class="sch-w" d="M570 200 L582 200"/>
+<text class="sch-pin" x="562" y="204" text-anchor="end">AIN1</text>
+<path class="sch-w" d="M570 290 L582 290"/>
+<text class="sch-pin" x="562" y="294" text-anchor="end">AIN2</text>
+<path class="sch-w" d="M570 340 L582 340"/>
+<text class="sch-pin" x="562" y="344" text-anchor="end">AIN3</text>
+<path class="sch-w" d="M495 78 L495 90"/>
+<text class="sch-pin" x="495" y="106" text-anchor="middle">VDD</text>
+<path class="sch-w" d="M495 380 L495 392"/>
+<text class="sch-pin" x="495" y="372" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="495" y="239" text-anchor="middle">SA59401</text>
+<circle class="sch-dot" cx="495" cy="50" r="3"/>
+<path class="sch-w" d="M495 50 L495 78"/>
+<circle class="sch-dot" cx="620" cy="50" r="3"/>
+<path class="sch-w" d="M620 50 L620 68.5"/>
+<path class="sch-w" d="M620 95 L620 76.5"/>
+<path class="sch-w" d="M609 68.5 L631 68.5"/>
+<path class="sch-w" d="M609 76.5 L631 76.5"/>
+<path class="sch-w" d="M620 95 L620 103"/>
+<path class="sch-w" d="M609 103 L631 103"/>
+<path class="sch-w" d="M613 108 L627 108"/>
+<path class="sch-w" d="M617 113 L623 113"/>
+<text class="sch-ref" x="636" y="70" text-anchor="start">C<tspan class="sch-sub" dy="2.5">BYPASS</tspan></text>
+<text class="sch-val" x="636" y="83" text-anchor="start">0.1 µF</text>
+<path class="sch-w" d="M495 392 L495 400"/>
+<path class="sch-w" d="M484 400 L506 400"/>
+<path class="sch-w" d="M488 405 L502 405"/>
+<path class="sch-w" d="M492 410 L498 410"/>
+<path class="sch-w" d="M152 140 L180 140"/>
+<path class="sch-w" d="M180 140 L200 140 L202.5 134 L207.5 146 L212.5 134 L217.5 146 L222.5 134 L227.5 146 L230 140 L250 140"/>
+<path class="sch-w" d="M250 140 L408 140"/>
+<text class="sch-ref" x="215" y="109" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">SCLK</tspan></text>
+<text class="sch-val" x="215" y="122" text-anchor="middle">50 Ω</text>
+<path class="sch-w" d="M152 200 L180 200"/>
+<path class="sch-w" d="M180 200 L200 200 L202.5 194 L207.5 206 L212.5 194 L217.5 206 L222.5 194 L227.5 206 L230 200 L250 200"/>
+<path class="sch-w" d="M250 200 L408 200"/>
+<text class="sch-ref" x="215" y="169" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">DIN</tspan></text>
+<text class="sch-val" x="215" y="182" text-anchor="middle">50 Ω</text>
+<path class="sch-w" d="M152 270 L320 270"/>
+<path class="sch-w" d="M320 270 L340 270 L342.5 264 L347.5 276 L352.5 264 L357.5 276 L362.5 264 L367.5 276 L370 270 L390 270"/>
+<path class="sch-w" d="M390 270 L408 270"/>
+<text class="sch-ref" x="355" y="239" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">DOUT</tspan></text>
+<text class="sch-val" x="355" y="252" text-anchor="middle">50 Ω</text>
+<path class="sch-w" d="M152 330 L180 330"/>
+<path class="sch-w" d="M180 330 L200 330 L202.5 324 L207.5 336 L212.5 324 L217.5 336 L222.5 324 L227.5 336 L230 330 L250 330"/>
+<path class="sch-w" d="M250 330 L408 330"/>
+<text class="sch-ref" x="215" y="299" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">CS_N</tspan></text>
+<text class="sch-val" x="215" y="312" text-anchor="middle">50 Ω</text>
+<path class="sch-w" d="M582 150 L640 150"/>
+<circle class="sch-w" cx="644" cy="150" r="3.5"/>
+<text class="sch-net" x="654" y="154" text-anchor="start">input +</text>
+<path class="sch-w" d="M582 200 L640 200"/>
+<circle class="sch-w" cx="644" cy="200" r="3.5"/>
+<text class="sch-net" x="654" y="204" text-anchor="start">input −</text>
+<text class="sch-val" x="594" y="319" text-anchor="start">AIN2, AIN3 open</text>
+</svg>

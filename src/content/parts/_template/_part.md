@@ -5,7 +5,7 @@
 manufacturer: Silergy
 family: SY8113
 part: SY8113B
-category: buck-converter      # buck-converter | boost-converter | buck-boost-converter | battery-charger | ldo | ac-dc-controller | gate-driver | motor-driver | amplifier | processor | other
+category: buck-converter      # buck-converter | boost-converter | buck-boost-converter | battery-charger | ldo | ac-dc-controller | gate-driver | motor-driver | amplifier | data-converter | processor | other
 summary: "One sentence on what the part is, under 200 characters. Used on cards and in search."
 abstract: "A short paragraph shown under the title: what the part is for and what makes it notable. Plain text, your own words."
 status: active                # active | nrnd | obsolete | unknown

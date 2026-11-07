@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 10 820 440" role="img" aria-labelledby="sa59401-t sa59401-d">
+<title id="sa59401-t">SA59401 application schematic</title>
+<desc id="sa59401-d">Application schematic of the SA59401 ADC, redrawn from the datasheet with the values from its bill of materials. VDD (2.7–5.5 V) feeds the VDD pin, with a 0.1 µF bypass capacitor CBYPASS to ground. Each analog input comes in through a 100 Ω series resistor (R1 on AIN0, R2 on AIN1, R3 on AIN2, R4 on AIN3). A 1 µF capacitor C1 connects across AIN0 and AIN1, and C4 across AIN2 and AIN3. Each input also has a 0.1 µF capacitor to ground: C2 on AIN0, C3 on AIN1, C5 on AIN2 and C6 on AIN3. SCLK, CS_N, DOUT/DRDY_N and DIN each connect to the controller through a 50 Ω series resistor (RSCLK, RCS_N, RDOUT and RDIN). GND goes to ground.</desc>
+<rect class="sch-ic" x="330" y="80" width="170" height="330" rx="3"/>
+<path class="sch-w" d="M318 130 L330 130"/>
+<text class="sch-pin" x="338" y="134" text-anchor="start">AIN0</text>
+<path class="sch-w" d="M318 190 L330 190"/>
+<text class="sch-pin" x="338" y="194" text-anchor="start">AIN1</text>
+<path class="sch-w" d="M318 320 L330 320"/>
+<text class="sch-pin" x="338" y="324" text-anchor="start">AIN2</text>
+<path class="sch-w" d="M318 380 L330 380"/>
+<text class="sch-pin" x="338" y="384" text-anchor="start">AIN3</text>
+<path class="sch-w" d="M500 120 L512 120"/>
+<text class="sch-pin" x="492" y="124" text-anchor="end">SCLK</text>
+<path class="sch-w" d="M500 180 L512 180"/>
+<text class="sch-pin" x="492" y="184" text-anchor="end">CS_N</text>
+<path class="sch-w" d="M500 310 L512 310"/>
+<text class="sch-pin" x="492" y="314" text-anchor="end">DOUT/DRDY_N</text>
+<path class="sch-w" d="M500 370 L512 370"/>
+<text class="sch-pin" x="492" y="374" text-anchor="end">DIN</text>
+<path class="sch-w" d="M415 68 L415 80"/>
+<text class="sch-pin" x="415" y="96" text-anchor="middle">VDD</text>
+<path class="sch-w" d="M415 410 L415 422"/>
+<text class="sch-pin" x="415" y="402" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="415" y="243" text-anchor="middle">SA59401</text>
+<text class="sch-val" x="415" y="259" text-anchor="middle">16-bit ΔΣ ADC</text>
+<path class="sch-flag" d="M60 30 L52 22 L14 22 L14 38 L52 38 Z"/>
+<text class="sch-net" x="33" y="34" text-anchor="middle">VDD</text>
+<text class="sch-net" x="76" y="48" text-anchor="start">2.7–5.5 V</text>
+<path class="sch-w" d="M60 30 L415 30 L415 68"/>
+<circle class="sch-dot" cx="415" cy="30" r="3"/>
+<path class="sch-w" d="M415 30 L600 30"/>
+<path class="sch-w" d="M600 30 L600 48.5"/>
+<path class="sch-w" d="M600 75 L600 56.5"/>
+<path class="sch-w" d="M589 48.5 L611 48.5"/>
+<path class="sch-w" d="M589 56.5 L611 56.5"/>
+<path class="sch-w" d="M600 75 L600 83"/>
+<path class="sch-w" d="M589 83 L611 83"/>
+<path class="sch-w" d="M593 88 L607 88"/>
+<path class="sch-w" d="M597 93 L603 93"/>
+<text class="sch-ref" x="616" y="53" text-anchor="start">C<tspan class="sch-sub" dy="2.5">BYPASS</tspan></text>
+<text class="sch-val" x="616" y="66" text-anchor="start">0.1 µF</text>
+<path class="sch-w" d="M415 422 L415 430"/>
+<path class="sch-w" d="M404 430 L426 430"/>
+<path class="sch-w" d="M408 435 L422 435"/>
+<path class="sch-w" d="M412 440 L418 440"/>
+<path class="sch-flag" d="M60 130 L52 122 L14 122 L14 138 L52 138 Z"/>
+<text class="sch-net" x="33" y="134" text-anchor="middle">AIN0</text>
+<path class="sch-w" d="M60 130 L120 130"/>
+<path class="sch-w" d="M120 130 L140 130 L142.5 124 L147.5 136 L152.5 124 L157.5 136 L162.5 124 L167.5 136 L170 130 L190 130"/>
+<path class="sch-w" d="M190 130 L318 130"/>
+<circle class="sch-dot" cx="245" cy="130" r="3"/>
+<text class="sch-ref" x="155" y="99" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="155" y="112" text-anchor="middle">100 Ω</text>
+<path class="sch-flag" d="M60 190 L52 182 L14 182 L14 198 L52 198 Z"/>
+<text class="sch-net" x="33" y="194" text-anchor="middle">AIN1</text>
+<path class="sch-w" d="M60 190 L120 190"/>
+<path class="sch-w" d="M120 190 L140 190 L142.5 184 L147.5 196 L152.5 184 L157.5 196 L162.5 184 L167.5 196 L170 190 L190 190"/>
+<path class="sch-w" d="M190 190 L318 190"/>
+<circle class="sch-dot" cx="245" cy="190" r="3"/>
+<text class="sch-ref" x="155" y="159" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="155" y="172" text-anchor="middle">100 Ω</text>
+<path class="sch-flag" d="M60 320 L52 312 L14 312 L14 328 L52 328 Z"/>
+<text class="sch-net" x="33" y="324" text-anchor="middle">AIN2</text>
+<path class="sch-w" d="M60 320 L120 320"/>
+<path class="sch-w" d="M120 320 L140 320 L142.5 314 L147.5 326 L152.5 314 L157.5 326 L162.5 314 L167.5 326 L170 320 L190 320"/>
+<path class="sch-w" d="M190 320 L318 320"/>
+<circle class="sch-dot" cx="245" cy="320" r="3"/>
+<text class="sch-ref" x="155" y="289" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="155" y="302" text-anchor="middle">100 Ω</text>
+<path class="sch-flag" d="M60 380 L52 372 L14 372 L14 388 L52 388 Z"/>
+<text class="sch-net" x="33" y="384" text-anchor="middle">AIN3</text>
+<path class="sch-w" d="M60 380 L120 380"/>
+<path class="sch-w" d="M120 380 L140 380 L142.5 374 L147.5 386 L152.5 374 L157.5 386 L162.5 374 L167.5 386 L170 380 L190 380"/>
+<path class="sch-w" d="M190 380 L318 380"/>
+<circle class="sch-dot" cx="245" cy="380" r="3"/>
+<text class="sch-ref" x="155" y="349" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="155" y="362" text-anchor="middle">100 Ω</text>
+<path class="sch-w" d="M245 130 L245 111.5"/>
+<path class="sch-w" d="M245 85 L245 103.5"/>
+<path class="sch-w" d="M234 111.5 L256 111.5"/>
+<path class="sch-w" d="M234 103.5 L256 103.5"/>
+<path class="sch-w" d="M245 85 L245 77"/>
+<path class="sch-w" d="M234 77 L256 77"/>
+<path class="sch-w" d="M238 72 L252 72"/>
+<path class="sch-w" d="M242 67 L248 67"/>
+<text class="sch-ref" x="261" y="106" text-anchor="start">C<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="261" y="119" text-anchor="start">0.1 µF</text>
+<path class="sch-w" d="M245 130 L245 156"/>
+<path class="sch-w" d="M245 190 L245 164"/>
+<path class="sch-w" d="M234 156 L256 156"/>
+<path class="sch-w" d="M234 164 L256 164"/>
+<text class="sch-ref" x="261" y="158" text-anchor="start">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="261" y="171" text-anchor="start">1 µF</text>
+<path class="sch-w" d="M245 190 L245 206"/>
+<path class="sch-w" d="M245 230 L245 214"/>
+<path class="sch-w" d="M234 206 L256 206"/>
+<path class="sch-w" d="M234 214 L256 214"/>
+<path class="sch-w" d="M245 230 L245 238"/>
+<path class="sch-w" d="M234 238 L256 238"/>
+<path class="sch-w" d="M238 243 L252 243"/>
+<path class="sch-w" d="M242 248 L248 248"/>
+<text class="sch-ref" x="261" y="210" text-anchor="start">C<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="261" y="223" text-anchor="start">0.1 µF</text>
+<path class="sch-w" d="M245 320 L245 301.5"/>
+<path class="sch-w" d="M245 275 L245 293.5"/>
+<path class="sch-w" d="M234 301.5 L256 301.5"/>
+<path class="sch-w" d="M234 293.5 L256 293.5"/>
+<path class="sch-w" d="M245 275 L245 267"/>
+<path class="sch-w" d="M234 267 L256 267"/>
+<path class="sch-w" d="M238 262 L252 262"/>
+<path class="sch-w" d="M242 257 L248 257"/>
+<text class="sch-ref" x="261" y="296" text-anchor="start">C<tspan class="sch-sub" dy="2.5">5</tspan></text>
+<text class="sch-val" x="261" y="309" text-anchor="start">0.1 µF</text>
+<path class="sch-w" d="M245 320 L245 346"/>
+<path class="sch-w" d="M245 380 L245 354"/>
+<path class="sch-w" d="M234 346 L256 346"/>
+<path class="sch-w" d="M234 354 L256 354"/>
+<text class="sch-ref" x="261" y="348" text-anchor="start">C<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="261" y="361" text-anchor="start">1 µF</text>
+<path class="sch-w" d="M245 380 L245 396"/>
+<path class="sch-w" d="M245 420 L245 404"/>
+<path class="sch-w" d="M234 396 L256 396"/>
+<path class="sch-w" d="M234 404 L256 404"/>
+<path class="sch-w" d="M245 420 L245 428"/>
+<path class="sch-w" d="M234 428 L256 428"/>
+<path class="sch-w" d="M238 433 L252 433"/>
+<path class="sch-w" d="M242 438 L248 438"/>
+<text class="sch-ref" x="261" y="400" text-anchor="start">C<tspan class="sch-sub" dy="2.5">6</tspan></text>
+<text class="sch-val" x="261" y="413" text-anchor="start">0.1 µF</text>
+<path class="sch-w" d="M512 120 L580 120"/>
+<path class="sch-w" d="M580 120 L600 120 L602.5 114 L607.5 126 L612.5 114 L617.5 126 L622.5 114 L627.5 126 L630 120 L650 120"/>
+<path class="sch-w" d="M650 120 L690 120"/>
+<text class="sch-ref" x="615" y="140" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">SCLK</tspan></text>
+<text class="sch-val" x="615" y="153" text-anchor="middle">50 Ω</text>
+<circle class="sch-w" cx="694" cy="120" r="3.5"/>
+<text class="sch-net" x="704" y="124" text-anchor="start">SCLK</text>
+<path class="sch-w" d="M512 180 L580 180"/>
+<path class="sch-w" d="M580 180 L600 180 L602.5 174 L607.5 186 L612.5 174 L617.5 186 L622.5 174 L627.5 186 L630 180 L650 180"/>
+<path class="sch-w" d="M650 180 L690 180"/>
+<text class="sch-ref" x="615" y="200" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">CS_N</tspan></text>
+<text class="sch-val" x="615" y="213" text-anchor="middle">50 Ω</text>
+<circle class="sch-w" cx="694" cy="180" r="3.5"/>
+<text class="sch-net" x="704" y="184" text-anchor="start">CS_N</text>
+<path class="sch-w" d="M512 310 L580 310"/>
+<path class="sch-w" d="M580 310 L600 310 L602.5 304 L607.5 316 L612.5 304 L617.5 316 L622.5 304 L627.5 316 L630 310 L650 310"/>
+<path class="sch-w" d="M650 310 L690 310"/>
+<text class="sch-ref" x="615" y="330" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">DOUT</tspan></text>
+<text class="sch-val" x="615" y="343" text-anchor="middle">50 Ω</text>
+<circle class="sch-w" cx="694" cy="310" r="3.5"/>
+<text class="sch-net" x="704" y="314" text-anchor="start">DOUT/DRDY_N</text>
+<path class="sch-w" d="M512 370 L580 370"/>
+<path class="sch-w" d="M580 370 L600 370 L602.5 364 L607.5 376 L612.5 364 L617.5 376 L622.5 364 L627.5 376 L630 370 L650 370"/>
+<path class="sch-w" d="M650 370 L690 370"/>
+<text class="sch-ref" x="615" y="390" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">DIN</tspan></text>
+<text class="sch-val" x="615" y="403" text-anchor="middle">50 Ω</text>
+<circle class="sch-w" cx="694" cy="370" r="3.5"/>
+<text class="sch-net" x="704" y="374" text-anchor="start">DIN</text>
+</svg>
