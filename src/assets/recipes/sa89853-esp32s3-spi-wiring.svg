@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 780 450" role="img" aria-labelledby="sa89853-esp32s3-spi-t sa89853-esp32s3-spi-d">
+<title id="sa89853-esp32s3-spi-t">SA89853 wired to an ESP32-S3 over SPI</title>
+<desc id="sa89853-esp32s3-spi-d">Wiring for talking to an SA89853 from an ESP32-S3 dev board. The board's 3V3 pin feeds VA and VBD, each with 10 µF and 0.1 µF to ground; all the grounds are joined. A 2.5 V reference drives REFP, with 10 µF from REFP to REFM, and REFM goes to ground. MXO connects to AINP, and AINM goes to ground. GPIO12 (SCK) goes to SCLK, GPIO11 (MOSI) to SDI and GPIO10 to CS_N. SDO goes to GPIO13 (MISO). The voltages to measure connect to CH0, CH1 and the other inputs, each through 33 Ω with 270 pF to ground, and must stay between 0 V and the 2.5 V reference.</desc>
+<rect class="sch-ic" x="10" y="100" width="130" height="275" rx="3"/>
+<path class="sch-w" d="M140 150 L152 150"/>
+<text class="sch-pin" x="132" y="154" text-anchor="end">GPIO12 (SCK)</text>
+<path class="sch-w" d="M140 190 L152 190"/>
+<text class="sch-pin" x="132" y="194" text-anchor="end">GPIO11 (MOSI)</text>
+<path class="sch-w" d="M140 270 L152 270"/>
+<text class="sch-pin" x="132" y="274" text-anchor="end">GPIO13 (MISO)</text>
+<path class="sch-w" d="M140 310 L152 310"/>
+<text class="sch-pin" x="132" y="314" text-anchor="end">GPIO10 (CS)</text>
+<path class="sch-w" d="M140 345 L152 345"/>
+<text class="sch-pin" x="132" y="349" text-anchor="end">GND</text>
+<path class="sch-w" d="M75 88 L75 100"/>
+<text class="sch-pin" x="75" y="116" text-anchor="middle">3V3</text>
+<text class="sch-ictitle" x="75" y="235.5" text-anchor="middle">ESP32-S3</text>
+<text class="sch-val" x="75" y="251.5" text-anchor="middle">dev board, 3.3 V</text>
+<path class="sch-w" d="M152 345 L152 353"/>
+<path class="sch-w" d="M141 353 L163 353"/>
+<path class="sch-w" d="M145 358 L159 358"/>
+<path class="sch-w" d="M149 363 L155 363"/>
+<text class="sch-net" x="10" y="42" text-anchor="start">3.3 V</text>
+<path class="sch-w" d="M75 88 L75 50 L450 50"/>
+<rect class="sch-ic" x="330" y="100" width="170" height="300" rx="3"/>
+<path class="sch-w" d="M318 150 L330 150"/>
+<text class="sch-pin" x="338" y="154" text-anchor="start">SCLK</text>
+<path class="sch-w" d="M318 190 L330 190"/>
+<text class="sch-pin" x="338" y="194" text-anchor="start">SDI</text>
+<path class="sch-w" d="M318 270 L330 270"/>
+<text class="sch-pin" x="338" y="274" text-anchor="start">SDO</text>
+<path class="sch-w" d="M318 310 L330 310"/>
+<text class="sch-pin" x="338" y="314" text-anchor="start">CS_N</text>
+<path class="sch-w" d="M500 140 L512 140"/>
+<text class="sch-pin" x="492" y="144" text-anchor="end">REFP</text>
+<path class="sch-w" d="M500 190 L512 190"/>
+<text class="sch-pin" x="492" y="194" text-anchor="end">REFM</text>
+<path class="sch-w" d="M500 240 L512 240"/>
+<text class="sch-pin" x="492" y="244" text-anchor="end">MXO</text>
+<path class="sch-w" d="M500 270 L512 270"/>
+<text class="sch-pin" x="492" y="274" text-anchor="end">AINP</text>
+<path class="sch-w" d="M500 300 L512 300"/>
+<text class="sch-pin" x="492" y="304" text-anchor="end">AINM</text>
+<path class="sch-w" d="M500 340 L512 340"/>
+<text class="sch-pin" x="492" y="344" text-anchor="end">CH0</text>
+<path class="sch-w" d="M500 375 L512 375"/>
+<text class="sch-pin" x="492" y="379" text-anchor="end">CH1</text>
+<path class="sch-w" d="M380 88 L380 100"/>
+<text class="sch-pin" x="380" y="116" text-anchor="middle">VA</text>
+<path class="sch-w" d="M450 88 L450 100"/>
+<text class="sch-pin" x="450" y="116" text-anchor="middle">VBD</text>
+<path class="sch-w" d="M415 400 L415 412"/>
+<text class="sch-pin" x="415" y="392" text-anchor="middle">AGND, BDGND</text>
+<text class="sch-ictitle" x="415" y="254" text-anchor="middle">SA89853</text>
+<circle class="sch-dot" cx="380" cy="50" r="3"/>
+<path class="sch-w" d="M380 50 L380 88"/>
+<path class="sch-w" d="M450 50 L450 88"/>
+<text class="sch-val" x="470" y="42" text-anchor="start">10 µF + 0.1 µF to ground at VA and at VBD</text>
+<path class="sch-w" d="M415 412 L415 420"/>
+<path class="sch-w" d="M404 420 L426 420"/>
+<path class="sch-w" d="M408 425 L422 425"/>
+<path class="sch-w" d="M412 430 L418 430"/>
+<path class="sch-w" d="M152 150 L318 150"/>
+<path class="sch-w" d="M152 190 L318 190"/>
+<path class="sch-w" d="M152 270 L318 270"/>
+<path class="sch-w" d="M152 310 L318 310"/>
+<path class="sch-w" d="M512 140 L660 140"/>
+<circle class="sch-w" cx="664" cy="140" r="3.5"/>
+<text class="sch-net" x="674" y="144" text-anchor="start">2.5 V reference</text>
+<circle class="sch-dot" cx="570" cy="140" r="3"/>
+<path class="sch-w" d="M570 140 L570 161"/>
+<path class="sch-w" d="M570 190 L570 169"/>
+<path class="sch-w" d="M559 161 L581 161"/>
+<path class="sch-w" d="M559 169 L581 169"/>
+<circle class="sch-dot" cx="570" cy="190" r="3"/>
+<text class="sch-ref" x="586" y="163" text-anchor="start">C<tspan class="sch-sub" dy="2.5">REF</tspan></text>
+<text class="sch-val" x="586" y="176" text-anchor="start">10 µF</text>
+<path class="sch-w" d="M512 190 L600 190"/>
+<path class="sch-w" d="M600 190 L600 198"/>
+<path class="sch-w" d="M589 198 L611 198"/>
+<path class="sch-w" d="M593 203 L607 203"/>
+<path class="sch-w" d="M597 208 L603 208"/>
+<path class="sch-w" d="M512 240 L545 240 L545 270 L512 270"/>
+<path class="sch-w" d="M512 300 L560 300"/>
+<path class="sch-w" d="M560 300 L560 308"/>
+<path class="sch-w" d="M549 308 L571 308"/>
+<path class="sch-w" d="M553 313 L567 313"/>
+<path class="sch-w" d="M557 318 L563 318"/>
+<path class="sch-w" d="M512 340 L600 340"/>
+<path class="sch-w" d="M600 340 L615 340 L617.5 334 L622.5 346 L627.5 334 L632.5 346 L637.5 334 L642.5 346 L645 340 L660 340"/>
+<path class="sch-w" d="M660 340 L690 340"/>
+<circle class="sch-w" cx="694" cy="340" r="3.5"/>
+<text class="sch-net" x="704" y="344" text-anchor="start">CH0 input</text>
+<path class="sch-w" d="M512 375 L600 375"/>
+<path class="sch-w" d="M600 375 L615 375 L617.5 369 L622.5 381 L627.5 369 L632.5 381 L637.5 369 L642.5 381 L645 375 L660 375"/>
+<path class="sch-w" d="M660 375 L690 375"/>
+<circle class="sch-w" cx="694" cy="375" r="3.5"/>
+<text class="sch-net" x="704" y="379" text-anchor="start">CH1 input</text>
+<text class="sch-val" x="630" y="420" text-anchor="middle">each input: 33 Ω, 270 pF to ground</text>
+</svg>

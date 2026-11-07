@@ -1,0 +1,449 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 900 938" role="img" aria-labelledby="sa89853-t sa89853-d">
+<title id="sa89853-t">SA89853 schematic diagram</title>
+<desc id="sa89853-d">Schematic of the SA89853 16-channel ADC, redrawn from the datasheet with the values from its bill of materials. GPIO2 and GPIO3 each have a 47 kΩ pull-up (R1) to VBD. REFM goes to ground, the external reference drives REFP, and a 10 µF capacitor C1 connects REFP to REFM. Each VA pin has C1 (10 µF) and C2 (0.1 µF) to the neighbouring AGND pin, which goes to ground; VBD has the same pair to BDGND. MXO connects to AINP, and AINM goes to ground. Every input, CH0 to CH15, comes in through a 33 Ω resistor (R2) with a 270 pF capacitor (C3) to ground at the pin. GPIO0, GPIO1, SDO, SDI, SCLK and CS_N go to the controller.</desc>
+<rect class="sch-ic" x="360" y="40" width="200" height="888" rx="3"/>
+<path class="sch-w" d="M348 70 L360 70"/>
+<text class="sch-pin" x="368" y="74" text-anchor="start">GPIO2</text>
+<path class="sch-w" d="M348 110 L360 110"/>
+<text class="sch-pin" x="368" y="114" text-anchor="start">GPIO3</text>
+<path class="sch-w" d="M348 150 L360 150"/>
+<text class="sch-pin" x="368" y="154" text-anchor="start">REFM</text>
+<path class="sch-w" d="M348 190 L360 190"/>
+<text class="sch-pin" x="368" y="194" text-anchor="start">REFP</text>
+<path class="sch-w" d="M348 230 L360 230"/>
+<text class="sch-pin" x="368" y="234" text-anchor="start">VA</text>
+<path class="sch-w" d="M348 270 L360 270"/>
+<text class="sch-pin" x="368" y="274" text-anchor="start">AGND</text>
+<path class="sch-w" d="M348 310 L360 310"/>
+<text class="sch-pin" x="368" y="314" text-anchor="start">MXO</text>
+<path class="sch-w" d="M348 350 L360 350"/>
+<text class="sch-pin" x="368" y="354" text-anchor="start">AINP</text>
+<path class="sch-w" d="M348 390 L360 390"/>
+<text class="sch-pin" x="368" y="394" text-anchor="start">AINM</text>
+<path class="sch-w" d="M348 430 L360 430"/>
+<text class="sch-pin" x="368" y="434" text-anchor="start">AGND</text>
+<path class="sch-w" d="M348 482 L360 482"/>
+<text class="sch-pin" x="368" y="486" text-anchor="start">CH15</text>
+<path class="sch-w" d="M348 534 L360 534"/>
+<text class="sch-pin" x="368" y="538" text-anchor="start">CH14</text>
+<path class="sch-w" d="M348 586 L360 586"/>
+<text class="sch-pin" x="368" y="590" text-anchor="start">CH13</text>
+<path class="sch-w" d="M348 638 L360 638"/>
+<text class="sch-pin" x="368" y="642" text-anchor="start">CH12</text>
+<path class="sch-w" d="M348 690 L360 690"/>
+<text class="sch-pin" x="368" y="694" text-anchor="start">CH11</text>
+<path class="sch-w" d="M348 742 L360 742"/>
+<text class="sch-pin" x="368" y="746" text-anchor="start">CH10</text>
+<path class="sch-w" d="M348 794 L360 794"/>
+<text class="sch-pin" x="368" y="798" text-anchor="start">CH9</text>
+<path class="sch-w" d="M348 846 L360 846"/>
+<text class="sch-pin" x="368" y="850" text-anchor="start">CH8</text>
+<path class="sch-w" d="M348 898 L360 898"/>
+<text class="sch-pin" x="368" y="902" text-anchor="start">AGND</text>
+<path class="sch-w" d="M560 70 L572 70"/>
+<text class="sch-pin" x="552" y="74" text-anchor="end">GPIO1</text>
+<path class="sch-w" d="M560 110 L572 110"/>
+<text class="sch-pin" x="552" y="114" text-anchor="end">GPIO0</text>
+<path class="sch-w" d="M560 150 L572 150"/>
+<text class="sch-pin" x="552" y="154" text-anchor="end">VBD</text>
+<path class="sch-w" d="M560 190 L572 190"/>
+<text class="sch-pin" x="552" y="194" text-anchor="end">BDGND</text>
+<path class="sch-w" d="M560 230 L572 230"/>
+<text class="sch-pin" x="552" y="234" text-anchor="end">SDO</text>
+<path class="sch-w" d="M560 270 L572 270"/>
+<text class="sch-pin" x="552" y="274" text-anchor="end">SDI</text>
+<path class="sch-w" d="M560 310 L572 310"/>
+<text class="sch-pin" x="552" y="314" text-anchor="end">SCLK</text>
+<path class="sch-w" d="M560 350 L572 350"/>
+<text class="sch-pin" x="552" y="354" text-anchor="end">CS_N</text>
+<path class="sch-w" d="M560 390 L572 390"/>
+<text class="sch-pin" x="552" y="394" text-anchor="end">AGND</text>
+<path class="sch-w" d="M560 430 L572 430"/>
+<text class="sch-pin" x="552" y="434" text-anchor="end">VA</text>
+<path class="sch-w" d="M560 482 L572 482"/>
+<text class="sch-pin" x="552" y="486" text-anchor="end">CH0</text>
+<path class="sch-w" d="M560 534 L572 534"/>
+<text class="sch-pin" x="552" y="538" text-anchor="end">CH1</text>
+<path class="sch-w" d="M560 586 L572 586"/>
+<text class="sch-pin" x="552" y="590" text-anchor="end">CH2</text>
+<path class="sch-w" d="M560 638 L572 638"/>
+<text class="sch-pin" x="552" y="642" text-anchor="end">CH3</text>
+<path class="sch-w" d="M560 690 L572 690"/>
+<text class="sch-pin" x="552" y="694" text-anchor="end">CH4</text>
+<path class="sch-w" d="M560 742 L572 742"/>
+<text class="sch-pin" x="552" y="746" text-anchor="end">CH5</text>
+<path class="sch-w" d="M560 794 L572 794"/>
+<text class="sch-pin" x="552" y="798" text-anchor="end">CH6</text>
+<path class="sch-w" d="M560 846 L572 846"/>
+<text class="sch-pin" x="552" y="850" text-anchor="end">CH7</text>
+<path class="sch-w" d="M560 898 L572 898"/>
+<text class="sch-pin" x="552" y="902" text-anchor="end">AGND</text>
+<text class="sch-ictitle" x="460" y="482" text-anchor="middle">SA89853</text>
+<text class="sch-val" x="460" y="498" text-anchor="middle">12-bit SAR ADC</text>
+<path class="sch-flag" d="M150 70 L142 62 L104 62 L104 78 L142 78 Z"/>
+<text class="sch-net" x="123" y="74" text-anchor="middle">VBD</text>
+<path class="sch-w" d="M150 70 L240 70"/>
+<path class="sch-w" d="M240 70 L260 70 L262.5 64 L267.5 76 L272.5 64 L277.5 76 L282.5 64 L287.5 76 L290 70 L310 70"/>
+<path class="sch-w" d="M310 70 L348 70"/>
+<path class="sch-w" d="M240 110 L260 110 L262.5 104 L267.5 116 L272.5 104 L277.5 116 L282.5 104 L287.5 116 L290 110 L310 110"/>
+<path class="sch-w" d="M310 110 L348 110"/>
+<circle class="sch-dot" cx="210" cy="70" r="3"/>
+<path class="sch-w" d="M210 70 L210 110 L240 110"/>
+<text class="sch-ref" x="275" y="39" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="275" y="52" text-anchor="middle">47 kΩ</text>
+<path class="sch-w" d="M348 150 L230 150"/>
+<path class="sch-w" d="M230 150 L230 158"/>
+<path class="sch-w" d="M219 158 L241 158"/>
+<path class="sch-w" d="M223 163 L237 163"/>
+<path class="sch-w" d="M227 168 L233 168"/>
+<path class="sch-flag" d="M150 190 L142 182 L104 182 L104 198 L142 198 Z"/>
+<text class="sch-net" x="123" y="194" text-anchor="middle">REFP</text>
+<text class="sch-net" x="104" y="212" text-anchor="start">2–3 V reference</text>
+<path class="sch-w" d="M150 190 L348 190"/>
+<circle class="sch-dot" cx="300" cy="150" r="3"/>
+<circle class="sch-dot" cx="300" cy="190" r="3"/>
+<path class="sch-w" d="M300 150 L300 166"/>
+<path class="sch-w" d="M300 190 L300 174"/>
+<path class="sch-w" d="M289 166 L311 166"/>
+<path class="sch-w" d="M289 174 L311 174"/>
+<text class="sch-ref" x="284" y="168" text-anchor="end">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="284" y="181" text-anchor="end">10 µF</text>
+<path class="sch-flag" d="M150 230 L142 222 L104 222 L104 238 L142 238 Z"/>
+<text class="sch-net" x="123" y="234" text-anchor="middle">VA</text>
+<path class="sch-w" d="M150 230 L348 230"/>
+<path class="sch-w" d="M348 270 L180 270"/>
+<path class="sch-w" d="M180 270 L180 278"/>
+<path class="sch-w" d="M169 278 L191 278"/>
+<path class="sch-w" d="M173 283 L187 283"/>
+<path class="sch-w" d="M177 288 L183 288"/>
+<circle class="sch-dot" cx="230" cy="230" r="3"/>
+<circle class="sch-dot" cx="230" cy="270" r="3"/>
+<path class="sch-w" d="M230 230 L230 246"/>
+<path class="sch-w" d="M230 270 L230 254"/>
+<path class="sch-w" d="M219 246 L241 246"/>
+<path class="sch-w" d="M219 254 L241 254"/>
+<text class="sch-ref" x="214" y="248" text-anchor="end">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="214" y="261" text-anchor="end">10 µF</text>
+<circle class="sch-dot" cx="300" cy="230" r="3"/>
+<circle class="sch-dot" cx="300" cy="270" r="3"/>
+<path class="sch-w" d="M300 230 L300 246"/>
+<path class="sch-w" d="M300 270 L300 254"/>
+<path class="sch-w" d="M289 246 L311 246"/>
+<path class="sch-w" d="M289 254 L311 254"/>
+<text class="sch-ref" x="284" y="248" text-anchor="end">C<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="284" y="261" text-anchor="end">0.1 µF</text>
+<path class="sch-w" d="M348 310 L325 310 L325 350 L348 350"/>
+<path class="sch-w" d="M348 390 L300 390 L300 430"/>
+<path class="sch-w" d="M348 430 L300 430"/>
+<circle class="sch-dot" cx="300" cy="430" r="3"/>
+<path class="sch-w" d="M300 430 L300 438"/>
+<path class="sch-w" d="M289 438 L311 438"/>
+<path class="sch-w" d="M293 443 L307 443"/>
+<path class="sch-w" d="M297 448 L303 448"/>
+<path class="sch-w" d="M150 482 L190 482"/>
+<path class="sch-w" d="M190 482 L205 482 L207.5 476 L212.5 488 L217.5 476 L222.5 488 L227.5 476 L232.5 488 L235 482 L250 482"/>
+<path class="sch-w" d="M250 482 L348 482"/>
+<circle class="sch-dot" cx="290" cy="482" r="3"/>
+<path class="sch-w" d="M290 482 L290 490"/>
+<path class="sch-w" d="M290 506 L290 498"/>
+<path class="sch-w" d="M279 490 L301 490"/>
+<path class="sch-w" d="M279 498 L301 498"/>
+<path class="sch-w" d="M290 506 L290 514"/>
+<path class="sch-w" d="M279 514 L301 514"/>
+<path class="sch-w" d="M283 519 L297 519"/>
+<path class="sch-w" d="M287 524 L293 524"/>
+<circle class="sch-w" cx="146" cy="482" r="3.5"/>
+<text class="sch-net" x="136" y="486" text-anchor="end">CH15_IN</text>
+<path class="sch-w" d="M150 534 L190 534"/>
+<path class="sch-w" d="M190 534 L205 534 L207.5 528 L212.5 540 L217.5 528 L222.5 540 L227.5 528 L232.5 540 L235 534 L250 534"/>
+<path class="sch-w" d="M250 534 L348 534"/>
+<circle class="sch-dot" cx="290" cy="534" r="3"/>
+<path class="sch-w" d="M290 534 L290 542"/>
+<path class="sch-w" d="M290 558 L290 550"/>
+<path class="sch-w" d="M279 542 L301 542"/>
+<path class="sch-w" d="M279 550 L301 550"/>
+<path class="sch-w" d="M290 558 L290 566"/>
+<path class="sch-w" d="M279 566 L301 566"/>
+<path class="sch-w" d="M283 571 L297 571"/>
+<path class="sch-w" d="M287 576 L293 576"/>
+<circle class="sch-w" cx="146" cy="534" r="3.5"/>
+<text class="sch-net" x="136" y="538" text-anchor="end">CH14_IN</text>
+<path class="sch-w" d="M150 586 L190 586"/>
+<path class="sch-w" d="M190 586 L205 586 L207.5 580 L212.5 592 L217.5 580 L222.5 592 L227.5 580 L232.5 592 L235 586 L250 586"/>
+<path class="sch-w" d="M250 586 L348 586"/>
+<circle class="sch-dot" cx="290" cy="586" r="3"/>
+<path class="sch-w" d="M290 586 L290 594"/>
+<path class="sch-w" d="M290 610 L290 602"/>
+<path class="sch-w" d="M279 594 L301 594"/>
+<path class="sch-w" d="M279 602 L301 602"/>
+<path class="sch-w" d="M290 610 L290 618"/>
+<path class="sch-w" d="M279 618 L301 618"/>
+<path class="sch-w" d="M283 623 L297 623"/>
+<path class="sch-w" d="M287 628 L293 628"/>
+<circle class="sch-w" cx="146" cy="586" r="3.5"/>
+<text class="sch-net" x="136" y="590" text-anchor="end">CH13_IN</text>
+<path class="sch-w" d="M150 638 L190 638"/>
+<path class="sch-w" d="M190 638 L205 638 L207.5 632 L212.5 644 L217.5 632 L222.5 644 L227.5 632 L232.5 644 L235 638 L250 638"/>
+<path class="sch-w" d="M250 638 L348 638"/>
+<circle class="sch-dot" cx="290" cy="638" r="3"/>
+<path class="sch-w" d="M290 638 L290 646"/>
+<path class="sch-w" d="M290 662 L290 654"/>
+<path class="sch-w" d="M279 646 L301 646"/>
+<path class="sch-w" d="M279 654 L301 654"/>
+<path class="sch-w" d="M290 662 L290 670"/>
+<path class="sch-w" d="M279 670 L301 670"/>
+<path class="sch-w" d="M283 675 L297 675"/>
+<path class="sch-w" d="M287 680 L293 680"/>
+<circle class="sch-w" cx="146" cy="638" r="3.5"/>
+<text class="sch-net" x="136" y="642" text-anchor="end">CH12_IN</text>
+<path class="sch-w" d="M150 690 L190 690"/>
+<path class="sch-w" d="M190 690 L205 690 L207.5 684 L212.5 696 L217.5 684 L222.5 696 L227.5 684 L232.5 696 L235 690 L250 690"/>
+<path class="sch-w" d="M250 690 L348 690"/>
+<circle class="sch-dot" cx="290" cy="690" r="3"/>
+<path class="sch-w" d="M290 690 L290 698"/>
+<path class="sch-w" d="M290 714 L290 706"/>
+<path class="sch-w" d="M279 698 L301 698"/>
+<path class="sch-w" d="M279 706 L301 706"/>
+<path class="sch-w" d="M290 714 L290 722"/>
+<path class="sch-w" d="M279 722 L301 722"/>
+<path class="sch-w" d="M283 727 L297 727"/>
+<path class="sch-w" d="M287 732 L293 732"/>
+<circle class="sch-w" cx="146" cy="690" r="3.5"/>
+<text class="sch-net" x="136" y="694" text-anchor="end">CH11_IN</text>
+<path class="sch-w" d="M150 742 L190 742"/>
+<path class="sch-w" d="M190 742 L205 742 L207.5 736 L212.5 748 L217.5 736 L222.5 748 L227.5 736 L232.5 748 L235 742 L250 742"/>
+<path class="sch-w" d="M250 742 L348 742"/>
+<circle class="sch-dot" cx="290" cy="742" r="3"/>
+<path class="sch-w" d="M290 742 L290 750"/>
+<path class="sch-w" d="M290 766 L290 758"/>
+<path class="sch-w" d="M279 750 L301 750"/>
+<path class="sch-w" d="M279 758 L301 758"/>
+<path class="sch-w" d="M290 766 L290 774"/>
+<path class="sch-w" d="M279 774 L301 774"/>
+<path class="sch-w" d="M283 779 L297 779"/>
+<path class="sch-w" d="M287 784 L293 784"/>
+<circle class="sch-w" cx="146" cy="742" r="3.5"/>
+<text class="sch-net" x="136" y="746" text-anchor="end">CH10_IN</text>
+<path class="sch-w" d="M150 794 L190 794"/>
+<path class="sch-w" d="M190 794 L205 794 L207.5 788 L212.5 800 L217.5 788 L222.5 800 L227.5 788 L232.5 800 L235 794 L250 794"/>
+<path class="sch-w" d="M250 794 L348 794"/>
+<circle class="sch-dot" cx="290" cy="794" r="3"/>
+<path class="sch-w" d="M290 794 L290 802"/>
+<path class="sch-w" d="M290 818 L290 810"/>
+<path class="sch-w" d="M279 802 L301 802"/>
+<path class="sch-w" d="M279 810 L301 810"/>
+<path class="sch-w" d="M290 818 L290 826"/>
+<path class="sch-w" d="M279 826 L301 826"/>
+<path class="sch-w" d="M283 831 L297 831"/>
+<path class="sch-w" d="M287 836 L293 836"/>
+<circle class="sch-w" cx="146" cy="794" r="3.5"/>
+<text class="sch-net" x="136" y="798" text-anchor="end">CH9_IN</text>
+<path class="sch-w" d="M150 846 L190 846"/>
+<path class="sch-w" d="M190 846 L205 846 L207.5 840 L212.5 852 L217.5 840 L222.5 852 L227.5 840 L232.5 852 L235 846 L250 846"/>
+<path class="sch-w" d="M250 846 L348 846"/>
+<circle class="sch-dot" cx="290" cy="846" r="3"/>
+<path class="sch-w" d="M290 846 L290 854"/>
+<path class="sch-w" d="M290 870 L290 862"/>
+<path class="sch-w" d="M279 854 L301 854"/>
+<path class="sch-w" d="M279 862 L301 862"/>
+<path class="sch-w" d="M290 870 L290 878"/>
+<path class="sch-w" d="M279 878 L301 878"/>
+<path class="sch-w" d="M283 883 L297 883"/>
+<path class="sch-w" d="M287 888 L293 888"/>
+<circle class="sch-w" cx="146" cy="846" r="3.5"/>
+<text class="sch-net" x="136" y="850" text-anchor="end">CH8_IN</text>
+<text class="sch-ref" x="220" y="451" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="220" y="464" text-anchor="middle">33 Ω</text>
+<text class="sch-ref" x="304" y="498" text-anchor="start">C<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="304" y="511" text-anchor="start">270 pF</text>
+<path class="sch-w" d="M348 898 L320 898"/>
+<path class="sch-w" d="M320 898 L320 906"/>
+<path class="sch-w" d="M309 906 L331 906"/>
+<path class="sch-w" d="M313 911 L327 911"/>
+<path class="sch-w" d="M317 916 L323 916"/>
+<path class="sch-w" d="M572 70 L770 70"/>
+<circle class="sch-w" cx="774" cy="70" r="3.5"/>
+<text class="sch-net" x="784" y="74" text-anchor="start">GPIO1</text>
+<path class="sch-w" d="M572 110 L770 110"/>
+<circle class="sch-w" cx="774" cy="110" r="3.5"/>
+<text class="sch-net" x="784" y="114" text-anchor="start">GPIO0</text>
+<path class="sch-w" d="M572 230 L770 230"/>
+<circle class="sch-w" cx="774" cy="230" r="3.5"/>
+<text class="sch-net" x="784" y="234" text-anchor="start">SDO</text>
+<path class="sch-w" d="M572 270 L770 270"/>
+<circle class="sch-w" cx="774" cy="270" r="3.5"/>
+<text class="sch-net" x="784" y="274" text-anchor="start">SDI</text>
+<path class="sch-w" d="M572 310 L770 310"/>
+<circle class="sch-w" cx="774" cy="310" r="3.5"/>
+<text class="sch-net" x="784" y="314" text-anchor="start">SCLK</text>
+<path class="sch-w" d="M572 350 L770 350"/>
+<circle class="sch-w" cx="774" cy="350" r="3.5"/>
+<text class="sch-net" x="784" y="354" text-anchor="start">CS_N</text>
+<path class="sch-w" d="M572 150 L750 150"/>
+<path class="sch-flag" d="M750 150 L758 142 L796 142 L796 158 L758 158 Z"/>
+<text class="sch-net" x="777" y="154" text-anchor="middle">VBD</text>
+<path class="sch-w" d="M572 190 L750 190"/>
+<path class="sch-w" d="M750 190 L750 198"/>
+<path class="sch-w" d="M739 198 L761 198"/>
+<path class="sch-w" d="M743 203 L757 203"/>
+<path class="sch-w" d="M747 208 L753 208"/>
+<path class="sch-w" d="M572 390 L750 390"/>
+<path class="sch-w" d="M750 390 L750 382"/>
+<path class="sch-w" d="M739 382 L761 382"/>
+<path class="sch-w" d="M743 377 L757 377"/>
+<path class="sch-w" d="M747 372 L753 372"/>
+<path class="sch-w" d="M572 430 L750 430"/>
+<path class="sch-flag" d="M750 430 L758 422 L796 422 L796 438 L758 438 Z"/>
+<text class="sch-net" x="777" y="434" text-anchor="middle">VA</text>
+<circle class="sch-dot" cx="610" cy="150" r="3"/>
+<circle class="sch-dot" cx="610" cy="190" r="3"/>
+<path class="sch-w" d="M610 150 L610 166"/>
+<path class="sch-w" d="M610 190 L610 174"/>
+<path class="sch-w" d="M599 166 L621 166"/>
+<path class="sch-w" d="M599 174 L621 174"/>
+<text class="sch-ref" x="626" y="168" text-anchor="start">C<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="626" y="181" text-anchor="start">0.1 µF</text>
+<circle class="sch-dot" cx="680" cy="150" r="3"/>
+<circle class="sch-dot" cx="680" cy="190" r="3"/>
+<path class="sch-w" d="M680 150 L680 166"/>
+<path class="sch-w" d="M680 190 L680 174"/>
+<path class="sch-w" d="M669 166 L691 166"/>
+<path class="sch-w" d="M669 174 L691 174"/>
+<text class="sch-ref" x="696" y="168" text-anchor="start">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="696" y="181" text-anchor="start">10 µF</text>
+<circle class="sch-dot" cx="610" cy="390" r="3"/>
+<circle class="sch-dot" cx="610" cy="430" r="3"/>
+<path class="sch-w" d="M610 390 L610 406"/>
+<path class="sch-w" d="M610 430 L610 414"/>
+<path class="sch-w" d="M599 406 L621 406"/>
+<path class="sch-w" d="M599 414 L621 414"/>
+<text class="sch-ref" x="626" y="408" text-anchor="start">C<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="626" y="421" text-anchor="start">0.1 µF</text>
+<circle class="sch-dot" cx="680" cy="390" r="3"/>
+<circle class="sch-dot" cx="680" cy="430" r="3"/>
+<path class="sch-w" d="M680 390 L680 406"/>
+<path class="sch-w" d="M680 430 L680 414"/>
+<path class="sch-w" d="M669 406 L691 406"/>
+<path class="sch-w" d="M669 414 L691 414"/>
+<text class="sch-ref" x="696" y="408" text-anchor="start">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="696" y="421" text-anchor="start">10 µF</text>
+<path class="sch-w" d="M572 482 L670 482"/>
+<path class="sch-w" d="M670 482 L685 482 L687.5 476 L692.5 488 L697.5 476 L702.5 488 L707.5 476 L712.5 488 L715 482 L730 482"/>
+<path class="sch-w" d="M730 482 L770 482"/>
+<circle class="sch-dot" cx="630" cy="482" r="3"/>
+<path class="sch-w" d="M630 482 L630 490"/>
+<path class="sch-w" d="M630 506 L630 498"/>
+<path class="sch-w" d="M619 490 L641 490"/>
+<path class="sch-w" d="M619 498 L641 498"/>
+<path class="sch-w" d="M630 506 L630 514"/>
+<path class="sch-w" d="M619 514 L641 514"/>
+<path class="sch-w" d="M623 519 L637 519"/>
+<path class="sch-w" d="M627 524 L633 524"/>
+<circle class="sch-w" cx="774" cy="482" r="3.5"/>
+<text class="sch-net" x="784" y="486" text-anchor="start">CH0_IN</text>
+<path class="sch-w" d="M572 534 L670 534"/>
+<path class="sch-w" d="M670 534 L685 534 L687.5 528 L692.5 540 L697.5 528 L702.5 540 L707.5 528 L712.5 540 L715 534 L730 534"/>
+<path class="sch-w" d="M730 534 L770 534"/>
+<circle class="sch-dot" cx="630" cy="534" r="3"/>
+<path class="sch-w" d="M630 534 L630 542"/>
+<path class="sch-w" d="M630 558 L630 550"/>
+<path class="sch-w" d="M619 542 L641 542"/>
+<path class="sch-w" d="M619 550 L641 550"/>
+<path class="sch-w" d="M630 558 L630 566"/>
+<path class="sch-w" d="M619 566 L641 566"/>
+<path class="sch-w" d="M623 571 L637 571"/>
+<path class="sch-w" d="M627 576 L633 576"/>
+<circle class="sch-w" cx="774" cy="534" r="3.5"/>
+<text class="sch-net" x="784" y="538" text-anchor="start">CH1_IN</text>
+<path class="sch-w" d="M572 586 L670 586"/>
+<path class="sch-w" d="M670 586 L685 586 L687.5 580 L692.5 592 L697.5 580 L702.5 592 L707.5 580 L712.5 592 L715 586 L730 586"/>
+<path class="sch-w" d="M730 586 L770 586"/>
+<circle class="sch-dot" cx="630" cy="586" r="3"/>
+<path class="sch-w" d="M630 586 L630 594"/>
+<path class="sch-w" d="M630 610 L630 602"/>
+<path class="sch-w" d="M619 594 L641 594"/>
+<path class="sch-w" d="M619 602 L641 602"/>
+<path class="sch-w" d="M630 610 L630 618"/>
+<path class="sch-w" d="M619 618 L641 618"/>
+<path class="sch-w" d="M623 623 L637 623"/>
+<path class="sch-w" d="M627 628 L633 628"/>
+<circle class="sch-w" cx="774" cy="586" r="3.5"/>
+<text class="sch-net" x="784" y="590" text-anchor="start">CH2_IN</text>
+<path class="sch-w" d="M572 638 L670 638"/>
+<path class="sch-w" d="M670 638 L685 638 L687.5 632 L692.5 644 L697.5 632 L702.5 644 L707.5 632 L712.5 644 L715 638 L730 638"/>
+<path class="sch-w" d="M730 638 L770 638"/>
+<circle class="sch-dot" cx="630" cy="638" r="3"/>
+<path class="sch-w" d="M630 638 L630 646"/>
+<path class="sch-w" d="M630 662 L630 654"/>
+<path class="sch-w" d="M619 646 L641 646"/>
+<path class="sch-w" d="M619 654 L641 654"/>
+<path class="sch-w" d="M630 662 L630 670"/>
+<path class="sch-w" d="M619 670 L641 670"/>
+<path class="sch-w" d="M623 675 L637 675"/>
+<path class="sch-w" d="M627 680 L633 680"/>
+<circle class="sch-w" cx="774" cy="638" r="3.5"/>
+<text class="sch-net" x="784" y="642" text-anchor="start">CH3_IN</text>
+<path class="sch-w" d="M572 690 L670 690"/>
+<path class="sch-w" d="M670 690 L685 690 L687.5 684 L692.5 696 L697.5 684 L702.5 696 L707.5 684 L712.5 696 L715 690 L730 690"/>
+<path class="sch-w" d="M730 690 L770 690"/>
+<circle class="sch-dot" cx="630" cy="690" r="3"/>
+<path class="sch-w" d="M630 690 L630 698"/>
+<path class="sch-w" d="M630 714 L630 706"/>
+<path class="sch-w" d="M619 698 L641 698"/>
+<path class="sch-w" d="M619 706 L641 706"/>
+<path class="sch-w" d="M630 714 L630 722"/>
+<path class="sch-w" d="M619 722 L641 722"/>
+<path class="sch-w" d="M623 727 L637 727"/>
+<path class="sch-w" d="M627 732 L633 732"/>
+<circle class="sch-w" cx="774" cy="690" r="3.5"/>
+<text class="sch-net" x="784" y="694" text-anchor="start">CH4_IN</text>
+<path class="sch-w" d="M572 742 L670 742"/>
+<path class="sch-w" d="M670 742 L685 742 L687.5 736 L692.5 748 L697.5 736 L702.5 748 L707.5 736 L712.5 748 L715 742 L730 742"/>
+<path class="sch-w" d="M730 742 L770 742"/>
+<circle class="sch-dot" cx="630" cy="742" r="3"/>
+<path class="sch-w" d="M630 742 L630 750"/>
+<path class="sch-w" d="M630 766 L630 758"/>
+<path class="sch-w" d="M619 750 L641 750"/>
+<path class="sch-w" d="M619 758 L641 758"/>
+<path class="sch-w" d="M630 766 L630 774"/>
+<path class="sch-w" d="M619 774 L641 774"/>
+<path class="sch-w" d="M623 779 L637 779"/>
+<path class="sch-w" d="M627 784 L633 784"/>
+<circle class="sch-w" cx="774" cy="742" r="3.5"/>
+<text class="sch-net" x="784" y="746" text-anchor="start">CH5_IN</text>
+<path class="sch-w" d="M572 794 L670 794"/>
+<path class="sch-w" d="M670 794 L685 794 L687.5 788 L692.5 800 L697.5 788 L702.5 800 L707.5 788 L712.5 800 L715 794 L730 794"/>
+<path class="sch-w" d="M730 794 L770 794"/>
+<circle class="sch-dot" cx="630" cy="794" r="3"/>
+<path class="sch-w" d="M630 794 L630 802"/>
+<path class="sch-w" d="M630 818 L630 810"/>
+<path class="sch-w" d="M619 802 L641 802"/>
+<path class="sch-w" d="M619 810 L641 810"/>
+<path class="sch-w" d="M630 818 L630 826"/>
+<path class="sch-w" d="M619 826 L641 826"/>
+<path class="sch-w" d="M623 831 L637 831"/>
+<path class="sch-w" d="M627 836 L633 836"/>
+<circle class="sch-w" cx="774" cy="794" r="3.5"/>
+<text class="sch-net" x="784" y="798" text-anchor="start">CH6_IN</text>
+<path class="sch-w" d="M572 846 L670 846"/>
+<path class="sch-w" d="M670 846 L685 846 L687.5 840 L692.5 852 L697.5 840 L702.5 852 L707.5 840 L712.5 852 L715 846 L730 846"/>
+<path class="sch-w" d="M730 846 L770 846"/>
+<circle class="sch-dot" cx="630" cy="846" r="3"/>
+<path class="sch-w" d="M630 846 L630 854"/>
+<path class="sch-w" d="M630 870 L630 862"/>
+<path class="sch-w" d="M619 854 L641 854"/>
+<path class="sch-w" d="M619 862 L641 862"/>
+<path class="sch-w" d="M630 870 L630 878"/>
+<path class="sch-w" d="M619 878 L641 878"/>
+<path class="sch-w" d="M623 883 L637 883"/>
+<path class="sch-w" d="M627 888 L633 888"/>
+<circle class="sch-w" cx="774" cy="846" r="3.5"/>
+<text class="sch-net" x="784" y="850" text-anchor="start">CH7_IN</text>
+<text class="sch-ref" x="700" y="868" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="700" y="881" text-anchor="middle">33 Ω</text>
+<path class="sch-w" d="M572 898 L600 898"/>
+<path class="sch-w" d="M600 898 L600 906"/>
+<path class="sch-w" d="M589 906 L611 906"/>
+<path class="sch-w" d="M593 911 L607 911"/>
+<path class="sch-w" d="M597 916 L603 916"/>
+</svg>

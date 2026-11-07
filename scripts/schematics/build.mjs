@@ -13,6 +13,7 @@ import { buckBoost } from './designs-sy2a29311.mjs';
 import { inInHBridge } from './designs-sy67134.mjs';
 import { syncBoostDisconnect } from './designs-sy2a29117.mjs';
 import { adcApplication, esp32s3SpiWiringSa59401 } from './designs-sa59401.mjs';
+import { sa8985xApplication, esp32s3SpiWiringSa8985x } from './designs-sa89853.mjs';
 import { ldoWithReset } from './designs-sy2a27352.mjs';
 import { currentSenseAmp } from './designs-sy24642.mjs';
 import { overcurrentComparator } from './designs-sy24640.mjs';
@@ -48,6 +49,8 @@ const designs = {
   'sy2a29117-schematic.svg': syncBoostDisconnect({ id: 'sy2a29117', part: 'SY2A29117' }),
   'sa59401-schematic.svg': adcApplication({ id: 'sa59401', part: 'SA59401' }),
   'sa59401-esp32s3-spi-wiring.svg': esp32s3SpiWiringSa59401({ id: 'sa59401-esp32s3-spi', part: 'SA59401' }),
+  'sa89853-schematic.svg': sa8985xApplication({ id: 'sa89853', part: 'SA89853' }),
+  'sa89853-esp32s3-spi-wiring.svg': esp32s3SpiWiringSa8985x({ id: 'sa89853-esp32s3-spi', part: 'SA89853' }),
   'sy2a27352-schematic.svg': ldoWithReset({ id: 'sy2a27352', part: 'SY2A27352' }),
   'sy24642-schematic.svg': currentSenseAmp({ id: 'sy24642', part: 'SY24642' }),
   'sy24640-schematic.svg': overcurrentComparator({ id: 'sy24640', part: 'SY24640' }),
