@@ -29,7 +29,7 @@ const parts = defineCollection({
       'ldo',
       'ac-dc-controller',
       'gate-driver',
-      'power-stage',
+      'motor-driver',
       'amplifier',
       'processor',
       'other',

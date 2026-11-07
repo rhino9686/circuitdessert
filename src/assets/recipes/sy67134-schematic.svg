@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 760 350" role="img" aria-labelledby="sy67134-t sy67134-d">
+<title id="sy67134-t">SY67134 typical application</title>
+<desc id="sy67134-d">Typical application of the SY67134 H-bridge motor driver, redrawn from the datasheet. The supply VM (5–32 V) feeds the VM pin, with a bulk electrolytic capacitor CBULK and a 10 µF ceramic capacitor CVM from VM to the GND pin, which goes to ground. IN1 and IN2 are logic inputs from a controller. An external reference voltage (0.1–3 V) drives VREF, which has a capacitor CREF (≥ 0.1 µF) to ground. A brushed DC motor connects between OUT1 and OUT2. ISEN goes to ground through the current-sense resistor RSENSE (&lt; 100 mΩ).</desc>
+<rect class="sch-ic" x="300" y="90" width="170" height="250" rx="3"/>
+<path class="sch-w" d="M288 120 L300 120"/>
+<text class="sch-pin" x="308" y="124" text-anchor="start">VM</text>
+<path class="sch-w" d="M288 170 L300 170"/>
+<text class="sch-pin" x="308" y="174" text-anchor="start">GND</text>
+<path class="sch-w" d="M288 225 L300 225"/>
+<text class="sch-pin" x="308" y="229" text-anchor="start">IN1</text>
+<path class="sch-w" d="M288 260 L300 260"/>
+<text class="sch-pin" x="308" y="264" text-anchor="start">IN2</text>
+<path class="sch-w" d="M288 310 L300 310"/>
+<text class="sch-pin" x="308" y="314" text-anchor="start">VREF</text>
+<path class="sch-w" d="M470 120 L482 120"/>
+<text class="sch-pin" x="462" y="124" text-anchor="end">OUT1</text>
+<path class="sch-w" d="M470 260 L482 260"/>
+<text class="sch-pin" x="462" y="264" text-anchor="end">OUT2</text>
+<path class="sch-w" d="M470 310 L482 310"/>
+<text class="sch-pin" x="462" y="314" text-anchor="end">ISEN</text>
+<text class="sch-ictitle" x="385" y="213" text-anchor="middle">SY67134</text>
+<text class="sch-val" x="385" y="229" text-anchor="middle">H-bridge</text>
+<path class="sch-flag" d="M50 120 L42 112 L4 112 L4 128 L42 128 Z"/>
+<text class="sch-net" x="23" y="124" text-anchor="middle">VM</text>
+<text class="sch-net" x="10" y="106" text-anchor="start">5–32 V</text>
+<path class="sch-w" d="M50 120 L288 120"/>
+<circle class="sch-dot" cx="150" cy="120" r="3"/>
+<path class="sch-w" d="M150 120 L150 141"/>
+<path class="sch-w" d="M150 170 L150 149"/>
+<path class="sch-w" d="M139 141 L161 141"/>
+<path class="sch-w" d="M139 153 Q150 144 161 153"/>
+<text class="sch-ref" x="135" y="137" text-anchor="end">+</text>
+<text class="sch-ref" x="134" y="154" text-anchor="end">C<tspan class="sch-sub" dy="2.5">BULK</tspan></text>
+<text class="sch-val" x="134" y="167" text-anchor="end">electrolytic</text>
+<circle class="sch-dot" cx="220" cy="120" r="3"/>
+<path class="sch-w" d="M220 120 L220 141"/>
+<path class="sch-w" d="M220 170 L220 149"/>
+<path class="sch-w" d="M209 141 L231 141"/>
+<path class="sch-w" d="M209 149 L231 149"/>
+<text class="sch-ref" x="236" y="143" text-anchor="start">C<tspan class="sch-sub" dy="2.5">VM</tspan></text>
+<text class="sch-val" x="236" y="156" text-anchor="start">10 µF</text>
+<path class="sch-w" d="M150 170 L288 170"/>
+<circle class="sch-dot" cx="220" cy="170" r="3"/>
+<path class="sch-w" d="M150 170 L150 178"/>
+<path class="sch-w" d="M139 178 L161 178"/>
+<path class="sch-w" d="M143 183 L157 183"/>
+<path class="sch-w" d="M147 188 L153 188"/>
+<path class="sch-flag" d="M50 225 L42 217 L4 217 L4 233 L42 233 Z"/>
+<text class="sch-net" x="23" y="229" text-anchor="middle">IN1</text>
+<path class="sch-w" d="M50 225 L288 225"/>
+<path class="sch-flag" d="M50 260 L42 252 L4 252 L4 268 L42 268 Z"/>
+<text class="sch-net" x="23" y="264" text-anchor="middle">IN2</text>
+<path class="sch-w" d="M50 260 L288 260"/>
+<path class="sch-flag" d="M50 310 L42 302 L4 302 L4 318 L42 318 Z"/>
+<text class="sch-net" x="23" y="314" text-anchor="middle">VREF</text>
+<text class="sch-net" x="10" y="296" text-anchor="start">0.1–3 V</text>
+<path class="sch-w" d="M50 310 L288 310"/>
+<circle class="sch-dot" cx="190" cy="310" r="3"/>
+<path class="sch-w" d="M190 310 L190 331"/>
+<path class="sch-w" d="M190 360 L190 339"/>
+<path class="sch-w" d="M179 331 L201 331"/>
+<path class="sch-w" d="M179 339 L201 339"/>
+<path class="sch-w" d="M190 360 L190 368"/>
+<path class="sch-w" d="M179 368 L201 368"/>
+<path class="sch-w" d="M183 373 L197 373"/>
+<path class="sch-w" d="M187 378 L193 378"/>
+<text class="sch-ref" x="206" y="334" text-anchor="start">C<tspan class="sch-sub" dy="2.5">REF</tspan></text>
+<text class="sch-val" x="206" y="347" text-anchor="start">≥ 0.1 µF</text>
+<path class="sch-w" d="M482 120 L600 120 L600 160"/>
+<path class="sch-w" d="M482 260 L600 260 L600 220"/>
+<circle class="sch-w" cx="600" cy="190" r="30"/>
+<text class="sch-ictitle" x="600" y="195" text-anchor="middle">M</text>
+<text class="sch-val" x="642" y="194" text-anchor="start">Brushed DC motor</text>
+<path class="sch-w" d="M482 310 L540 310"/>
+<path class="sch-w" d="M540 310 L540 325 L534 327.5 L546 332.5 L534 337.5 L546 342.5 L534 347.5 L546 352.5 L540 355 L540 370"/>
+<path class="sch-w" d="M540 370 L540 378"/>
+<path class="sch-w" d="M529 378 L551 378"/>
+<path class="sch-w" d="M533 383 L547 383"/>
+<path class="sch-w" d="M537 388 L543 388"/>
+<text class="sch-ref" x="556" y="336" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SENSE</tspan></text>
+<text class="sch-val" x="556" y="349" text-anchor="start">&lt; 100 mΩ</text>
+</svg>
