@@ -21,6 +21,8 @@ import { highVoltageAsyncBuck } from './designs-sy21034.mjs';
 import { boostLedDriver } from './designs-sy22101a.mjs';
 import { bypassBoostApplication, esp32s3I2cWiringSy87004a } from './designs-sy87004a.mjs';
 import { bypassBoostFigure1 } from './designs-sy87004.mjs';
+import { buckBoost1MHz } from './designs-sy20516a.mjs';
+import { lowVoltageBoostFixed } from './designs-sy7070b.mjs';
 import { ldoWithReset } from './designs-sy2a27352.mjs';
 import { currentSenseAmp } from './designs-sy24642.mjs';
 import { overcurrentComparator } from './designs-sy24640.mjs';
@@ -68,6 +70,8 @@ const designs = {
   'sy87004a-esp32s3-i2c-wiring.svg': esp32s3I2cWiringSy87004a({ id: 'sy87004a-esp32s3-i2c', part: 'SY87004A' }),
   'sy87004-schematic.svg': bypassBoostFigure1({ id: 'sy87004', part: 'SY87004' }),
   'sy87004-esp32s3-i2c-wiring.svg': esp32s3I2cWiringSy87004a({ id: 'sy87004-esp32s3-i2c', part: 'SY87004' }),
+  'sy20516a-schematic.svg': buckBoost1MHz({ id: 'sy20516a', part: 'SY20516A' }),
+  'sy7070b-schematic.svg': lowVoltageBoostFixed({ id: 'sy7070b', part: 'SY7070B' }),
   'sy2a27352-schematic.svg': ldoWithReset({ id: 'sy2a27352', part: 'SY2A27352' }),
   'sy24642-schematic.svg': currentSenseAmp({ id: 'sy24642', part: 'SY24642' }),
   'sy24640-schematic.svg': overcurrentComparator({ id: 'sy24640', part: 'SY24640' }),
