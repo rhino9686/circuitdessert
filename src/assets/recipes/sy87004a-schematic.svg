@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 90 840 340" role="img" aria-labelledby="sy87004a-t sy87004a-d">
+<title id="sy87004a-t">SY87004A typical application</title>
+<desc id="sy87004a-d">Typical application of the SY87004A boost regulator with bypass mode, redrawn from the datasheet's Schematic (page 13). The battery, 1.9 to 5.5 V, has a 100 µF electrolytic, a 22 µF and a 0.1 µF capacitor to ground, feeds the VIN pin, and feeds a 0.47 µH inductor L1 that goes to the LX pin. The EN pin is driven from the battery through a switch k, with a 1 MΩ resistor R4 from EN to ground. The VOUT pin, 2.85 to 5.5 V, has four 10 µF capacitors to ground. The ADDR pin is pulled high, pulled low or left floating to choose the I2C address, and the SDA and SCL pins go to the I2C bus.</desc>
+<rect class="sch-ic" x="370" y="110" width="170" height="260" rx="3"/>
+<path class="sch-w" d="M358 150 L370 150"/>
+<text class="sch-pin" x="378" y="154" text-anchor="start">LX</text>
+<path class="sch-w" d="M358 190 L370 190"/>
+<text class="sch-pin" x="378" y="194" text-anchor="start">VIN</text>
+<path class="sch-w" d="M358 300 L370 300"/>
+<text class="sch-pin" x="378" y="304" text-anchor="start">EN</text>
+<path class="sch-w" d="M540 150 L552 150"/>
+<text class="sch-pin" x="532" y="154" text-anchor="end">VOUT</text>
+<path class="sch-w" d="M540 280 L552 280"/>
+<text class="sch-pin" x="532" y="284" text-anchor="end">ADDR</text>
+<path class="sch-w" d="M540 315 L552 315"/>
+<text class="sch-pin" x="532" y="319" text-anchor="end">SDA</text>
+<path class="sch-w" d="M540 350 L552 350"/>
+<text class="sch-pin" x="532" y="354" text-anchor="end">SCL</text>
+<path class="sch-w" d="M455 370 L455 382"/>
+<text class="sch-pin" x="455" y="362" text-anchor="middle">PGND</text>
+<text class="sch-ictitle" x="455" y="244" text-anchor="middle">SY87004A</text>
+<path class="sch-w" d="M455 382 L455 383"/>
+<path class="sch-w" d="M455 383 L455 391"/>
+<path class="sch-w" d="M444 391 L466 391"/>
+<path class="sch-w" d="M448 396 L462 396"/>
+<path class="sch-w" d="M452 401 L458 401"/>
+<path class="sch-flag" d="M54 150 L46 142 L8 142 L8 158 L46 158 Z"/>
+<text class="sch-net" x="27" y="154" text-anchor="middle">Battery</text>
+<text class="sch-net" x="8" y="176" text-anchor="start">1.9–5.5 V</text>
+<path class="sch-w" d="M54 150 L320 150"/>
+<circle class="sch-dot" cx="120" cy="150" r="3"/>
+<path class="sch-w" d="M120 150 L120 268.5"/>
+<path class="sch-w" d="M120 395 L120 276.5"/>
+<path class="sch-w" d="M109 268.5 L131 268.5"/>
+<path class="sch-w" d="M109 280.5 Q120 271.5 131 280.5"/>
+<text class="sch-ref" x="105" y="264.5" text-anchor="end">+</text>
+<path class="sch-w" d="M120 395 L120 403"/>
+<path class="sch-w" d="M109 403 L131 403"/>
+<path class="sch-w" d="M113 408 L127 408"/>
+<path class="sch-w" d="M117 413 L123 413"/>
+<text class="sch-ref" x="104" y="288" text-anchor="end">C<tspan class="sch-sub" dy="2.5">7</tspan></text>
+<text class="sch-val" x="104" y="301" text-anchor="end">100 µF</text>
+<circle class="sch-dot" cx="180" cy="150" r="3"/>
+<path class="sch-w" d="M180 150 L180 268.5"/>
+<path class="sch-w" d="M180 395 L180 276.5"/>
+<path class="sch-w" d="M169 268.5 L191 268.5"/>
+<path class="sch-w" d="M169 276.5 L191 276.5"/>
+<path class="sch-w" d="M180 395 L180 403"/>
+<path class="sch-w" d="M169 403 L191 403"/>
+<path class="sch-w" d="M173 408 L187 408"/>
+<path class="sch-w" d="M177 413 L183 413"/>
+<text class="sch-ref" x="196" y="288" text-anchor="start">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="196" y="301" text-anchor="start">22 µF</text>
+<circle class="sch-dot" cx="240" cy="150" r="3"/>
+<path class="sch-w" d="M240 150 L240 268.5"/>
+<path class="sch-w" d="M240 395 L240 276.5"/>
+<path class="sch-w" d="M229 268.5 L251 268.5"/>
+<path class="sch-w" d="M229 276.5 L251 276.5"/>
+<path class="sch-w" d="M240 395 L240 403"/>
+<path class="sch-w" d="M229 403 L251 403"/>
+<path class="sch-w" d="M233 408 L247 408"/>
+<path class="sch-w" d="M237 413 L243 413"/>
+<text class="sch-ref" x="256" y="288" text-anchor="start">C<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="256" y="301" text-anchor="start">0.1 µF</text>
+<circle class="sch-dot" cx="300" cy="150" r="3"/>
+<path class="sch-w" d="M300 150 L300 190 L358 190"/>
+<path class="sch-w" d="M320 150 L320 150 A6 6 0 0 1 332 150 A6 6 0 0 1 344 150 A6 6 0 0 1 356 150 A6 6 0 0 1 368 150 L368 150"/>
+<text class="sch-ref" x="344" y="119" text-anchor="middle">L<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="344" y="132" text-anchor="middle">0.47 µH</text>
+<circle class="sch-dot" cx="300" cy="190" r="3"/>
+<path class="sch-w" d="M300 190 L300 222"/>
+<circle class="sch-w" cx="300" cy="226" r="3"/>
+<path class="sch-w" d="M300 250 L312 230"/>
+<circle class="sch-w" cx="300" cy="254" r="3"/>
+<text class="sch-ref" x="318" y="245" text-anchor="start">k</text>
+<path class="sch-w" d="M300 257 L300 300"/>
+<circle class="sch-dot" cx="300" cy="300" r="3"/>
+<path class="sch-w" d="M300 300 L358 300"/>
+<path class="sch-w" d="M300 300 L300 332.5 L294 335 L306 340 L294 345 L306 350 L294 355 L306 360 L300 362.5 L300 395"/>
+<path class="sch-w" d="M300 395 L300 403"/>
+<path class="sch-w" d="M289 403 L311 403"/>
+<path class="sch-w" d="M293 408 L307 408"/>
+<path class="sch-w" d="M297 413 L303 413"/>
+<text class="sch-ref" x="316" y="348" text-anchor="start">R<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="316" y="361" text-anchor="start">1 MΩ</text>
+<path class="sch-w" d="M552 150 L760 150"/>
+<circle class="sch-w" cx="764" cy="150" r="3.5"/>
+<text class="sch-net" x="764" y="136" text-anchor="end">VOUT 2.85–5.5 V</text>
+<circle class="sch-dot" cx="600" cy="150" r="3"/>
+<path class="sch-w" d="M600 150 L600 181"/>
+<path class="sch-w" d="M600 220 L600 189"/>
+<path class="sch-w" d="M589 181 L611 181"/>
+<path class="sch-w" d="M589 189 L611 189"/>
+<path class="sch-w" d="M600 220 L600 228"/>
+<path class="sch-w" d="M589 228 L611 228"/>
+<path class="sch-w" d="M593 233 L607 233"/>
+<path class="sch-w" d="M597 238 L603 238"/>
+<text class="sch-ref" x="616" y="184" text-anchor="start">C<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<circle class="sch-dot" cx="645" cy="150" r="3"/>
+<path class="sch-w" d="M645 150 L645 181"/>
+<path class="sch-w" d="M645 220 L645 189"/>
+<path class="sch-w" d="M634 181 L656 181"/>
+<path class="sch-w" d="M634 189 L656 189"/>
+<path class="sch-w" d="M645 220 L645 228"/>
+<path class="sch-w" d="M634 228 L656 228"/>
+<path class="sch-w" d="M638 233 L652 233"/>
+<path class="sch-w" d="M642 238 L648 238"/>
+<text class="sch-ref" x="661" y="184" text-anchor="start">C<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<circle class="sch-dot" cx="690" cy="150" r="3"/>
+<path class="sch-w" d="M690 150 L690 181"/>
+<path class="sch-w" d="M690 220 L690 189"/>
+<path class="sch-w" d="M679 181 L701 181"/>
+<path class="sch-w" d="M679 189 L701 189"/>
+<path class="sch-w" d="M690 220 L690 228"/>
+<path class="sch-w" d="M679 228 L701 228"/>
+<path class="sch-w" d="M683 233 L697 233"/>
+<path class="sch-w" d="M687 238 L693 238"/>
+<text class="sch-ref" x="706" y="184" text-anchor="start">C<tspan class="sch-sub" dy="2.5">5</tspan></text>
+<circle class="sch-dot" cx="735" cy="150" r="3"/>
+<path class="sch-w" d="M735 150 L735 181"/>
+<path class="sch-w" d="M735 220 L735 189"/>
+<path class="sch-w" d="M724 181 L746 181"/>
+<path class="sch-w" d="M724 189 L746 189"/>
+<path class="sch-w" d="M735 220 L735 228"/>
+<path class="sch-w" d="M724 228 L746 228"/>
+<path class="sch-w" d="M728 233 L742 233"/>
+<path class="sch-w" d="M732 238 L738 238"/>
+<text class="sch-ref" x="751" y="184" text-anchor="start">C<tspan class="sch-sub" dy="2.5">6</tspan></text>
+<text class="sch-val" x="667" y="256" text-anchor="middle">C3 to C6: 10 µF each</text>
+<path class="sch-w" d="M552 280 L640 280"/>
+<circle class="sch-w" cx="644" cy="280" r="3.5"/>
+<text class="sch-val" x="654" y="284" text-anchor="start">I2C address: H, L or floating</text>
+<path class="sch-w" d="M552 315 L640 315"/>
+<path class="sch-flag" d="M640 315 L648 307 L686 307 L686 323 L648 323 Z"/>
+<text class="sch-net" x="667" y="319" text-anchor="middle">SDA</text>
+<path class="sch-w" d="M552 350 L640 350"/>
+<path class="sch-flag" d="M640 350 L648 342 L686 342 L686 358 L648 358 Z"/>
+<text class="sch-net" x="667" y="354" text-anchor="middle">SCL</text>
+</svg>

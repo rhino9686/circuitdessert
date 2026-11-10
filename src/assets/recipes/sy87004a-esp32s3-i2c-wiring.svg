@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 680 420" role="img" aria-labelledby="sy87004a-esp32s3-i2c-t sy87004a-esp32s3-i2c-d">
+<title id="sy87004a-esp32s3-i2c-t">SY87004A wired to an ESP32-S3 over I2C</title>
+<desc id="sy87004a-esp32s3-i2c-d">Wiring for talking to an SY87004A from an ESP32-S3 dev board. The board's 3V3 pin feeds only the two pull-ups. ESP32-S3 GPIO9 (SCL) goes to the SCL pin and GPIO8 (SDA) to the SDA pin, each with a 4.7 kΩ pull-up to 3.3 V. The ADDR pin is tied to ground, which selects the address 0x75. The EN pin is joined to the battery through a jumper and has a 1 MΩ resistor to ground. The regulator's own supply, the battery, goes to VIN and the grounds of the board and the regulator are joined. The inductor and capacitors are as in the application circuit.</desc>
+<rect class="sch-ic" x="10" y="90" width="120" height="270" rx="3"/>
+<path class="sch-w" d="M130 150 L142 150"/>
+<text class="sch-pin" x="122" y="154" text-anchor="end">GPIO9 (SCL)</text>
+<path class="sch-w" d="M130 180 L142 180"/>
+<text class="sch-pin" x="122" y="184" text-anchor="end">GPIO8 (SDA)</text>
+<path class="sch-w" d="M130 330 L142 330"/>
+<text class="sch-pin" x="122" y="334" text-anchor="end">GND</text>
+<path class="sch-w" d="M70 78 L70 90"/>
+<text class="sch-pin" x="70" y="106" text-anchor="middle">3V3</text>
+<text class="sch-ictitle" x="70" y="223" text-anchor="middle">ESP32-S3</text>
+<text class="sch-val" x="70" y="239" text-anchor="middle">dev board, 3.3 V</text>
+<text class="sch-net" x="10" y="42" text-anchor="start">3.3 V</text>
+<path class="sch-w" d="M70 78 L70 50"/>
+<path class="sch-w" d="M70 50 L330 50"/>
+<rect class="sch-ic" x="400" y="90" width="150" height="270" rx="3"/>
+<path class="sch-w" d="M388 150 L400 150"/>
+<text class="sch-pin" x="408" y="154" text-anchor="start">SCL</text>
+<path class="sch-w" d="M388 180 L400 180"/>
+<text class="sch-pin" x="408" y="184" text-anchor="start">SDA</text>
+<path class="sch-w" d="M388 250 L400 250"/>
+<text class="sch-pin" x="408" y="254" text-anchor="start">ADDR</text>
+<path class="sch-w" d="M550 130 L562 130"/>
+<text class="sch-pin" x="542" y="134" text-anchor="end">VIN</text>
+<path class="sch-w" d="M550 290 L562 290"/>
+<text class="sch-pin" x="542" y="294" text-anchor="end">EN</text>
+<path class="sch-w" d="M475 360 L475 372"/>
+<text class="sch-pin" x="475" y="352" text-anchor="middle">PGND</text>
+<text class="sch-ictitle" x="475" y="229" text-anchor="middle">SY87004A</text>
+<path class="sch-w" d="M142 150 L285 150 A5 5 0 0 1 295 150 L388 150"/>
+<circle class="sch-dot" cx="230" cy="150" r="3"/>
+<path class="sch-w" d="M230 150 L230 115 L224 112.5 L236 107.5 L224 102.5 L236 97.5 L224 92.5 L236 87.5 L230 85 L230 50"/>
+<circle class="sch-dot" cx="230" cy="50" r="3"/>
+<text class="sch-ref" x="214" y="98" text-anchor="end">R<tspan class="sch-sub" dy="2.5">PU1</tspan></text>
+<text class="sch-val" x="214" y="111" text-anchor="end">4.7 kΩ</text>
+<path class="sch-w" d="M142 180 L388 180"/>
+<circle class="sch-dot" cx="290" cy="180" r="3"/>
+<path class="sch-w" d="M290 180 L290 130 L284 127.5 L296 122.5 L284 117.5 L296 112.5 L284 107.5 L296 102.5 L290 100 L290 50"/>
+<circle class="sch-dot" cx="290" cy="50" r="3"/>
+<text class="sch-ref" x="306" y="113" text-anchor="start">R<tspan class="sch-sub" dy="2.5">PU2</tspan></text>
+<text class="sch-val" x="306" y="126" text-anchor="start">4.7 kΩ</text>
+<path class="sch-w" d="M388 250 L350 250"/>
+<path class="sch-w" d="M350 250 L350 258"/>
+<path class="sch-w" d="M339 258 L361 258"/>
+<path class="sch-w" d="M343 263 L357 263"/>
+<path class="sch-w" d="M347 268 L353 268"/>
+<text class="sch-val" x="340" y="242" text-anchor="end">address 0x75</text>
+<path class="sch-w" d="M142 330 L200 330 L200 400 L475 400 L475 372"/>
+<circle class="sch-dot" cx="475" cy="400" r="3"/>
+<path class="sch-w" d="M475 400 L475 408"/>
+<path class="sch-w" d="M464 408 L486 408"/>
+<path class="sch-w" d="M468 413 L482 413"/>
+<path class="sch-w" d="M472 418 L478 418"/>
+<text class="sch-val" x="206" y="393" text-anchor="start">join the grounds</text>
+<path class="sch-w" d="M562 130 L620 130"/>
+<path class="sch-flag" d="M620 130 L628 122 L666 122 L666 138 L628 138 Z"/>
+<text class="sch-net" x="647" y="134" text-anchor="middle">Battery</text>
+<text class="sch-net" x="560" y="100" text-anchor="start">1.9–5.5 V</text>
+<circle class="sch-dot" cx="590" cy="130" r="3"/>
+<path class="sch-w" d="M590 130 L590 205"/>
+<circle class="sch-w" cx="590" cy="209" r="3"/>
+<path class="sch-w" d="M590 233 L602 213"/>
+<circle class="sch-w" cx="590" cy="237" r="3"/>
+<text class="sch-val" x="608" y="228" text-anchor="start">jumper</text>
+<path class="sch-w" d="M590 240 L590 290"/>
+<circle class="sch-dot" cx="590" cy="290" r="3"/>
+<path class="sch-w" d="M562 290 L590 290"/>
+<path class="sch-w" d="M590 290 L590 330 L584 332.5 L596 337.5 L584 342.5 L596 347.5 L584 352.5 L596 357.5 L590 360 L590 400"/>
+<path class="sch-w" d="M590 400 L590 408"/>
+<path class="sch-w" d="M579 408 L601 408"/>
+<path class="sch-w" d="M583 413 L597 413"/>
+<path class="sch-w" d="M587 418 L593 418"/>
+<text class="sch-ref" x="606" y="348" text-anchor="start">R<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="606" y="361" text-anchor="start">1 MΩ</text>
+<text class="sch-val" x="10" y="425" text-anchor="start">LX, VOUT, the inductor and the capacitors are as in the application circuit.</text>
+</svg>
