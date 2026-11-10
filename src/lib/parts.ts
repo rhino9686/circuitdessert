@@ -48,6 +48,7 @@ export const CATEGORIES: Record<string, CategoryInfo> = {
   'ac-dc-controller': { label: 'AC-DC controller', plural: 'AC-DC controllers', group: 'Power' },
   'gate-driver': { label: 'Gate driver', plural: 'Gate drivers', group: 'Power' },
   'motor-driver': { label: 'Motor driver', plural: 'Motor drivers', group: 'Power' },
+  'led-driver': { label: 'LED driver', plural: 'LED drivers', group: 'Power' },
   amplifier: { label: 'Amplifier', plural: 'Amplifiers', group: 'Signal Chain' },
   'data-converter': { label: 'Data converter', plural: 'Data converters', group: 'Signal Chain' },
   processor: { label: 'Processor', plural: 'Processors', group: 'Digital' },

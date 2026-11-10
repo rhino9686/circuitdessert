@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 820 330" role="img" aria-labelledby="sy22101a-t sy22101a-d">
+<title id="sy22101a-t">SY22101A typical application</title>
+<desc id="sy22101a-d">Typical application of the SY22101A boost LED driver, redrawn from the datasheet's Figure 1. VIN feeds the IN pin and a 10 µH inductor, with a 1 µF capacitor to ground. The inductor's other end is the LX pin, which drives a Schottky diode D to the output. The output has a 1 µF capacitor to ground and connects to the OVP pin. A series string of LEDs runs from the output down to the FB pin, and a sense resistor R1 from FB to ground sets the LED current. A PWM dimming signal drives the EN/PWM pin.</desc>
+<rect class="sch-ic" x="330" y="140" width="150" height="140" rx="3"/>
+<path class="sch-w" d="M318 170 L330 170"/>
+<text class="sch-pin" x="338" y="174" text-anchor="start">IN</text>
+<path class="sch-w" d="M318 250 L330 250"/>
+<text class="sch-pin" x="338" y="254" text-anchor="start">EN/PWM</text>
+<path class="sch-w" d="M480 200 L492 200"/>
+<text class="sch-pin" x="472" y="204" text-anchor="end">OVP</text>
+<path class="sch-w" d="M480 250 L492 250"/>
+<text class="sch-pin" x="472" y="254" text-anchor="end">FB</text>
+<path class="sch-w" d="M455 128 L455 140"/>
+<text class="sch-pin" x="455" y="156" text-anchor="middle">LX</text>
+<path class="sch-w" d="M405 280 L405 292"/>
+<text class="sch-pin" x="405" y="272" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="405" y="214" text-anchor="middle">SY22101A</text>
+<path class="sch-w" d="M405 292 L405 330"/>
+<path class="sch-w" d="M405 330 L405 338"/>
+<path class="sch-w" d="M394 338 L416 338"/>
+<path class="sch-w" d="M398 343 L412 343"/>
+<path class="sch-w" d="M402 348 L408 348"/>
+<path class="sch-flag" d="M54 80 L46 72 L8 72 L8 88 L46 88 Z"/>
+<text class="sch-net" x="27" y="84" text-anchor="middle">VIN</text>
+<text class="sch-net" x="10" y="106" text-anchor="start">2.5–5.5 V</text>
+<path class="sch-w" d="M54 80 L330 80"/>
+<circle class="sch-dot" cx="130" cy="80" r="3"/>
+<path class="sch-w" d="M130 80 L130 201"/>
+<path class="sch-w" d="M130 330 L130 209"/>
+<path class="sch-w" d="M119 201 L141 201"/>
+<path class="sch-w" d="M119 209 L141 209"/>
+<path class="sch-w" d="M130 330 L130 338"/>
+<path class="sch-w" d="M119 338 L141 338"/>
+<path class="sch-w" d="M123 343 L137 343"/>
+<path class="sch-w" d="M127 348 L133 348"/>
+<text class="sch-ref" x="146" y="208" text-anchor="start">C<tspan class="sch-sub" dy="2.5">IN</tspan></text>
+<text class="sch-val" x="146" y="221" text-anchor="start">1 µF</text>
+<circle class="sch-dot" cx="280" cy="80" r="3"/>
+<path class="sch-w" d="M280 80 L280 170 L318 170"/>
+<path class="sch-w" d="M330 80 L346 80 A6 6 0 0 1 358 80 A6 6 0 0 1 370 80 A6 6 0 0 1 382 80 A6 6 0 0 1 394 80 L410 80"/>
+<text class="sch-ref" x="370" y="49" text-anchor="middle">L</text>
+<text class="sch-val" x="370" y="62" text-anchor="middle">10 µH</text>
+<path class="sch-w" d="M410 80 L455 80 L455 128"/>
+<circle class="sch-dot" cx="455" cy="80" r="3"/>
+<path class="sch-w" d="M455 80 L490 80"/>
+<path class="sch-w" d="M490 80 L507 80"/>
+<path class="sch-w" d="M523 80 L540 80"/>
+<path class="sch-w" d="M507 72 L507 88 L523 80 Z"/>
+<path class="sch-w" d="M523 72 L523 88"/>
+<text class="sch-ref" x="515" y="49" text-anchor="middle">D</text>
+<path class="sch-w" d="M540 80 L760 80"/>
+<circle class="sch-w" cx="764" cy="80" r="3.5"/>
+<text class="sch-net" x="774" y="84" text-anchor="start">VOUT</text>
+<circle class="sch-dot" cx="570" cy="80" r="3"/>
+<path class="sch-w" d="M570 80 L570 200 L492 200"/>
+<circle class="sch-dot" cx="630" cy="80" r="3"/>
+<path class="sch-w" d="M630 80 L630 95"/>
+<path class="sch-w" d="M630 95 L630 102"/>
+<path class="sch-w" d="M630 118 L630 125"/>
+<path class="sch-w" d="M622 102 L638 102 L630 118 Z"/>
+<path class="sch-w" d="M622 118 L638 118"/>
+<path class="sch-w" d="M641 107 L651 115"/>
+<path class="sch-w" d="M651 110 L651 115 L646 115"/>
+<path class="sch-w" d="M641 115 L651 123"/>
+<path class="sch-w" d="M651 118 L651 123 L646 123"/>
+<path class="sch-w" d="M630 125 L630 132"/>
+<path class="sch-w" d="M630 148 L630 155"/>
+<path class="sch-w" d="M622 132 L638 132 L630 148 Z"/>
+<path class="sch-w" d="M622 148 L638 148"/>
+<path class="sch-w" d="M641 137 L651 145"/>
+<path class="sch-w" d="M651 140 L651 145 L646 145"/>
+<path class="sch-w" d="M641 145 L651 153"/>
+<path class="sch-w" d="M651 148 L651 153 L646 153"/>
+<path class="sch-w" d="M630 155 L630 162"/>
+<path class="sch-w" stroke-dasharray="2 5" d="M630 166 L630 186"/>
+<path class="sch-w" d="M630 190 L630 197"/>
+<path class="sch-w" d="M630 197 L630 204"/>
+<path class="sch-w" d="M630 220 L630 227"/>
+<path class="sch-w" d="M622 204 L638 204 L630 220 Z"/>
+<path class="sch-w" d="M622 220 L638 220"/>
+<path class="sch-w" d="M641 209 L651 217"/>
+<path class="sch-w" d="M651 212 L651 217 L646 217"/>
+<path class="sch-w" d="M641 217 L651 225"/>
+<path class="sch-w" d="M651 220 L651 225 L646 225"/>
+<path class="sch-w" d="M630 227 L630 250"/>
+<text class="sch-val" x="616" y="180" text-anchor="end">LEDs</text>
+<path class="sch-w" d="M492 250 L630 250"/>
+<circle class="sch-dot" cx="630" cy="250" r="3"/>
+<path class="sch-w" d="M630 250 L630 275 L624 277.5 L636 282.5 L624 287.5 L636 292.5 L624 297.5 L636 302.5 L630 305 L630 330"/>
+<path class="sch-w" d="M630 330 L630 338"/>
+<path class="sch-w" d="M619 338 L641 338"/>
+<path class="sch-w" d="M623 343 L637 343"/>
+<path class="sch-w" d="M627 348 L633 348"/>
+<text class="sch-ref" x="646" y="290" text-anchor="start">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="646" y="303" text-anchor="start">0.2 V ÷ ILED</text>
+<circle class="sch-dot" cx="720" cy="80" r="3"/>
+<path class="sch-w" d="M720 80 L720 201"/>
+<path class="sch-w" d="M720 330 L720 209"/>
+<path class="sch-w" d="M709 201 L731 201"/>
+<path class="sch-w" d="M709 209 L731 209"/>
+<path class="sch-w" d="M720 330 L720 338"/>
+<path class="sch-w" d="M709 338 L731 338"/>
+<path class="sch-w" d="M713 343 L727 343"/>
+<path class="sch-w" d="M717 348 L723 348"/>
+<text class="sch-ref" x="736" y="208" text-anchor="start">C<tspan class="sch-sub" dy="2.5">OUT</tspan></text>
+<text class="sch-val" x="736" y="221" text-anchor="start">1 µF</text>
+<path class="sch-flag" d="M270 250 L262 242 L224 242 L224 258 L262 258 Z"/>
+<text class="sch-net" x="243" y="254" text-anchor="middle">PWM</text>
+<path class="sch-w" d="M270 250 L318 250"/>
+</svg>
