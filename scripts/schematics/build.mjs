@@ -17,6 +17,7 @@ import { sa8985xApplication, esp32s3SpiWiringSa8985x } from './designs-sa89853.m
 import { seriesRefApplication, seriesRefTrim } from './designs-sq82535.mjs';
 import { shuntRefApplication } from './designs-sq82550.mjs';
 import { lowIqBuckStb } from './designs-sy20011.mjs';
+import { highVoltageAsyncBuck } from './designs-sy21034.mjs';
 import { boostLedDriver } from './designs-sy22101a.mjs';
 import { bypassBoostApplication, esp32s3I2cWiringSy87004a } from './designs-sy87004a.mjs';
 import { bypassBoostFigure1 } from './designs-sy87004.mjs';
@@ -61,6 +62,7 @@ const designs = {
   'sq82535-trim.svg': seriesRefTrim({ id: 'sq82535-trim', part: 'SQ82535' }),
   'sq82550-schematic.svg': shuntRefApplication({ id: 'sq82550', part: 'SQ82550' }),
   'sy20011-schematic.svg': lowIqBuckStb({ id: 'sy20011', part: 'SY20011' }),
+  'sy21034-schematic.svg': highVoltageAsyncBuck({ id: 'sy21034', part: 'SY21034' }),
   'sy22101a-schematic.svg': boostLedDriver({ id: 'sy22101a', part: 'SY22101A' }),
   'sy87004a-schematic.svg': bypassBoostApplication({ id: 'sy87004a', part: 'SY87004A' }),
   'sy87004a-esp32s3-i2c-wiring.svg': esp32s3I2cWiringSy87004a({ id: 'sy87004a-esp32s3-i2c', part: 'SY87004A' }),
