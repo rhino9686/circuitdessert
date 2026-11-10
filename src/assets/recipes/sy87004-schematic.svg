@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 90 840 340" role="img" aria-labelledby="sy87004-t sy87004-d">
+<title id="sy87004-t">SY87004 typical application</title>
+<desc id="sy87004-d">Typical application of the SY87004 boost regulator with bypass mode, redrawn from the datasheet's Figure 1. The input, 1.9 to 5.5 V, has a 100 µF and a 22 µF capacitor to ground, feeds the VIN pin, and feeds a 0.47 µH inductor L1 that goes to the LX pin. The EN pin is driven by an ON/OFF signal. The VOUT pin, 2.85 to 5.5 V, has a capacitor COUT drawn as 10 µF times four to ground. The ADDR pin is pulled high, pulled low or left floating to choose the I2C address, and the SDA and SCL pins go to the I2C bus.</desc>
+<rect class="sch-ic" x="370" y="110" width="170" height="260" rx="3"/>
+<path class="sch-w" d="M358 150 L370 150"/>
+<text class="sch-pin" x="378" y="154" text-anchor="start">LX</text>
+<path class="sch-w" d="M358 190 L370 190"/>
+<text class="sch-pin" x="378" y="194" text-anchor="start">VIN</text>
+<path class="sch-w" d="M358 300 L370 300"/>
+<text class="sch-pin" x="378" y="304" text-anchor="start">EN</text>
+<path class="sch-w" d="M540 150 L552 150"/>
+<text class="sch-pin" x="532" y="154" text-anchor="end">VOUT</text>
+<path class="sch-w" d="M540 280 L552 280"/>
+<text class="sch-pin" x="532" y="284" text-anchor="end">ADDR</text>
+<path class="sch-w" d="M540 315 L552 315"/>
+<text class="sch-pin" x="532" y="319" text-anchor="end">SDA</text>
+<path class="sch-w" d="M540 350 L552 350"/>
+<text class="sch-pin" x="532" y="354" text-anchor="end">SCL</text>
+<path class="sch-w" d="M455 370 L455 382"/>
+<text class="sch-pin" x="455" y="362" text-anchor="middle">PGND</text>
+<text class="sch-ictitle" x="455" y="244" text-anchor="middle">SY87004</text>
+<path class="sch-w" d="M455 382 L455 383"/>
+<path class="sch-w" d="M455 383 L455 391"/>
+<path class="sch-w" d="M444 391 L466 391"/>
+<path class="sch-w" d="M448 396 L462 396"/>
+<path class="sch-w" d="M452 401 L458 401"/>
+<path class="sch-flag" d="M54 150 L46 142 L8 142 L8 158 L46 158 Z"/>
+<text class="sch-net" x="27" y="154" text-anchor="middle">VIN</text>
+<text class="sch-net" x="8" y="176" text-anchor="start">1.9–5.5 V</text>
+<path class="sch-w" d="M54 150 L320 150"/>
+<circle class="sch-dot" cx="120" cy="150" r="3"/>
+<path class="sch-w" d="M120 150 L120 268.5"/>
+<path class="sch-w" d="M120 395 L120 276.5"/>
+<path class="sch-w" d="M109 268.5 L131 268.5"/>
+<path class="sch-w" d="M109 280.5 Q120 271.5 131 280.5"/>
+<text class="sch-ref" x="105" y="264.5" text-anchor="end">+</text>
+<path class="sch-w" d="M120 395 L120 403"/>
+<path class="sch-w" d="M109 403 L131 403"/>
+<path class="sch-w" d="M113 408 L127 408"/>
+<path class="sch-w" d="M117 413 L123 413"/>
+<text class="sch-ref" x="104" y="288" text-anchor="end">C<tspan class="sch-sub" dy="2.5">IN</tspan></text>
+<text class="sch-val" x="104" y="301" text-anchor="end">100 µF</text>
+<circle class="sch-dot" cx="190" cy="150" r="3"/>
+<path class="sch-w" d="M190 150 L190 268.5"/>
+<path class="sch-w" d="M190 395 L190 276.5"/>
+<path class="sch-w" d="M179 268.5 L201 268.5"/>
+<path class="sch-w" d="M179 276.5 L201 276.5"/>
+<path class="sch-w" d="M190 395 L190 403"/>
+<path class="sch-w" d="M179 403 L201 403"/>
+<path class="sch-w" d="M183 408 L197 408"/>
+<path class="sch-w" d="M187 413 L193 413"/>
+<text class="sch-ref" x="206" y="233" text-anchor="start">C<tspan class="sch-sub" dy="2.5">IN</tspan></text>
+<text class="sch-val" x="206" y="246" text-anchor="start">22 µF</text>
+<circle class="sch-dot" cx="300" cy="150" r="3"/>
+<path class="sch-w" d="M300 150 L300 190 L358 190"/>
+<path class="sch-w" d="M320 150 L320 150 A6 6 0 0 1 332 150 A6 6 0 0 1 344 150 A6 6 0 0 1 356 150 A6 6 0 0 1 368 150 L368 150"/>
+<text class="sch-ref" x="344" y="119" text-anchor="middle">L<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="344" y="132" text-anchor="middle">0.47 µH</text>
+<path class="sch-w" d="M262 300 L358 300"/>
+<circle class="sch-w" cx="258" cy="300" r="3.5"/>
+<text class="sch-val" x="248" y="304" text-anchor="end">ON/OFF</text>
+<path class="sch-w" d="M552 150 L760 150"/>
+<circle class="sch-w" cx="764" cy="150" r="3.5"/>
+<text class="sch-net" x="764" y="136" text-anchor="end">VOUT 2.85–5.5 V</text>
+<circle class="sch-dot" cx="660" cy="150" r="3"/>
+<path class="sch-w" d="M660 150 L660 191"/>
+<path class="sch-w" d="M660 240 L660 199"/>
+<path class="sch-w" d="M649 191 L671 191"/>
+<path class="sch-w" d="M649 199 L671 199"/>
+<path class="sch-w" d="M660 240 L660 248"/>
+<path class="sch-w" d="M649 248 L671 248"/>
+<path class="sch-w" d="M653 253 L667 253"/>
+<path class="sch-w" d="M657 258 L663 258"/>
+<text class="sch-ref" x="644" y="188" text-anchor="end">C<tspan class="sch-sub" dy="2.5">OUT</tspan></text>
+<text class="sch-val" x="644" y="201" text-anchor="end">10 µF × 4</text>
+<path class="sch-w" d="M552 280 L640 280"/>
+<circle class="sch-w" cx="644" cy="280" r="3.5"/>
+<text class="sch-val" x="654" y="284" text-anchor="start">I2C address: H, L or floating</text>
+<path class="sch-w" d="M552 315 L640 315"/>
+<path class="sch-flag" d="M640 315 L648 307 L686 307 L686 323 L648 323 Z"/>
+<text class="sch-net" x="667" y="319" text-anchor="middle">SDA</text>
+<path class="sch-w" d="M552 350 L640 350"/>
+<path class="sch-flag" d="M640 350 L648 342 L686 342 L686 358 L648 358 Z"/>
+<text class="sch-net" x="667" y="354" text-anchor="middle">SCL</text>
+</svg>
