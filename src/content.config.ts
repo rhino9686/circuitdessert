@@ -32,6 +32,8 @@ const parts = defineCollection({
       'gate-driver',
       'motor-driver',
       'led-driver',
+      'load-switch',
+      'power-mux',
       'amplifier',
       'data-converter',
       'processor',

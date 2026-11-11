@@ -31,6 +31,10 @@ import { loadSwitchApplication } from './designs-sy6813c.mjs';
 import { flybackSsr } from './designs-sy23565.mjs';
 import { powerMux } from './designs-sy6862f.mjs';
 import { gaNFlyback } from './designs-sy50307.mjs';
+import { ssrFlybackDip7 } from './designs-sq38576.mjs';
+import { ssrFlyback24w } from './designs-sy50328.mjs';
+import { srLowSide } from './designs-sy52542.mjs';
+import { pdInterface } from './designs-sy23435.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -93,6 +97,11 @@ const designs = {
   }),
   'sy6862f-schematic.svg': powerMux({ id: 'sy6862f', part: 'SY6862F' }),
   'sy50307-schematic.svg': gaNFlyback({ id: 'sy50307', part: 'SY50307' }),
+  'sq38576a-schematic.svg': ssrFlybackDip7({ id: 'sq38576a', part: 'SQ38576A' }),
+  'sq38576b-schematic.svg': ssrFlybackDip7({ id: 'sq38576b', part: 'SQ38576B' }),
+  'sy50328-schematic.svg': ssrFlyback24w({ id: 'sy50328', part: 'SY50328/9' }),
+  'sy52542-schematic.svg': srLowSide({ id: 'sy52542' }),
+  'sy23435-schematic.svg': pdInterface({ id: 'sy23435' }),
   'sy21219-schematic.svg': vccBuck({
     id: 'sy21219', part: 'SY21219', vin: '4.5–30 V', vout: '5 V',
     cin1: '47 µF', cin2: '10 µF', cin3: '0.1 µF', couts: ['22 µF', '22 µF', '22 µF'], cbs: '0.1 µF', cvcc: '2.2 µF', cff: '220 pF', rff: '1 kΩ',
