@@ -27,6 +27,10 @@ import { ldoWithReset } from './designs-sy2a27352.mjs';
 import { currentSenseAmp } from './designs-sy24642.mjs';
 import { overcurrentComparator } from './designs-sy24640.mjs';
 import { esp32s3I2cWiring } from './designs-sy7t6xx.mjs';
+import { loadSwitchApplication } from './designs-sy6813c.mjs';
+import { flybackSsr } from './designs-sy23565.mjs';
+import { powerMux } from './designs-sy6862f.mjs';
+import { gaNFlyback } from './designs-sy50307.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -81,6 +85,14 @@ const designs = {
     id: 'sy8113b', part: 'SY8113B', vin: '4.5–18 V', vout: '3.3 V', enPort: 'EN',
     cin1: null, cin2: '10 µF', couts: ['47 µF'], cbs: '0.1 µF', cff: '22 pF', l: '4.7 µH', rh: '100 kΩ', rl: '22.1 kΩ',
   }),
+  'sy6813c-schematic.svg': loadSwitchApplication({ id: 'sy6813c', part: 'SY6813C' }),
+  'sy23565-schematic.svg': flybackSsr({ id: 'sy23565', part: 'SY23565' }),
+  'sy81058c-schematic.svg': compactBuck({
+    id: 'sy81058c', part: 'SY81058C', vin: '4.5–18 V', vout: '3.3 V',
+    cin1: '47 µF', cin2: '10 µF', couts: ['10 µF'], cbs: '0.1 µF', cff: '47 pF', l: '2.2 µH', rh: '100 kΩ', rl: '22.1 kΩ', renh: '10 kΩ', renl: '1 MΩ',
+  }),
+  'sy6862f-schematic.svg': powerMux({ id: 'sy6862f', part: 'SY6862F' }),
+  'sy50307-schematic.svg': gaNFlyback({ id: 'sy50307', part: 'SY50307' }),
   'sy21219-schematic.svg': vccBuck({
     id: 'sy21219', part: 'SY21219', vin: '4.5–30 V', vout: '5 V',
     cin1: '47 µF', cin2: '10 µF', cin3: '0.1 µF', couts: ['22 µF', '22 µF', '22 µF'], cbs: '0.1 µF', cvcc: '2.2 µF', cff: '220 pF', rff: '1 kΩ',

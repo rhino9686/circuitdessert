@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 50 560 210" role="img" aria-labelledby="sy6813c-t sy6813c-d">
+<title id="sy6813c-t">SY6813C reference circuit</title>
+<desc id="sy6813c-d">Typical application of the SY6813C load switch, redrawn from Figure 1 of the datasheet. VIN (1.2–5.5 V) feeds the IN pin, with a 1 µF input capacitor CIN to ground. ON is a control input that is driven high to turn the switch on and must not float. OUT feeds the load at VOUT, with a 1 µF output capacitor COUT to ground. The GND pin is connected to ground.</desc>
+<rect class="sch-ic" x="240" y="70" width="110" height="110" rx="3"/>
+<path class="sch-w" d="M228 100 L240 100"/>
+<text class="sch-pin" x="248" y="104" text-anchor="start">IN</text>
+<path class="sch-w" d="M228 150 L240 150"/>
+<text class="sch-pin" x="248" y="154" text-anchor="start">ON</text>
+<path class="sch-w" d="M350 100 L362 100"/>
+<text class="sch-pin" x="342" y="104" text-anchor="end">OUT</text>
+<path class="sch-w" d="M295 180 L295 192"/>
+<text class="sch-pin" x="295" y="172" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="295" y="129" text-anchor="middle">SY6813C</text>
+<path class="sch-w" d="M295 192 L295 220"/>
+<path class="sch-w" d="M295 220 L295 228"/>
+<path class="sch-w" d="M284 228 L306 228"/>
+<path class="sch-w" d="M288 233 L302 233"/>
+<path class="sch-w" d="M292 238 L298 238"/>
+<path class="sch-flag" d="M54 100 L46 92 L8 92 L8 108 L46 108 Z"/>
+<text class="sch-net" x="27" y="104" text-anchor="middle">VIN</text>
+<text class="sch-net" x="10" y="126" text-anchor="start">1.2–5.5 V</text>
+<path class="sch-w" d="M54 100 L228 100"/>
+<circle class="sch-dot" cx="140" cy="100" r="3"/>
+<path class="sch-w" d="M140 100 L140 156"/>
+<path class="sch-w" d="M140 220 L140 164"/>
+<path class="sch-w" d="M129 156 L151 156"/>
+<path class="sch-w" d="M129 164 L151 164"/>
+<path class="sch-w" d="M140 220 L140 228"/>
+<path class="sch-w" d="M129 228 L151 228"/>
+<path class="sch-w" d="M133 233 L147 233"/>
+<path class="sch-w" d="M137 238 L143 238"/>
+<text class="sch-ref" x="156" y="168" text-anchor="start">C<tspan class="sch-sub" dy="2.5">IN</tspan></text>
+<text class="sch-val" x="156" y="181" text-anchor="start">1 µF</text>
+<path class="sch-flag" d="M228 150 L220 142 L182 142 L182 158 L220 158 Z"/>
+<text class="sch-net" x="201" y="154" text-anchor="middle">ON</text>
+<path class="sch-w" d="M362 100 L500 100"/>
+<circle class="sch-dot" cx="430" cy="100" r="3"/>
+<path class="sch-w" d="M430 100 L430 156"/>
+<path class="sch-w" d="M430 220 L430 164"/>
+<path class="sch-w" d="M419 156 L441 156"/>
+<path class="sch-w" d="M419 164 L441 164"/>
+<path class="sch-w" d="M430 220 L430 228"/>
+<path class="sch-w" d="M419 228 L441 228"/>
+<path class="sch-w" d="M423 233 L437 233"/>
+<path class="sch-w" d="M427 238 L433 238"/>
+<text class="sch-ref" x="446" y="168" text-anchor="start">C<tspan class="sch-sub" dy="2.5">OUT</tspan></text>
+<text class="sch-val" x="446" y="181" text-anchor="start">1 µF</text>
+<path class="sch-flag" d="M500 100 L508 92 L546 92 L546 108 L508 108 Z"/>
+<text class="sch-net" x="527" y="104" text-anchor="middle">VOUT</text>
+</svg>
