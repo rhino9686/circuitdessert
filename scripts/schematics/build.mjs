@@ -35,6 +35,10 @@ import { ssrFlybackDip7 } from './designs-sq38576.mjs';
 import { ssrFlyback24w } from './designs-sy50328.mjs';
 import { srLowSide } from './designs-sy52542.mjs';
 import { pdInterface } from './designs-sy23435.mjs';
+import { supplyPoweredSenseAmp } from './designs-sq52104.mjs';
+import { powerMonitor1Ch, powerMonitor2Ch } from './designs-sq5220x.mjs';
+import { dimmingInterface } from './designs-sy5867z.mjs';
+import { ssdPmicApplication } from './designs-sy70202k.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -102,6 +106,11 @@ const designs = {
   'sy50328-schematic.svg': ssrFlyback24w({ id: 'sy50328', part: 'SY50328/9' }),
   'sy52542-schematic.svg': srLowSide({ id: 'sy52542' }),
   'sy23435-schematic.svg': pdInterface({ id: 'sy23435' }),
+  'sq52104e-schematic.svg': supplyPoweredSenseAmp({ id: 'sq52104e', part: 'SQ52104E', gain: '200 V/V' }),
+  'sy70202k-schematic.svg': ssdPmicApplication({ id: 'sy70202k' }),
+  'sy5867z-schematic.svg': dimmingInterface({ id: 'sy5867z' }),
+  'sq52201qdq-schematic.svg': powerMonitor1Ch({ id: 'sq52201qdq' }),
+  'sq52212xfs-schematic.svg': powerMonitor2Ch({ id: 'sq52212xfs' }),
   'sy21219-schematic.svg': vccBuck({
     id: 'sy21219', part: 'SY21219', vin: '4.5–30 V', vout: '5 V',
     cin1: '47 µF', cin2: '10 µF', cin3: '0.1 µF', couts: ['22 µF', '22 µF', '22 µF'], cbs: '0.1 µF', cvcc: '2.2 µF', cff: '220 pF', rff: '1 kΩ',

@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 1000 550" role="img" aria-labelledby="sq52212xfs-t sq52212xfs-d">
+<title id="sq52212xfs-t">SQ52212XFS reference circuit</title>
+<desc id="sq52212xfs-d">Typical application of the SQ52212XFS dual-channel I2C monitor, redrawn from the datasheet (Figure 1). Each channel has a high-side shunt resistor between its bus (0 to 70 V) and its load. The supply side of each shunt goes to the IN+ pin of that channel and the load side to its IN- pin, and each channel's VBUS pin is tied to the bus on the supply side of its shunt. The VS pin takes 2.7 to 5.5 V and has a bypass capacitor to ground. SDA, SCL and ALERT are open-drain lines with 2 kΩ pull-ups to the VS rail, going to the host. The EN pin comes from the host (high enables the part), and the A0 and A1 address pins and the GND pin are tied to ground, which gives the I2C address 1000000.</desc>
+<rect class="sch-ic" x="430" y="110" width="200" height="370" rx="3"/>
+<path class="sch-w" d="M418 160 L430 160"/>
+<text class="sch-pin" x="438" y="164" text-anchor="start">IN+1</text>
+<path class="sch-w" d="M418 210 L430 210"/>
+<text class="sch-pin" x="438" y="214" text-anchor="start">IN−1</text>
+<path class="sch-w" d="M418 260 L430 260"/>
+<text class="sch-pin" x="438" y="264" text-anchor="start">VBUS1</text>
+<path class="sch-w" d="M418 340 L430 340"/>
+<text class="sch-pin" x="438" y="344" text-anchor="start">IN+2</text>
+<path class="sch-w" d="M418 390 L430 390"/>
+<text class="sch-pin" x="438" y="394" text-anchor="start">IN−2</text>
+<path class="sch-w" d="M418 440 L430 440"/>
+<text class="sch-pin" x="438" y="444" text-anchor="start">VBUS2</text>
+<path class="sch-w" d="M630 160 L642 160"/>
+<text class="sch-pin" x="622" y="164" text-anchor="end">SDA</text>
+<path class="sch-w" d="M630 210 L642 210"/>
+<text class="sch-pin" x="622" y="214" text-anchor="end">SCL</text>
+<path class="sch-w" d="M630 260 L642 260"/>
+<text class="sch-pin" x="622" y="264" text-anchor="end">ALERT</text>
+<path class="sch-w" d="M630 340 L642 340"/>
+<text class="sch-pin" x="622" y="344" text-anchor="end">EN</text>
+<path class="sch-w" d="M530 98 L530 110"/>
+<text class="sch-pin" x="530" y="126" text-anchor="middle">VS</text>
+<path class="sch-w" d="M480 480 L480 492"/>
+<text class="sch-pin" x="480" y="472" text-anchor="middle">A1</text>
+<path class="sch-w" d="M540 480 L540 492"/>
+<text class="sch-pin" x="540" y="472" text-anchor="middle">A0</text>
+<path class="sch-w" d="M600 480 L600 492"/>
+<text class="sch-pin" x="600" y="472" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="530" y="293" text-anchor="middle">SQ52212XFS</text>
+<text class="sch-val" x="530" y="309" text-anchor="middle">U1</text>
+<path class="sch-flag" d="M60 160 L52 152 L14 152 L14 168 L52 168 Z"/>
+<text class="sch-net" x="33" y="164" text-anchor="middle">BUS1</text>
+<path class="sch-w" d="M60 160 L180 160"/>
+<text class="sch-net" x="66" y="146" text-anchor="start">0–70 V</text>
+<path class="sch-flag" d="M60 210 L52 202 L14 202 L14 218 L52 218 Z"/>
+<text class="sch-net" x="33" y="214" text-anchor="middle">LOAD1</text>
+<circle class="sch-dot" cx="180" cy="160" r="3"/>
+<circle class="sch-dot" cx="180" cy="210" r="3"/>
+<path class="sch-w" d="M180 160 L180 170 L174 172.5 L186 177.5 L174 182.5 L186 187.5 L174 192.5 L186 197.5 L180 200 L180 210"/>
+<text class="sch-ref" x="196" y="188" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SHUNT1</tspan></text>
+<path class="sch-w" d="M180 160 L418 160"/>
+<path class="sch-w" d="M60 210 L305 210 A5 5 0 0 1 315 210 L418 210"/>
+<circle class="sch-dot" cx="180" cy="210" r="3"/>
+<circle class="sch-dot" cx="310" cy="160" r="3"/>
+<path class="sch-w" d="M310 160 L310 260 L418 260"/>
+<path class="sch-flag" d="M60 340 L52 332 L14 332 L14 348 L52 348 Z"/>
+<text class="sch-net" x="33" y="344" text-anchor="middle">BUS2</text>
+<path class="sch-w" d="M60 340 L180 340"/>
+<text class="sch-net" x="66" y="326" text-anchor="start">0–70 V</text>
+<path class="sch-flag" d="M60 390 L52 382 L14 382 L14 398 L52 398 Z"/>
+<text class="sch-net" x="33" y="394" text-anchor="middle">LOAD2</text>
+<circle class="sch-dot" cx="180" cy="340" r="3"/>
+<circle class="sch-dot" cx="180" cy="390" r="3"/>
+<path class="sch-w" d="M180 340 L180 350 L174 352.5 L186 357.5 L174 362.5 L186 367.5 L174 372.5 L186 377.5 L180 380 L180 390"/>
+<text class="sch-ref" x="196" y="368" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SHUNT2</tspan></text>
+<path class="sch-w" d="M180 340 L418 340"/>
+<path class="sch-w" d="M60 390 L305 390 A5 5 0 0 1 315 390 L418 390"/>
+<circle class="sch-dot" cx="180" cy="390" r="3"/>
+<circle class="sch-dot" cx="310" cy="340" r="3"/>
+<path class="sch-w" d="M310 340 L310 440 L418 440"/>
+<path class="sch-w" d="M530 98 L530 62"/>
+<path class="sch-w" d="M380 62 L900 62"/>
+<circle class="sch-dot" cx="530" cy="62" r="3"/>
+<circle class="sch-dot" cx="380" cy="62" r="3"/>
+<path class="sch-w" d="M380 62 L380 77"/>
+<path class="sch-w" d="M380 100 L380 85"/>
+<path class="sch-w" d="M369 77 L391 77"/>
+<path class="sch-w" d="M369 85 L391 85"/>
+<path class="sch-w" d="M380 100 L380 108"/>
+<path class="sch-w" d="M369 108 L391 108"/>
+<path class="sch-w" d="M373 113 L387 113"/>
+<path class="sch-w" d="M377 118 L383 118"/>
+<text class="sch-ref" x="364" y="82" text-anchor="end">C<tspan class="sch-sub" dy="2.5">BYPASS</tspan></text>
+<text class="sch-net" x="590" y="52" text-anchor="start">VS = 2.7–5.5 V</text>
+<path class="sch-w" d="M642 160 L755 160 A5 5 0 0 1 765 160 L815 160 A5 5 0 0 1 825 160 L920 160"/>
+<path class="sch-w" d="M642 210 L815 210 A5 5 0 0 1 825 210 L920 210"/>
+<path class="sch-w" d="M642 260 L920 260"/>
+<circle class="sch-dot" cx="700" cy="160" r="3"/>
+<path class="sch-w" d="M700 160 L700 130"/>
+<path class="sch-w" d="M700 130 L700 111 L694 108.5 L706 103.5 L694 98.5 L706 93.5 L694 88.5 L706 83.5 L700 81 L700 62"/>
+<circle class="sch-dot" cx="700" cy="62" r="3"/>
+<text class="sch-ref" x="716" y="98" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SDA</tspan></text>
+<text class="sch-val" x="716" y="111" text-anchor="start">2 kΩ</text>
+<circle class="sch-dot" cx="760" cy="210" r="3"/>
+<path class="sch-w" d="M760 210 L760 130"/>
+<path class="sch-w" d="M760 130 L760 111 L754 108.5 L766 103.5 L754 98.5 L766 93.5 L754 88.5 L766 83.5 L760 81 L760 62"/>
+<circle class="sch-dot" cx="760" cy="62" r="3"/>
+<text class="sch-ref" x="776" y="98" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SCL</tspan></text>
+<text class="sch-val" x="776" y="111" text-anchor="start">2 kΩ</text>
+<circle class="sch-dot" cx="820" cy="260" r="3"/>
+<path class="sch-w" d="M820 260 L820 130"/>
+<path class="sch-w" d="M820 130 L820 111 L814 108.5 L826 103.5 L814 98.5 L826 93.5 L814 88.5 L826 83.5 L820 81 L820 62"/>
+<circle class="sch-dot" cx="820" cy="62" r="3"/>
+<text class="sch-ref" x="836" y="98" text-anchor="start">R<tspan class="sch-sub" dy="2.5">ALERT</tspan></text>
+<text class="sch-val" x="836" y="111" text-anchor="start">2 kΩ</text>
+<path class="sch-flag" d="M920 160 L928 152 L966 152 L966 168 L928 168 Z"/>
+<text class="sch-net" x="947" y="164" text-anchor="middle">SDA</text>
+<path class="sch-flag" d="M920 210 L928 202 L966 202 L966 218 L928 218 Z"/>
+<text class="sch-net" x="947" y="214" text-anchor="middle">SCL</text>
+<path class="sch-flag" d="M920 260 L928 252 L966 252 L966 268 L928 268 Z"/>
+<text class="sch-net" x="947" y="264" text-anchor="middle">ALERT</text>
+<text class="sch-net" x="972" y="146" text-anchor="end">to the host</text>
+<path class="sch-w" d="M642 340 L920 340"/>
+<path class="sch-flag" d="M920 340 L928 332 L966 332 L966 348 L928 348 Z"/>
+<text class="sch-net" x="947" y="344" text-anchor="middle">EN</text>
+<text class="sch-net" x="972" y="326" text-anchor="end">from the host</text>
+<path class="sch-w" d="M480 492 L480 520 L600 520 L600 492"/>
+<path class="sch-w" d="M540 492 L540 520"/>
+<circle class="sch-dot" cx="540" cy="520" r="3"/>
+<path class="sch-w" d="M540 520 L540 528"/>
+<path class="sch-w" d="M529 528 L551 528"/>
+<path class="sch-w" d="M533 533 L547 533"/>
+<path class="sch-w" d="M537 538 L543 538"/>
+<text class="sch-val" x="610" y="544" text-anchor="start">A0 and A1 low: address 1000000</text>
+</svg>

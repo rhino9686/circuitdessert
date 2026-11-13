@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 28 810 422" role="img" aria-labelledby="sy5867z-t sy5867z-d">
+<title id="sy5867z-t">SY5867Z final circuit</title>
+<desc id="sy5867z-d">Final circuit of the SY5867Z design example in its datasheet, redrawn. The VIN pin is fed from the supply (VSS) through RVIN, 1 kΩ, with CVIN, 1 nF, to ground. The ISET pin, a 2.21 V reference, feeds two dividers: RHCLP_U 13 kΩ and RHCLP_D 24 kΩ with CHCLP 10 nF set the HCLP pin, and RVLOW_U 33 kΩ and RVLOW_D 20 kΩ with CVLOW 10 nF set the VLOW pin. CFSET, 8.2 nF, from the FSET pin to ground sets the output frequency. The DIMO output goes to the net VDIMO. The DIMI pin goes to the dimming input through RDIMI, 100 Ω, with CDIMI, 100 pF, and a 12 V zener diode DDIMI to ground, and a diode DVIN from the DIMI node to the VIN node clamps DIMI to one diode drop above VIN. The GND pin is grounded.</desc>
+<rect class="sch-ic" x="370" y="120" width="150" height="180" rx="3"/>
+<path class="sch-w" d="M358 150 L370 150"/>
+<text class="sch-pin" x="378" y="154" text-anchor="start">VIN</text>
+<path class="sch-w" d="M358 190 L370 190"/>
+<text class="sch-pin" x="378" y="194" text-anchor="start">HCLP</text>
+<path class="sch-w" d="M358 230 L370 230"/>
+<text class="sch-pin" x="378" y="234" text-anchor="start">DIMO</text>
+<path class="sch-w" d="M358 270 L370 270"/>
+<text class="sch-pin" x="378" y="274" text-anchor="start">DIMI</text>
+<path class="sch-w" d="M520 150 L532 150"/>
+<text class="sch-pin" x="512" y="154" text-anchor="end">GND</text>
+<path class="sch-w" d="M520 190 L532 190"/>
+<text class="sch-pin" x="512" y="194" text-anchor="end">ISET</text>
+<path class="sch-w" d="M520 230 L532 230"/>
+<text class="sch-pin" x="512" y="234" text-anchor="end">VLOW</text>
+<path class="sch-w" d="M520 270 L532 270"/>
+<text class="sch-pin" x="512" y="274" text-anchor="end">FSET</text>
+<text class="sch-ictitle" x="445" y="208" text-anchor="middle">SY5867Z</text>
+<text class="sch-val" x="445" y="224" text-anchor="middle">U1</text>
+<path class="sch-w" d="M58 50 L82 50"/>
+<text class="sch-net" x="70" y="40" text-anchor="middle">VSS</text>
+<path class="sch-w" d="M70 50 L70 85 L64 87.5 L76 92.5 L64 97.5 L76 102.5 L64 107.5 L76 112.5 L70 115 L70 150"/>
+<text class="sch-ref" x="54" y="98" text-anchor="end">R<tspan class="sch-sub" dy="2.5">VIN</tspan></text>
+<text class="sch-val" x="54" y="111" text-anchor="end">1 kΩ</text>
+<circle class="sch-dot" cx="70" cy="150" r="3"/>
+<path class="sch-w" d="M70 150 L70 191"/>
+<path class="sch-w" d="M70 240 L70 199"/>
+<path class="sch-w" d="M59 191 L81 191"/>
+<path class="sch-w" d="M59 199 L81 199"/>
+<path class="sch-w" d="M70 240 L70 248"/>
+<path class="sch-w" d="M59 248 L81 248"/>
+<path class="sch-w" d="M63 253 L77 253"/>
+<path class="sch-w" d="M67 258 L73 258"/>
+<text class="sch-ref" x="54" y="193" text-anchor="end">C<tspan class="sch-sub" dy="2.5">VIN</tspan></text>
+<text class="sch-val" x="54" y="206" text-anchor="end">1 nF</text>
+<path class="sch-w" d="M70 150 L185 150 A5 5 0 0 1 195 150 L358 150"/>
+<circle class="sch-dot" cx="328" cy="150" r="3"/>
+<path class="sch-w" d="M190 50 L670 50"/>
+<circle class="sch-dot" cx="570" cy="50" r="3"/>
+<text class="sch-net" x="430" y="42" text-anchor="middle">2.21 V from the ISET pin</text>
+<path class="sch-w" d="M532 190 L570 190 L570 50"/>
+<path class="sch-w" d="M190 50 L190 105 L184 107.5 L196 112.5 L184 117.5 L196 122.5 L184 127.5 L196 132.5 L190 135 L190 190"/>
+<text class="sch-ref" x="206" y="118" text-anchor="start">R<tspan class="sch-sub" dy="2.5">HCLP_U</tspan></text>
+<text class="sch-val" x="206" y="131" text-anchor="start">13 kΩ</text>
+<circle class="sch-dot" cx="190" cy="190" r="3"/>
+<path class="sch-w" d="M190 190 L323 190 A5 5 0 0 1 333 190 L358 190"/>
+<path class="sch-w" d="M190 190 L190 225 L184 227.5 L196 232.5 L184 237.5 L196 242.5 L184 247.5 L196 252.5 L190 255 L190 290"/>
+<text class="sch-ref" x="206" y="238" text-anchor="start">R<tspan class="sch-sub" dy="2.5">HCLP_D</tspan></text>
+<text class="sch-val" x="206" y="251" text-anchor="start">24 kΩ</text>
+<path class="sch-w" d="M190 290 L190 298"/>
+<path class="sch-w" d="M179 298 L201 298"/>
+<path class="sch-w" d="M183 303 L197 303"/>
+<path class="sch-w" d="M187 308 L193 308"/>
+<path class="sch-w" d="M190 205 L140 205"/>
+<path class="sch-w" d="M140 205 L140 236"/>
+<path class="sch-w" d="M140 275 L140 244"/>
+<path class="sch-w" d="M129 236 L151 236"/>
+<path class="sch-w" d="M129 244 L151 244"/>
+<path class="sch-w" d="M140 275 L190 275"/>
+<circle class="sch-dot" cx="190" cy="205" r="3"/>
+<circle class="sch-dot" cx="190" cy="275" r="3"/>
+<text class="sch-ref" x="124" y="238" text-anchor="end">C<tspan class="sch-sub" dy="2.5">HCLP</tspan></text>
+<text class="sch-val" x="124" y="251" text-anchor="end">10 nF</text>
+<circle class="sch-dot" cx="328" cy="150" r="3"/>
+<path class="sch-w" d="M328 150 L328 194"/>
+<path class="sch-w" d="M328 226 L328 218"/>
+<path class="sch-w" d="M328 202 L328 194"/>
+<path class="sch-w" d="M320 218 L336 218 L328 202 Z"/>
+<path class="sch-w" d="M320 202 L336 202"/>
+<text class="sch-ref" x="312" y="208" text-anchor="end">D<tspan class="sch-sub" dy="2.5">VIN</tspan></text>
+<path class="sch-w" d="M328 226 L328 350"/>
+<circle class="sch-dot" cx="328" cy="270" r="3"/>
+<path class="sch-w" d="M328 270 L358 270"/>
+<path class="sch-w" d="M358 230 L333 230 A5 5 0 0 0 323 230 L270 230"/>
+<path class="sch-w" d="M270 230 L270 340 L96 340"/>
+<text class="sch-net" x="90" y="344" text-anchor="end">VDIMO</text>
+<circle class="sch-dot" cx="328" cy="350" r="3"/>
+<path class="sch-w" d="M328 410 L328 388"/>
+<path class="sch-w" d="M328 372 L328 350"/>
+<path class="sch-w" d="M320 388 L336 388 L328 372 Z"/>
+<path class="sch-w" d="M320 368 L320 372 L336 372 L336 376"/>
+<path class="sch-w" d="M328 410 L328 418"/>
+<path class="sch-w" d="M317 418 L339 418"/>
+<path class="sch-w" d="M321 423 L335 423"/>
+<path class="sch-w" d="M325 428 L331 428"/>
+<text class="sch-ref" x="312" y="378" text-anchor="end">D<tspan class="sch-sub" dy="2.5">DIMI</tspan></text>
+<text class="sch-val" x="312" y="391" text-anchor="end">12 V</text>
+<path class="sch-w" d="M328 350 L380 350"/>
+<circle class="sch-dot" cx="380" cy="350" r="3"/>
+<path class="sch-w" d="M380 350 L410 350 L412.5 344 L417.5 356 L422.5 344 L427.5 356 L432.5 344 L437.5 356 L440 350 L470 350"/>
+<text class="sch-ref" x="425" y="319" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">DIMI</tspan></text>
+<text class="sch-val" x="425" y="332" text-anchor="middle">100 Ω</text>
+<path class="sch-w" d="M470 350 L520 350"/>
+<path class="sch-flag" d="M520 350 L528 342 L566 342 L566 358 L528 358 Z"/>
+<text class="sch-net" x="547" y="354" text-anchor="middle">DIM+</text>
+<path class="sch-w" d="M380 350 L380 376"/>
+<path class="sch-w" d="M380 410 L380 384"/>
+<path class="sch-w" d="M369 376 L391 376"/>
+<path class="sch-w" d="M369 384 L391 384"/>
+<circle class="sch-dot" cx="380" cy="410" r="3"/>
+<text class="sch-ref" x="396" y="378" text-anchor="start">C<tspan class="sch-sub" dy="2.5">DIMI</tspan></text>
+<text class="sch-val" x="396" y="391" text-anchor="start">100 pF</text>
+<path class="sch-w" d="M328 410 L520 410"/>
+<path class="sch-flag" d="M520 410 L528 402 L566 402 L566 418 L528 418 Z"/>
+<text class="sch-net" x="547" y="414" text-anchor="middle">DIM−</text>
+<text class="sch-net" x="582" y="384" text-anchor="start">0/1–10 V, resistor or PWM</text>
+<path class="sch-w" d="M532 150 L548 150"/>
+<path class="sch-w" d="M548 150 L548 158"/>
+<path class="sch-w" d="M537 158 L559 158"/>
+<path class="sch-w" d="M541 163 L555 163"/>
+<path class="sch-w" d="M545 168 L551 168"/>
+<path class="sch-w" d="M532 230 L670 230"/>
+<circle class="sch-dot" cx="670" cy="230" r="3"/>
+<path class="sch-w" d="M670 50 L670 125 L664 127.5 L676 132.5 L664 137.5 L676 142.5 L664 147.5 L676 152.5 L670 155 L670 230"/>
+<text class="sch-ref" x="686" y="138" text-anchor="start">R<tspan class="sch-sub" dy="2.5">VLOW_U</tspan></text>
+<text class="sch-val" x="686" y="151" text-anchor="start">33 kΩ</text>
+<path class="sch-w" d="M670 230 L670 265 L664 267.5 L676 272.5 L664 277.5 L676 282.5 L664 287.5 L676 292.5 L670 295 L670 330"/>
+<text class="sch-ref" x="654" y="278" text-anchor="end">R<tspan class="sch-sub" dy="2.5">VLOW_D</tspan></text>
+<text class="sch-val" x="654" y="291" text-anchor="end">20 kΩ</text>
+<path class="sch-w" d="M670 330 L670 338"/>
+<path class="sch-w" d="M659 338 L681 338"/>
+<path class="sch-w" d="M663 343 L677 343"/>
+<path class="sch-w" d="M667 348 L673 348"/>
+<path class="sch-w" d="M670 245 L730 245"/>
+<path class="sch-w" d="M730 245 L730 276"/>
+<path class="sch-w" d="M730 315 L730 284"/>
+<path class="sch-w" d="M719 276 L741 276"/>
+<path class="sch-w" d="M719 284 L741 284"/>
+<path class="sch-w" d="M730 315 L670 315"/>
+<circle class="sch-dot" cx="670" cy="245" r="3"/>
+<circle class="sch-dot" cx="670" cy="315" r="3"/>
+<text class="sch-ref" x="746" y="278" text-anchor="start">C<tspan class="sch-sub" dy="2.5">VLOW</tspan></text>
+<text class="sch-val" x="746" y="291" text-anchor="start">10 nF</text>
+<path class="sch-w" d="M532 270 L575 270"/>
+<path class="sch-w" d="M575 270 L575 291"/>
+<path class="sch-w" d="M575 320 L575 299"/>
+<path class="sch-w" d="M564 291 L586 291"/>
+<path class="sch-w" d="M564 299 L586 299"/>
+<path class="sch-w" d="M575 320 L575 328"/>
+<path class="sch-w" d="M564 328 L586 328"/>
+<path class="sch-w" d="M568 333 L582 333"/>
+<path class="sch-w" d="M572 338 L578 338"/>
+<text class="sch-ref" x="559" y="293" text-anchor="end">C<tspan class="sch-sub" dy="2.5">FSET</tspan></text>
+<text class="sch-val" x="559" y="306" text-anchor="end">8.2 nF</text>
+</svg>

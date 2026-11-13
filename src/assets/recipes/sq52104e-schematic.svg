@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 700 250" role="img" aria-labelledby="sq52104e-t sq52104e-d">
+<title id="sq52104e-t">SQ52104E reference circuit</title>
+<desc id="sq52104e-d">Application schematic of the SQ52104E current-sense amplifier (gain 200 V/V), redrawn from the datasheet. A 10 mΩ sense resistor RSENSE sits in the high-side current path, between the supply (1.8–5.5 V) and the load. The supply side of RSENSE goes to the IN+ pin and the load side to the IN- pin. A 100 nF bypass capacitor CBYPASS from the IN+ node to ground sits next to the pin. The part has no separate supply pin, so the IN+ pin also powers it. The GND pin is grounded. The OUT pin is a voltage of gain times the voltage across RSENSE, referred to ground.</desc>
+<rect class="sch-ic" x="300" y="100" width="170" height="140" rx="3"/>
+<path class="sch-w" d="M288 130 L300 130"/>
+<text class="sch-pin" x="308" y="134" text-anchor="start">IN+</text>
+<path class="sch-w" d="M288 210 L300 210"/>
+<text class="sch-pin" x="308" y="214" text-anchor="start">IN−</text>
+<path class="sch-w" d="M470 130 L482 130"/>
+<text class="sch-pin" x="462" y="134" text-anchor="end">OUT</text>
+<path class="sch-w" d="M470 210 L482 210"/>
+<text class="sch-pin" x="462" y="214" text-anchor="end">GND</text>
+<text class="sch-ictitle" x="385" y="168" text-anchor="middle">SQ52104E</text>
+<text class="sch-val" x="385" y="184" text-anchor="middle">U1</text>
+<path class="sch-flag" d="M60 130 L52 122 L14 122 L14 138 L52 138 Z"/>
+<text class="sch-net" x="33" y="134" text-anchor="middle">IN+</text>
+<path class="sch-w" d="M60 130 L288 130"/>
+<text class="sch-net" x="66" y="116" text-anchor="start">1.8–5.5 V supply</text>
+<path class="sch-flag" d="M60 210 L52 202 L14 202 L14 218 L52 218 Z"/>
+<text class="sch-net" x="33" y="214" text-anchor="middle">IN−</text>
+<path class="sch-w" d="M60 210 L288 210"/>
+<text class="sch-net" x="66" y="232" text-anchor="start">to the load</text>
+<circle class="sch-dot" cx="170" cy="130" r="3"/>
+<circle class="sch-dot" cx="170" cy="210" r="3"/>
+<path class="sch-w" d="M170 130 L170 155 L164 157.5 L176 162.5 L164 167.5 L176 172.5 L164 177.5 L176 182.5 L170 185 L170 210"/>
+<text class="sch-ref" x="186" y="173" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SENSE</tspan></text>
+<text class="sch-val" x="186" y="186" text-anchor="start">10 mΩ</text>
+<circle class="sch-dot" cx="240" cy="130" r="3"/>
+<path class="sch-w" d="M240 130 L240 117"/>
+<path class="sch-w" d="M240 96 L240 109"/>
+<path class="sch-w" d="M229 117 L251 117"/>
+<path class="sch-w" d="M229 109 L251 109"/>
+<path class="sch-w" d="M240 96 L240 88"/>
+<path class="sch-w" d="M229 88 L251 88"/>
+<path class="sch-w" d="M233 83 L247 83"/>
+<path class="sch-w" d="M237 78 L243 78"/>
+<text class="sch-ref" x="224" y="98" text-anchor="end">C<tspan class="sch-sub" dy="2.5">BYPASS</tspan></text>
+<text class="sch-val" x="224" y="111" text-anchor="end">100 nF</text>
+<path class="sch-w" d="M482 130 L560 130"/>
+<path class="sch-flag" d="M560 130 L568 122 L606 122 L606 138 L568 138 Z"/>
+<text class="sch-net" x="587" y="134" text-anchor="middle">OUT</text>
+<text class="sch-net" x="612" y="116" text-anchor="end">to the ADC</text>
+<path class="sch-w" d="M482 210 L520 210"/>
+<path class="sch-w" d="M520 210 L520 218"/>
+<path class="sch-w" d="M509 218 L531 218"/>
+<path class="sch-w" d="M513 223 L527 223"/>
+<path class="sch-w" d="M517 228 L523 228"/>
+</svg>

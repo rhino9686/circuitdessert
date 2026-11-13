@@ -34,6 +34,7 @@ const parts = defineCollection({
       'led-driver',
       'load-switch',
       'power-mux',
+      'pd-controller',
       'amplifier',
       'data-converter',
       'processor',

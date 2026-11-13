@@ -51,6 +51,7 @@ export const CATEGORIES: Record<string, CategoryInfo> = {
   'led-driver': { label: 'LED driver', plural: 'LED drivers', group: 'Power' },
   'load-switch': { label: 'Load switch', plural: 'Load switches', group: 'Power' },
   'power-mux': { label: 'Power mux', plural: 'Power muxes', group: 'Power' },
+  'pd-controller': { label: 'PD controller', plural: 'PD controllers', group: 'Power' },
   amplifier: { label: 'Amplifier', plural: 'Amplifiers', group: 'Signal Chain' },
   'data-converter': { label: 'Data converter', plural: 'Data converters', group: 'Signal Chain' },
   processor: { label: 'Processor', plural: 'Processors', group: 'Digital' },
