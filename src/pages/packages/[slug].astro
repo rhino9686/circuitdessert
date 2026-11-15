@@ -1,0 +1,11 @@
+---
+import PackagePage from '../../components/PackagePage.astro';
+import { getPackages } from '../../lib/packages';
+
+export async function getStaticPaths() {
+  return (await getPackages()).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+---
+
+<PackagePage entry={entry} />

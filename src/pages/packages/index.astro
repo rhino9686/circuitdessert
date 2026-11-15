@@ -1,0 +1,35 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getPackages, packageUrl, partsUsing } from '../../lib/packages';
+
+const packages = await getPackages();
+const rows = await Promise.all(packages.map(async (p) => ({ p, n: (await partsUsing(p)).length })));
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Packages',
+    description: 'IC packages used by the parts, with outline dimensions, a KiCad footprint and the parts that use each.',
+    tableOfContents: false,
+  }}
+>
+  <p class="cd-lede">
+    One page per package: the outline, the recommended pad layout and a KiCad footprint. A part's page links to its package page.
+  </p>
+  <div class="cd-table-wrap">
+    <table class="cd-table">
+      <thead><tr><th>Package</th><th>Pins</th><th>Pitch</th><th>Parts</th><th>KiCad footprint</th></tr></thead>
+      <tbody>
+        {rows.map(({ p, n }) => (
+          <tr>
+            <td><a href={packageUrl(p.id)}>{p.data.name}</a></td>
+            <td>{p.data.pins}</td>
+            <td>{p.data.pitch_mm} mm</td>
+            <td>{n}</td>
+            <td>{p.data.footprint ? 'Yes' : '–'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</StarlightPage>

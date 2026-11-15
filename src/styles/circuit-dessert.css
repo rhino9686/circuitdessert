@@ -361,3 +361,9 @@ body:has(.cd-home-hero) .content-panel:has(> .sl-container > h1#_top) + .content
 @media (max-width: 49.99rem) {
   :root:has(.cd-header--home) { --sl-nav-height: 6rem; }
 }
+
+/* Package pages: the generated illustration scales to the column; the SVG's own <style> uses the --cd-* tokens. */
+.cd-package-fig { margin: 0 0 1.25rem; }
+.cd-package-fig { overflow-x: auto; }
+.cd-package-fig svg { display: block; width: 100%; min-width: 460px; height: auto; max-width: 640px; }
+.cd-package-fig .cd-caption { margin: 0.6rem 0 0; }

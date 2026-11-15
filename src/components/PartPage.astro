@@ -4,6 +4,7 @@ import { getCollection, render } from 'astro:content';
 import { CATEGORY_LABELS, categoryUrl, range, formatFreq, partUrl, familyUrl, formatPackage } from '../lib/parts';
 import { buildToc, type Sec } from '../lib/doc';
 import { slugify, url } from '../lib/url';
+import { findPackage, getPackages, packageUrl, footprintUrl, symbolUrl } from '../lib/packages';
 
 const { entry, family } = Astro.props;
 const d = entry.data;
@@ -20,6 +21,15 @@ const iout = s.iout_max_a != null ? `${s.iout_max_a} A` : undefined;
 const fsw = formatFreq(s.fsw_khz);
 const iq = s.iq_ua != null ? `${s.iq_ua} µA typical` : undefined;
 const packages = d.packages.map(formatPackage).join(', ');
+// Package pages: each package name links to its page when one exists; the footprint is offered here only
+// when the package page says this part's own datasheet drawing was compared with it.
+const allPackages = await getPackages();
+const pkgLinks = d.packages.map((name) => {
+  const page = findPackage(allPackages, name);
+  const checked = !!page && page.data.checked_against.some((x) => x.toLowerCase() === d.part.toLowerCase());
+  return { label: formatPackage(name), page, footprint: checked ? page!.data.footprint : undefined };
+});
+const footprints = pkgLinks.filter((p) => p.footprint);
 
 const glance = [
   vin && { num: vin, label: 'Input voltage' },
@@ -167,7 +177,12 @@ const lcscUrl = d.lcsc ? `https://www.lcsc.com/product-detail/${d.lcsc}.html` : 
       <div class="cd-table-wrap">
         <table class="cd-table cd-kv"><tbody>
           <tr><th scope="row">Part number</th><td>{d.part}</td></tr>
-          <tr><th scope="row">Package</th><td>{packages}</td></tr>
+          <tr>
+            <th scope="row">Package</th>
+            <td>{pkgLinks.map((p, i) => <>{i > 0 && ', '}{p.page ? <a href={packageUrl(p.page.id)}>{p.label}</a> : p.label}</>)}</td>
+          </tr>
+          {d.kicad_symbol && <tr><th scope="row">KiCad symbol</th><td><a class="cd-link" href={symbolUrl(d.kicad_symbol)} download>{d.kicad_symbol}</a> · generated from the datasheet pin table</td></tr>}
+          {footprints.map((p) => <tr><th scope="row">KiCad footprint</th><td><a class="cd-link" href={footprintUrl(p.footprint!)} download>{p.footprint}</a> · <a href={packageUrl(p.page!.id)}>{p.label} package page</a></td></tr>)}
           {d.status !== 'unknown' && <tr><th scope="row">Status</th><td>{d.status}</td></tr>}
           <tr>
             <th scope="row">Datasheet</th>

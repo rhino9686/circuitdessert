@@ -113,5 +113,31 @@ for (const f of recipeFiles) {
   }
 }
 
-console.log(`${partFiles.length} part files, ${recipeFiles.length} recipe files checked: ${errors} errors, ${warnings} warnings.`);
+// ---- Packages and KiCad files ----
+// A package page's footprint and checked_against parts must exist; a part's kicad_symbol file must exist.
+const publicDir = new URL('../public/kicad/', import.meta.url);
+const kicadFile = (sub, name) => { try { statSync(new URL(`${sub}/${name}`, publicDir)); return true; } catch { return false; } };
+for (const f of partFiles) {
+  const sym = field(front(content(f)), 'kicad_symbol');
+  if (sym && !kicadFile('symbols', sym)) err(relative(root, f), `kicad_symbol ${sym} not found in public/kicad/symbols/ (run npm run kicad?)`);
+}
+const pkgDir = join(root, 'packages');
+let pkgFiles = [];
+try { pkgFiles = walk(pkgDir).filter((f) => f.endsWith('.md') && !/(^|\/)_/.test(relative(pkgDir, f))); } catch { /* no packages yet */ }
+const partNames = new Set(partFiles.map((f) => (field(front(content(f)), 'part') ?? '').toLowerCase()));
+for (const f of pkgFiles) {
+  const rel = relative(root, f);
+  const fm = front(content(f));
+  checkYamlHazards(rel, fm);
+  checkBodyStartsWithSection(rel, content(f));
+  const fp = field(fm, 'footprint');
+  if (fp && !kicadFile('footprints/circuitdessert.pretty', fp)) err(rel, `footprint ${fp} not found in public/kicad/footprints/circuitdessert.pretty/ (run npm run kicad?)`);
+  const m = fm.match(/^checked_against:\s*\[(.*)\]\s*$/m);
+  for (const name of (m ? m[1].split(',') : []).map((x) => x.trim()).filter(Boolean)) {
+    if (!partNames.has(name.toLowerCase())) err(rel, `checked_against lists ${name}, which is not a part on the site`);
+  }
+  if (rel.split('/').length !== 2) err(rel, 'expected path packages/<slug>.md');
+}
+
+console.log(`${partFiles.length} part files, ${recipeFiles.length} recipe files, ${pkgFiles.length} package files checked: ${errors} errors, ${warnings} warnings.`);
 process.exit(errors ? 1 : 0);
