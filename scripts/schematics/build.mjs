@@ -39,6 +39,7 @@ import { supplyPoweredSenseAmp } from './designs-sq52104.mjs';
 import { powerMonitor1Ch, powerMonitor2Ch } from './designs-sq5220x.mjs';
 import { dimmingInterface } from './designs-sy5867z.mjs';
 import { ssdPmicApplication } from './designs-sy70202k.mjs';
+import { classDAmpTypical } from './designs-sy6045b.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -109,6 +110,7 @@ const designs = {
   'sq52104e-schematic.svg': supplyPoweredSenseAmp({ id: 'sq52104e', part: 'SQ52104E', gain: '200 V/V' }),
   'sy70202k-schematic.svg': ssdPmicApplication({ id: 'sy70202k' }),
   'sy5867z-schematic.svg': dimmingInterface({ id: 'sy5867z' }),
+  'sy6045b-schematic.svg': classDAmpTypical({ id: 'sy6045b' }),
   'sq52201qdq-schematic.svg': powerMonitor1Ch({ id: 'sq52201qdq' }),
   'sq52212xfs-schematic.svg': powerMonitor2Ch({ id: 'sq52212xfs' }),
   'sy21219-schematic.svg': vccBuck({
