@@ -41,6 +41,7 @@ import { powerMonitor1Ch, powerMonitor2Ch } from './designs-sq5220x.mjs';
 import { dimmingInterface } from './designs-sy5867z.mjs';
 import { ssdPmicApplication } from './designs-sy70202k.mjs';
 import { classDAmpTypical } from './designs-sy6045b.mjs';
+import { singleInductorBuckBoost } from './designs-tps63020.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -115,6 +116,8 @@ const designs = {
   'sy6045b-schematic.svg': classDAmpTypical({ id: 'sy6045b' }),
   'sq52201qdq-schematic.svg': powerMonitor1Ch({ id: 'sq52201qdq' }),
   'sq52212xfs-schematic.svg': powerMonitor2Ch({ id: 'sq52212xfs' }),
+  'tps63020-schematic.svg': singleInductorBuckBoost({ id: 'tps63020' }),
+  'tps63020-2a-schematic.svg': singleInductorBuckBoost({ id: 'tps63020-2a', fast: true }),
   'sy21219-schematic.svg': vccBuck({
     id: 'sy21219', part: 'SY21219', vin: '4.5–30 V', vout: '5 V',
     cin1: '47 µF', cin2: '10 µF', cin3: '0.1 µF', couts: ['22 µF', '22 µF', '22 µF'], cbs: '0.1 µF', cvcc: '2.2 µF', cff: '220 pF', rff: '1 kΩ',
