@@ -70,8 +70,9 @@ function footprint(pk) {
 }
 
 // ---------------------------------------------------------------- symbol
-function symbol(name, s) {
-  const pk = s.package ? PACKAGES[s.package] : null; // a symbol can come before its footprint: then Footprint stays empty
+// A symbol file holds one symbol, or one per package when `packages` is given (a part whose packages number the pins differently):
+// then each pin has `numbers: { <package slug>: '<pin number>' }` and the symbols are named <PART>_<package name>.
+function symbolBlock(name, value, s, pk, numberOf) {
   const plen = 2.54;
   // body half width and half height; `body` sets both, `half` sets a square body, the default is the small square body
   const hw = s.body?.halfW ?? s.half ?? 5.08, hh = s.body?.halfH ?? s.half ?? 5.08;
@@ -84,10 +85,9 @@ function symbol(name, s) {
   const fx = `(effects (font (size 1.27 1.27)))`;
   const hid = `(effects (font (size 1.27 1.27)) hide)`;
   const L = [];
-  L.push(`(kicad_symbol_lib (version 20220914) (generator kicad_symbol_editor)`);
   L.push(`  (symbol "${name}" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)`);
   L.push(`    (property "Reference" "U" (id 0) (at 0 ${n(hh + plen + 1.27)} 0) ${fx})`);
-  L.push(`    (property "Value" "${name}" (id 1) (at 0 ${n(-(hh + plen + 1.27))} 0) ${fx})`);
+  L.push(`    (property "Value" "${value}" (id 1) (at 0 ${n(-(hh + plen + 1.27))} 0) ${fx})`);
   L.push(`    (property "Footprint" "${pk ? `${LIB}:${pk.file}` : ''}" (id 2) (at 0 0 0) ${hid})`);
   L.push(`    (property "Datasheet" "${s.datasheet}" (id 3) (at 0 0 0) ${hid})`);
   L.push(`    (property "Description" "${s.description}" (id 4) (at 0 0 0) ${hid})`);
@@ -97,12 +97,27 @@ function symbol(name, s) {
   L.push(`      (rectangle (start ${n(-hw)} ${n(hh)}) (end ${n(hw)} ${n(-hh)}) (stroke (width 0.254) (type default)) (fill (type background)))`);
   L.push(`    )`);
   L.push(`    (symbol "${name}_1_1"`);
-  for (const p of [...s.pins].sort((a, b) => Number(a.number) - Number(b.number) || String(a.number).localeCompare(String(b.number)))) {
+  const pins = s.pins.map((p) => ({ ...p, number: numberOf(p) }));
+  for (const p of pins.sort((a, b) => Number(a.number) - Number(b.number) || String(a.number).localeCompare(String(b.number)))) {
     const q = place(p);
     L.push(`      (pin ${p.type} line (at ${n(q.x)} ${n(q.y)} ${q.a}) (length ${plen}) (name "${p.name}" ${fx}) (number "${p.number}" ${fx}))`);
   }
   L.push(`    )`);
   L.push(`  )`);
+  return L;
+}
+
+function symbol(name, s) {
+  const L = [`(kicad_symbol_lib (version 20220914) (generator kicad_symbol_editor)`];
+  if (s.packages) {
+    for (const slug of s.packages) {
+      const pk = PACKAGES[slug];
+      L.push(...symbolBlock(`${name}_${pk.name}`, name, s, pk, (p) => p.numbers[slug]));
+    }
+  } else {
+    // a symbol can come before its footprint: then Footprint stays empty
+    L.push(...symbolBlock(name, name, s, s.package ? PACKAGES[s.package] : null, (p) => p.number));
+  }
   L.push(`)`);
   return L.join('\n') + '\n';
 }

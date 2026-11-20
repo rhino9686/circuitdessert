@@ -97,6 +97,44 @@ export const PACKAGES = {
     // Our additions, not from the datasheet: courtyard margin, silkscreen and fab-layer conventions.
     courtyardMargin: 0.25,
   },
+  // Two eight-lead gull-wing packages from the INA240-Q1 datasheet (SBOS808E): TI's D0008A (SOIC) and PW0008A (TSSOP), no exposed pad.
+  // KiCad orientation: pin 1 top left, pins 1-4 down the left side, 5-8 up the right side, as in the datasheet's drawings.
+  'soic-8': {
+    name: 'SOIC-8',
+    file: 'SOIC-8',
+    descr: 'SOIC-8 (TI D0008A, JEDEC MS-012 AA), 1.27 mm pitch, 4.9 x 3.9 mm body, no exposed pad; pad layout from the INA240-Q1 datasheet (SBOS808E, PDF page 33)',
+    tags: 'SOIC-8 SOP8 SOP-8 D0008A',
+    source: { part: 'INA240-Q1', revision: 'SBOS808E', page: 33 },
+    pinsPerSide: 4,
+    pitch: 1.27,
+    // Example board layout, PDF page 33: rows 5.4 apart centre to centre, eight pads 1.55 long (across the body) by 0.6 wide.
+    rowCentres: 5.4,
+    pad: { long: 1.55, wide: 0.6 },
+    // Package outline, PDF page 32. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 4.81, max: 5.0 }, width: { min: 3.81, max: 3.98 }, height: { max: 1.75 } },
+    leadSpan: { min: 5.8, max: 6.19 },
+    leadWidth: { min: 0.31, max: 0.51 },
+    courtyardMargin: 0.25,
+    illustration: { scale: 40, cy: 150, bx: 470, width: 660 },
+  },
+  'tssop-8': {
+    name: 'TSSOP-8',
+    file: 'TSSOP-8',
+    descr: 'TSSOP-8 (TI PW0008A, JEDEC MO-153 AA), 0.65 mm pitch, 3.0 x 4.4 mm body, no exposed pad; pad layout from the INA240-Q1 datasheet (SBOS808E, PDF page 36)',
+    tags: 'TSSOP-8 TSSOP8 PW0008A',
+    source: { part: 'INA240-Q1', revision: 'SBOS808E', page: 36 },
+    pinsPerSide: 4,
+    pitch: 0.65,
+    // Example board layout, PDF page 36: rows 5.8 apart centre to centre, eight pads 1.5 long (across the body) by 0.45 wide.
+    rowCentres: 5.8,
+    pad: { long: 1.5, wide: 0.45 },
+    // Package outline, PDF page 35. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 2.9, max: 3.1 }, width: { min: 4.3, max: 4.5 }, height: { max: 1.2 } },
+    leadSpan: { min: 6.2, max: 6.6 },
+    leadWidth: { min: 0.19, max: 0.3 },
+    courtyardMargin: 0.25,
+    illustration: { scale: 34, cy: 105, bx: 450, width: 640 },
+  },
   // Four-sided leadless package (QFN family) with an exposed pad. KiCad orientation: pin 1 top left, pins 1-10 down the left side,
   // 11-20 along the bottom left to right, 21-30 up the right side, 31-40 along the top right to left, exposed pad numbered 41 (ours).
   'lfcsp-40': {
@@ -202,6 +240,44 @@ export const SYMBOLS = {
       { number: '6', name: 'NR', type: 'passive', side: 'right', pos: -2.54 },
       { number: '4', name: 'GND', type: 'power_in', side: 'bottom', pos: -2.54 },
       { number: '9', name: 'EP', type: 'passive', side: 'bottom', pos: 2.54 },
+    ],
+  },
+  // The INA240-Q1 and the Silergy SA59131 have the same pin names at the same numbers in both packages (SOIC-8 / SOP8 and TSSOP-8), so the two
+  // symbols share one layout. The packages number the pins differently, so each file holds a symbol per package. Pin names and numbers are
+  // from the pin tables (INA240-Q1 SBOS808E, SA59131 Rev. 1.0A). NC is "reserved: connect to ground" (SA59131) or "ground or float" (INA240-Q1);
+  // it is passive here. Layout and pin types are ours: inputs and references on the left, supply on top, ground on the bottom, output on the right.
+  'INA240-Q1': {
+    packages: ['soic-8', 'tssop-8'],
+    half: 7.62,
+    description: 'Bidirectional current-sense amplifier, enhanced PWM rejection, -4 to 80 V common mode, 2.7-5.5 V supply, gains 20/50/100/200 V/V (A1-A4), AEC-Q100',
+    keywords: 'current sense amplifier shunt monitor bidirectional pwm rejection automotive INA240A1 INA240A2 INA240A3 INA240A4',
+    datasheet: 'https://www.ti.com/lit/ds/symlink/ina240-q1.pdf',
+    pins: [
+      { numbers: { 'soic-8': '8', 'tssop-8': '2' }, name: 'IN+', type: 'input', side: 'left', pos: 5.08 },
+      { numbers: { 'soic-8': '1', 'tssop-8': '3' }, name: 'IN-', type: 'input', side: 'left', pos: 2.54 },
+      { numbers: { 'soic-8': '7', 'tssop-8': '7' }, name: 'REF1', type: 'input', side: 'left', pos: -2.54 },
+      { numbers: { 'soic-8': '3', 'tssop-8': '6' }, name: 'REF2', type: 'input', side: 'left', pos: -5.08 },
+      { numbers: { 'soic-8': '6', 'tssop-8': '5' }, name: 'VS', type: 'power_in', side: 'top', pos: 0 },
+      { numbers: { 'soic-8': '5', 'tssop-8': '8' }, name: 'OUT', type: 'output', side: 'right', pos: 2.54 },
+      { numbers: { 'soic-8': '4', 'tssop-8': '1' }, name: 'NC', type: 'passive', side: 'right', pos: -2.54 },
+      { numbers: { 'soic-8': '2', 'tssop-8': '4' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+    ],
+  },
+  SA59131: {
+    packages: ['soic-8', 'tssop-8'],
+    half: 7.62,
+    description: 'Bidirectional current-sense amplifier, 50 V/V (SA59131B 25 V/V and SA59131D 100 V/V are TSSOP only), -4 to 80 V common mode, 2.7-5.5 V supply, AEC-Q100. SOIC-8 is Silergy SOP8',
+    keywords: 'current sense amplifier shunt monitor bidirectional pwm rejection automotive SA59131B SA59131D',
+    datasheet: 'https://silergy.com/download/downloadFile?id=6175&type=product&ftype=note',
+    pins: [
+      { numbers: { 'soic-8': '8', 'tssop-8': '2' }, name: 'IN+', type: 'input', side: 'left', pos: 5.08 },
+      { numbers: { 'soic-8': '1', 'tssop-8': '3' }, name: 'IN-', type: 'input', side: 'left', pos: 2.54 },
+      { numbers: { 'soic-8': '7', 'tssop-8': '7' }, name: 'REF1', type: 'input', side: 'left', pos: -2.54 },
+      { numbers: { 'soic-8': '3', 'tssop-8': '6' }, name: 'REF2', type: 'input', side: 'left', pos: -5.08 },
+      { numbers: { 'soic-8': '6', 'tssop-8': '5' }, name: 'VS', type: 'power_in', side: 'top', pos: 0 },
+      { numbers: { 'soic-8': '5', 'tssop-8': '8' }, name: 'OUT', type: 'output', side: 'right', pos: 2.54 },
+      { numbers: { 'soic-8': '4', 'tssop-8': '1' }, name: 'NC', type: 'passive', side: 'right', pos: -2.54 },
+      { numbers: { 'soic-8': '2', 'tssop-8': '4' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
     ],
   },
   ADE9078: {
