@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 790 420" role="img" aria-labelledby="ina240-solenoid-t ina240-solenoid-d">
+<title id="ina240-solenoid-t">INA240-Q1 solenoid drive current-sense circuit</title>
+<desc id="ina240-solenoid-d">Solenoid drive current-sense circuit redrawn from the INA240-Q1 datasheet, Figure 9-5. A 12 V supply, as the figure prints it, feeds the drain of a high-side N-channel MOSFET whose gate is the Control input. The source goes through a 10 milliohm shunt resistor to the solenoid, whose other end is grounded. A freewheeling diode runs from ground to the MOSFET source, which is the top end of the shunt, so the solenoid current keeps flowing down through the shunt after the switch opens. The top end of the shunt goes to the IN+ pin and the bottom end to the IN- pin of the INA240-Q1. The VS pin takes 5 V. REF2 is tied to VS and REF1 to ground, so the output rests at half the supply. The OUT pin is the output. GND is grounded.</desc>
+<path class="sch-flag" d="M130 40 L122 32 L84 32 L84 48 L122 48 Z"/>
+<text class="sch-net" x="103" y="44" text-anchor="middle">12 V</text>
+<path class="sch-w" d="M130 40 L300 40 L300 70"/>
+<text class="sch-net" x="84" y="62" text-anchor="start">as printed in the figure;</text>
+<text class="sch-net" x="84" y="75" text-anchor="start">the text and curve use 24 V</text>
+<path class="sch-w" d="M300 70 L300 98 L292 98"/>
+<path class="sch-w" d="M300 150 L300 110"/>
+<path class="sch-w" d="M300 122 L292 122"/>
+<path class="sch-w" d="M300 110 L292 110"/>
+<path class="sch-w" d="M293 110 L298 107 L298 113 Z"/>
+<path class="sch-w" d="M292 96 L292 101"/>
+<path class="sch-w" d="M292 106 L292 114"/>
+<path class="sch-w" d="M292 119 L292 124"/>
+<path class="sch-w" d="M287 96 L287 124"/>
+<path class="sch-w" d="M287 110 L278 110"/>
+<path class="sch-w" d="M278 110 L240 110"/>
+<circle class="sch-w" cx="240" cy="110" r="3"/>
+<text class="sch-val" x="232" y="114" text-anchor="end">Control</text>
+<circle class="sch-dot" cx="300" cy="150" r="3"/>
+<path class="sch-w" d="M300 150 L200 150"/>
+<path class="sch-w" d="M300 150 L300 190 L294 192.5 L306 197.5 L294 202.5 L306 207.5 L294 212.5 L306 217.5 L300 220 L300 260"/>
+<circle class="sch-dot" cx="300" cy="260" r="3"/>
+<text class="sch-val" x="316" y="210" text-anchor="start">10 mΩ</text>
+<path class="sch-w" d="M300 260 L300 286 A6 6 0 0 1 300 298 A6 6 0 0 1 300 310 A6 6 0 0 1 300 322 A6 6 0 0 1 300 334 L300 360"/>
+<text class="sch-val" x="324" y="316" text-anchor="start">Solenoid</text>
+<path class="sch-w" d="M300 360 L300 370 L200 370"/>
+<circle class="sch-dot" cx="200" cy="370" r="3"/>
+<path class="sch-w" d="M200 370 L200 378"/>
+<path class="sch-w" d="M189 378 L211 378"/>
+<path class="sch-w" d="M193 383 L207 383"/>
+<path class="sch-w" d="M197 388 L203 388"/>
+<path class="sch-w" d="M200 370 L200 268"/>
+<path class="sch-w" d="M200 252 L200 150"/>
+<path class="sch-w" d="M192 268 L208 268 L200 252 Z"/>
+<path class="sch-w" d="M192 252 L208 252"/>
+<rect class="sch-ic" x="470" y="100" width="180" height="130" rx="3"/>
+<path class="sch-w" d="M458 130 L470 130"/>
+<text class="sch-pin" x="478" y="134" text-anchor="start">IN+</text>
+<path class="sch-w" d="M458 190 L470 190"/>
+<text class="sch-pin" x="478" y="194" text-anchor="start">IN–</text>
+<path class="sch-w" d="M650 130 L662 130"/>
+<text class="sch-pin" x="642" y="134" text-anchor="end">OUT</text>
+<path class="sch-w" d="M650 170 L662 170"/>
+<text class="sch-pin" x="642" y="174" text-anchor="end">REF2</text>
+<path class="sch-w" d="M650 195 L662 195"/>
+<text class="sch-pin" x="642" y="199" text-anchor="end">REF1</text>
+<path class="sch-w" d="M560 88 L560 100"/>
+<text class="sch-pin" x="560" y="116" text-anchor="middle">VS</text>
+<path class="sch-w" d="M560 230 L560 242"/>
+<text class="sch-pin" x="560" y="222" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="560" y="163" text-anchor="middle">INA240-Q1</text>
+<text class="sch-val" x="560" y="179" text-anchor="middle">A4, 200 V/V</text>
+<path class="sch-flag" d="M514 70 L506 62 L468 62 L468 78 L506 78 Z"/>
+<text class="sch-net" x="487" y="74" text-anchor="middle">5 V</text>
+<path class="sch-w" d="M514 70 L560 70"/>
+<circle class="sch-dot" cx="560" cy="70" r="3"/>
+<path class="sch-w" d="M560 70 L560 88"/>
+<path class="sch-w" d="M560 70 L750 70 L750 170 L662 170"/>
+<path class="sch-flag" d="M662 130 L670 122 L708 122 L708 138 L670 138 Z"/>
+<text class="sch-net" x="689" y="134" text-anchor="middle">OUT</text>
+<path class="sch-w" d="M662 195 L725 195 L725 256 L560 256"/>
+<path class="sch-w" d="M560 242 L560 256"/>
+<circle class="sch-dot" cx="560" cy="256" r="3"/>
+<path class="sch-w" d="M560 256 L560 264"/>
+<path class="sch-w" d="M549 264 L571 264"/>
+<path class="sch-w" d="M553 269 L567 269"/>
+<path class="sch-w" d="M557 274 L563 274"/>
+<path class="sch-w" d="M458 130 L390 130 L390 150 L300 150"/>
+<path class="sch-w" d="M458 190 L420 190 L420 260 L300 260"/>
+<text class="sch-net" x="60" y="408" text-anchor="start">Not drawn in the datasheet figure: the 0.1 µF supply bypass the text recommends.</text>
+<text class="sch-net" x="60" y="424" text-anchor="start">The gain version (A4) is from the text, not the figure.</text>
+</svg>

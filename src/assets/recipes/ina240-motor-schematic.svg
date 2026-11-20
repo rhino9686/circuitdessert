@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 10 860 460" role="img" aria-labelledby="ina240-motor-t ina240-motor-d">
+<title id="ina240-motor-t">INA240-Q1 inline motor current-sense circuit</title>
+<desc id="ina240-motor-d">Inline motor current-sense circuit redrawn from the INA240-Q1 datasheet, Figure 9-3. A 40 V supply feeds a three-phase bridge of six switches, one pair per phase, with the switches drawn as transistor symbols and no drive shown. The first phase reaches the motor through a 100 milliohm shunt resistor, and the other two phases go straight to the motor. The shunt end nearest the bridge goes to the IN+ pin of the INA240-Q1 and the end nearest the motor to the IN- pin. The VS pin takes 5 V. REF2 is tied to VS and REF1 to ground, so the output rests at half the supply and can follow current in both directions. The OUT pin is the output. GND is grounded.</desc>
+<path class="sch-flag" d="M60 60 L52 52 L14 52 L14 68 L52 68 Z"/>
+<text class="sch-net" x="33" y="64" text-anchor="middle">40 V</text>
+<path class="sch-w" d="M60 60 L360 60"/>
+<circle class="sch-dot" cx="160" cy="60" r="3"/>
+<circle class="sch-dot" cx="260" cy="60" r="3"/>
+<path class="sch-w" d="M160 420 L360 420"/>
+<circle class="sch-dot" cx="260" cy="420" r="3"/>
+<path class="sch-w" d="M260 420 L260 428"/>
+<path class="sch-w" d="M249 428 L271 428"/>
+<path class="sch-w" d="M253 433 L267 433"/>
+<path class="sch-w" d="M257 438 L263 438"/>
+<path class="sch-w" d="M160 60 L160 90"/>
+<path class="sch-w" d="M160 90 L160 102 L150 113"/>
+<path class="sch-w" d="M150 127 L160 138 L160 150"/>
+<path class="sch-w" d="M150 107 L150 133"/>
+<path class="sch-w" d="M150 120 L132 120"/>
+<path class="sch-w" d="M159 137 L151.25 133.23 L155.99 128.93 Z"/>
+<path class="sch-w" d="M160 150 L160 320"/>
+<path class="sch-w" d="M160 320 L160 332 L150 343"/>
+<path class="sch-w" d="M150 357 L160 368 L160 380"/>
+<path class="sch-w" d="M150 337 L150 363"/>
+<path class="sch-w" d="M150 350 L132 350"/>
+<path class="sch-w" d="M159 367 L151.25 363.23 L155.99 358.93 Z"/>
+<path class="sch-w" d="M160 380 L160 420"/>
+<circle class="sch-dot" cx="160" cy="230" r="3"/>
+<path class="sch-w" d="M260 60 L260 90"/>
+<path class="sch-w" d="M260 90 L260 102 L250 113"/>
+<path class="sch-w" d="M250 127 L260 138 L260 150"/>
+<path class="sch-w" d="M250 107 L250 133"/>
+<path class="sch-w" d="M250 120 L232 120"/>
+<path class="sch-w" d="M259 137 L251.25 133.23 L255.99 128.93 Z"/>
+<path class="sch-w" d="M260 150 L260 320"/>
+<path class="sch-w" d="M260 320 L260 332 L250 343"/>
+<path class="sch-w" d="M250 357 L260 368 L260 380"/>
+<path class="sch-w" d="M250 337 L250 363"/>
+<path class="sch-w" d="M250 350 L232 350"/>
+<path class="sch-w" d="M259 367 L251.25 363.23 L255.99 358.93 Z"/>
+<path class="sch-w" d="M260 380 L260 420"/>
+<circle class="sch-dot" cx="260" cy="260" r="3"/>
+<path class="sch-w" d="M360 60 L360 90"/>
+<path class="sch-w" d="M360 90 L360 102 L350 113"/>
+<path class="sch-w" d="M350 127 L360 138 L360 150"/>
+<path class="sch-w" d="M350 107 L350 133"/>
+<path class="sch-w" d="M350 120 L332 120"/>
+<path class="sch-w" d="M359 137 L351.25 133.23 L355.99 128.93 Z"/>
+<path class="sch-w" d="M360 150 L360 320"/>
+<path class="sch-w" d="M360 320 L360 332 L350 343"/>
+<path class="sch-w" d="M350 357 L360 368 L360 380"/>
+<path class="sch-w" d="M350 337 L350 363"/>
+<path class="sch-w" d="M350 350 L332 350"/>
+<path class="sch-w" d="M359 367 L351.25 363.23 L355.99 358.93 Z"/>
+<path class="sch-w" d="M360 380 L360 420"/>
+<circle class="sch-dot" cx="360" cy="290" r="3"/>
+<path class="sch-w" d="M160 230 L255 230 A5 5 0 0 1 265 230 L355 230 A5 5 0 0 1 365 230 L450 230"/>
+<circle class="sch-dot" cx="450" cy="230" r="3"/>
+<path class="sch-w" d="M450 230 L480 230 L482.5 224 L487.5 236 L492.5 224 L497.5 236 L502.5 224 L507.5 236 L510 230 L540 230"/>
+<circle class="sch-dot" cx="540" cy="230" r="3"/>
+<text class="sch-val" x="495" y="212" text-anchor="middle">100 mΩ</text>
+<path class="sch-w" d="M540 230 L690 230"/>
+<path class="sch-w" d="M260 260 L355 260 A5 5 0 0 1 365 260 L690 260"/>
+<path class="sch-w" d="M360 290 L690 290"/>
+<rect class="sch-ic" x="690" y="200" width="80" height="120" rx="3"/>
+<text class="sch-ictitle" x="730" y="266" text-anchor="middle">Motor</text>
+<rect class="sch-ic" x="580" y="60" width="170" height="100" rx="3"/>
+<path class="sch-w" d="M568 90 L580 90"/>
+<text class="sch-pin" x="588" y="94" text-anchor="start">IN+</text>
+<path class="sch-w" d="M568 130 L580 130"/>
+<text class="sch-pin" x="588" y="134" text-anchor="start">IN–</text>
+<path class="sch-w" d="M750 90 L762 90"/>
+<text class="sch-pin" x="742" y="94" text-anchor="end">OUT</text>
+<path class="sch-w" d="M750 120 L762 120"/>
+<text class="sch-pin" x="742" y="124" text-anchor="end">REF2</text>
+<path class="sch-w" d="M750 145 L762 145"/>
+<text class="sch-pin" x="742" y="149" text-anchor="end">REF1</text>
+<path class="sch-w" d="M665 48 L665 60"/>
+<text class="sch-pin" x="665" y="76" text-anchor="middle">VS</text>
+<path class="sch-w" d="M665 160 L665 172"/>
+<text class="sch-pin" x="665" y="152" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="665" y="108" text-anchor="middle">INA240-Q1</text>
+<text class="sch-val" x="665" y="124" text-anchor="middle">A1, 20 V/V</text>
+<path class="sch-flag" d="M619 30 L611 22 L573 22 L573 38 L611 38 Z"/>
+<text class="sch-net" x="592" y="34" text-anchor="middle">5 V</text>
+<path class="sch-w" d="M619 30 L665 30"/>
+<circle class="sch-dot" cx="665" cy="30" r="3"/>
+<path class="sch-w" d="M665 30 L665 48"/>
+<path class="sch-w" d="M665 30 L830 30 L830 120 L762 120"/>
+<path class="sch-flag" d="M762 90 L770 82 L808 82 L808 98 L770 98 Z"/>
+<text class="sch-net" x="789" y="94" text-anchor="middle">OUT</text>
+<path class="sch-w" d="M762 145 L790 145 L790 186 L665 186"/>
+<path class="sch-w" d="M665 172 L665 186"/>
+<circle class="sch-dot" cx="665" cy="186" r="3"/>
+<path class="sch-w" d="M665 186 L665 194"/>
+<path class="sch-w" d="M654 194 L676 194"/>
+<path class="sch-w" d="M658 199 L672 199"/>
+<path class="sch-w" d="M662 204 L668 204"/>
+<path class="sch-w" d="M568 90 L450 90 L450 230"/>
+<path class="sch-w" d="M568 130 L540 130 L540 230"/>
+<text class="sch-net" x="450" y="360" text-anchor="start">Not drawn in the datasheet figure: the drive for the six</text>
+<text class="sch-net" x="450" y="376" text-anchor="start">switches, and the 0.1 µF supply bypass the text recommends.</text>
+<text class="sch-net" x="450" y="400" text-anchor="start">The gain version (A1) is from the text, not the figure.</text>
+</svg>

@@ -43,6 +43,7 @@ import { dimmingInterface } from './designs-sy5867z.mjs';
 import { ssdPmicApplication } from './designs-sy70202k.mjs';
 import { classDAmpTypical } from './designs-sy6045b.mjs';
 import { singleInductorBuckBoost } from './designs-tps63020.mjs';
+import { inlineMotorSense, solenoidSense } from './designs-ina240.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -118,6 +119,8 @@ const designs = {
   'sy6045b-schematic.svg': classDAmpTypical({ id: 'sy6045b' }),
   'sq52201qdq-schematic.svg': powerMonitor1Ch({ id: 'sq52201qdq' }),
   'sq52212xfs-schematic.svg': powerMonitor2Ch({ id: 'sq52212xfs' }),
+  'ina240-motor-schematic.svg': inlineMotorSense({ id: 'ina240-motor' }),
+  'ina240-solenoid-schematic.svg': solenoidSense({ id: 'ina240-solenoid' }),
   'tps63020-schematic.svg': singleInductorBuckBoost({ id: 'tps63020' }),
   'tps63020-2a-schematic.svg': singleInductorBuckBoost({ id: 'tps63020-2a', fast: true }),
   'sy21219-schematic.svg': vccBuck({
