@@ -31,6 +31,7 @@ export function padList(pk) {
 }
 
 function footprint(pk) {
+  if (pk.kind === 'dual-nolead') return footprintDualNoLead(pk);
   const pads = padList(pk);
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2; // half sizes: across, along
   const padTop = Math.max(...pads.map((p) => Math.abs(p.y) + p.h / 2));
@@ -68,7 +69,7 @@ function footprint(pk) {
 // ---------------------------------------------------------------- symbol
 function symbol(name, s) {
   const pk = s.package ? PACKAGES[s.package] : null; // a symbol can come before its footprint: then Footprint stays empty
-  const half = 5.08, plen = 2.54;
+  const half = s.half ?? 5.08, plen = 2.54;
   const place = (p) => { // p.pos: position along the side in KiCad symbol units (mm, on the 2.54 grid)
     if (p.side === 'left') return { x: -(half + plen), y: p.pos, a: 0 };
     if (p.side === 'right') return { x: half + plen, y: p.pos, a: 180 };
@@ -103,6 +104,7 @@ function symbol(name, s) {
 
 // ---------------------------------------------------------------- illustration
 function illustration(pk) {
+  if (pk.kind === 'dual-nolead') return illustrationDualNoLead(pk);
   const S = pk.illustration?.scale ?? 72; // px per mm
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2;
   const span = mid(pk.leadSpan) / 2, lw = mid(pk.leadWidth) / 2;
@@ -170,6 +172,131 @@ function illustration(pk) {
   }
   o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 36)}" text-anchor="middle">pads ${pk.pad.long.toFixed(2)} × ${pk.pad.wide.toFixed(2)} mm</text>`);
   if (pk.thermalPad) o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 54)}" text-anchor="middle">exposed pad ${pk.thermalPad.across.toFixed(2)} × ${pk.thermalPad.along.toFixed(2)} mm</text>`);
+  o.push('</svg>');
+  return o.join('\n') + '\n';
+}
+
+// ---------------------------------------------------------------- two-row no-lead package with an exposed pad (VSON-14)
+// Pads 1..pinsPerSide down the left side (x = -rowCentres/2), the rest up the right side. y runs along the rows.
+export function padListDual(pk) {
+  const x = pk.rowCentres / 2, k = pk.pinsPerSide, pads = [];
+  for (let i = 0; i < k; i++) pads.push({ num: String(i + 1), x: -x, y: (i - (k - 1) / 2) * pk.pitch, w: pk.pad.long, h: pk.pad.wide });
+  for (let i = 0; i < k; i++) pads.push({ num: String(k + 1 + i), x, y: ((k - 1) / 2 - i) * pk.pitch, w: pk.pad.long, h: pk.pad.wide });
+  return pads;
+}
+
+// Outline of the comb-shaped exposed pad as a closed list of [x, y] points (x across the body, y along it).
+export function thermalOutline(t) {
+  const a = t.across / 2, ye = t.along / 2, yc = t.centre / 2;
+  // x edges of the fingers, left to right: finger, gap, finger, ...
+  const xs = [-a];
+  for (let i = 0; i < t.fingers; i++) { xs.push(xs[xs.length - 1] + t.finger); if (i < t.fingers - 1) xs.push(xs[xs.length - 1] + t.gap); }
+  const end = (sign, edges) => { // walk one end of the comb: finger tips at sign*ye, gap bottoms at sign*yc
+    const o = [];
+    for (let i = 0; i < edges.length; i += 2) { o.push([edges[i], sign * ye], [edges[i + 1], sign * ye]); if (i + 2 < edges.length) o.push([edges[i + 1], sign * yc], [edges[i + 2], sign * yc]); }
+    return o;
+  };
+  const top = end(-1, xs), bottom = end(1, xs).reverse();
+  return [...top, ...bottom];
+}
+
+function footprintDualNoLead(pk) {
+  const pads = padListDual(pk), t = pk.thermal;
+  const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2; // half sizes: across, along
+  const padOuter = Math.max(...pads.map((p) => Math.abs(p.x) + p.w / 2));
+  const padTop = Math.max(...pads.map((p) => Math.abs(p.y) + p.h / 2));
+  const cx = Math.ceil((padOuter + pk.courtyardMargin) * 20) / 20;
+  const cy = Math.ceil((Math.max(padTop, bl, t.along / 2) + pk.courtyardMargin) * 20) / 20;
+  const sx = Math.ceil((padOuter + 0.2) * 20) / 20; // silkscreen lines run along the long sides, 0.2 outside the pads
+  const sy = bl;
+  const line = (x1, y1, x2, y2, layer, w) => `  (fp_line (start ${n(x1)} ${n(y1)}) (end ${n(x2)} ${n(y2)}) (stroke (width ${w}) (type solid)) (layer "${layer}"))`;
+  const ch = 0.5; // pin 1 chamfer on the fab outline (ours)
+  const L = [];
+  L.push(`(footprint "${pk.file}" (version 20221018) (generator pcbnew)`);
+  L.push(`  (layer "F.Cu")`);
+  L.push(`  (descr "${pk.descr}")`);
+  L.push(`  (tags "${pk.tags}")`);
+  L.push(`  (attr smd)`);
+  L.push(`  (fp_text reference "REF**" (at 0 ${n(-(cy + 0.7))}) (layer "F.SilkS")\n    (effects (font (size 1 1) (thickness 0.15)))\n  )`);
+  L.push(`  (fp_text value "${pk.file}" (at 0 ${n(cy + 0.7)}) (layer "F.Fab")\n    (effects (font (size 1 1) (thickness 0.15)))\n  )`);
+  L.push(`  (fp_text user "\${REFERENCE}" (at 0 0) (layer "F.Fab")\n    (effects (font (size 0.5 0.5) (thickness 0.075)))\n  )`);
+  // silkscreen: a line along each long side; the left one has a tick across the top as the pin 1 marker
+  L.push(line(-sx, -sy, -sx, sy, 'F.SilkS', 0.12));
+  L.push(line(sx, -sy, sx, sy, 'F.SilkS', 0.12));
+  L.push(line(-sx, -sy, -(padOuter - pk.pad.long), -sy, 'F.SilkS', 0.12));
+  // fab outline with the pin 1 chamfer
+  const pts = [[-bw, -bl + ch], [-bw + ch, -bl], [bw, -bl], [bw, bl], [-bw, bl]];
+  pts.forEach((p, i) => { const q = pts[(i + 1) % pts.length]; L.push(line(p[0], p[1], q[0], q[1], 'F.Fab', 0.1)); });
+  // courtyard
+  const c = [[-cx, -cy], [cx, -cy], [cx, cy], [-cx, cy]];
+  c.forEach((p, i) => { const q = c[(i + 1) % 4]; L.push(line(p[0], p[1], q[0], q[1], 'F.CrtYd', 0.05)); });
+  for (const p of pads) {
+    // roundrect_rratio 0.5 on the shorter side gives the drawing's full round ends (R0.12)
+    L.push(`  (pad "${p.num}" smd roundrect (at ${n(p.x)} ${n(p.y)}) (size ${n(p.w)} ${n(p.h)}) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.5))`);
+  }
+  // exposed pad: a custom pad whose shape is the comb outline
+  const poly = thermalOutline(t).map(([x, y]) => `(xy ${n(x)} ${n(y)})`).join(' ');
+  L.push(`  (pad "${t.num}" smd custom (at 0 0) (size ${n(t.across)} ${n(t.centre)}) (layers "F.Cu" "F.Paste" "F.Mask")\n    (options (clearance outline) (anchor rect))\n    (primitives\n      (gr_poly (pts ${poly}) (width 0) (fill yes))\n    )\n  )`);
+  L.push(')');
+  return L.join('\n') + '\n';
+}
+
+function illustrationDualNoLead(pk) {
+  const S = 52; // px per mm
+  const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2;
+  const ll = mid(pk.leadLength), lw = mid(pk.leadWidth) / 2;
+  const pads = padListDual(pk), t = pk.thermal;
+  const ax = 165, bx = 440, cy = 170; // panel centres
+  const X = (c, v) => n(c + v * S), Y = (v) => n(cy + v * S);
+  const poly = (c, pts) => pts.map(([x, y]) => `${X(c, x)},${Y(y)}`).join(' ');
+  // package exposed pad: same fingers, but out to the body edge (page 32)
+  const tp = { ...t, along: mid(pk.body.length), centre: t.centre };
+  const o = [];
+  o.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="${pk.name} package contacts and footprint">`);
+  o.push(`<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-lead{fill:var(--cd-muted)}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dim{stroke:var(--cd-muted);stroke-width:1.2;fill:none}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>`);
+  // panel A: the package's contacts, drawn in the footprint's orientation (seen from above through the body)
+  o.push(`<text class="pk-h" x="${ax}" y="24" text-anchor="middle">Package contacts, seen from above</text>`);
+  o.push(`<rect class="pk-body" x="${X(ax, -bw)}" y="${Y(-bl)}" width="${n(bw * 2 * S)}" height="${n(bl * 2 * S)}" rx="4"/>`);
+  o.push(`<polygon class="pk-lead" points="${poly(ax, thermalOutline(tp))}"/>`);
+  for (const p of pads) {
+    const side = p.x < 0 ? -1 : 1;
+    const x0 = side < 0 ? -bw : bw - ll;
+    o.push(`<rect class="pk-lead" x="${X(ax, x0)}" y="${Y(p.y - lw)}" width="${n(ll * S)}" height="${n(lw * 2 * S)}"/>`);
+    o.push(`<text class="pk-t" x="${X(ax, side * (bw + 0.12))}" y="${n(cy + p.y * S + 4.5)}" text-anchor="${side < 0 ? 'end' : 'start'}">${p.num}</text>`);
+  }
+  o.push(`<circle class="pk-dot" cx="${X(ax, -bw + 0.3)}" cy="${Y(-bl + 0.3)}" r="7"/>`);
+  const dx = ax - (bw + 0.7) * S;
+  o.push(`<path class="pk-dim" d="M${n(dx)} ${Y(-bl)}V${Y(bl)}M${n(dx - 5)} ${Y(-bl)}h10M${n(dx - 5)} ${Y(bl)}h10"/>`);
+  o.push(`<text class="pk-n" transform="translate(${n(dx - 8)} ${cy}) rotate(-90)" text-anchor="middle">${rng(pk.body.length)}</text>`);
+  const by = cy + (bl + 0.3) * S;
+  o.push(`<path class="pk-dim" d="M${X(ax, -bw)} ${n(by)}H${X(ax, bw)}M${X(ax, -bw)} ${n(by - 5)}v10M${X(ax, bw)} ${n(by - 5)}v10"/>`);
+  o.push(`<text class="pk-n" x="${ax}" y="${n(by + 18)}" text-anchor="middle">body ${rng(pk.body.width)}</text>`);
+  o.push(`<text class="pk-n" x="${ax}" y="${n(by + 36)}" text-anchor="middle">contacts ${rng(pk.leadLength)} long, ${rng(pk.leadWidth)} wide</text>`);
+  // panel B: footprint
+  o.push(`<text class="pk-h" x="${bx}" y="24" text-anchor="middle">Footprint (land pattern)</text>`);
+  o.push(`<rect class="pk-out" x="${X(bx, -bw)}" y="${Y(-bl)}" width="${n(bw * 2 * S)}" height="${n(bl * 2 * S)}" rx="4"/>`);
+  o.push(`<polygon class="pk-pad" points="${poly(bx, thermalOutline(t))}"/>`);
+  o.push(`<text class="pk-t" x="${n(bx)}" y="${n(cy + 4.5)}" text-anchor="middle" style="fill:var(--cd-on-accent)">${t.num}</text>`);
+  for (const p of pads) {
+    o.push(`<rect class="pk-pad" x="${X(bx, p.x - p.w / 2)}" y="${Y(p.y - p.h / 2)}" width="${n(p.w * S)}" height="${n(p.h * S)}" rx="${n(p.h * S * 0.5)}"/>`);
+    const side = p.x < 0 ? -1 : 1;
+    o.push(`<text class="pk-t" x="${X(bx, p.x + side * (p.w / 2 + 0.12))}" y="${n(cy + p.y * S + 4.5)}" text-anchor="${side < 0 ? 'end' : 'start'}">${p.num}</text>`);
+  }
+  const rx = pk.rowCentres / 2, ry = cy + (t.along / 2 + 0.3) * S;
+  o.push(`<path class="pk-dim" d="M${X(bx, -rx)} ${n(ry)}H${X(bx, rx)}M${X(bx, -rx)} ${n(ry - 5)}v10M${X(bx, rx)} ${n(ry - 5)}v10"/>`);
+  o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 18)}" text-anchor="middle">${pk.rowCentres.toFixed(2)} between pad rows</text>`);
+  o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 36)}" text-anchor="middle">pads ${pk.pad.long.toFixed(2)} × ${pk.pad.wide.toFixed(2)}, pitch ${pk.pitch.toFixed(2)}</text>`);
+  o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 54)}" text-anchor="middle">exposed pad ${t.along.toFixed(2)} × ${t.across.toFixed(2)}</text>`);
   o.push('</svg>');
   return o.join('\n') + '\n';
 }
