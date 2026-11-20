@@ -114,7 +114,7 @@ for (const f of recipeFiles) {
 }
 
 // ---- Packages and KiCad files ----
-// A package page's footprint and checked_against parts must exist; a part's kicad_symbol file must exist.
+// A package page's footprint and its checked_against / assumed_for parts must exist; a part's kicad_symbol file must exist.
 const publicDir = new URL('../public/kicad/', import.meta.url);
 const kicadFile = (sub, name) => { try { statSync(new URL(`${sub}/${name}`, publicDir)); return true; } catch { return false; } };
 for (const f of partFiles) {
@@ -132,9 +132,11 @@ for (const f of pkgFiles) {
   checkBodyStartsWithSection(rel, content(f));
   const fp = field(fm, 'footprint');
   if (fp && !kicadFile('footprints/circuitdessert.pretty', fp)) err(rel, `footprint ${fp} not found in public/kicad/footprints/circuitdessert.pretty/ (run npm run kicad?)`);
-  const m = fm.match(/^checked_against:\s*\[(.*)\]\s*$/m);
-  for (const name of (m ? m[1].split(',') : []).map((x) => x.trim()).filter(Boolean)) {
-    if (!partNames.has(name.toLowerCase())) err(rel, `checked_against lists ${name}, which is not a part on the site`);
+  for (const key of ['checked_against', 'assumed_for']) {
+    const m = fm.match(new RegExp(`^${key}:\\s*\\[(.*)\\]\\s*$`, 'm'));
+    for (const name of (m ? m[1].split(',') : []).map((x) => x.trim()).filter(Boolean)) {
+      if (!partNames.has(name.toLowerCase())) err(rel, `${key} lists ${name}, which is not a part on the site`);
+    }
   }
   if (rel.split('/').length !== 2) err(rel, 'expected path packages/<slug>.md');
 }

@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 760 700" role="img" aria-labelledby="sy67134-tank-drive-t sy67134-tank-drive-d">
+<title id="sy67134-tank-drive-t">SY67134 two-motor drive</title>
+<desc id="sy67134-tank-drive-d">Two SY67134 H-bridge motor drivers, one for each motor of a tracked robot. Each driver has its VM pin on the shared motor supply net VM, with a 100 µF electrolytic capacitor CBULK and a 10 µF ceramic capacitor CVM from VM to ground. The VREF pins of both drivers go to one shared reference voltage net VREF, and each has its own 0.1 µF capacitor CREF to ground. IN1 and IN2 of each driver come from a controller (nets IN1L and IN2L for the left driver U1, IN1R and IN2R for the right driver U2). A brushed DC motor connects between OUT1 and OUT2 of each driver (M1 on the left, M2 on the right). ISEN of each driver goes to ground through a 50 mΩ current-sense resistor (RSENSE1 and RSENSE2). The supply and the reference voltage are not specified.</desc>
+<rect class="sch-ic" x="300" y="90" width="170" height="250" rx="3"/>
+<path class="sch-w" d="M288 120 L300 120"/>
+<text class="sch-pin" x="308" y="124" text-anchor="start">VM</text>
+<path class="sch-w" d="M288 170 L300 170"/>
+<text class="sch-pin" x="308" y="174" text-anchor="start">GND</text>
+<path class="sch-w" d="M288 225 L300 225"/>
+<text class="sch-pin" x="308" y="229" text-anchor="start">IN1</text>
+<path class="sch-w" d="M288 260 L300 260"/>
+<text class="sch-pin" x="308" y="264" text-anchor="start">IN2</text>
+<path class="sch-w" d="M288 310 L300 310"/>
+<text class="sch-pin" x="308" y="314" text-anchor="start">VREF</text>
+<path class="sch-w" d="M470 120 L482 120"/>
+<text class="sch-pin" x="462" y="124" text-anchor="end">OUT1</text>
+<path class="sch-w" d="M470 260 L482 260"/>
+<text class="sch-pin" x="462" y="264" text-anchor="end">OUT2</text>
+<path class="sch-w" d="M470 310 L482 310"/>
+<text class="sch-pin" x="462" y="314" text-anchor="end">ISEN</text>
+<text class="sch-ictitle" x="385" y="213" text-anchor="middle">SY67134</text>
+<text class="sch-val" x="385" y="229" text-anchor="middle">U1, left motor</text>
+<path class="sch-flag" d="M50 120 L42 112 L4 112 L4 128 L42 128 Z"/>
+<text class="sch-net" x="23" y="124" text-anchor="middle">VM</text>
+<path class="sch-w" d="M50 120 L288 120"/>
+<circle class="sch-dot" cx="150" cy="120" r="3"/>
+<path class="sch-w" d="M150 120 L150 141"/>
+<path class="sch-w" d="M150 170 L150 149"/>
+<path class="sch-w" d="M139 141 L161 141"/>
+<path class="sch-w" d="M139 153 Q150 144 161 153"/>
+<text class="sch-ref" x="135" y="137" text-anchor="end">+</text>
+<text class="sch-ref" x="134" y="154" text-anchor="end">C<tspan class="sch-sub" dy="2.5">BULK1</tspan></text>
+<text class="sch-val" x="134" y="167" text-anchor="end">100 µF</text>
+<circle class="sch-dot" cx="220" cy="120" r="3"/>
+<path class="sch-w" d="M220 120 L220 141"/>
+<path class="sch-w" d="M220 170 L220 149"/>
+<path class="sch-w" d="M209 141 L231 141"/>
+<path class="sch-w" d="M209 149 L231 149"/>
+<text class="sch-ref" x="236" y="143" text-anchor="start">C<tspan class="sch-sub" dy="2.5">VM1</tspan></text>
+<text class="sch-val" x="236" y="156" text-anchor="start">10 µF</text>
+<path class="sch-w" d="M150 170 L288 170"/>
+<circle class="sch-dot" cx="220" cy="170" r="3"/>
+<path class="sch-w" d="M150 170 L150 178"/>
+<path class="sch-w" d="M139 178 L161 178"/>
+<path class="sch-w" d="M143 183 L157 183"/>
+<path class="sch-w" d="M147 188 L153 188"/>
+<path class="sch-flag" d="M50 225 L42 217 L4 217 L4 233 L42 233 Z"/>
+<text class="sch-net" x="23" y="229" text-anchor="middle">IN1L</text>
+<path class="sch-w" d="M50 225 L288 225"/>
+<path class="sch-flag" d="M50 260 L42 252 L4 252 L4 268 L42 268 Z"/>
+<text class="sch-net" x="23" y="264" text-anchor="middle">IN2L</text>
+<path class="sch-w" d="M50 260 L288 260"/>
+<path class="sch-flag" d="M50 310 L42 302 L4 302 L4 318 L42 318 Z"/>
+<text class="sch-net" x="23" y="314" text-anchor="middle">VREF</text>
+<path class="sch-w" d="M50 310 L288 310"/>
+<circle class="sch-dot" cx="190" cy="310" r="3"/>
+<path class="sch-w" d="M190 310 L190 331"/>
+<path class="sch-w" d="M190 360 L190 339"/>
+<path class="sch-w" d="M179 331 L201 331"/>
+<path class="sch-w" d="M179 339 L201 339"/>
+<path class="sch-w" d="M190 360 L190 368"/>
+<path class="sch-w" d="M179 368 L201 368"/>
+<path class="sch-w" d="M183 373 L197 373"/>
+<path class="sch-w" d="M187 378 L193 378"/>
+<text class="sch-ref" x="206" y="334" text-anchor="start">C<tspan class="sch-sub" dy="2.5">REF1</tspan></text>
+<text class="sch-val" x="206" y="347" text-anchor="start">0.1 µF</text>
+<path class="sch-w" d="M482 120 L600 120 L600 160"/>
+<path class="sch-w" d="M482 260 L600 260 L600 220"/>
+<circle class="sch-w" cx="600" cy="190" r="30"/>
+<text class="sch-ictitle" x="600" y="195" text-anchor="middle">M1</text>
+<text class="sch-val" x="600" y="238" text-anchor="middle">Left motor</text>
+<path class="sch-w" d="M482 310 L540 310"/>
+<path class="sch-w" d="M540 310 L540 325 L534 327.5 L546 332.5 L534 337.5 L546 342.5 L534 347.5 L546 352.5 L540 355 L540 370"/>
+<path class="sch-w" d="M540 370 L540 378"/>
+<path class="sch-w" d="M529 378 L551 378"/>
+<path class="sch-w" d="M533 383 L547 383"/>
+<path class="sch-w" d="M537 388 L543 388"/>
+<text class="sch-ref" x="556" y="336" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SENSE1</tspan></text>
+<text class="sch-val" x="556" y="349" text-anchor="start">50 mΩ</text>
+<rect class="sch-ic" x="300" y="430" width="170" height="250" rx="3"/>
+<path class="sch-w" d="M288 460 L300 460"/>
+<text class="sch-pin" x="308" y="464" text-anchor="start">VM</text>
+<path class="sch-w" d="M288 510 L300 510"/>
+<text class="sch-pin" x="308" y="514" text-anchor="start">GND</text>
+<path class="sch-w" d="M288 565 L300 565"/>
+<text class="sch-pin" x="308" y="569" text-anchor="start">IN1</text>
+<path class="sch-w" d="M288 600 L300 600"/>
+<text class="sch-pin" x="308" y="604" text-anchor="start">IN2</text>
+<path class="sch-w" d="M288 650 L300 650"/>
+<text class="sch-pin" x="308" y="654" text-anchor="start">VREF</text>
+<path class="sch-w" d="M470 460 L482 460"/>
+<text class="sch-pin" x="462" y="464" text-anchor="end">OUT1</text>
+<path class="sch-w" d="M470 600 L482 600"/>
+<text class="sch-pin" x="462" y="604" text-anchor="end">OUT2</text>
+<path class="sch-w" d="M470 650 L482 650"/>
+<text class="sch-pin" x="462" y="654" text-anchor="end">ISEN</text>
+<text class="sch-ictitle" x="385" y="553" text-anchor="middle">SY67134</text>
+<text class="sch-val" x="385" y="569" text-anchor="middle">U2, right motor</text>
+<path class="sch-flag" d="M50 460 L42 452 L4 452 L4 468 L42 468 Z"/>
+<text class="sch-net" x="23" y="464" text-anchor="middle">VM</text>
+<path class="sch-w" d="M50 460 L288 460"/>
+<circle class="sch-dot" cx="150" cy="460" r="3"/>
+<path class="sch-w" d="M150 460 L150 481"/>
+<path class="sch-w" d="M150 510 L150 489"/>
+<path class="sch-w" d="M139 481 L161 481"/>
+<path class="sch-w" d="M139 493 Q150 484 161 493"/>
+<text class="sch-ref" x="135" y="477" text-anchor="end">+</text>
+<text class="sch-ref" x="134" y="494" text-anchor="end">C<tspan class="sch-sub" dy="2.5">BULK2</tspan></text>
+<text class="sch-val" x="134" y="507" text-anchor="end">100 µF</text>
+<circle class="sch-dot" cx="220" cy="460" r="3"/>
+<path class="sch-w" d="M220 460 L220 481"/>
+<path class="sch-w" d="M220 510 L220 489"/>
+<path class="sch-w" d="M209 481 L231 481"/>
+<path class="sch-w" d="M209 489 L231 489"/>
+<text class="sch-ref" x="236" y="483" text-anchor="start">C<tspan class="sch-sub" dy="2.5">VM2</tspan></text>
+<text class="sch-val" x="236" y="496" text-anchor="start">10 µF</text>
+<path class="sch-w" d="M150 510 L288 510"/>
+<circle class="sch-dot" cx="220" cy="510" r="3"/>
+<path class="sch-w" d="M150 510 L150 518"/>
+<path class="sch-w" d="M139 518 L161 518"/>
+<path class="sch-w" d="M143 523 L157 523"/>
+<path class="sch-w" d="M147 528 L153 528"/>
+<path class="sch-flag" d="M50 565 L42 557 L4 557 L4 573 L42 573 Z"/>
+<text class="sch-net" x="23" y="569" text-anchor="middle">IN1R</text>
+<path class="sch-w" d="M50 565 L288 565"/>
+<path class="sch-flag" d="M50 600 L42 592 L4 592 L4 608 L42 608 Z"/>
+<text class="sch-net" x="23" y="604" text-anchor="middle">IN2R</text>
+<path class="sch-w" d="M50 600 L288 600"/>
+<path class="sch-flag" d="M50 650 L42 642 L4 642 L4 658 L42 658 Z"/>
+<text class="sch-net" x="23" y="654" text-anchor="middle">VREF</text>
+<path class="sch-w" d="M50 650 L288 650"/>
+<circle class="sch-dot" cx="190" cy="650" r="3"/>
+<path class="sch-w" d="M190 650 L190 671"/>
+<path class="sch-w" d="M190 700 L190 679"/>
+<path class="sch-w" d="M179 671 L201 671"/>
+<path class="sch-w" d="M179 679 L201 679"/>
+<path class="sch-w" d="M190 700 L190 708"/>
+<path class="sch-w" d="M179 708 L201 708"/>
+<path class="sch-w" d="M183 713 L197 713"/>
+<path class="sch-w" d="M187 718 L193 718"/>
+<text class="sch-ref" x="206" y="674" text-anchor="start">C<tspan class="sch-sub" dy="2.5">REF2</tspan></text>
+<text class="sch-val" x="206" y="687" text-anchor="start">0.1 µF</text>
+<path class="sch-w" d="M482 460 L600 460 L600 500"/>
+<path class="sch-w" d="M482 600 L600 600 L600 560"/>
+<circle class="sch-w" cx="600" cy="530" r="30"/>
+<text class="sch-ictitle" x="600" y="535" text-anchor="middle">M2</text>
+<text class="sch-val" x="600" y="578" text-anchor="middle">Right motor</text>
+<path class="sch-w" d="M482 650 L540 650"/>
+<path class="sch-w" d="M540 650 L540 665 L534 667.5 L546 672.5 L534 677.5 L546 682.5 L534 687.5 L546 692.5 L540 695 L540 710"/>
+<path class="sch-w" d="M540 710 L540 718"/>
+<path class="sch-w" d="M529 718 L551 718"/>
+<path class="sch-w" d="M533 723 L547 723"/>
+<path class="sch-w" d="M537 728 L543 728"/>
+<text class="sch-ref" x="556" y="676" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SENSE2</tspan></text>
+<text class="sch-val" x="556" y="689" text-anchor="start">50 mΩ</text>
+</svg>

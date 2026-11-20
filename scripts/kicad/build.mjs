@@ -12,13 +12,22 @@ const mid = (r) => (r.min + r.max) / 2;
 const rng = (r, d = 2) => `${r.min.toFixed(d)}–${r.max.toFixed(d)}`;
 
 // ---------------------------------------------------------------- footprint
+export const pinsPerSide = (pk) => pk.pinsPerSide ?? 3;
+// y of the pins on one side, top to bottom
+const rowYs = (pk) => Array.from({ length: pinsPerSide(pk) }, (_, i) => (i - (pinsPerSide(pk) - 1) / 2) * pk.pitch);
+
 export function padList(pk) {
-  // pin 1 top left, down the left side, then up the right side
-  const x = pk.rowCentres / 2, y = pk.pitch;
-  return [
-    ['1', -x, -y], ['2', -x, 0], ['3', -x, y],
-    ['4', x, y], ['5', x, 0], ['6', x, -y],
-  ].map(([num, px, py]) => ({ num, x: px, y: py, w: pk.pad.long, h: pk.pad.wide }));
+  // pin 1 top left, down the left side, then up the right side; an exposed pad, if any, last
+  const x = pk.rowCentres / 2, ys = rowYs(pk), k = ys.length;
+  const pads = [
+    ...ys.map((y, i) => ({ num: String(i + 1), x: -x, y })),
+    ...ys.map((_, j) => ({ num: String(k + 1 + j), x, y: ys[k - 1 - j] })),
+  ].map((p) => ({ ...p, w: pk.pad.long, h: pk.pad.wide }));
+  if (pk.thermalPad) {
+    const t = pk.thermalPad;
+    pads.push({ num: t.num, x: 0, y: 0, w: t.across, h: t.along, ratio: t.radius / Math.min(t.across, t.along), thermal: true });
+  }
+  return pads;
 }
 
 function footprint(pk) {
@@ -50,7 +59,7 @@ function footprint(pk) {
   const c = [[-cx, -cy], [cx, -cy], [cx, cy], [-cx, cy]];
   c.forEach((p, i) => { const q = c[(i + 1) % 4]; L.push(line(p[0], p[1], q[0], q[1], 'F.CrtYd', 0.05)); });
   for (const p of pads) {
-    L.push(`  (pad "${p.num}" smd roundrect (at ${n(p.x)} ${n(p.y)}) (size ${n(p.w)} ${n(p.h)}) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25))`);
+    L.push(`  (pad "${p.num}" smd roundrect (at ${n(p.x)} ${n(p.y)}) (size ${n(p.w)} ${n(p.h)}) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio ${n(p.ratio ?? 0.25)}))`);
   }
   L.push(')');
   return L.join('\n') + '\n';
@@ -58,7 +67,7 @@ function footprint(pk) {
 
 // ---------------------------------------------------------------- symbol
 function symbol(name, s) {
-  const pk = PACKAGES[s.package];
+  const pk = s.package ? PACKAGES[s.package] : null; // a symbol can come before its footprint: then Footprint stays empty
   const half = 5.08, plen = 2.54;
   const place = (p) => { // p.pos: position along the side in KiCad symbol units (mm, on the 2.54 grid)
     if (p.side === 'left') return { x: -(half + plen), y: p.pos, a: 0 };
@@ -73,11 +82,11 @@ function symbol(name, s) {
   L.push(`  (symbol "${name}" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)`);
   L.push(`    (property "Reference" "U" (id 0) (at 0 ${n(half + plen + 1.27)} 0) ${fx})`);
   L.push(`    (property "Value" "${name}" (id 1) (at 0 ${n(-(half + plen + 1.27))} 0) ${fx})`);
-  L.push(`    (property "Footprint" "${LIB}:${pk.file}" (id 2) (at 0 0 0) ${hid})`);
+  L.push(`    (property "Footprint" "${pk ? `${LIB}:${pk.file}` : ''}" (id 2) (at 0 0 0) ${hid})`);
   L.push(`    (property "Datasheet" "${s.datasheet}" (id 3) (at 0 0 0) ${hid})`);
   L.push(`    (property "Description" "${s.description}" (id 4) (at 0 0 0) ${hid})`);
   L.push(`    (property "ki_keywords" "${s.keywords}" (id 5) (at 0 0 0) ${hid})`);
-  L.push(`    (property "ki_fp_filters" "${pk.file}*" (id 6) (at 0 0 0) ${hid})`);
+  L.push(`    (property "ki_fp_filters" "${pk ? `${pk.file}*` : s.fpFilter}" (id 6) (at 0 0 0) ${hid})`);
   L.push(`    (symbol "${name}_0_1"`);
   L.push(`      (rectangle (start ${n(-half)} ${n(half)}) (end ${n(half)} ${n(-half)}) (stroke (width 0.254) (type default)) (fill (type background)))`);
   L.push(`    )`);
@@ -94,14 +103,17 @@ function symbol(name, s) {
 
 // ---------------------------------------------------------------- illustration
 function illustration(pk) {
-  const S = 72; // px per mm
+  const S = pk.illustration?.scale ?? 72; // px per mm
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2;
   const span = mid(pk.leadSpan) / 2, lw = mid(pk.leadWidth) / 2;
   const pads = padList(pk);
-  const ax = 165, bx = 440, cy = 160; // panel centres
+  const il = pk.illustration ?? {};
+  const ax = 165, bx = il.bx ?? 440, cy = il.cy ?? 160; // panel centres
+  const ys = rowYs(pk), k = ys.length;
+  const W = il.width ?? 600, H = Math.ceil(cy + (bl + 0.3) * S + 75);
   const X = (c, v) => n(c + v * S), Y = (v) => n(cy + v * S);
   const o = [];
-  o.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 362" role="img" aria-label="${pk.name} package top view and footprint">`);
+  o.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${pk.name} package top view and footprint">`);
   o.push(`<style>
 .pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
 .pk-lead{fill:var(--cd-muted)}
@@ -116,16 +128,16 @@ function illustration(pk) {
   // panel A: package top view
   o.push(`<text class="pk-h" x="${ax}" y="24" text-anchor="middle">Package, top view</text>`);
   o.push(`<rect class="pk-body" x="${X(ax, -bw)}" y="${Y(-bl)}" width="${n(bw * 2 * S)}" height="${n(bl * 2 * S)}" rx="4"/>`);
-  for (const [i, y] of [-pk.pitch, 0, pk.pitch].entries()) {
+  for (const [i, y] of ys.entries()) {
     for (const side of [-1, 1]) {
       const x0 = side < 0 ? -span : bw;
       o.push(`<rect class="pk-lead" x="${X(ax, x0)}" y="${Y(y - lw)}" width="${n((span - bw) * S)}" height="${n(lw * 2 * S)}"/>`);
     }
     o.push(`<text class="pk-t" x="${X(ax, -span - 0.12)}" y="${n(cy + y * S + 5)}" text-anchor="end">${i + 1}</text>`);
-    o.push(`<text class="pk-t" x="${X(ax, span + 0.12)}" y="${n(cy + y * S + 5)}">${6 - i}</text>`);
+    o.push(`<text class="pk-t" x="${X(ax, span + 0.12)}" y="${n(cy + y * S + 5)}">${2 * k - i}</text>`);
   }
   o.push(`<circle class="pk-dot" cx="${X(ax, -bw + 0.3)}" cy="${Y(-bl + 0.3)}" r="9"/>`);
-  o.push(`<text class="pk-n" x="${X(ax, -bw + 0.3 + 0.2)}" y="${n(cy + (-bl + 0.3) * S + 5)}">pin 1</text>`);
+  o.push(`<text class="pk-n" x="${n(ax + (-bw + 0.3) * S + Math.max(0.2 * S, 14))}" y="${n(cy + (-bl + 0.3) * S + 5)}">pin 1</text>`);
   // length dimension (along the body) on the left
   const dx = ax - (span + 0.62) * S;
   o.push(`<path class="pk-dim" d="M${n(dx)} ${Y(-bl)}V${Y(bl)}M${n(dx - 5)} ${Y(-bl)}h10M${n(dx - 5)} ${Y(bl)}h10"/>`);
@@ -140,16 +152,24 @@ function illustration(pk) {
   o.push(`<text class="pk-h" x="${bx}" y="24" text-anchor="middle">Footprint (recommended pads)</text>`);
   o.push(`<rect class="pk-out" x="${X(bx, -bw)}" y="${Y(-bl)}" width="${n(bw * 2 * S)}" height="${n(bl * 2 * S)}" rx="4"/>`);
   for (const p of pads) {
-    o.push(`<rect class="pk-pad" x="${X(bx, p.x - p.w / 2)}" y="${Y(p.y - p.h / 2)}" width="${n(p.w * S)}" height="${n(p.h * S)}" rx="${n(p.h * S * 0.25)}"/>`);
+    o.push(`<rect class="pk-pad" x="${X(bx, p.x - p.w / 2)}" y="${Y(p.y - p.h / 2)}" width="${n(p.w * S)}" height="${n(p.h * S)}" rx="${n(Math.min(p.w, p.h) * S * (p.ratio ?? 0.25))}"/>`);
     o.push(`<text class="pk-t" x="${X(bx, p.x)}" y="${n(cy + p.y * S + 5)}" text-anchor="middle" style="fill:var(--cd-on-accent)">${p.num}</text>`);
   }
-  const rx = pk.rowCentres / 2, ry = cy + (pk.pitch + 0.62) * S;
+  const rx = pk.rowCentres / 2, ry = cy + (ys[k - 1] + 0.62) * S;
   o.push(`<path class="pk-dim" d="M${X(bx, -rx)} ${n(ry)}H${X(bx, rx)}M${X(bx, -rx)} ${n(ry - 5)}v10M${X(bx, rx)} ${n(ry - 5)}v10"/>`);
   o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 18)}" text-anchor="middle">${pk.rowCentres.toFixed(2)} between pad centres</text>`);
-  // pitch dimension between the two pad columns, on the centre line
-  o.push(`<path class="pk-dim" d="M${n(bx)} ${Y(0)}V${Y(pk.pitch)}M${n(bx - 5)} ${Y(0)}h10M${n(bx - 5)} ${Y(pk.pitch)}h10"/>`);
-  o.push(`<text class="pk-n" x="${n(bx + 8)}" y="${n(cy + pk.pitch * S / 2 + 4)}">${pk.pitch.toFixed(2)}</text>`);
+  if (pk.thermalPad) {
+    // pitch dimension outside the right-hand pads, between the two lowest ones (the centre line is taken by the exposed pad)
+    const dx = bx + (rx + pk.pad.long / 2) * S + 12, y0 = ys[k - 2], y1 = ys[k - 1];
+    o.push(`<path class="pk-dim" d="M${n(dx)} ${Y(y0)}V${Y(y1)}M${n(dx - 5)} ${Y(y0)}h10M${n(dx - 5)} ${Y(y1)}h10"/>`);
+    o.push(`<text class="pk-n" x="${n(dx + 8)}" y="${n(cy + (y0 + y1) / 2 * S + 4)}">${pk.pitch.toFixed(2)}</text>`);
+  } else {
+    // pitch dimension between the two pad columns, on the centre line
+    o.push(`<path class="pk-dim" d="M${n(bx)} ${Y(0)}V${Y(pk.pitch)}M${n(bx - 5)} ${Y(0)}h10M${n(bx - 5)} ${Y(pk.pitch)}h10"/>`);
+    o.push(`<text class="pk-n" x="${n(bx + 8)}" y="${n(cy + pk.pitch * S / 2 + 4)}">${pk.pitch.toFixed(2)}</text>`);
+  }
   o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 36)}" text-anchor="middle">pads ${pk.pad.long.toFixed(2)} × ${pk.pad.wide.toFixed(2)} mm</text>`);
+  if (pk.thermalPad) o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 54)}" text-anchor="middle">exposed pad ${pk.thermalPad.across.toFixed(2)} × ${pk.thermalPad.along.toFixed(2)} mm</text>`);
   o.push('</svg>');
   return o.join('\n') + '\n';
 }

@@ -22,12 +22,15 @@ const fsw = formatFreq(s.fsw_khz);
 const iq = s.iq_ua != null ? `${s.iq_ua} µA typical` : undefined;
 const packages = d.packages.map(formatPackage).join(', ');
 // Package pages: each package name links to its page when one exists; the footprint is offered here only
-// when the package page says this part's own datasheet drawing was compared with it.
+// when the package page says this part's own datasheet drawing was compared with it, or lists it as `assumed_for`
+// (compatible with the part the drawing came from, own drawing not compared; marked as such next to the download).
 const allPackages = await getPackages();
 const pkgLinks = d.packages.map((name) => {
   const page = findPackage(allPackages, name);
-  const checked = !!page && page.data.checked_against.some((x) => x.toLowerCase() === d.part.toLowerCase());
-  return { label: formatPackage(name), page, footprint: checked ? page!.data.footprint : undefined };
+  const listed = (xs: string[]) => xs.some((x) => x.toLowerCase() === d.part.toLowerCase());
+  const checked = !!page && listed(page.data.checked_against);
+  const assumed = !!page && !checked && listed(page.data.assumed_for);
+  return { label: formatPackage(name), page, footprint: checked || assumed ? page!.data.footprint : undefined, assumed, from: page?.data.source.part };
 });
 const footprints = pkgLinks.filter((p) => p.footprint);
 
@@ -182,7 +185,7 @@ const lcscUrl = d.lcsc ? `https://www.lcsc.com/product-detail/${d.lcsc}.html` : 
             <td>{pkgLinks.map((p, i) => <>{i > 0 && ', '}{p.page ? <a href={packageUrl(p.page.id)}>{p.label}</a> : p.label}</>)}</td>
           </tr>
           {d.kicad_symbol && <tr><th scope="row">KiCad symbol</th><td><a class="cd-link" href={symbolUrl(d.kicad_symbol)} download>{d.kicad_symbol}</a> · generated from the datasheet pin table</td></tr>}
-          {footprints.map((p) => <tr><th scope="row">KiCad footprint</th><td><a class="cd-link" href={footprintUrl(p.footprint!)} download>{p.footprint}</a> · <a href={packageUrl(p.page!.id)}>{p.label} package page</a></td></tr>)}
+          {footprints.map((p) => <tr><th scope="row">KiCad footprint</th><td><a class="cd-link" href={footprintUrl(p.footprint!)} download>{p.footprint}</a> · <a href={packageUrl(p.page!.id)}>{p.label} package page</a>{p.assumed && <> · drawing taken from the {p.from}, not compared with this part's own</>}</td></tr>)}
           {d.status !== 'unknown' && <tr><th scope="row">Status</th><td>{d.status}</td></tr>}
           <tr>
             <th scope="row">Datasheet</th>

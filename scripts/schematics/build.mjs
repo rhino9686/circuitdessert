@@ -11,6 +11,7 @@ import { hBridge } from './designs-sy2a58215.mjs';
 import { boostConverter } from './designs-sy26533.mjs';
 import { buckBoost } from './designs-sy2a29311.mjs';
 import { inInHBridge } from './designs-sy67134.mjs';
+import { sy67134TankDrive } from './designs-sy67134-tank-drive.mjs';
 import { syncBoostDisconnect } from './designs-sy2a29117.mjs';
 import { adcApplication, esp32s3SpiWiringSa59401 } from './designs-sa59401.mjs';
 import { sa8985xApplication, esp32s3SpiWiringSa8985x } from './designs-sa89853.mjs';
@@ -68,6 +69,7 @@ const designs = {
   'sy26533-schematic.svg': boostConverter({ id: 'sy26533', part: 'SY26533' }),
   'sy2a29311-schematic.svg': buckBoost({ id: 'sy2a29311', part: 'SY2A29311' }),
   'sy67134-schematic.svg': inInHBridge({ id: 'sy67134', part: 'SY67134' }),
+  'sy67134-tank-drive-schematic.svg': sy67134TankDrive({ id: 'sy67134-tank-drive', part: 'SY67134' }),
   'sy2a29117-schematic.svg': syncBoostDisconnect({ id: 'sy2a29117', part: 'SY2A29117' }),
   'sa59401-schematic.svg': adcApplication({ id: 'sa59401', part: 'SA59401' }),
   'sa59401-esp32s3-spi-wiring.svg': esp32s3SpiWiringSa59401({ id: 'sa59401-esp32s3-spi', part: 'SA59401' }),

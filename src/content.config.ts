@@ -112,6 +112,9 @@ const packages = defineCollection({
     source: z.object({ part: z.string(), revision: z.string(), page: z.number().int().positive(), datasheet: httpsUrl }),
     // Parts whose own datasheet drawing was compared with this package. Other parts that name the package are listed as "not compared".
     checked_against: z.array(z.string()).default([]),
+    // Parts whose own drawing has NOT been compared, but whose footprint is offered anyway because they are said to be pin- and
+    // package-compatible with `source.part` (say so in the page body). Listed as "Assumed" rather than "Yes".
+    assumed_for: z.array(z.string()).default([]),
     // Set to true once the footprint has been loaded in KiCad and looked at.
     opened_in_kicad: z.boolean().default(false),
     draft: z.boolean().default(true),
