@@ -26,6 +26,7 @@ import { buckBoost1MHz } from './designs-sy20516a.mjs';
 import { lowVoltageBoostFixed } from './designs-sy7070b.mjs';
 import { ldoWithReset } from './designs-sy2a27352.mjs';
 import { currentSenseAmp } from './designs-sy24642.mjs';
+import { midSupplySenseAmp } from './designs-sa59131.mjs';
 import { overcurrentComparator } from './designs-sy24640.mjs';
 import { esp32s3I2cWiring } from './designs-sy7t6xx.mjs';
 import { loadSwitchApplication } from './designs-sy6813c.mjs';
@@ -90,6 +91,7 @@ const designs = {
   'sy7070b-schematic.svg': lowVoltageBoostFixed({ id: 'sy7070b', part: 'SY7070B' }),
   'sy2a27352-schematic.svg': ldoWithReset({ id: 'sy2a27352', part: 'SY2A27352' }),
   'sy24642-schematic.svg': currentSenseAmp({ id: 'sy24642', part: 'SY24642' }),
+  'sa59131-schematic.svg': midSupplySenseAmp({ id: 'sa59131', part: 'SA59131' }),
   'sy24640-schematic.svg': overcurrentComparator({ id: 'sy24640', part: 'SY24640' }),
   'sy7t6xx-esp32s3-i2c-wiring.svg': esp32s3I2cWiring({ id: 'sy7t6xx-esp32s3-i2c', part: 'SY7T6xx' }),
   'sy23505b-schematic.svg': pfcLlc({ id: 'sy23505b', part: 'SY23505B' }),

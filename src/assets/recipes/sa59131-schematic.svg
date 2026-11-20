@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 780 370" role="img" aria-labelledby="sa59131-t sa59131-d">
+<title id="sa59131-t">SA59131 reference circuit</title>
+<desc id="sa59131-d">Application schematic of the SA59131 current-sense amplifier, redrawn from the datasheet. A 10 mΩ sense resistor RSENSE sits in the current path. Its supply-side end goes to the IN+ pin and its load-side end to the IN− pin. The VS pin takes 2.7–5.5 V and has a 100 nF bypass capacitor CBYPASS to ground. The REF2 pin is tied to VS and the REF1 pin to ground, which puts the output at half the supply when no current flows, so the circuit reads current in both directions. The NC pin and the GND pin are tied to ground. The OUT pin is the output, a voltage of gain times the voltage across RSENSE added to that mid-supply level.</desc>
+<rect class="sch-ic" x="300" y="110" width="180" height="200" rx="3"/>
+<path class="sch-w" d="M288 160 L300 160"/>
+<text class="sch-pin" x="308" y="164" text-anchor="start">IN−</text>
+<path class="sch-w" d="M288 250 L300 250"/>
+<text class="sch-pin" x="308" y="254" text-anchor="start">IN+</text>
+<path class="sch-w" d="M480 150 L492 150"/>
+<text class="sch-pin" x="472" y="154" text-anchor="end">OUT</text>
+<path class="sch-w" d="M480 225 L492 225"/>
+<text class="sch-pin" x="472" y="229" text-anchor="end">REF2</text>
+<path class="sch-w" d="M480 265 L492 265"/>
+<text class="sch-pin" x="472" y="269" text-anchor="end">REF1</text>
+<path class="sch-w" d="M390 98 L390 110"/>
+<text class="sch-pin" x="390" y="126" text-anchor="middle">VS</text>
+<path class="sch-w" d="M350 310 L350 322"/>
+<text class="sch-pin" x="350" y="302" text-anchor="middle">NC</text>
+<path class="sch-w" d="M410 310 L410 322"/>
+<text class="sch-pin" x="410" y="302" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="390" y="208" text-anchor="middle">SA59131</text>
+<text class="sch-val" x="390" y="224" text-anchor="middle">U1</text>
+<path class="sch-flag" d="M60 160 L52 152 L14 152 L14 168 L52 168 Z"/>
+<text class="sch-net" x="33" y="164" text-anchor="middle">IN−</text>
+<path class="sch-w" d="M60 160 L288 160"/>
+<text class="sch-net" x="66" y="146" text-anchor="start">load side</text>
+<path class="sch-flag" d="M60 250 L52 242 L14 242 L14 258 L52 258 Z"/>
+<text class="sch-net" x="33" y="254" text-anchor="middle">IN+</text>
+<path class="sch-w" d="M60 250 L288 250"/>
+<text class="sch-net" x="66" y="272" text-anchor="start">supply side</text>
+<circle class="sch-dot" cx="150" cy="160" r="3"/>
+<circle class="sch-dot" cx="150" cy="250" r="3"/>
+<path class="sch-w" d="M150 160 L150 190 L144 192.5 L156 197.5 L144 202.5 L156 207.5 L144 212.5 L156 217.5 L150 220 L150 250"/>
+<text class="sch-ref" x="166" y="203" text-anchor="start">R<tspan class="sch-sub" dy="2.5">SENSE</tspan></text>
+<text class="sch-val" x="166" y="216" text-anchor="start">10 mΩ</text>
+<path class="sch-flag" d="M60 70 L52 62 L14 62 L14 78 L52 78 Z"/>
+<text class="sch-net" x="33" y="74" text-anchor="middle">VS</text>
+<text class="sch-net" x="14" y="56" text-anchor="start">2.7–5.5 V</text>
+<path class="sch-w" d="M60 70 L700 70"/>
+<circle class="sch-dot" cx="390" cy="70" r="3"/>
+<path class="sch-w" d="M390 70 L390 98"/>
+<circle class="sch-dot" cx="540" cy="70" r="3"/>
+<path class="sch-w" d="M540 70 L540 85"/>
+<path class="sch-w" d="M540 108 L540 93"/>
+<path class="sch-w" d="M529 85 L551 85"/>
+<path class="sch-w" d="M529 93 L551 93"/>
+<path class="sch-w" d="M540 108 L540 116"/>
+<path class="sch-w" d="M529 116 L551 116"/>
+<path class="sch-w" d="M533 121 L547 121"/>
+<path class="sch-w" d="M537 126 L543 126"/>
+<text class="sch-ref" x="556" y="87" text-anchor="start">C<tspan class="sch-sub" dy="2.5">BYPASS</tspan></text>
+<text class="sch-val" x="556" y="100" text-anchor="start">100 nF</text>
+<path class="sch-w" d="M492 225 L700 225 L700 70"/>
+<path class="sch-w" d="M492 150 L601 150"/>
+<circle class="sch-w" cx="606" cy="150" r="5"/>
+<text class="sch-net" x="620" y="154" text-anchor="start">output</text>
+<path class="sch-w" d="M492 265 L600 265 L600 350"/>
+<path class="sch-w" d="M350 322 L350 350 L600 350"/>
+<path class="sch-w" d="M410 322 L410 350"/>
+<circle class="sch-dot" cx="410" cy="350" r="3"/>
+<path class="sch-w" d="M410 350 L410 358"/>
+<path class="sch-w" d="M399 358 L421 358"/>
+<path class="sch-w" d="M403 363 L417 363"/>
+<path class="sch-w" d="M407 368 L413 368"/>
+<text class="sch-net" x="60" y="396" text-anchor="start">REF2 on VS and REF1 on ground put OUT at VS/2 with no current: current can flow either way.</text>
+</svg>
