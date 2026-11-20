@@ -71,6 +71,32 @@ export const PACKAGES = {
     // Our additions, not from the datasheet: courtyard margin, silkscreen and fab-layer conventions.
     courtyardMargin: 0.25,
   },
+  // Two-row no-lead package with an exposed pad (TI DRB0008A, the drawing is titled VSON). KiCad orientation: pin 1 top left, pins 1-4 down the left
+  // side, 5-8 up the right side, which is the datasheet's land-pattern view as drawn. x is across the body, y along it.
+  'son-8': {
+    kind: 'dual-nolead',
+    name: 'SON-8',
+    file: 'SON-8',
+    descr: 'SON-8 (TI DRB0008A, titled VSON), 0.65 mm pitch, 3 x 3 mm body, comb-shaped exposed pad; land pattern from the TPS7A8101-Q1 datasheet (SLVSCK0A, PDF page 28)',
+    tags: 'SON-8 VSON-8 DRB DRB0008A',
+    source: { part: 'TPS7A8101-Q1', revision: 'SLVSCK0A', page: 28 },
+    pitch: 0.65,
+    pinsPerSide: 4,
+    // Example board layout, PDF page 28 (checked against the PDF's vector paths): rows of pads 2.80 apart centre to centre, eight pads 0.31 wide
+    // (along the row) by 0.60 long with R0.05 corners.
+    rowCentres: 2.8,
+    pad: { long: 0.6, wide: 0.31 },
+    padRadius: 0.05,
+    // Package outline, PDF page 27. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 2.9, max: 3.1 }, width: { min: 2.9, max: 3.1 }, height: { max: 1.0 } },
+    leadWidth: { min: 0.25, max: 0.37 },
+    leadLength: { min: 0.3, max: 0.5 },
+    // Exposed thermal pad, land pattern on PDF page 28: a 1.5 wide by 1.75 long centre block with two 0.23 wide fingers (0.42 gap, centred)
+    // at each end, 3.4 long overall (0.825 beyond the block). The package pad (page 27) is 1.5 +/- 0.1 by 1.75 +/- 0.1 with the same fingers out to the body edge.
+    thermal: { num: '9', along: 3.4, across: 1.5, centre: 1.75, finger: 0.23, gap: 0.42, fingers: 2, centred: true },
+    // Our additions, not from the datasheet: courtyard margin, silkscreen and fab-layer conventions.
+    courtyardMargin: 0.25,
+  },
   // Four-sided leadless package (QFN family) with an exposed pad. KiCad orientation: pin 1 top left, pins 1-10 down the left side,
   // 11-20 along the bottom left to right, 21-30 up the right side, 31-40 along the top right to left, exposed pad numbered 41 (ours).
   'lfcsp-40': {
@@ -156,6 +182,26 @@ export const SYMBOLS = {
       { number: '7', name: 'L2', type: 'passive', side: 'top', pos: 5.08 },
       { number: '2', name: 'GND', type: 'power_in', side: 'bottom', pos: -2.54 },
       { number: '15', name: 'PGND', type: 'power_in', side: 'bottom', pos: 2.54 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (SLVSCK0A, page 3). The thermal pad has no number there ("-"); 9 is ours (the footprint's
+  // exposed pad). OUT and IN each exist on two package pins; OUT is passive so that the two pins of one net do not trip the ERC. Layout and pin types are ours.
+  'TPS7A8101-Q1': {
+    package: 'son-8',
+    half: 7.62,
+    description: '1 A adjustable low-noise LDO, 2.2-6.5 V input, 0.8-6 V output, PMOS pass device, 23.5 uVRMS noise, AEC-Q100 Grade 1, SON-8',
+    keywords: 'ldo linear regulator low-noise adjustable automotive TPS7A8101',
+    datasheet: 'https://www.ti.com/lit/ds/symlink/tps7a8101-q1.pdf',
+    pins: [
+      { number: '7', name: 'IN', type: 'power_in', side: 'left', pos: 5.08 },
+      { number: '8', name: 'IN', type: 'power_in', side: 'left', pos: 2.54 },
+      { number: '5', name: 'EN', type: 'input', side: 'left', pos: -2.54 },
+      { number: '1', name: 'OUT', type: 'passive', side: 'right', pos: 5.08 },
+      { number: '2', name: 'OUT', type: 'passive', side: 'right', pos: 2.54 },
+      { number: '3', name: 'FB/SNS', type: 'input', side: 'right', pos: 0 },
+      { number: '6', name: 'NR', type: 'passive', side: 'right', pos: -2.54 },
+      { number: '4', name: 'GND', type: 'power_in', side: 'bottom', pos: -2.54 },
+      { number: '9', name: 'EP', type: 'passive', side: 'bottom', pos: 2.54 },
     ],
   },
   ADE9078: {

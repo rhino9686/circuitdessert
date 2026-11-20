@@ -184,6 +184,7 @@ function illustration(pk) {
 
 // ---------------------------------------------------------------- two-row no-lead package with an exposed pad (VSON-14)
 // Pads 1..pinsPerSide down the left side (x = -rowCentres/2), the rest up the right side. y runs along the rows.
+const padRatio = (pk, p) => (pk.padRadius ? pk.padRadius / Math.min(p.w, p.h) : 0.5);
 export function padListDual(pk) {
   const x = pk.rowCentres / 2, k = pk.pinsPerSide, pads = [];
   for (let i = 0; i < k; i++) pads.push({ num: String(i + 1), x: -x, y: (i - (k - 1) / 2) * pk.pitch, w: pk.pad.long, h: pk.pad.wide });
@@ -195,13 +196,19 @@ export function padListDual(pk) {
 export function thermalOutline(t) {
   const a = t.across / 2, ye = t.along / 2, yc = t.centre / 2;
   // x edges of the fingers, left to right: finger, gap, finger, ...
-  const xs = [-a];
+  // fingers fill the width unless `centred` is set (then they sit in the middle, as on SON-8)
+  const xs = [t.centred ? -(t.fingers * t.finger + (t.fingers - 1) * t.gap) / 2 : -a];
   for (let i = 0; i < t.fingers; i++) { xs.push(xs[xs.length - 1] + t.finger); if (i < t.fingers - 1) xs.push(xs[xs.length - 1] + t.gap); }
   const end = (sign, edges) => { // walk one end of the comb: finger tips at sign*ye, gap bottoms at sign*yc
     const o = [];
     for (let i = 0; i < edges.length; i += 2) { o.push([edges[i], sign * ye], [edges[i + 1], sign * ye]); if (i + 2 < edges.length) o.push([edges[i + 1], sign * yc], [edges[i + 2], sign * yc]); }
     return o;
   };
+  if (t.centred) { // fingers sit in the middle: add the corners of the centre block on each side of them
+    const side = (sign) => [[-a, sign * yc], [xs[0], sign * yc], ...end(sign, xs), [xs[xs.length - 1], sign * yc], [a, sign * yc]];
+    const tp = side(-1), bt = side(1).reverse();
+    return [...tp, ...bt];
+  }
   const top = end(-1, xs), bottom = end(1, xs).reverse();
   return [...top, ...bottom];
 }
@@ -237,8 +244,8 @@ function footprintDualNoLead(pk) {
   const c = [[-cx, -cy], [cx, -cy], [cx, cy], [-cx, cy]];
   c.forEach((p, i) => { const q = c[(i + 1) % 4]; L.push(line(p[0], p[1], q[0], q[1], 'F.CrtYd', 0.05)); });
   for (const p of pads) {
-    // roundrect_rratio 0.5 on the shorter side gives the drawing's full round ends (R0.12)
-    L.push(`  (pad "${p.num}" smd roundrect (at ${n(p.x)} ${n(p.y)}) (size ${n(p.w)} ${n(p.h)}) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.5))`);
+    // roundrect_rratio 0.5 on the shorter side gives full round ends (VSON-14, R0.12); `padRadius` sets a corner radius instead (SON-8, R0.05)
+    L.push(`  (pad "${p.num}" smd roundrect (at ${n(p.x)} ${n(p.y)}) (size ${n(p.w)} ${n(p.h)}) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio ${n(padRatio(pk, p))}))`);
   }
   // exposed pad: a custom pad whose shape is the comb outline
   const poly = thermalOutline(t).map(([x, y]) => `(xy ${n(x)} ${n(y)})`).join(' ');
@@ -294,7 +301,7 @@ function illustrationDualNoLead(pk) {
   o.push(`<polygon class="pk-pad" points="${poly(bx, thermalOutline(t))}"/>`);
   o.push(`<text class="pk-t" x="${n(bx)}" y="${n(cy + 4.5)}" text-anchor="middle" style="fill:var(--cd-on-accent)">${t.num}</text>`);
   for (const p of pads) {
-    o.push(`<rect class="pk-pad" x="${X(bx, p.x - p.w / 2)}" y="${Y(p.y - p.h / 2)}" width="${n(p.w * S)}" height="${n(p.h * S)}" rx="${n(p.h * S * 0.5)}"/>`);
+    o.push(`<rect class="pk-pad" x="${X(bx, p.x - p.w / 2)}" y="${Y(p.y - p.h / 2)}" width="${n(p.w * S)}" height="${n(p.h * S)}" rx="${n(Math.min(p.w, p.h) * S * padRatio(pk, p))}"/>`);
     const side = p.x < 0 ? -1 : 1;
     o.push(`<text class="pk-t" x="${X(bx, p.x + side * (p.w / 2 + 0.12))}" y="${n(cy + p.y * S + 4.5)}" text-anchor="${side < 0 ? 'end' : 'start'}">${p.num}</text>`);
   }
