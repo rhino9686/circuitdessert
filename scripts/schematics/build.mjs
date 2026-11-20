@@ -46,6 +46,7 @@ import { singleInductorBuckBoost } from './designs-tps63020.mjs';
 import { inlineMotorSense, solenoidSense } from './designs-ina240.mjs';
 import { threePhaseMeter } from './designs-ade9039.mjs';
 import { testCircuit as ade9078TestCircuit } from './designs-ade9078.mjs';
+import { ldoNoiseReduction } from './designs-tps7a8101.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -93,6 +94,7 @@ const designs = {
   'sy20516a-schematic.svg': buckBoost1MHz({ id: 'sy20516a', part: 'SY20516A' }),
   'sy7070b-schematic.svg': lowVoltageBoostFixed({ id: 'sy7070b', part: 'SY7070B' }),
   'sy2a27352-schematic.svg': ldoWithReset({ id: 'sy2a27352', part: 'SY2A27352' }),
+  'tps7a8101-q1-schematic.svg': ldoNoiseReduction({ id: 'tps7a8101-q1', part: 'TPS7A8101-Q1' }),
   'sy24642-schematic.svg': currentSenseAmp({ id: 'sy24642', part: 'SY24642' }),
   'sa59131-schematic.svg': midSupplySenseAmp({ id: 'sa59131', part: 'SA59131' }),
   'sy24640-schematic.svg': overcurrentComparator({ id: 'sy24640', part: 'SY24640' }),

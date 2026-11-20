@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 120 800 310" role="img" aria-labelledby="tps7a8101-q1-t tps7a8101-q1-d">
+<title id="tps7a8101-q1-t">TPS7A8101-Q1 typical application circuit</title>
+<desc id="tps7a8101-q1-d">Typical application circuit of the TPS7A8101-Q1 adjustable LDO, redrawn from the datasheet with the recommended values for a 3.3 V output. The input VI feeds the IN pin; an input capacitor CIN (10 µF) to ground is connected to it by a dashed line, as in the datasheet. The enable pin EN is driven by a separate signal VEN. The OUT pin is the output VO, which has an output capacitor COUT (10 µF) to ground. The feedback divider is R1 (30.9 kΩ) from VO to the FB/SNS pin and R2 (10 kΩ) from FB/SNS to ground, and a bypass capacitor CBYPASS (470 nF) sits across R1. The noise-reduction capacitor CNR (470 nF) connects from the NR pin to ground. The GND pin goes to ground.</desc>
+<rect class="sch-ic" x="190" y="140" width="160" height="200" rx="3"/>
+<path class="sch-w" d="M178 180 L190 180"/>
+<text class="sch-pin" x="198" y="184" text-anchor="start">IN</text>
+<path class="sch-w" d="M178 300 L190 300"/>
+<text class="sch-pin" x="198" y="304" text-anchor="start">EN</text>
+<path class="sch-w" d="M350 180 L362 180"/>
+<text class="sch-pin" x="342" y="184" text-anchor="end">OUT</text>
+<path class="sch-w" d="M350 260 L362 260"/>
+<text class="sch-pin" x="342" y="264" text-anchor="end">FB/SNS</text>
+<path class="sch-w" d="M350 320 L362 320"/>
+<text class="sch-pin" x="342" y="324" text-anchor="end">NR</text>
+<path class="sch-w" d="M270 340 L270 352"/>
+<text class="sch-pin" x="270" y="332" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="270" y="244" text-anchor="middle">TPS7A8101-Q1</text>
+<path class="sch-flag" d="M50 180 L42 172 L4 172 L4 188 L42 188 Z"/>
+<text class="sch-net" x="23" y="184" text-anchor="middle">VI</text>
+<path class="sch-w" d="M50 180 L178 180"/>
+<circle class="sch-dot" cx="110" cy="180" r="3"/>
+<path class="sch-w" stroke-dasharray="4 3" d="M110 180 L110 200"/>
+<path class="sch-w" d="M110 200 L110 221"/>
+<path class="sch-w" d="M110 250 L110 229"/>
+<path class="sch-w" d="M99 221 L121 221"/>
+<path class="sch-w" d="M99 229 L121 229"/>
+<path class="sch-w" d="M110 250 L110 258"/>
+<path class="sch-w" d="M99 258 L121 258"/>
+<path class="sch-w" d="M103 263 L117 263"/>
+<path class="sch-w" d="M107 268 L113 268"/>
+<text class="sch-ref" x="94" y="223" text-anchor="end">C<tspan class="sch-sub" dy="2.5">IN</tspan></text>
+<text class="sch-val" x="94" y="236" text-anchor="end">10 µF</text>
+<path class="sch-flag" d="M50 300 L42 292 L4 292 L4 308 L42 308 Z"/>
+<text class="sch-net" x="23" y="304" text-anchor="middle">VEN</text>
+<path class="sch-w" d="M50 300 L178 300"/>
+<path class="sch-w" d="M362 180 L690 180"/>
+<circle class="sch-dot" cx="500" cy="180" r="3"/>
+<circle class="sch-dot" cx="570" cy="180" r="3"/>
+<circle class="sch-dot" cx="650" cy="180" r="3"/>
+<path class="sch-flag" d="M690 180 L698 172 L736 172 L736 188 L698 188 Z"/>
+<text class="sch-net" x="717" y="184" text-anchor="middle">VO</text>
+<path class="sch-w" d="M650 180 L650 236"/>
+<path class="sch-w" d="M650 300 L650 244"/>
+<path class="sch-w" d="M639 236 L661 236"/>
+<path class="sch-w" d="M639 244 L661 244"/>
+<path class="sch-w" d="M650 300 L650 308"/>
+<path class="sch-w" d="M639 308 L661 308"/>
+<path class="sch-w" d="M643 313 L657 313"/>
+<path class="sch-w" d="M647 318 L653 318"/>
+<text class="sch-ref" x="666" y="243" text-anchor="start">C<tspan class="sch-sub" dy="2.5">OUT</tspan></text>
+<text class="sch-val" x="666" y="256" text-anchor="start">10 µF</text>
+<path class="sch-w" d="M500 180 L500 205 L494 207.5 L506 212.5 L494 217.5 L506 222.5 L494 227.5 L506 232.5 L500 235 L500 260"/>
+<text class="sch-ref" x="484" y="223" text-anchor="end">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="484" y="236" text-anchor="end">30.9 kΩ</text>
+<path class="sch-w" d="M362 260 L500 260"/>
+<circle class="sch-dot" cx="500" cy="260" r="3"/>
+<path class="sch-w" d="M570 180 L570 216"/>
+<path class="sch-w" d="M570 260 L570 224"/>
+<path class="sch-w" d="M559 216 L581 216"/>
+<path class="sch-w" d="M559 224 L581 224"/>
+<text class="sch-ref" x="586" y="223" text-anchor="start">C<tspan class="sch-sub" dy="2.5">BYPASS</tspan></text>
+<text class="sch-val" x="586" y="236" text-anchor="start">470 nF</text>
+<path class="sch-w" d="M570 260 L500 260"/>
+<path class="sch-w" d="M500 260 L500 285 L494 287.5 L506 292.5 L494 297.5 L506 302.5 L494 307.5 L506 312.5 L500 315 L500 340"/>
+<path class="sch-w" d="M500 340 L500 348"/>
+<path class="sch-w" d="M489 348 L511 348"/>
+<path class="sch-w" d="M493 353 L507 353"/>
+<path class="sch-w" d="M497 358 L503 358"/>
+<text class="sch-ref" x="484" y="303" text-anchor="end">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="484" y="316" text-anchor="end">10 kΩ</text>
+<path class="sch-w" d="M362 320 L410 320"/>
+<path class="sch-w" d="M410 320 L410 351"/>
+<path class="sch-w" d="M410 390 L410 359"/>
+<path class="sch-w" d="M399 351 L421 351"/>
+<path class="sch-w" d="M399 359 L421 359"/>
+<path class="sch-w" d="M410 390 L410 398"/>
+<path class="sch-w" d="M399 398 L421 398"/>
+<path class="sch-w" d="M403 403 L417 403"/>
+<path class="sch-w" d="M407 408 L413 408"/>
+<text class="sch-ref" x="426" y="348" text-anchor="start">C<tspan class="sch-sub" dy="2.5">NR</tspan></text>
+<text class="sch-val" x="426" y="361" text-anchor="start">470 nF</text>
+<path class="sch-w" d="M270 352 L270 372"/>
+<path class="sch-w" d="M270 372 L270 380"/>
+<path class="sch-w" d="M259 380 L281 380"/>
+<path class="sch-w" d="M263 385 L277 385"/>
+<path class="sch-w" d="M267 390 L273 390"/>
+</svg>
