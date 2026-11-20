@@ -38,7 +38,7 @@ const headings = buildToc(pre, bodyHeadings.filter((h: { depth: number }) => h.d
 
     <section class="cd-section">
       <h2 id="overview">Overview</h2>
-      {svg && <figure class="cd-package-fig" set:html={svg + `<figcaption class="cd-caption">Generated from the dimensions below, in mm. Package outline and pad layout: ${d.source.part} datasheet, ${d.source.revision}, page ${d.source.page}. Body size shown at the midpoint of the datasheet's range.</figcaption>`} />}
+      {svg && <figure class="cd-package-fig" set:html={svg + `<figcaption class="cd-caption">Generated from the dimensions below, in mm. Package outline: ${d.source.part} datasheet, ${d.source.revision}, page ${d.source.page}. Body size shown at the midpoint of the datasheet's range. Where the pad layout comes from is explained under “How the footprint was made”.</figcaption>`} />}
       <div class="cd-table-wrap">
         <table class="cd-table cd-kv"><tbody>
           {d.dimensions.map((i: { label: string; value: string }) => <tr><th scope="row">{i.label}</th><td>{i.value}</td></tr>)}

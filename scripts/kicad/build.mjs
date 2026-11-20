@@ -4,6 +4,7 @@
 //   src/assets/packages/<slug>.svg
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { LIB, PACKAGES, SYMBOLS } from './data.mjs';
+import { padListQuad, footprintQuad, illustrationQuad } from './quad.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
 const out = (rel, text) => { const p = root + rel; mkdirSync(p.replace(/\/[^/]*$/, ''), { recursive: true }); writeFileSync(p, text); };
@@ -17,6 +18,7 @@ export const pinsPerSide = (pk) => pk.pinsPerSide ?? 3;
 const rowYs = (pk) => Array.from({ length: pinsPerSide(pk) }, (_, i) => (i - (pinsPerSide(pk) - 1) / 2) * pk.pitch);
 
 export function padList(pk) {
+  if (pk.layout === 'quad') return padListQuad(pk);
   // pin 1 top left, down the left side, then up the right side; an exposed pad, if any, last
   const x = pk.rowCentres / 2, ys = rowYs(pk), k = ys.length;
   const pads = [
@@ -31,6 +33,7 @@ export function padList(pk) {
 }
 
 function footprint(pk) {
+  if (pk.layout === 'quad') return footprintQuad(pk);
   if (pk.kind === 'dual-nolead') return footprintDualNoLead(pk);
   const pads = padList(pk);
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2; // half sizes: across, along
@@ -69,30 +72,32 @@ function footprint(pk) {
 // ---------------------------------------------------------------- symbol
 function symbol(name, s) {
   const pk = s.package ? PACKAGES[s.package] : null; // a symbol can come before its footprint: then Footprint stays empty
-  const half = s.half ?? 5.08, plen = 2.54;
+  const plen = 2.54;
+  // body half width and half height; `body` sets both, `half` sets a square body, the default is the small square body
+  const hw = s.body?.halfW ?? s.half ?? 5.08, hh = s.body?.halfH ?? s.half ?? 5.08;
   const place = (p) => { // p.pos: position along the side in KiCad symbol units (mm, on the 2.54 grid)
-    if (p.side === 'left') return { x: -(half + plen), y: p.pos, a: 0 };
-    if (p.side === 'right') return { x: half + plen, y: p.pos, a: 180 };
-    if (p.side === 'top') return { x: p.pos, y: half + plen, a: 270 };
-    return { x: p.pos, y: -(half + plen), a: 90 }; // bottom
+    if (p.side === 'left') return { x: -(hw + plen), y: p.pos, a: 0 };
+    if (p.side === 'right') return { x: hw + plen, y: p.pos, a: 180 };
+    if (p.side === 'top') return { x: p.pos, y: hh + plen, a: 270 };
+    return { x: p.pos, y: -(hh + plen), a: 90 }; // bottom
   };
   const fx = `(effects (font (size 1.27 1.27)))`;
   const hid = `(effects (font (size 1.27 1.27)) hide)`;
   const L = [];
   L.push(`(kicad_symbol_lib (version 20220914) (generator kicad_symbol_editor)`);
   L.push(`  (symbol "${name}" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)`);
-  L.push(`    (property "Reference" "U" (id 0) (at 0 ${n(half + plen + 1.27)} 0) ${fx})`);
-  L.push(`    (property "Value" "${name}" (id 1) (at 0 ${n(-(half + plen + 1.27))} 0) ${fx})`);
+  L.push(`    (property "Reference" "U" (id 0) (at 0 ${n(hh + plen + 1.27)} 0) ${fx})`);
+  L.push(`    (property "Value" "${name}" (id 1) (at 0 ${n(-(hh + plen + 1.27))} 0) ${fx})`);
   L.push(`    (property "Footprint" "${pk ? `${LIB}:${pk.file}` : ''}" (id 2) (at 0 0 0) ${hid})`);
   L.push(`    (property "Datasheet" "${s.datasheet}" (id 3) (at 0 0 0) ${hid})`);
   L.push(`    (property "Description" "${s.description}" (id 4) (at 0 0 0) ${hid})`);
   L.push(`    (property "ki_keywords" "${s.keywords}" (id 5) (at 0 0 0) ${hid})`);
   L.push(`    (property "ki_fp_filters" "${pk ? `${pk.file}*` : s.fpFilter}" (id 6) (at 0 0 0) ${hid})`);
   L.push(`    (symbol "${name}_0_1"`);
-  L.push(`      (rectangle (start ${n(-half)} ${n(half)}) (end ${n(half)} ${n(-half)}) (stroke (width 0.254) (type default)) (fill (type background)))`);
+  L.push(`      (rectangle (start ${n(-hw)} ${n(hh)}) (end ${n(hw)} ${n(-hh)}) (stroke (width 0.254) (type default)) (fill (type background)))`);
   L.push(`    )`);
   L.push(`    (symbol "${name}_1_1"`);
-  for (const p of [...s.pins].sort((a, b) => Number(a.number) - Number(b.number))) {
+  for (const p of [...s.pins].sort((a, b) => Number(a.number) - Number(b.number) || String(a.number).localeCompare(String(b.number)))) {
     const q = place(p);
     L.push(`      (pin ${p.type} line (at ${n(q.x)} ${n(q.y)} ${q.a}) (length ${plen}) (name "${p.name}" ${fx}) (number "${p.number}" ${fx}))`);
   }
@@ -104,6 +109,7 @@ function symbol(name, s) {
 
 // ---------------------------------------------------------------- illustration
 function illustration(pk) {
+  if (pk.layout === 'quad') return illustrationQuad(pk);
   if (pk.kind === 'dual-nolead') return illustrationDualNoLead(pk);
   const S = pk.illustration?.scale ?? 72; // px per mm
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2;

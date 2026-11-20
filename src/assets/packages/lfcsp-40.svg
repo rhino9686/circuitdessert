@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 362" role="img" aria-label="LFCSP-40 package top view and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-lead{fill:var(--cd-muted);fill-opacity:.55}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="165" y="24" text-anchor="middle">Package, top view</text>
+<rect class="pk-body" x="66" y="66" width="198" height="198" rx="4"/>
+<rect class="pk-lead" x="66" y="86.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="66" y="103.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="66" y="119.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="66" y="136.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="66" y="152.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="66" y="169.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="66" y="185.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="66" y="202.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="66" y="218.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="66" y="235.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="86.79" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="103.29" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="119.79" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="136.29" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="152.79" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="169.29" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="185.79" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="202.29" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="218.79" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="235.29" y="250.8" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="250.8" y="235.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="250.8" y="218.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="250.8" y="202.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="250.8" y="185.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="250.8" y="169.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="250.8" y="152.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="250.8" y="136.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="250.8" y="119.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="250.8" y="103.29" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="250.8" y="86.79" width="13.2" height="7.92"/>
+<rect class="pk-lead" x="235.29" y="66" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="218.79" y="66" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="202.29" y="66" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="185.79" y="66" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="169.29" y="66" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="152.79" y="66" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="136.29" y="66" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="119.79" y="66" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="103.29" y="66" width="7.92" height="13.2"/>
+<rect class="pk-lead" x="86.79" y="66" width="7.92" height="13.2"/>
+<rect class="pk-out" x="89.1" y="89.1" width="151.8" height="151.8"/>
+<text class="pk-n" x="165" y="169" text-anchor="middle">exposed pad</text>
+<circle class="pk-dot" cx="79.2" cy="79.2" r="6"/>
+<text class="pk-t" x="60" y="95.75" text-anchor="end">1</text>
+<text class="pk-t" x="60" y="244.25" text-anchor="end">10</text>
+<text class="pk-t" x="90.75" y="281" text-anchor="middle">11</text>
+<text class="pk-t" x="239.25" y="281" text-anchor="middle">20</text>
+<text class="pk-t" x="270" y="244.25" text-anchor="start">21</text>
+<text class="pk-t" x="270" y="95.75" text-anchor="start">30</text>
+<text class="pk-t" x="239.25" y="58" text-anchor="middle">31</text>
+<text class="pk-t" x="90.75" y="58" text-anchor="middle">40</text>
+<text class="pk-n" x="165" y="313.55" text-anchor="middle">body 5.90–6.10 square, 0.50 pitch</text>
+<text class="pk-n" x="165" y="331.55" text-anchor="middle">leads 0.18–0.30 wide, 0.35–0.45 long</text>
+<text class="pk-n" x="165" y="349.55" text-anchor="middle">exposed pad 4.50–4.70 square</text>
+<text class="pk-h" x="440" y="24" text-anchor="middle">Footprint (our pads)</text>
+<rect class="pk-out" x="341" y="66" width="198" height="198" rx="4"/>
+<rect class="pk-pad" x="329.45" y="85.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="329.45" y="102.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="329.45" y="118.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="329.45" y="135.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="329.45" y="151.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="329.45" y="168.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="329.45" y="184.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="329.45" y="201.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="329.45" y="217.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="329.45" y="234.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="360.8" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="377.3" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="393.8" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="410.3" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="426.8" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="443.3" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="459.8" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="476.3" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="492.8" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="509.3" y="249.15" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="234.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="217.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="201.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="184.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="168.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="151.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="135.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="118.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="102.3" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="524.15" y="85.8" width="26.4" height="9.9" rx="2.475"/>
+<rect class="pk-pad" x="509.3" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="492.8" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="476.3" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="459.8" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="443.3" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="426.8" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="410.3" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="393.8" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="377.3" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="360.8" y="54.45" width="9.9" height="26.4" rx="2.475"/>
+<rect class="pk-pad" x="364.1" y="89.1" width="151.8" height="151.8" rx="7.59"/>
+<text class="pk-t" x="440" y="170" text-anchor="middle" style="fill:var(--cd-on-accent)">41</text>
+<text class="pk-t" x="323.45" y="95.75" text-anchor="end">1</text>
+<text class="pk-t" x="323.45" y="244.25" text-anchor="end">10</text>
+<text class="pk-t" x="365.75" y="292.55" text-anchor="middle">11</text>
+<text class="pk-t" x="514.25" y="292.55" text-anchor="middle">20</text>
+<text class="pk-t" x="556.55" y="244.25" text-anchor="start">21</text>
+<text class="pk-t" x="556.55" y="95.75" text-anchor="start">30</text>
+<text class="pk-t" x="514.25" y="46.45" text-anchor="middle">31</text>
+<text class="pk-t" x="365.75" y="46.45" text-anchor="middle">40</text>
+<text class="pk-n" x="440" y="313.55" text-anchor="middle">pads 0.80 × 0.30 mm</text>
+<text class="pk-n" x="440" y="331.55" text-anchor="middle">exposed pad 4.60 square, number 41</text>
+<text class="pk-n" x="440" y="349.55" text-anchor="middle">pad sizes are ours, not ADI's</text>
+</svg>

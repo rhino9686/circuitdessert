@@ -44,6 +44,8 @@ import { ssdPmicApplication } from './designs-sy70202k.mjs';
 import { classDAmpTypical } from './designs-sy6045b.mjs';
 import { singleInductorBuckBoost } from './designs-tps63020.mjs';
 import { inlineMotorSense, solenoidSense } from './designs-ina240.mjs';
+import { threePhaseMeter } from './designs-ade9039.mjs';
+import { testCircuit as ade9078TestCircuit } from './designs-ade9078.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -117,6 +119,8 @@ const designs = {
   'sy70202k-schematic.svg': ssdPmicApplication({ id: 'sy70202k' }),
   'sy5867z-schematic.svg': dimmingInterface({ id: 'sy5867z' }),
   'sy6045b-schematic.svg': classDAmpTypical({ id: 'sy6045b' }),
+  'ade9039-schematic.svg': threePhaseMeter({ id: 'ade9039', part: 'ADE9039' }),
+  'ade9078-schematic.svg': ade9078TestCircuit({ id: 'ade9078', part: 'ADE9078' }),
   'sq52201qdq-schematic.svg': powerMonitor1Ch({ id: 'sq52201qdq' }),
   'sq52212xfs-schematic.svg': powerMonitor2Ch({ id: 'sq52212xfs' }),
   'ina240-motor-schematic.svg': inlineMotorSense({ id: 'ina240-motor' }),
