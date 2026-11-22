@@ -126,3 +126,113 @@ export function illustrationTht(pk) {
   o.push('</svg>');
   return o.join('\n') + '\n';
 }
+
+// Single-row package with its leads formed into two staggered rows (eSIP-7C, Power Integrations E package). Each pin gives its slot along
+// the package (`slot` × `slotPitch`) and its row: 'back' is the straight row nearer the back face (the exposed pad side), 'front' the row
+// formed forward by `rowGap`. x runs along the package, y across it; the back row is at -rowGap/2, the front row at +rowGap/2.
+export function padListSip(pk) {
+  const x0 = ((pk.slots - 1) * pk.slotPitch) / 2;
+  return pk.pins.map((p) => ({
+    num: p.num,
+    x: p.slot * pk.slotPitch - x0,
+    y: (p.row === 'back' ? -1 : 1) * pk.rowGap / 2,
+    d: pk.pad.diameter,
+    drill: pk.pad.drill,
+  }));
+}
+
+// body outline in footprint coordinates: along the package ±length/2, across it from the back face to the front face
+function sipBody(pk) {
+  const back = -pk.rowGap / 2 - pk.backRowToBackFace;
+  return { hl: mid(pk.body.length) / 2, back, front: back + mid(pk.body.thickness) };
+}
+
+export function footprintSip(pk) {
+  const pads = padListSip(pk), r = pk.pad.diameter / 2, b = sipBody(pk);
+  const padX = Math.max(...pads.map((p) => Math.abs(p.x) + r));
+  const padBottom = Math.max(...pads.map((p) => p.y + r));
+  const up = (v) => Math.ceil(v * 20) / 20;
+  const cx = up(Math.max(padX, b.hl) + pk.courtyardMargin);
+  const cTop = -up(-(b.back) + pk.courtyardMargin), cBottom = up(padBottom + pk.courtyardMargin);
+  const sx = b.hl + 0.12, sBack = b.back - 0.12; // silkscreen just outside the body's back face and ends
+  const line = (x1, y1, x2, y2, layer, w) => `  (fp_line (start ${n(x1)} ${n(y1)}) (end ${n(x2)} ${n(y2)}) (stroke (width ${w}) (type solid)) (layer "${layer}"))`;
+  const ch = 0.5;
+  const L = [];
+  L.push(`(footprint "${pk.file}" (version 20221018) (generator pcbnew)`);
+  L.push(`  (layer "F.Cu")`);
+  L.push(`  (descr "${pk.descr}")`);
+  L.push(`  (tags "${pk.tags}")`);
+  L.push(`  (attr through_hole)`);
+  L.push(`  (fp_text reference "REF**" (at 0 ${n(cTop - 0.7)}) (layer "F.SilkS")\n    (effects (font (size 1 1) (thickness 0.15)))\n  )`);
+  L.push(`  (fp_text value "${pk.file}" (at 0 ${n(cBottom + 0.7)}) (layer "F.Fab")\n    (effects (font (size 1 1) (thickness 0.15)))\n  )`);
+  L.push(`  (fp_text user "\${REFERENCE}" (at 0 ${n((b.back + b.front) / 2)}) (layer "F.Fab")\n    (effects (font (size 0.8 0.8) (thickness 0.12)))\n  )`);
+  // silkscreen: the back face and both ends of the body; the end on pin 1's side runs on past the front row as the pin 1 marker
+  L.push(line(-sx, sBack, sx, sBack, 'F.SilkS', 0.12));
+  L.push(line(sx, sBack, sx, b.front, 'F.SilkS', 0.12));
+  L.push(line(-sx, sBack, -sx, padBottom, 'F.SilkS', 0.12));
+  // fab: body outline (seen from above, a thin bar) with the pin 1 chamfer at the front corner on pin 1's side
+  const pts = [[-b.hl, b.back], [b.hl, b.back], [b.hl, b.front], [-b.hl + ch, b.front], [-b.hl, b.front - ch]];
+  pts.forEach((p, i) => { const q = pts[(i + 1) % pts.length]; L.push(line(p[0], p[1], q[0], q[1], 'F.Fab', 0.1)); });
+  const c = [[-cx, cTop], [cx, cTop], [cx, cBottom], [-cx, cBottom]];
+  c.forEach((p, i) => { const q = c[(i + 1) % 4]; L.push(line(p[0], p[1], q[0], q[1], 'F.CrtYd', 0.05)); });
+  for (const p of pads) {
+    const shape = p.num === '1' ? 'roundrect' : 'circle';
+    const extra = p.num === '1' ? ' (roundrect_rratio 0.25)' : '';
+    L.push(`  (pad "${p.num}" thru_hole ${shape} (at ${n(p.x)} ${n(p.y)}) (size ${n(p.d)} ${n(p.d)}) (drill ${n(p.drill)}) (layers "*.Cu" "*.Mask")${extra})`);
+  }
+  L.push(')');
+  return L.join('\n') + '\n';
+}
+
+export function illustrationSip(pk) {
+  const S = 22, pads = padListSip(pk), r = pk.pad.diameter / 2, b = sipBody(pk);
+  const ax = 175, bx = 530;
+  const bh = mid(pk.body.height), hl = b.hl, lw = mid(pk.leadWidth) / 2, leadLen = 4.2;
+  const X = (c, v) => n(c + v * S);
+  const o = [];
+  o.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="${pk.name} package front view and footprint">`);
+  o.push(`<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-ep{fill:var(--cd-muted);fill-opacity:.35;stroke:var(--cd-muted);stroke-width:1}
+.pk-lead{fill:var(--cd-muted)}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-hole{fill:var(--cd-surface-2)}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dim{stroke:var(--cd-muted);stroke-width:1.2;fill:none}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>`);
+  // panel A: front view (the face away from the exposed pad), leads hanging down as the datasheet's front view draws them
+  const top = 60, base = top + bh * S;
+  o.push(`<text class="pk-h" x="${ax}" y="24" text-anchor="middle">Package, front view</text>`);
+  for (const p of pads) {
+    o.push(`<rect class="pk-lead" x="${X(ax, p.x - lw)}" y="${n(base)}" width="${n(lw * 2 * S)}" height="${n(leadLen * S)}"/>`);
+    o.push(`<text class="pk-t" x="${X(ax, p.x)}" y="${n(base + leadLen * S + 17)}" text-anchor="middle">${p.num}</text>`);
+  }
+  o.push(`<rect class="pk-body" x="${X(ax, -hl)}" y="${top}" width="${n(hl * 2 * S)}" height="${n(bh * S)}" rx="4"/>`);
+  o.push(`<circle class="pk-dot" cx="${X(ax, -hl + 0.9)}" cy="${n(base - 0.9 * S)}" r="7"/>`);
+  o.push(`<text class="pk-n" x="${ax}" y="${n(base + leadLen * S + 40)}" text-anchor="middle">body ${rng(pk.body.length)} wide, ${rng(pk.body.height)} high</text>`);
+  o.push(`<text class="pk-n" x="${ax}" y="${n(base + leadLen * S + 58)}" text-anchor="middle">exposed pad on the back face; no pin 6</text>`);
+  // panel B: footprint seen from above
+  const cy = 175;
+  const Y = (v) => n(cy + v * S);
+  o.push(`<text class="pk-h" x="${bx}" y="24" text-anchor="middle">Footprint (datasheet hole positions)</text>`);
+  o.push(`<rect class="pk-out" x="${X(bx, -hl)}" y="${Y(b.back)}" width="${n(hl * 2 * S)}" height="${n((b.front - b.back) * S)}"/>`);
+  o.push(`<text class="pk-n" x="${bx}" y="${Y(b.back - 0.5)}" text-anchor="middle">back face (exposed pad, heat sink side)</text>`);
+  for (const p of pads) {
+    if (p.num === '1') {
+      o.push(`<rect class="pk-pad" x="${X(bx, p.x - r)}" y="${Y(p.y - r)}" width="${n(2 * r * S)}" height="${n(2 * r * S)}" rx="${n(0.25 * 2 * r * S)}"/>`);
+    } else {
+      o.push(`<circle class="pk-pad" cx="${X(bx, p.x)}" cy="${Y(p.y)}" r="${n(r * S)}"/>`);
+    }
+    o.push(`<circle class="pk-hole" cx="${X(bx, p.x)}" cy="${Y(p.y)}" r="${n((p.drill / 2) * S)}"/>`);
+    o.push(`<text class="pk-t" x="${X(bx, p.x)}" y="${n(cy + p.y * S + 4.5)}" text-anchor="middle">${p.num}</text>`);
+  }
+  const ry = cy + (pk.rowGap / 2 + r + 1.9) * S;
+  o.push(`<text class="pk-n" x="${bx}" y="${n(ry)}" text-anchor="middle">rows ${pk.rowGap.toFixed(2)} apart, ${(pk.slotPitch * 2).toFixed(2)} pitch in a row, ${pk.slotPitch.toFixed(2)} stagger</text>`);
+  o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 18)}" text-anchor="middle">pads ${pk.pad.diameter.toFixed(2)} round, drill ${pk.pad.drill.toFixed(2)} (ours)</text>`);
+  o.push('</svg>');
+  return o.join('\n') + '\n';
+}

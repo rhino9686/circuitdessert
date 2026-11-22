@@ -5,13 +5,13 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { LIB, PACKAGES, SYMBOLS } from './data.mjs';
 import { padListQuad, footprintQuad, illustrationQuad } from './quad.mjs';
-import { padListTht, footprintTht, illustrationTht } from './tht.mjs';
+import { padListTht, footprintTht, illustrationTht, padListSip, footprintSip, illustrationSip } from './tht.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
 const out = (rel, text) => { const p = root + rel; mkdirSync(p.replace(/\/[^/]*$/, ''), { recursive: true }); writeFileSync(p, text); };
 const n = (v) => String(+v.toFixed(4));
 const mid = (r) => (r.min + r.max) / 2;
-const rng = (r, d = 2) => `${r.min.toFixed(d)}–${r.max.toFixed(d)}`;
+const rng = (r, d = 2) => (r.min === r.max ? r.min.toFixed(d) : `${r.min.toFixed(d)}–${r.max.toFixed(d)}`); // a basic (exact) dimension prints once
 
 // ---------------------------------------------------------------- footprint
 export const pinsPerSide = (pk) => pk.pinsPerSide ?? 3;
@@ -21,12 +21,14 @@ const rowYs = (pk) => Array.from({ length: pinsPerSide(pk) }, (_, i) => (i - (pi
 export function padList(pk) {
   if (pk.layout === 'quad') return padListQuad(pk);
   if (pk.layout === 'dip-th') return padListTht(pk);
+  if (pk.layout === 'sip-th') return padListSip(pk);
   // pin 1 top left, down the left side, then up the right side; an exposed pad, if any, last
   const x = pk.rowCentres / 2, ys = rowYs(pk), k = ys.length;
   const pads = [
     ...ys.map((y, i) => ({ num: String(i + 1), x: -x, y })),
     ...ys.map((_, j) => ({ num: String(k + 1 + j), x, y: ys[k - 1 - j] })),
-  ].map((p) => ({ ...p, w: pk.pad.long, h: pk.pad.wide }));
+  ].filter((p) => !(pk.missing ?? []).includes(p.num)) // positions with no pin (eSOP-12B pin 5) keep their slot but get no pad
+    .map((p) => ({ ...p, w: pk.pad.long, h: pk.pad.wide, ...(pk.pad.ratio !== undefined && { ratio: pk.pad.ratio }) }));
   if (pk.thermalPad) {
     const t = pk.thermalPad;
     pads.push({ num: t.num, x: 0, y: 0, w: t.across, h: t.along, ratio: t.radius / Math.min(t.across, t.along), thermal: true });
@@ -37,6 +39,7 @@ export function padList(pk) {
 function footprint(pk) {
   if (pk.layout === 'quad') return footprintQuad(pk);
   if (pk.layout === 'dip-th') return footprintTht(pk);
+  if (pk.layout === 'sip-th') return footprintSip(pk);
   if (pk.kind === 'dual-nolead') return footprintDualNoLead(pk);
   const pads = padList(pk);
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2; // half sizes: across, along
@@ -100,7 +103,8 @@ function symbolBlock(name, value, s, pk, numberOf) {
   L.push(`      (rectangle (start ${n(-hw)} ${n(hh)}) (end ${n(hw)} ${n(-hh)}) (stroke (width 0.254) (type default)) (fill (type background)))`);
   L.push(`    )`);
   L.push(`    (symbol "${name}_1_1"`);
-  const pins = s.pins.map((p) => ({ ...p, number: numberOf(p) }));
+  // with `packages`, a pin with no number for this package does not exist on it and is left out (TOP264-271: SOURCE 7-12 on the eSIP-7C)
+  const pins = s.pins.map((p) => ({ ...p, number: numberOf(p) })).filter((p) => p.number !== undefined);
   for (const p of pins.sort((a, b) => Number(a.number) - Number(b.number) || String(a.number).localeCompare(String(b.number)))) {
     const q = place(p);
     L.push(`      (pin ${p.type} line (at ${n(q.x)} ${n(q.y)} ${q.a}) (length ${plen}) (name "${p.name}" ${fx}) (number "${p.number}" ${fx}))`);
@@ -129,6 +133,7 @@ function symbol(name, s) {
 function illustration(pk) {
   if (pk.layout === 'quad') return illustrationQuad(pk);
   if (pk.layout === 'dip-th') return illustrationTht(pk);
+  if (pk.layout === 'sip-th') return illustrationSip(pk);
   if (pk.kind === 'dual-nolead') return illustrationDualNoLead(pk);
   const S = pk.illustration?.scale ?? 72; // px per mm
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2;
@@ -155,13 +160,15 @@ function illustration(pk) {
   // panel A: package top view
   o.push(`<text class="pk-h" x="${ax}" y="24" text-anchor="middle">Package, top view</text>`);
   o.push(`<rect class="pk-body" x="${X(ax, -bw)}" y="${Y(-bl)}" width="${n(bw * 2 * S)}" height="${n(bl * 2 * S)}" rx="4"/>`);
+  const gone = new Set(pk.missing ?? []);
   for (const [i, y] of ys.entries()) {
     for (const side of [-1, 1]) {
+      if (gone.has(String(side < 0 ? i + 1 : 2 * k - i))) continue;
       const x0 = side < 0 ? -span : bw;
       o.push(`<rect class="pk-lead" x="${X(ax, x0)}" y="${Y(y - lw)}" width="${n((span - bw) * S)}" height="${n(lw * 2 * S)}"/>`);
     }
-    o.push(`<text class="pk-t" x="${X(ax, -span - 0.12)}" y="${n(cy + y * S + 5)}" text-anchor="end">${i + 1}</text>`);
-    o.push(`<text class="pk-t" x="${X(ax, span + 0.12)}" y="${n(cy + y * S + 5)}">${2 * k - i}</text>`);
+    if (!gone.has(String(i + 1))) o.push(`<text class="pk-t" x="${X(ax, -span - 0.12)}" y="${n(cy + y * S + 5)}" text-anchor="end">${i + 1}</text>`);
+    if (!gone.has(String(2 * k - i))) o.push(`<text class="pk-t" x="${X(ax, span + 0.12)}" y="${n(cy + y * S + 5)}">${2 * k - i}</text>`);
   }
   o.push(`<circle class="pk-dot" cx="${X(ax, -bw + 0.3)}" cy="${Y(-bl + 0.3)}" r="9"/>`);
   o.push(`<text class="pk-n" x="${n(ax + (-bw + 0.3) * S + Math.max(0.2 * S, 14))}" y="${n(cy + (-bl + 0.3) * S + 5)}">pin 1</text>`);

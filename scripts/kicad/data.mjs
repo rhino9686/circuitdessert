@@ -184,6 +184,63 @@ export const PACKAGES = {
     exposedPadTop: { across: 5.72, along: 8.26 },
     courtyardMargin: 0.25,
   },
+  // Two-row gull-wing with a missing pin and an exposed pad on the bottom (Power Integrations K package, PI-5748a). Ordinary numbering:
+  // pin 1 top left, 1-6 down the left side, 7-12 up the right side; the datasheet's land pattern is drawn this way already. No pad at pin 5.
+  'esop-12b': {
+    name: 'eSOP-12B',
+    file: 'eSOP-12B',
+    descr: 'eSOP-12B (Power Integrations K package, PI-5748a), 12 positions, pin 5 absent, 1.78 mm pitch, exposed pad; land pattern from the TOP264-271 datasheet (Rev. F, PDF page 37)',
+    tags: 'eSOP-12B eSOP-12 TOPSwitch K package exposed pad',
+    source: { part: 'TOP264-271', revision: 'Rev. F', page: 37 },
+    pinsPerSide: 6,
+    pitch: 1.78,
+    missing: ['5'],
+    // "Land Pattern Dimensions", PDF page 37: pads 1.70 (0.067 in) long across the body by 0.71 (0.028 in) wide, drawn with round ends,
+    // on a 1.78 pitch; pad centres 10.90 (0.429 in) apart across the body.
+    rowCentres: 10.9,
+    pad: { long: 1.7, wide: 0.71, ratio: 0.5 },
+    // Exposed pad: 5.51 (0.217 in) across by 8.15 (0.321 in) along, drawn as a plain rectangle and centred (note 7). Numbered 13 (ours).
+    thermalPad: { num: '13', across: 5.51, along: 8.15, radius: 0 },
+    // Package outline, same page: body 10.16 (0.400 in) along the rows by 8.89 (0.350 in) across, both basic; height 2.18-2.49.
+    body: { length: { min: 10.16, max: 10.16 }, width: { min: 8.89, max: 8.89 }, height: { min: 2.18, max: 2.49 } },
+    leadSpan: { min: 11.68, max: 11.68 },
+    leadWidth: { min: 0.46, max: 0.58 },
+    footLength: { min: 0.65, max: 0.85 },
+    courtyardMargin: 0.25,
+    illustration: { scale: 22, cy: 160, bx: 480, width: 680 },
+  },
+  // Single-row power package with its six leads formed into two staggered rows (Power Integrations E package, PI-4917). The datasheet's
+  // "Mounting Hole Pattern" gives the hole positions only: rows 3.00 apart (1.50 each side of the centre line), 2.54 apart within a row,
+  // the rows offset 1.27, and pin 7 2.54 past pin 5 (pin 5 to pin 7 is 3.93 diagonally). Pins 1, 3, 5 are the straight row, 1.19 from
+  // the back face (side view); pins 2, 4, 7 are formed 3.00 forward. Figure 31 (V, C, S on the heat-sink side) agrees. No pin 6.
+  'esip-7c': {
+    layout: 'sip-th',
+    name: 'eSIP-7C',
+    file: 'eSIP-7C',
+    descr: 'eSIP-7C (Power Integrations E package, PI-4917), 6 leads in two staggered rows 3.00 mm apart, pin 6 absent, exposed pad on the back; hole positions from the TOP264-271 datasheet (Rev. F, PDF page 35), hole and pad size ours',
+    tags: 'eSIP-7C eSIP-7 TOPSwitch E package THT vertical',
+    source: { part: 'TOP264-271', revision: 'Rev. F', page: 35 },
+    slots: 7,
+    slotPitch: 1.27,
+    rowGap: 3.0,
+    backRowToBackFace: 1.19,
+    pins: [
+      { num: '1', slot: 0, row: 'back' },
+      { num: '2', slot: 1, row: 'front' },
+      { num: '3', slot: 2, row: 'back' },
+      { num: '4', slot: 3, row: 'front' },
+      { num: '5', slot: 4, row: 'back' },
+      { num: '7', slot: 6, row: 'front' },
+    ],
+    // The datasheet gives no hole or pad size. Ours: the lead is 0.71-0.84 wide and 0.28-0.41 thick, so its largest diagonal is about
+    // 0.93; a 1.10 drill leaves about 0.17 around it, and a 1.80 pad leaves a 0.35 ring and 0.74 between pads in a row.
+    pad: { drill: 1.1, diameter: 1.8 },
+    // Package outline, same page: body 10.08-10.24 wide, 8.13-8.25 high, 1.96-2.06 thick.
+    body: { length: { min: 10.08, max: 10.24 }, height: { min: 8.13, max: 8.25 }, thickness: { min: 1.96, max: 2.06 } },
+    leadWidth: { min: 0.71, max: 0.84 },
+    leadThickness: { min: 0.28, max: 0.41 },
+    courtyardMargin: 0.25,
+  },
 };
 
 // Symbols: one per part. Pin numbers and names from the datasheet pin table. `type` is our reading.
@@ -359,27 +416,29 @@ export const SYMBOLS = {
       { number: '41', name: 'EP', type: 'passive', side: 'bottom', pos: 7.62 },
     ],
   },
-  // Pin letters and numbers from the pin table and Figure 4 (Rev. F). Only the eDIP-12B (V package) symbol so far: the eSOP-12B (K) numbers the
-  // pins the same way, the eSIP-7C (E) differently (SOURCE 5, DRAIN 7). Pin 5 does not exist on the V package, so it has no pin here.
-  // Layout and pin types are ours: V, X and F on the left, CONTROL on top, DRAIN on the right, the six SOURCE pins on the bottom.
+  // Pin letters and numbers from the pin table and Figure 4 (Rev. F). One symbol per package: the eDIP-12B (V) and eSOP-12B (K) number the
+  // pins the same way, the eSIP-7C (E) differently (SOURCE 5, DRAIN 7, no pins 8-12). Pin 5 does not exist on V and K, pin 6 not on E.
+  // The K package's exposed pad is SOURCE inside the package and is soldered to copper, so it gets a SOURCE pin, numbered 13 (ours).
+  // Layout and pin types are ours: V, X and F on the left, CONTROL on top, DRAIN on the right, SOURCE on the bottom.
   'TOP264-271': {
-    packages: ['edip-12b'],
+    packages: ['edip-12b', 'esop-12b', 'esip-7c'],
     body: { halfW: 10.16, halfH: 7.62 },
     description: 'TOPSwitch-JX off-line flyback switch, 725 V MOSFET, 66/132 kHz, line sense (V), external current limit (X), frequency select (F); TOP264 to TOP271',
     keywords: 'off-line flyback switcher ac-dc topswitch TOPSwitch-JX TOP264 TOP265 TOP266 TOP267 TOP268 TOP269 TOP270 TOP271',
     datasheet: 'https://www.mouser.com/datasheet/3/125/1/topswitch_jx_family_datasheet.pdf',
     pins: [
-      { numbers: { 'edip-12b': '1' }, name: 'V', type: 'input', side: 'left', pos: 2.54 },
-      { numbers: { 'edip-12b': '2' }, name: 'X', type: 'input', side: 'left', pos: 0 },
-      { numbers: { 'edip-12b': '4' }, name: 'F', type: 'input', side: 'left', pos: -2.54 },
-      { numbers: { 'edip-12b': '3' }, name: 'C', type: 'input', side: 'top', pos: 0 },
-      { numbers: { 'edip-12b': '6' }, name: 'D', type: 'passive', side: 'right', pos: 0 },
-      { numbers: { 'edip-12b': '7' }, name: 'S', type: 'power_in', side: 'bottom', pos: -7.62 },
-      { numbers: { 'edip-12b': '8' }, name: 'S', type: 'power_in', side: 'bottom', pos: -5.08 },
-      { numbers: { 'edip-12b': '9' }, name: 'S', type: 'power_in', side: 'bottom', pos: -2.54 },
-      { numbers: { 'edip-12b': '10' }, name: 'S', type: 'power_in', side: 'bottom', pos: 2.54 },
-      { numbers: { 'edip-12b': '11' }, name: 'S', type: 'power_in', side: 'bottom', pos: 5.08 },
-      { numbers: { 'edip-12b': '12' }, name: 'S', type: 'power_in', side: 'bottom', pos: 7.62 },
+      { numbers: { 'edip-12b': '1', 'esop-12b': '1', 'esip-7c': '1' }, name: 'V', type: 'input', side: 'left', pos: 2.54 },
+      { numbers: { 'edip-12b': '2', 'esop-12b': '2', 'esip-7c': '2' }, name: 'X', type: 'input', side: 'left', pos: 0 },
+      { numbers: { 'edip-12b': '4', 'esop-12b': '4', 'esip-7c': '4' }, name: 'F', type: 'input', side: 'left', pos: -2.54 },
+      { numbers: { 'edip-12b': '3', 'esop-12b': '3', 'esip-7c': '3' }, name: 'C', type: 'input', side: 'top', pos: 0 },
+      { numbers: { 'edip-12b': '6', 'esop-12b': '6', 'esip-7c': '7' }, name: 'D', type: 'passive', side: 'right', pos: 0 },
+      { numbers: { 'edip-12b': '7', 'esop-12b': '7' }, name: 'S', type: 'power_in', side: 'bottom', pos: -7.62 },
+      { numbers: { 'edip-12b': '8', 'esop-12b': '8' }, name: 'S', type: 'power_in', side: 'bottom', pos: -5.08 },
+      { numbers: { 'edip-12b': '9', 'esop-12b': '9' }, name: 'S', type: 'power_in', side: 'bottom', pos: -2.54 },
+      { numbers: { 'esop-12b': '13', 'esip-7c': '5' }, name: 'S', type: 'power_in', side: 'bottom', pos: 0 },
+      { numbers: { 'edip-12b': '10', 'esop-12b': '10' }, name: 'S', type: 'power_in', side: 'bottom', pos: 2.54 },
+      { numbers: { 'edip-12b': '11', 'esop-12b': '11' }, name: 'S', type: 'power_in', side: 'bottom', pos: 5.08 },
+      { numbers: { 'edip-12b': '12', 'esop-12b': '12' }, name: 'S', type: 'power_in', side: 'bottom', pos: 7.62 },
     ],
   },
 };
