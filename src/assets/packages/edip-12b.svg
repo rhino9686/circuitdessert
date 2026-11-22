@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="eDIP-12B package top view and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-ep{fill:var(--cd-muted);fill-opacity:.35;stroke:var(--cd-muted);stroke-width:1}
+.pk-lead{fill:var(--cd-muted)}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-hole{fill:var(--cd-surface-2)}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dim{stroke:var(--cd-muted);stroke-width:1.2;fill:none}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="175" y="24" text-anchor="middle">Package, top view</text>
+<rect class="pk-lead" x="281.68" y="61.96" width="15.24" height="12.48"/>
+<text class="pk-t" x="308.92" y="72.7" text-anchor="start">1</text>
+<rect class="pk-lead" x="281.68" y="104.68" width="15.24" height="12.48"/>
+<text class="pk-t" x="308.92" y="115.42" text-anchor="start">2</text>
+<rect class="pk-lead" x="281.68" y="147.4" width="15.24" height="12.48"/>
+<text class="pk-t" x="308.92" y="158.14" text-anchor="start">3</text>
+<rect class="pk-lead" x="281.68" y="190.12" width="15.24" height="12.48"/>
+<text class="pk-t" x="308.92" y="200.86" text-anchor="start">4</text>
+<rect class="pk-lead" x="281.68" y="275.56" width="15.24" height="12.48"/>
+<text class="pk-t" x="308.92" y="286.3" text-anchor="start">6</text>
+<rect class="pk-lead" x="53.08" y="275.56" width="15.24" height="12.48"/>
+<text class="pk-t" x="41.08" y="286.3" text-anchor="end">7</text>
+<rect class="pk-lead" x="53.08" y="232.84" width="15.24" height="12.48"/>
+<text class="pk-t" x="41.08" y="243.58" text-anchor="end">8</text>
+<rect class="pk-lead" x="53.08" y="190.12" width="15.24" height="12.48"/>
+<text class="pk-t" x="41.08" y="200.86" text-anchor="end">9</text>
+<rect class="pk-lead" x="53.08" y="147.4" width="15.24" height="12.48"/>
+<text class="pk-t" x="41.08" y="158.14" text-anchor="end">10</text>
+<rect class="pk-lead" x="53.08" y="104.68" width="15.24" height="12.48"/>
+<text class="pk-t" x="41.08" y="115.42" text-anchor="end">11</text>
+<rect class="pk-lead" x="53.08" y="61.96" width="15.24" height="12.48"/>
+<text class="pk-t" x="41.08" y="72.7" text-anchor="end">12</text>
+<rect class="pk-body" x="68.32" y="53.08" width="213.36" height="243.84" rx="4"/>
+<rect class="pk-ep" x="106.36" y="75.88" width="137.28" height="198.24" rx="3"/>
+<text class="pk-n" x="175" y="179" text-anchor="middle">exposed pad (top)</text>
+<circle class="pk-dot" cx="267.28" cy="67.48" r="6"/>
+<path class="pk-dim" d="M68.32 307.72H281.68M68.32 302.72v10M281.68 302.72v10"/>
+<text class="pk-n" x="175" y="325.72" text-anchor="middle">body 8.89 across, 10.16 along the rows</text>
+<text class="pk-n" x="175" y="343.72" text-anchor="middle">lead width 0.46–0.58</text>
+<text class="pk-h" x="530" y="24" text-anchor="middle">Footprint (datasheet hole pattern)</text>
+<rect class="pk-out" x="423.32" y="53.08" width="213.36" height="243.84" rx="4"/>
+<rect class="pk-pad" x="636.68" y="52.96" width="30.48" height="30.48" rx="7.62"/>
+<circle class="pk-hole" cx="651.92" cy="68.2" r="9.12"/>
+<text class="pk-t" x="671.96" y="72.7" text-anchor="start">1</text>
+<circle class="pk-pad" cx="651.92" cy="110.92" r="15.24"/>
+<circle class="pk-hole" cx="651.92" cy="110.92" r="9.12"/>
+<text class="pk-t" x="671.96" y="115.42" text-anchor="start">2</text>
+<circle class="pk-pad" cx="651.92" cy="153.64" r="15.24"/>
+<circle class="pk-hole" cx="651.92" cy="153.64" r="9.12"/>
+<text class="pk-t" x="671.96" y="158.14" text-anchor="start">3</text>
+<circle class="pk-pad" cx="651.92" cy="196.36" r="15.24"/>
+<circle class="pk-hole" cx="651.92" cy="196.36" r="9.12"/>
+<text class="pk-t" x="671.96" y="200.86" text-anchor="start">4</text>
+<circle class="pk-pad" cx="651.92" cy="281.8" r="15.24"/>
+<circle class="pk-hole" cx="651.92" cy="281.8" r="9.12"/>
+<text class="pk-t" x="671.96" y="286.3" text-anchor="start">6</text>
+<circle class="pk-pad" cx="408.08" cy="281.8" r="15.24"/>
+<circle class="pk-hole" cx="408.08" cy="281.8" r="9.12"/>
+<text class="pk-t" x="388.04" y="286.3" text-anchor="end">7</text>
+<circle class="pk-pad" cx="408.08" cy="239.08" r="15.24"/>
+<circle class="pk-hole" cx="408.08" cy="239.08" r="9.12"/>
+<text class="pk-t" x="388.04" y="243.58" text-anchor="end">8</text>
+<circle class="pk-pad" cx="408.08" cy="196.36" r="15.24"/>
+<circle class="pk-hole" cx="408.08" cy="196.36" r="9.12"/>
+<text class="pk-t" x="388.04" y="200.86" text-anchor="end">9</text>
+<circle class="pk-pad" cx="408.08" cy="153.64" r="15.24"/>
+<circle class="pk-hole" cx="408.08" cy="153.64" r="9.12"/>
+<text class="pk-t" x="388.04" y="158.14" text-anchor="end">10</text>
+<circle class="pk-pad" cx="408.08" cy="110.92" r="15.24"/>
+<circle class="pk-hole" cx="408.08" cy="110.92" r="9.12"/>
+<text class="pk-t" x="388.04" y="115.42" text-anchor="end">11</text>
+<circle class="pk-pad" cx="408.08" cy="68.2" r="15.24"/>
+<circle class="pk-hole" cx="408.08" cy="68.2" r="9.12"/>
+<text class="pk-t" x="388.04" y="72.7" text-anchor="end">12</text>
+<circle class="pk-out" cx="651.92" cy="239.08" r="15.24"/>
+<text class="pk-n" x="671.96" y="243.58" text-anchor="start">no pin 5</text>
+<path class="pk-dim" d="M408.08 307.72H651.92M408.08 302.72v10M651.92 302.72v10"/>
+<text class="pk-n" x="530" y="325.72" text-anchor="middle">10.16 between rows, pitch 1.78</text>
+<text class="pk-n" x="530" y="343.72" text-anchor="middle">pads 1.27 round, drill 0.76</text>
+</svg>

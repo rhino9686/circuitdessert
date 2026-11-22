@@ -5,6 +5,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { LIB, PACKAGES, SYMBOLS } from './data.mjs';
 import { padListQuad, footprintQuad, illustrationQuad } from './quad.mjs';
+import { padListTht, footprintTht, illustrationTht } from './tht.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
 const out = (rel, text) => { const p = root + rel; mkdirSync(p.replace(/\/[^/]*$/, ''), { recursive: true }); writeFileSync(p, text); };
@@ -19,6 +20,7 @@ const rowYs = (pk) => Array.from({ length: pinsPerSide(pk) }, (_, i) => (i - (pi
 
 export function padList(pk) {
   if (pk.layout === 'quad') return padListQuad(pk);
+  if (pk.layout === 'dip-th') return padListTht(pk);
   // pin 1 top left, down the left side, then up the right side; an exposed pad, if any, last
   const x = pk.rowCentres / 2, ys = rowYs(pk), k = ys.length;
   const pads = [
@@ -34,6 +36,7 @@ export function padList(pk) {
 
 function footprint(pk) {
   if (pk.layout === 'quad') return footprintQuad(pk);
+  if (pk.layout === 'dip-th') return footprintTht(pk);
   if (pk.kind === 'dual-nolead') return footprintDualNoLead(pk);
   const pads = padList(pk);
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2; // half sizes: across, along
@@ -125,6 +128,7 @@ function symbol(name, s) {
 // ---------------------------------------------------------------- illustration
 function illustration(pk) {
   if (pk.layout === 'quad') return illustrationQuad(pk);
+  if (pk.layout === 'dip-th') return illustrationTht(pk);
   if (pk.kind === 'dual-nolead') return illustrationDualNoLead(pk);
   const S = pk.illustration?.scale ?? 72; // px per mm
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2;

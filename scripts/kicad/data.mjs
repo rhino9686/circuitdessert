@@ -158,6 +158,32 @@ export const PACKAGES = {
     ep: { size: 4.6 },
     courtyardMargin: 0.3,
   },
+  // Two-row through-hole package with a missing pin (Power Integrations V package). The datasheet's top view (Figure 4) and package drawing
+  // (PI-5556a, PDF page 36) number the pins clockwise seen from above: pin 1 top right, pins 1-6 down the right side, 7-12 up the left side.
+  // That is the mirror of an ordinary DIP, so `pin1: 'right'`. Pin 5 is absent and the datasheet's hole pattern has no hole there.
+  'edip-12b': {
+    layout: 'dip-th',
+    name: 'eDIP-12B',
+    file: 'eDIP-12B',
+    descr: 'eDIP-12B (Power Integrations V package, PI-5556a), 12 positions, pin 5 absent, 1.78 mm pitch, rows 10.16 mm apart, exposed pad on top; hole pattern from the TOP264-271 datasheet (Rev. F, PDF page 36)',
+    tags: 'eDIP-12B eDIP-12 TOPSwitch V package THT',
+    source: { part: 'TOP264-271', revision: 'Rev. F', page: 36 },
+    pinsPerSide: 6,
+    pin1: 'right',
+    missing: ['5'],
+    // "Mounting Hole Pattern Dimensions", PDF page 36: 1.78 (0.07 in) pitch, rows 10.16 (0.400 in) apart, drill 0.76 (0.03 in),
+    // round pad 1.27 (0.05 in), solder mask opening 1.42 (0.056 in).
+    pitch: 1.78,
+    rowCentres: 10.16,
+    pad: { drill: 0.76, diameter: 1.27, mask: 1.42 },
+    // Package outline, same page: body 10.16 (0.400 in) along the rows by 8.89 (0.350 in) across them, both basic dimensions.
+    body: { length: { min: 10.16, max: 10.16 }, width: { min: 8.89, max: 8.89 } },
+    leadWidth: { min: 0.46, max: 0.58 },
+    leadThickness: { min: 0.28, max: 0.41 },
+    // Exposed pad on the top face, maximum sizes as printed (they include position tolerance). Drawn in the illustration only.
+    exposedPadTop: { across: 5.72, along: 8.26 },
+    courtyardMargin: 0.25,
+  },
 };
 
 // Symbols: one per part. Pin numbers and names from the datasheet pin table. `type` is our reading.
@@ -331,6 +357,29 @@ export const SYMBOLS = {
       { number: '17', name: 'NC1', type: 'passive', side: 'bottom', pos: 2.54 },
       { number: '18', name: 'NC2', type: 'passive', side: 'bottom', pos: 5.08 },
       { number: '41', name: 'EP', type: 'passive', side: 'bottom', pos: 7.62 },
+    ],
+  },
+  // Pin letters and numbers from the pin table and Figure 4 (Rev. F). Only the eDIP-12B (V package) symbol so far: the eSOP-12B (K) numbers the
+  // pins the same way, the eSIP-7C (E) differently (SOURCE 5, DRAIN 7). Pin 5 does not exist on the V package, so it has no pin here.
+  // Layout and pin types are ours: V, X and F on the left, CONTROL on top, DRAIN on the right, the six SOURCE pins on the bottom.
+  'TOP264-271': {
+    packages: ['edip-12b'],
+    body: { halfW: 10.16, halfH: 7.62 },
+    description: 'TOPSwitch-JX off-line flyback switch, 725 V MOSFET, 66/132 kHz, line sense (V), external current limit (X), frequency select (F); TOP264 to TOP271',
+    keywords: 'off-line flyback switcher ac-dc topswitch TOPSwitch-JX TOP264 TOP265 TOP266 TOP267 TOP268 TOP269 TOP270 TOP271',
+    datasheet: 'https://www.mouser.com/datasheet/3/125/1/topswitch_jx_family_datasheet.pdf',
+    pins: [
+      { numbers: { 'edip-12b': '1' }, name: 'V', type: 'input', side: 'left', pos: 2.54 },
+      { numbers: { 'edip-12b': '2' }, name: 'X', type: 'input', side: 'left', pos: 0 },
+      { numbers: { 'edip-12b': '4' }, name: 'F', type: 'input', side: 'left', pos: -2.54 },
+      { numbers: { 'edip-12b': '3' }, name: 'C', type: 'input', side: 'top', pos: 0 },
+      { numbers: { 'edip-12b': '6' }, name: 'D', type: 'passive', side: 'right', pos: 0 },
+      { numbers: { 'edip-12b': '7' }, name: 'S', type: 'power_in', side: 'bottom', pos: -7.62 },
+      { numbers: { 'edip-12b': '8' }, name: 'S', type: 'power_in', side: 'bottom', pos: -5.08 },
+      { numbers: { 'edip-12b': '9' }, name: 'S', type: 'power_in', side: 'bottom', pos: -2.54 },
+      { numbers: { 'edip-12b': '10' }, name: 'S', type: 'power_in', side: 'bottom', pos: 2.54 },
+      { numbers: { 'edip-12b': '11' }, name: 'S', type: 'power_in', side: 'bottom', pos: 5.08 },
+      { numbers: { 'edip-12b': '12' }, name: 'S', type: 'power_in', side: 'bottom', pos: 7.62 },
     ],
   },
 };
