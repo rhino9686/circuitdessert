@@ -1,0 +1,354 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 1580 640" role="img" aria-labelledby="top264-271-fig26-t top264-271-fig26-d" style="min-width:1300px">
+<title id="top264-271-fig26-t">TOP266VG 12 V, 30 W open-frame supply</title>
+<desc id="top264-271-fig26-d">Redrawn from Figure 26 of the TOPSwitch-JX datasheet: an 85 to 264 VAC input, 12 V at 2.5 A output open-frame flyback supply built around a TOP266VG (U1). An EMI filter feeds the diode bridge D1 to D4 and the bulk capacitor C3. The bus feeds the top of the transformer T1 primary, whose bottom is the DRAIN pin. Resistors R1 and R2 in series from the bus feed the VOLTAGE-MONITOR pin V, and a 191 kΩ resistor R12 joins V to the CONTROL pin. Resistors R3 and R4 in series from the bus feed the EXTERNAL CURRENT LIMIT pin X, with R15 from X to the source. A clamp of the Zener VR1 in series with R5, in parallel with C4, and the diode D5 limits the drain spike. A bias winding charges C7 through D7. The phototransistor U2B connects the bias rail to the CONTROL pin. A path of R9, the Zener VR3 and the diode D6 from the bias rail to the V pin shuts the supply down on an output overvoltage. The secondary has the Schottky diodes D8 and D9 with an R17 and C12 snubber, output capacitors C14 and C15, an inductor L2 and C16. The output feedback uses the optocoupler LED U2A and the shunt regulator U3 with its divider R21 and R23.</desc>
+<circle class="sch-w" cx="12" cy="150" r="2.5"/>
+<circle class="sch-w" cx="12" cy="230" r="2.5"/>
+<text class="sch-net" x="6" y="136" text-anchor="start">L</text>
+<text class="sch-net" x="6" y="216" text-anchor="start">N</text>
+<path class="sch-w" d="M14 150 L30 150"/>
+<path class="sch-w" d="M14 230 L30 230"/>
+<path class="sch-w" d="M70 150 L80 150"/>
+<path class="sch-w" d="M70 230 L80 230"/>
+<rect class="sch-w" stroke-dasharray="2 4" x="30" y="128" width="40" height="124"/>
+<text class="sch-val" x="50" y="186" text-anchor="middle">EMI</text>
+<text class="sch-val" x="50" y="199" text-anchor="middle">filter</text>
+<path class="sch-w" d="M100 150 L80 150"/>
+<path class="sch-w" d="M80 230 L95 230 A5 5 0 0 1 105 230 L150 230"/>
+<path class="sch-w" d="M100 150 L100 138"/>
+<path class="sch-w" d="M100 122 L100 110"/>
+<path class="sch-w" d="M92 138 L108 138 L100 122 Z"/>
+<path class="sch-w" d="M92 122 L108 122"/>
+<path class="sch-w" d="M100 270 L100 218"/>
+<path class="sch-w" d="M100 202 L100 150"/>
+<path class="sch-w" d="M92 218 L108 218 L100 202 Z"/>
+<path class="sch-w" d="M92 202 L108 202"/>
+<path class="sch-w" d="M150 230 L150 178"/>
+<path class="sch-w" d="M150 162 L150 110"/>
+<path class="sch-w" d="M142 178 L158 178 L150 162 Z"/>
+<path class="sch-w" d="M142 162 L158 162"/>
+<path class="sch-w" d="M150 270 L150 258"/>
+<path class="sch-w" d="M150 242 L150 230"/>
+<path class="sch-w" d="M142 258 L158 258 L150 242 Z"/>
+<path class="sch-w" d="M142 242 L158 242"/>
+<circle class="sch-dot" cx="100" cy="150" r="3"/>
+<circle class="sch-dot" cx="150" cy="230" r="3"/>
+<circle class="sch-dot" cx="150" cy="110" r="3"/>
+<circle class="sch-dot" cx="150" cy="270" r="3"/>
+<rect class="sch-w" stroke-dasharray="2 4" x="82" y="88" width="86" height="204"/>
+<text class="sch-ref" x="125" y="308" text-anchor="middle">D1–D4</text>
+<text class="sch-val" x="125" y="321" text-anchor="middle">1N4007</text>
+<path class="sch-w" d="M100 110 L860 110"/>
+<path class="sch-w" d="M100 270 L240 270"/>
+<circle class="sch-dot" cx="200" cy="270" r="3"/>
+<circle class="sch-dot" cx="200" cy="110" r="3"/>
+<path class="sch-w" d="M200 110 L200 186"/>
+<path class="sch-w" d="M200 270 L200 194"/>
+<path class="sch-w" d="M189 186 L211 186"/>
+<path class="sch-w" d="M189 198 Q200 189 211 198"/>
+<text class="sch-ref" x="185" y="182" text-anchor="end">+</text>
+<text class="sch-ref" x="216" y="188" text-anchor="start">C<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="216" y="201" text-anchor="start">82 µF 400 V</text>
+<path class="sch-w" d="M240 270 L240 600"/>
+<rect class="sch-ic" x="520" y="400" width="250" height="110" rx="3"/>
+<path class="sch-w" d="M770 440 L782 440"/>
+<text class="sch-pin" x="762" y="444" text-anchor="end">C</text>
+<path class="sch-w" d="M560 388 L560 400"/>
+<text class="sch-pin" x="560" y="416" text-anchor="middle">D</text>
+<path class="sch-w" d="M620 388 L620 400"/>
+<text class="sch-pin" x="620" y="416" text-anchor="middle">V</text>
+<path class="sch-w" d="M560 510 L560 522"/>
+<text class="sch-pin" x="560" y="502" text-anchor="middle">S</text>
+<path class="sch-w" d="M620 510 L620 522"/>
+<text class="sch-pin" x="620" y="502" text-anchor="middle">X</text>
+<path class="sch-w" d="M740 510 L740 522"/>
+<text class="sch-pin" x="740" y="502" text-anchor="middle">F</text>
+<text class="sch-ictitle" x="645" y="453" text-anchor="middle">TOP266VG</text>
+<text class="sch-val" x="645" y="469" text-anchor="middle">U1</text>
+<path class="sch-w" d="M240 600 L1030 600"/>
+<path class="sch-w" d="M560 522 L560 600"/>
+<circle class="sch-dot" cx="560" cy="600" r="3"/>
+<path class="sch-w" d="M740 522 L740 600"/>
+<circle class="sch-dot" cx="740" cy="600" r="3"/>
+<circle class="sch-dot" cx="280" cy="110" r="3"/>
+<path class="sch-w" d="M280 110 L280 140 L274 142.5 L286 147.5 L274 152.5 L286 157.5 L274 162.5 L286 167.5 L280 170 L280 200"/>
+<text class="sch-ref" x="264" y="153" text-anchor="end">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="264" y="166" text-anchor="end">5.1 MΩ</text>
+<path class="sch-w" d="M280 200 L280 230 L274 232.5 L286 237.5 L274 242.5 L286 247.5 L274 252.5 L286 257.5 L280 260 L280 290"/>
+<text class="sch-ref" x="264" y="243" text-anchor="end">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="264" y="256" text-anchor="end">5.1 MΩ</text>
+<path class="sch-w" d="M280 290 L280 350"/>
+<path class="sch-w" d="M280 350 L365 350 A5 5 0 0 1 375 350 L555 350 A5 5 0 0 1 565 350 L620 350"/>
+<path class="sch-w" d="M620 350 L620 388"/>
+<circle class="sch-dot" cx="620" cy="350" r="3"/>
+<circle class="sch-dot" cx="370" cy="110" r="3"/>
+<path class="sch-w" d="M370 110 L370 140 L364 142.5 L376 147.5 L364 152.5 L376 157.5 L364 162.5 L376 167.5 L370 170 L370 200"/>
+<text class="sch-ref" x="354" y="153" text-anchor="end">R<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="354" y="166" text-anchor="end">10 MΩ</text>
+<path class="sch-w" d="M370 200 L370 230 L364 232.5 L376 237.5 L364 242.5 L376 247.5 L364 252.5 L376 257.5 L370 260 L370 290"/>
+<text class="sch-ref" x="354" y="243" text-anchor="end">R<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="354" y="256" text-anchor="end">10 MΩ</text>
+<path class="sch-w" d="M370 290 L370 540"/>
+<path class="sch-w" d="M370 540 L555 540 A5 5 0 0 1 565 540 L620 540"/>
+<path class="sch-w" d="M620 522 L620 540"/>
+<circle class="sch-dot" cx="620" cy="540" r="3"/>
+<path class="sch-w" d="M620 540 L620 555 L614 557.5 L626 562.5 L614 567.5 L626 572.5 L614 577.5 L626 582.5 L620 585 L620 600"/>
+<text class="sch-ref" x="636" y="568" text-anchor="start">R<tspan class="sch-sub" dy="2.5">15</tspan></text>
+<text class="sch-val" x="636" y="581" text-anchor="start">14.3 kΩ 1 %</text>
+<circle class="sch-dot" cx="620" cy="600" r="3"/>
+<path class="sch-w" d="M620 350 L695 350 L697.5 344 L702.5 356 L707.5 344 L712.5 356 L717.5 344 L722.5 356 L725 350 L800 350"/>
+<text class="sch-ref" x="740" y="376" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">12</tspan></text>
+<text class="sch-val" x="740" y="389" text-anchor="middle">191 kΩ 1 %</text>
+<path class="sch-w" d="M800 350 L800 440"/>
+<path class="sch-w" d="M782 440 L860 440"/>
+<circle class="sch-dot" cx="800" cy="440" r="3"/>
+<circle class="sch-dot" cx="860" cy="440" r="3"/>
+<path class="sch-w" d="M800 440 L800 516"/>
+<path class="sch-w" d="M800 600 L800 524"/>
+<path class="sch-w" d="M789 516 L811 516"/>
+<path class="sch-w" d="M789 524 L811 524"/>
+<circle class="sch-dot" cx="800" cy="600" r="3"/>
+<text class="sch-ref" x="784" y="518" text-anchor="end">C<tspan class="sch-sub" dy="2.5">9</tspan></text>
+<text class="sch-val" x="784" y="531" text-anchor="end">100 nF</text>
+<path class="sch-w" d="M860 440 L860 450 L854 452.5 L866 457.5 L854 462.5 L866 467.5 L854 472.5 L866 477.5 L860 480 L860 490"/>
+<path class="sch-w" d="M860 490 L860 541"/>
+<path class="sch-w" d="M860 600 L860 549"/>
+<path class="sch-w" d="M849 541 L871 541"/>
+<path class="sch-w" d="M849 549 L871 549"/>
+<circle class="sch-dot" cx="860" cy="600" r="3"/>
+<text class="sch-ref" x="876" y="463" text-anchor="start">R<tspan class="sch-sub" dy="2.5">16</tspan></text>
+<text class="sch-val" x="876" y="476" text-anchor="start">6.8 Ω</text>
+<text class="sch-ref" x="876" y="543" text-anchor="start">C<tspan class="sch-sub" dy="2.5">10</tspan></text>
+<text class="sch-val" x="876" y="556" text-anchor="start">47 µF</text>
+<path class="sch-w" d="M860 110 L860 150"/>
+<path class="sch-w" d="M860 150 L860 166 A6 6 0 0 1 860 178 A6 6 0 0 1 860 190 A6 6 0 0 1 860 202 A6 6 0 0 1 860 214 L860 230"/>
+<path class="sch-w" d="M860 230 L860 330"/>
+<path class="sch-w" d="M860 330 L685 330 A5 5 0 0 0 675 330 L560 330"/>
+<path class="sch-w" d="M560 330 L560 388"/>
+<circle class="sch-dot" cx="560" cy="330" r="3"/>
+<text class="sch-val" x="844" y="140" text-anchor="end">6</text>
+<text class="sch-val" x="844" y="322" text-anchor="end">4</text>
+<text class="sch-ref" x="844" y="188" text-anchor="end">T<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="844" y="201" text-anchor="end">EF25</text>
+<circle class="sch-dot" cx="610" cy="110" r="3"/>
+<circle class="sch-dot" cx="720" cy="110" r="3"/>
+<path class="sch-w" d="M610 165 L610 145.5"/>
+<path class="sch-w" d="M610 129.5 L610 110"/>
+<path class="sch-w" d="M602 145.5 L618 145.5 L610 129.5 Z"/>
+<path class="sch-w" d="M602 125.5 L602 129.5 L618 129.5 L618 133.5"/>
+<path class="sch-w" d="M610 165 L610 172.5 L604 175 L616 180 L604 185 L616 190 L604 195 L616 200 L610 202.5 L610 210"/>
+<text class="sch-ref" x="594" y="136" text-anchor="end">V<tspan class="sch-sub" dy="2.5">R1</tspan></text>
+<text class="sch-val" x="594" y="149" text-anchor="end">P6KE180A</text>
+<text class="sch-ref" x="594" y="188" text-anchor="end">R<tspan class="sch-sub" dy="2.5">5</tspan></text>
+<text class="sch-val" x="594" y="201" text-anchor="end">10 kΩ ½ W</text>
+<path class="sch-w" d="M720 110 L720 156"/>
+<path class="sch-w" d="M720 210 L720 164"/>
+<path class="sch-w" d="M709 156 L731 156"/>
+<path class="sch-w" d="M709 164 L731 164"/>
+<text class="sch-ref" x="736" y="158" text-anchor="start">C<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="736" y="171" text-anchor="start">4.7 nF</text>
+<path class="sch-w" d="M610 210 L720 210"/>
+<circle class="sch-dot" cx="720" cy="210" r="3"/>
+<path class="sch-w" d="M720 330 L720 318"/>
+<path class="sch-w" d="M720 302 L720 290"/>
+<path class="sch-w" d="M712 318 L728 318 L720 302 Z"/>
+<path class="sch-w" d="M712 302 L728 302"/>
+<path class="sch-w" d="M720 290 L720 210"/>
+<circle class="sch-dot" cx="720" cy="330" r="3"/>
+<text class="sch-ref" x="736" y="308" text-anchor="start">D<tspan class="sch-sub" dy="2.5">5</tspan></text>
+<text class="sch-val" x="736" y="321" text-anchor="start">FR107</text>
+<circle class="sch-dot" cx="830" cy="110" r="3"/>
+<path class="sch-w" d="M830 110 L830 60"/>
+<path class="sch-w" d="M830 60 L879 60"/>
+<path class="sch-w" d="M936 60 L887 60"/>
+<path class="sch-w" d="M879 49 L879 71"/>
+<path class="sch-w" d="M887 49 L887 71"/>
+<path class="sch-w" d="M936 60 L936 230"/>
+<text class="sch-ref" x="883" y="29" text-anchor="middle">C<tspan class="sch-sub" dy="2.5">11</tspan></text>
+<text class="sch-val" x="883" y="42" text-anchor="middle">1 nF 250 VAC</text>
+<path class="sch-w" d="M883 130 L883 410"/>
+<path class="sch-w" d="M888 130 L888 410"/>
+<path class="sch-w" d="M911 150 L911 166 A6 6 0 0 0 911 178 A6 6 0 0 0 911 190 A6 6 0 0 0 911 202 A6 6 0 0 0 911 214 L911 230"/>
+<path class="sch-w" d="M911 150 L931 150 A5 5 0 0 1 941 150 L960 150"/>
+<circle class="sch-dot" cx="960" cy="150" r="3"/>
+<path class="sch-w" d="M960 150 L992 150"/>
+<path class="sch-w" d="M1008 150 L1040 150"/>
+<path class="sch-w" d="M992 142 L992 158 L1008 150 Z"/>
+<path class="sch-w" d="M1008 142 L1008 158"/>
+<circle class="sch-dot" cx="1040" cy="150" r="3"/>
+<text class="sch-ref" x="1000" y="176" text-anchor="middle">D8, D9</text>
+<text class="sch-val" x="1000" y="189" text-anchor="middle">SB560</text>
+<path class="sch-w" d="M960 150 L960 100"/>
+<path class="sch-w" d="M960 100 L976 100"/>
+<path class="sch-w" d="M1000 100 L984 100"/>
+<path class="sch-w" d="M976 89 L976 111"/>
+<path class="sch-w" d="M984 89 L984 111"/>
+<path class="sch-w" d="M1000 100 L1005 100 L1007.5 94 L1012.5 106 L1017.5 94 L1022.5 106 L1027.5 94 L1032.5 106 L1035 100 L1040 100"/>
+<path class="sch-w" d="M1040 100 L1040 150"/>
+<text class="sch-ref" x="980" y="69" text-anchor="middle">C<tspan class="sch-sub" dy="2.5">12</tspan></text>
+<text class="sch-val" x="980" y="82" text-anchor="middle">1 nF</text>
+<text class="sch-ref" x="1020" y="69" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">17</tspan></text>
+<text class="sch-val" x="1020" y="82" text-anchor="middle">22 Ω</text>
+<circle class="sch-dot" cx="1090" cy="150" r="3"/>
+<path class="sch-w" d="M1090 150 L1090 186"/>
+<path class="sch-w" d="M1090 230 L1090 194"/>
+<path class="sch-w" d="M1079 186 L1101 186"/>
+<path class="sch-w" d="M1079 198 Q1090 189 1101 198"/>
+<text class="sch-ref" x="1075" y="182" text-anchor="end">+</text>
+<circle class="sch-dot" cx="1090" cy="230" r="3"/>
+<text class="sch-ref" x="1106" y="190" text-anchor="start">C<tspan class="sch-sub" dy="2.5">14</tspan></text>
+<text class="sch-val" x="1106" y="203" text-anchor="start">680 µF</text>
+<circle class="sch-dot" cx="1150" cy="150" r="3"/>
+<path class="sch-w" d="M1150 150 L1150 186"/>
+<path class="sch-w" d="M1150 230 L1150 194"/>
+<path class="sch-w" d="M1139 186 L1161 186"/>
+<path class="sch-w" d="M1139 198 Q1150 189 1161 198"/>
+<text class="sch-ref" x="1135" y="182" text-anchor="end">+</text>
+<circle class="sch-dot" cx="1150" cy="230" r="3"/>
+<text class="sch-ref" x="1166" y="190" text-anchor="start">C<tspan class="sch-sub" dy="2.5">15</tspan></text>
+<text class="sch-val" x="1166" y="203" text-anchor="start">680 µF</text>
+<path class="sch-w" d="M1040 150 L1210 150"/>
+<circle class="sch-dot" cx="1190" cy="150" r="3"/>
+<path class="sch-w" d="M1210 150 L1226 150 A6 6 0 0 1 1238 150 A6 6 0 0 1 1250 150 A6 6 0 0 1 1262 150 A6 6 0 0 1 1274 150 L1290 150"/>
+<text class="sch-ref" x="1250" y="119" text-anchor="middle">L<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="1250" y="132" text-anchor="middle">3.3 µH</text>
+<path class="sch-w" d="M1290 150 L1530 150"/>
+<circle class="sch-dot" cx="1300" cy="150" r="3"/>
+<path class="sch-w" d="M1300 150 L1300 186"/>
+<path class="sch-w" d="M1300 230 L1300 194"/>
+<path class="sch-w" d="M1289 186 L1311 186"/>
+<path class="sch-w" d="M1289 198 Q1300 189 1311 198"/>
+<text class="sch-ref" x="1285" y="182" text-anchor="end">+</text>
+<circle class="sch-dot" cx="1300" cy="230" r="3"/>
+<text class="sch-ref" x="1316" y="190" text-anchor="start">C<tspan class="sch-sub" dy="2.5">16</tspan></text>
+<text class="sch-val" x="1316" y="203" text-anchor="start">100 µF</text>
+<circle class="sch-dot" cx="936" cy="230" r="3"/>
+<path class="sch-w" d="M936 230 L1185 230 A5 5 0 0 1 1195 230 L1375 230 A5 5 0 0 1 1385 230 L1465 230 A5 5 0 0 1 1475 230 L1500 230"/>
+<circle class="sch-w" cx="1530" cy="150" r="2.5"/>
+<circle class="sch-w" cx="1530" cy="230" r="2.5"/>
+<path class="sch-w" d="M1500 230 L1530 230"/>
+<circle class="sch-dot" cx="1500" cy="230" r="3"/>
+<text class="sch-net" x="1540" y="136" text-anchor="end">12 V, 2.5 A</text>
+<text class="sch-net" x="1540" y="252" text-anchor="end">RTN</text>
+<path class="sch-w" d="M911 320 L911 336 A6 6 0 0 0 911 348 A6 6 0 0 0 911 360 A6 6 0 0 0 911 372 A6 6 0 0 0 911 384 L911 400"/>
+<text class="sch-val" x="927" y="316" text-anchor="start">1</text>
+<text class="sch-val" x="927" y="416" text-anchor="start">2</text>
+<path class="sch-w" d="M911 320 L962.5 320"/>
+<path class="sch-w" d="M978.5 320 L1030 320"/>
+<path class="sch-w" d="M962.5 312 L962.5 328 L978.5 320 Z"/>
+<path class="sch-w" d="M978.5 312 L978.5 328"/>
+<path class="sch-w" d="M1030 320 L1100 320"/>
+<circle class="sch-dot" cx="1030" cy="320" r="3"/>
+<text class="sch-ref" x="938" y="342" text-anchor="middle">D<tspan class="sch-sub" dy="2.5">7</tspan></text>
+<text class="sch-val" x="970" y="355" text-anchor="middle">BAV21WS-7-F</text>
+<path class="sch-w" d="M1030 320 L1030 356"/>
+<path class="sch-w" d="M1030 400 L1030 364"/>
+<path class="sch-w" d="M1019 356 L1041 356"/>
+<path class="sch-w" d="M1019 368 Q1030 359 1041 368"/>
+<text class="sch-ref" x="1015" y="352" text-anchor="end">+</text>
+<text class="sch-ref" x="1046" y="358" text-anchor="start">C<tspan class="sch-sub" dy="2.5">7</tspan></text>
+<text class="sch-val" x="1046" y="371" text-anchor="start">47 µF</text>
+<path class="sch-w" d="M911 400 L1030 400"/>
+<circle class="sch-dot" cx="1030" cy="400" r="3"/>
+<path class="sch-w" d="M1030 400 L1030 600"/>
+<path class="sch-w" d="M1100 320 L1100 380"/>
+<path class="sch-w" d="M1086 396 L1086 424"/>
+<path class="sch-w" d="M1100 380 L1100 392 L1088 404"/>
+<path class="sch-w" d="M1088 416 L1100 428 L1100 440"/>
+<path class="sch-dot" d="M1099 428 L1091 425 L1095 420 Z"/>
+<path class="sch-w" d="M1064 394 L1078 404"/>
+<path class="sch-w" d="M1072 405 L1078 404 L1075 398"/>
+<path class="sch-w" d="M1064 408 L1078 418"/>
+<path class="sch-w" d="M1072 419 L1078 418 L1075 412"/>
+<text class="sch-ref" x="1130" y="470" text-anchor="middle">U<tspan class="sch-sub" dy="2.5">2B</tspan></text>
+<text class="sch-val" x="1130" y="483" text-anchor="middle">LTV817D</text>
+<path class="sch-w" d="M860 440 L1025 440 A5 5 0 0 1 1035 440 L1100 440"/>
+<circle class="sch-dot" cx="1100" cy="320" r="3"/>
+<path class="sch-w" d="M1100 320 L1100 262"/>
+<path class="sch-w" d="M1100 262 L1085 262 L1082.5 256 L1077.5 268 L1072.5 256 L1067.5 268 L1062.5 256 L1057.5 268 L1055 262 L1040 262"/>
+<path class="sch-w" d="M930 262 L952 262"/>
+<path class="sch-w" d="M968 262 L990 262"/>
+<path class="sch-w" d="M952 254 L952 270 L968 262 Z"/>
+<path class="sch-w" d="M972 254 L968 254 L968 270 L964 270"/>
+<path class="sch-w" d="M990 262 L1040 262"/>
+<path class="sch-w" d="M930 262 L890.5 262 A5 5 0 0 0 880.5 262 L865 262 A5 5 0 0 0 855 262 L725 262 A5 5 0 0 0 715 262 L680 262"/>
+<path class="sch-w" d="M680 262 L680 282"/>
+<path class="sch-w" d="M680 298 L680 318"/>
+<path class="sch-w" d="M672 282 L688 282 L680 298 Z"/>
+<path class="sch-w" d="M672 298 L688 298"/>
+<path class="sch-w" d="M680 318 L680 350"/>
+<circle class="sch-dot" cx="680" cy="350" r="3"/>
+<text class="sch-ref" x="1070" y="284" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">9</tspan></text>
+<text class="sch-val" x="1070" y="297" text-anchor="middle">10 Ω</text>
+<text class="sch-ref" x="960" y="284" text-anchor="middle">V<tspan class="sch-sub" dy="2.5">R3</tspan></text>
+<text class="sch-val" x="960" y="297" text-anchor="middle">ZMM5245B-7</text>
+<text class="sch-ref" x="664" y="286" text-anchor="end">D<tspan class="sch-sub" dy="2.5">6</tspan></text>
+<text class="sch-val" x="664" y="299" text-anchor="end">BAV19WS</text>
+<circle class="sch-dot" cx="1380" cy="150" r="3"/>
+<circle class="sch-dot" cx="1470" cy="150" r="3"/>
+<path class="sch-w" d="M1190 150 L1190 260"/>
+<circle class="sch-dot" cx="1190" cy="260" r="3"/>
+<path class="sch-w" d="M1190 260 L1190 280 L1184 282.5 L1196 287.5 L1184 292.5 L1196 297.5 L1184 302.5 L1196 307.5 L1190 310 L1190 330"/>
+<circle class="sch-dot" cx="1190" cy="330" r="3"/>
+<text class="sch-ref" x="1174" y="293" text-anchor="end">R<tspan class="sch-sub" dy="2.5">19</tspan></text>
+<text class="sch-val" x="1174" y="306" text-anchor="end">470 Ω</text>
+<path class="sch-w" d="M1190 260 L1240 260"/>
+<path class="sch-w" d="M1240 260 L1240 265 L1234 267.5 L1246 272.5 L1234 277.5 L1246 282.5 L1234 287.5 L1246 292.5 L1240 295 L1240 300"/>
+<path class="sch-w" d="M1240 300 L1240 311"/>
+<path class="sch-w" d="M1240 330 L1240 319"/>
+<path class="sch-w" d="M1229 311 L1251 311"/>
+<path class="sch-w" d="M1229 319 L1251 319"/>
+<path class="sch-w" d="M1240 330 L1190 330"/>
+<text class="sch-ref" x="1256" y="278" text-anchor="start">R<tspan class="sch-sub" dy="2.5">18</tspan></text>
+<text class="sch-val" x="1256" y="291" text-anchor="start">110 Ω</text>
+<text class="sch-ref" x="1256" y="313" text-anchor="start">C<tspan class="sch-sub" dy="2.5">18</tspan></text>
+<text class="sch-val" x="1256" y="326" text-anchor="start">47 nF</text>
+<path class="sch-w" d="M1190 330 L1190 380"/>
+<path class="sch-w" d="M1190 380 L1190 412"/>
+<path class="sch-w" d="M1190 428 L1190 460"/>
+<path class="sch-w" d="M1182 412 L1198 412 L1190 428 Z"/>
+<path class="sch-w" d="M1182 428 L1198 428"/>
+<path class="sch-w" d="M1179 417 L1169 425"/>
+<path class="sch-w" d="M1169 420 L1169 425 L1174 425"/>
+<path class="sch-w" d="M1179 425 L1169 433"/>
+<path class="sch-w" d="M1169 428 L1169 433 L1174 433"/>
+<text class="sch-ref" x="1172" y="420" text-anchor="end">U2A</text>
+<path class="sch-w" d="M1190 460 L1190 530"/>
+<circle class="sch-dot" cx="1190" cy="500" r="3"/>
+<path class="sch-w" d="M1190 500 L1380 500"/>
+<path class="sch-w" d="M1380 500 L1380 423"/>
+<path class="sch-w" d="M1380 407 L1380 330"/>
+<path class="sch-w" d="M1372 423 L1388 423 L1380 407 Z"/>
+<path class="sch-w" d="M1372 407 L1388 407"/>
+<path class="sch-w" d="M1380 330 L1380 150"/>
+<text class="sch-ref" x="1364" y="413" text-anchor="end">D<tspan class="sch-sub" dy="2.5">10</tspan></text>
+<text class="sch-val" x="1364" y="426" text-anchor="end">LL4148</text>
+<circle class="sch-dot" cx="1300" cy="500" r="3"/>
+<path class="sch-w" d="M1300 500 L1300 522"/>
+<path class="sch-w" d="M1300 552 L1300 530"/>
+<path class="sch-w" d="M1289 522 L1311 522"/>
+<path class="sch-w" d="M1289 530 L1311 530"/>
+<circle class="sch-dot" cx="1300" cy="552" r="3"/>
+<text class="sch-ref" x="1284" y="524" text-anchor="end">C<tspan class="sch-sub" dy="2.5">20</tspan></text>
+<text class="sch-val" x="1284" y="537" text-anchor="end">33 nF</text>
+<path class="sch-w" d="M1190 590 L1190 568"/>
+<path class="sch-w" d="M1190 552 L1190 530"/>
+<path class="sch-w" d="M1182 568 L1198 568 L1190 552 Z"/>
+<path class="sch-w" d="M1182 548 L1182 552 L1198 552 L1198 556"/>
+<text class="sch-ref" x="1206" y="566" text-anchor="start">U3</text>
+<text class="sch-val" x="1206" y="579" text-anchor="start">LMV431A</text>
+<path class="sch-w" d="M1190 590 L1190 600"/>
+<circle class="sch-dot" cx="1190" cy="600" r="3"/>
+<path class="sch-w" d="M1198 552 L1470 552"/>
+<path class="sch-w" d="M1470 150 L1470 420"/>
+<path class="sch-w" d="M1470 420 L1470 450 L1464 452.5 L1476 457.5 L1464 462.5 L1476 467.5 L1464 472.5 L1476 477.5 L1470 480 L1470 510"/>
+<text class="sch-ref" x="1454" y="463" text-anchor="end">R<tspan class="sch-sub" dy="2.5">21</tspan></text>
+<text class="sch-val" x="1454" y="476" text-anchor="end">86.6 kΩ 1 %</text>
+<path class="sch-w" d="M1470 510 L1470 552"/>
+<circle class="sch-dot" cx="1470" cy="552" r="3"/>
+<path class="sch-w" d="M1470 552 L1470 561 L1464 563.5 L1476 568.5 L1464 573.5 L1476 578.5 L1464 583.5 L1476 588.5 L1470 591 L1470 600"/>
+<text class="sch-ref" x="1454" y="574" text-anchor="end">R<tspan class="sch-sub" dy="2.5">23</tspan></text>
+<text class="sch-val" x="1454" y="587" text-anchor="end">10 kΩ 1 %</text>
+<path class="sch-w" d="M1190 600 L1500 600"/>
+<circle class="sch-dot" cx="1470" cy="600" r="3"/>
+<path class="sch-w" d="M1500 230 L1500 600"/>
+</svg>
