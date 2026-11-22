@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 480 310" role="img" aria-labelledby="top252-262-line-sense-t top252-262-line-sense-d">
+<title id="top252-262-line-sense-t">TOPSwitch-HX line sense and external current limit</title>
+<desc id="top252-262-line-sense-d">Line sense and external current limit, redrawn from Figure 5 of the TOP252-262 datasheet. The DC input voltage's positive terminal goes through the 4 megohm resistor RLS to the V pin. The X pin goes through the 12 kilohm resistor RIL to the negative rail, and the S pin goes straight to the negative rail. The D and C pins are drawn dashed: nothing is shown on them.</desc>
+<circle class="sch-w" cx="40" cy="60" r="3.5" fill="none"/>
+<text class="sch-ref" x="30" y="48" text-anchor="start">+</text>
+<path class="sch-w" d="M43.5 60 L240 60"/>
+<circle class="sch-dot" cx="240" cy="60" r="3"/>
+<path class="sch-w" d="M240 60 L240 90 L234 92.5 L246 97.5 L234 102.5 L246 107.5 L234 112.5 L246 117.5 L240 120 L240 150"/>
+<text class="sch-ref" x="256" y="103" text-anchor="start">R<tspan class="sch-sub" dy="2.5">LS</tspan></text>
+<text class="sch-val" x="256" y="116" text-anchor="start">4 MΩ</text>
+<path class="sch-w" d="M240 150 L240 178"/>
+<rect class="sch-ic" x="160" y="190" width="160" height="70" rx="3"/>
+<path class="sch-w" d="M320 219 L332 219"/>
+<text class="sch-pin" x="312" y="223" text-anchor="end">C</text>
+<path class="sch-w" d="M190 178 L190 190"/>
+<text class="sch-pin" x="190" y="206" text-anchor="middle">D</text>
+<path class="sch-w" d="M240 178 L240 190"/>
+<text class="sch-pin" x="240" y="206" text-anchor="middle">V</text>
+<path class="sch-w" d="M190 260 L190 272"/>
+<text class="sch-pin" x="190" y="252" text-anchor="middle">S</text>
+<path class="sch-w" d="M240 260 L240 272"/>
+<text class="sch-pin" x="240" y="252" text-anchor="middle">X</text>
+<text class="sch-ictitle" x="240" y="229" text-anchor="middle">TOPSwitch-HX</text>
+<line class="sch-w" stroke-dasharray="4 3" x1="190" y1="178" x2="190" y2="140"/>
+<line class="sch-w" stroke-dasharray="4 3" x1="332" y1="219" x2="390" y2="219"/>
+<path class="sch-w" d="M190 272 L190 320"/>
+<circle class="sch-dot" cx="190" cy="320" r="3"/>
+<path class="sch-w" d="M240 272 L240 276"/>
+<path class="sch-w" d="M240 276 L240 283 L234 285.5 L246 290.5 L234 295.5 L246 300.5 L234 305.5 L246 310.5 L240 313 L240 320"/>
+<text class="sch-ref" x="256" y="296" text-anchor="start">R<tspan class="sch-sub" dy="2.5">IL</tspan></text>
+<text class="sch-val" x="256" y="309" text-anchor="start">12 kΩ</text>
+<circle class="sch-dot" cx="240" cy="320" r="3"/>
+<path class="sch-w" d="M43.5 320 L300 320"/>
+<circle class="sch-w" cx="40" cy="320" r="3.5" fill="none"/>
+<text class="sch-ref" x="30" y="338" text-anchor="start">−</text>
+<text class="sch-net" x="30" y="190" text-anchor="start">DC input</text>
+<text class="sch-net" x="30" y="204" text-anchor="start">voltage</text>
+</svg>

@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 980 540" role="img" aria-labelledby="top252-262-t top252-262-d" style="min-width:900px">
+<title id="top252-262-t">TOPSwitch-HX typical flyback application</title>
+<desc id="top252-262-d">Typical flyback supply, redrawn from Figure 1 on page 1 of the TOP252-262 datasheet (the V, X and F pin version). The AC input goes through a four-diode bridge to a bulk capacitor across the bus. The bus feeds the top of the transformer primary and, through a resistor, the V pin. A clamp of a zener diode in series with a diode runs from the bus to the drain node, where the primary's bottom end and the D pin meet. The S pin and the F pin go to the bridge's negative rail, and the X pin goes to it through a resistor. On the output winding a diode and a capacitor make the DC output. A zener diode, a resistor and a diode in series across the output feed back through an optocoupler. A bias winding feeds the C pin: a diode charges a capacitor, the optocoupler's phototransistor connects that capacitor to the C pin, and a capacitor from the C pin goes to the negative rail.</desc>
+<circle class="sch-w" cx="28" cy="150" r="3.5" fill="none"/>
+<circle class="sch-w" cx="28" cy="230" r="3.5" fill="none"/>
+<text class="sch-net" x="6" y="195" text-anchor="start">AC IN</text>
+<path class="sch-w" d="M31.5 150 L100 150"/>
+<path class="sch-w" d="M31.5 230 L95 230 A5 5 0 0 1 105 230 L150 230"/>
+<path class="sch-w" d="M100 150 L100 138"/>
+<path class="sch-w" d="M100 122 L100 110"/>
+<path class="sch-w" d="M92 138 L108 138 L100 122 Z"/>
+<path class="sch-w" d="M92 122 L108 122"/>
+<path class="sch-w" d="M100 270 L100 218"/>
+<path class="sch-w" d="M100 202 L100 150"/>
+<path class="sch-w" d="M92 218 L108 218 L100 202 Z"/>
+<path class="sch-w" d="M92 202 L108 202"/>
+<path class="sch-w" d="M150 230 L150 178"/>
+<path class="sch-w" d="M150 162 L150 110"/>
+<path class="sch-w" d="M142 178 L158 178 L150 162 Z"/>
+<path class="sch-w" d="M142 162 L158 162"/>
+<path class="sch-w" d="M150 270 L150 258"/>
+<path class="sch-w" d="M150 242 L150 230"/>
+<path class="sch-w" d="M142 258 L158 258 L150 242 Z"/>
+<path class="sch-w" d="M142 242 L158 242"/>
+<circle class="sch-dot" cx="100" cy="150" r="3"/>
+<circle class="sch-dot" cx="150" cy="230" r="3"/>
+<circle class="sch-dot" cx="150" cy="110" r="3"/>
+<circle class="sch-dot" cx="150" cy="270" r="3"/>
+<circle class="sch-dot" cx="100" cy="110" r="3"/>
+<circle class="sch-dot" cx="100" cy="270" r="3"/>
+<path class="sch-w" d="M100 110 L480 110"/>
+<path class="sch-w" d="M60 270 L200 270"/>
+<path class="sch-w" d="M60 270 L60 570"/>
+<circle class="sch-dot" cx="200" cy="110" r="3"/>
+<path class="sch-w" d="M200 110 L200 186"/>
+<path class="sch-w" d="M200 270 L200 194"/>
+<path class="sch-w" d="M189 186 L211 186"/>
+<path class="sch-w" d="M189 194 L211 194"/>
+<circle class="sch-dot" cx="200" cy="270" r="3"/>
+<circle class="sch-dot" cx="300" cy="110" r="3"/>
+<path class="sch-w" d="M300 110 L300 147"/>
+<path class="sch-w" d="M300 163 L300 200"/>
+<path class="sch-w" d="M292 147 L308 147 L300 163 Z"/>
+<path class="sch-w" d="M292 167 L292 163 L308 163 L308 159"/>
+<path class="sch-w" d="M300 290 L300 253"/>
+<path class="sch-w" d="M300 237 L300 200"/>
+<path class="sch-w" d="M292 253 L308 253 L300 237 Z"/>
+<path class="sch-w" d="M292 237 L308 237"/>
+<circle class="sch-dot" cx="300" cy="290" r="3"/>
+<path class="sch-w" d="M300 290 L300 328"/>
+<circle class="sch-dot" cx="400" cy="110" r="3"/>
+<path class="sch-w" d="M400 110 L400 140 L394 142.5 L406 147.5 L394 152.5 L406 157.5 L394 162.5 L406 167.5 L400 170 L400 200"/>
+<path class="sch-w" d="M400 200 L400 328"/>
+<circle class="sch-dot" cx="480" cy="110" r="3"/>
+<path class="sch-w" d="M480 110 L480 150"/>
+<path class="sch-w" d="M480 150 L480 186 A6 6 0 0 1 480 198 A6 6 0 0 1 480 210 A6 6 0 0 1 480 222 A6 6 0 0 1 480 234 L480 270"/>
+<path class="sch-w" d="M480 270 L480 290"/>
+<path class="sch-w" d="M480 290 L405 290 A5 5 0 0 0 395 290 L300 290"/>
+<path class="sch-w" d="M503 140 L503 350"/>
+<path class="sch-w" d="M508 140 L508 350"/>
+<path class="sch-w" d="M530 150 L530 166 A6 6 0 0 0 530 178 A6 6 0 0 0 530 190 A6 6 0 0 0 530 202 A6 6 0 0 0 530 214 L530 230"/>
+<path class="sch-w" d="M530 270 L530 286 A6 6 0 0 0 530 298 A6 6 0 0 0 530 310 A6 6 0 0 0 530 322 A6 6 0 0 0 530 334 L530 350"/>
+<circle class="sch-dot" cx="468" cy="246" r="2.5"/>
+<circle class="sch-dot" cx="542" cy="176" r="2.5"/>
+<circle class="sch-dot" cx="542" cy="296" r="2.5"/>
+<rect class="sch-ic" x="270" y="340" width="200" height="170" rx="3"/>
+<path class="sch-w" d="M470 475 L482 475"/>
+<text class="sch-pin" x="462" y="479" text-anchor="end">C</text>
+<path class="sch-w" d="M300 328 L300 340"/>
+<text class="sch-pin" x="300" y="356" text-anchor="middle">D</text>
+<path class="sch-w" d="M400 328 L400 340"/>
+<text class="sch-pin" x="400" y="356" text-anchor="middle">V</text>
+<path class="sch-w" d="M300 510 L300 522"/>
+<text class="sch-pin" x="300" y="502" text-anchor="middle">S</text>
+<path class="sch-w" d="M370 510 L370 522"/>
+<text class="sch-pin" x="370" y="502" text-anchor="middle">X</text>
+<path class="sch-w" d="M440 510 L440 522"/>
+<text class="sch-pin" x="440" y="502" text-anchor="middle">F</text>
+<text class="sch-ictitle" x="370" y="429" text-anchor="middle">TOPSwitch-HX</text>
+<path class="sch-w" d="M300 522 L300 570"/>
+<circle class="sch-dot" cx="300" cy="570" r="3"/>
+<path class="sch-w" d="M370 522 L370 530"/>
+<path class="sch-w" d="M370 530 L370 535 L364 537.5 L376 542.5 L364 547.5 L376 552.5 L364 557.5 L376 562.5 L370 565 L370 570"/>
+<circle class="sch-dot" cx="370" cy="570" r="3"/>
+<path class="sch-w" d="M440 522 L440 570"/>
+<circle class="sch-dot" cx="440" cy="570" r="3"/>
+<path class="sch-w" d="M60 570 L660 570"/>
+<path class="sch-w" d="M530 270 L567 270"/>
+<path class="sch-w" d="M583 270 L620 270"/>
+<path class="sch-w" d="M567 262 L567 278 L583 270 Z"/>
+<path class="sch-w" d="M583 262 L583 278"/>
+<path class="sch-w" d="M620 270 L660 270"/>
+<path class="sch-w" d="M530 350 L590 350"/>
+<path class="sch-w" d="M590 350 L590 570"/>
+<circle class="sch-dot" cx="590" cy="570" r="3"/>
+<circle class="sch-dot" cx="590" cy="380" r="3"/>
+<path class="sch-w" d="M590 380 L621 380"/>
+<path class="sch-w" d="M660 380 L629 380"/>
+<path class="sch-w" d="M621 369 L621 391"/>
+<path class="sch-w" d="M629 369 L629 391"/>
+<circle class="sch-dot" cx="660" cy="380" r="3"/>
+<path class="sch-w" d="M660 270 L660 405"/>
+<path class="sch-w" d="M660 405 L660 425 L678 435"/>
+<path class="sch-w" d="M678 425 L678 455"/>
+<path class="sch-w" d="M678 445 L660 455 L660 475"/>
+<path class="sch-dot" d="M660 455 L668 454.5 L662.5 449 Z"/>
+<path class="sch-w" d="M712 427 L694 437"/>
+<path class="sch-w" d="M702 438 L694 437 L697 430"/>
+<path class="sch-w" d="M712 443 L694 453"/>
+<path class="sch-w" d="M702 454 L694 453 L697 446"/>
+<path class="sch-w" d="M482 475 L585 475 A5 5 0 0 1 595 475 L660 475"/>
+<circle class="sch-dot" cx="660" cy="475" r="3"/>
+<path class="sch-w" d="M660 475 L660 506"/>
+<path class="sch-w" d="M660 545 L660 514"/>
+<path class="sch-w" d="M649 506 L671 506"/>
+<path class="sch-w" d="M649 514 L671 514"/>
+<path class="sch-w" d="M660 545 L660 570"/>
+<circle class="sch-dot" cx="660" cy="570" r="3"/>
+<path class="sch-w" d="M530 150 L567 150"/>
+<path class="sch-w" d="M583 150 L620 150"/>
+<path class="sch-w" d="M567 142 L567 158 L583 150 Z"/>
+<path class="sch-w" d="M583 142 L583 158"/>
+<path class="sch-w" d="M620 150 L880 150"/>
+<path class="sch-w" d="M530 230 L755 230 A5 5 0 0 1 765 230 L880 230"/>
+<circle class="sch-dot" cx="680" cy="150" r="3"/>
+<path class="sch-w" d="M680 150 L680 186"/>
+<path class="sch-w" d="M680 230 L680 194"/>
+<path class="sch-w" d="M669 186 L691 186"/>
+<path class="sch-w" d="M669 194 L691 194"/>
+<circle class="sch-dot" cx="680" cy="230" r="3"/>
+<circle class="sch-w" cx="884" cy="150" r="3.5" fill="none"/>
+<circle class="sch-w" cx="884" cy="230" r="3.5" fill="none"/>
+<text class="sch-ref" x="900" y="154" text-anchor="start">+</text>
+<text class="sch-ref" x="900" y="234" text-anchor="start">−</text>
+<text class="sch-net" x="900" y="198" text-anchor="start">DC</text>
+<text class="sch-net" x="900" y="212" text-anchor="start">OUT</text>
+<circle class="sch-dot" cx="760" cy="150" r="3"/>
+<path class="sch-w" d="M760 200 L760 183"/>
+<path class="sch-w" d="M760 167 L760 150"/>
+<path class="sch-w" d="M752 183 L768 183 L760 167 Z"/>
+<path class="sch-w" d="M752 163 L752 167 L768 167 L768 171"/>
+<path class="sch-w" d="M760 200 L760 290"/>
+<path class="sch-w" d="M760 290 L760 305 L754 307.5 L766 312.5 L754 317.5 L766 322.5 L754 327.5 L766 332.5 L760 335 L760 350"/>
+<path class="sch-w" d="M760 350 L760 380"/>
+<path class="sch-w" d="M760 380 L760 402"/>
+<path class="sch-w" d="M760 418 L760 440"/>
+<path class="sch-w" d="M752 402 L768 402 L760 418 Z"/>
+<path class="sch-w" d="M752 418 L768 418"/>
+<path class="sch-w" d="M760 440 L760 460 L860 460 L860 230"/>
+<circle class="sch-dot" cx="860" cy="230" r="3"/>
+</svg>
