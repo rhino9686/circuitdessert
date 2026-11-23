@@ -45,6 +45,17 @@ draft: true                   # set false once a human has rewritten the prose b
 tags: []
 ---
 
+## Pinout
+
+One table, in the datasheet's pin order, written after the pin-function table or the pinout figure. Say where the names and functions came from.
+
+| Pin | Name | Function |
+| --- | --- | --- |
+| 1 | VIN | Supply input. Decouple it with a ceramic capacitor placed next to the pin. |
+| 2 | GND | Ground. |
+
+If the datasheet has no pin table, keep the same table and say so in one sentence above it, for example: "The datasheet has no pin table; the names come from the pinout figure on page 2 and the functions from the application text on page 5 (our reading)." Then add a bullet under Datasheet notes. Name the exposed pad and give it our own number when the datasheet doesn't number it (the package page says which number we used).
+
 ## Design notes
 
 Write what the datasheet doesn't say: where this part shines, gotchas, good alternatives. Link the datasheet instead of copying it.
@@ -57,6 +68,7 @@ Write what the datasheet doesn't say: where this part shines, gotchas, good alte
 ## Layout guidance
 
 - Layout advice from the datasheet and your own experience.
+- End this section with one sentence on pin 1 ("Pin 1 is the top-left lead in the datasheet's top view"), and, when the part has no symbol or footprint on this site, "This site has no KiCad symbol or footprint for this part yet."
 
 ## Datasheet notes
 

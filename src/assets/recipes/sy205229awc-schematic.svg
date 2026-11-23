@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 960 630" role="img" aria-labelledby="sy205229awc-t sy205229awc-d" style="min-width:800px">
+<title id="sy205229awc-t">SY205229AWC USB ESD protection application</title>
+<desc id="sy205229awc-d">USB application circuit of the SY205229AWC low-capacitance TVS, redrawn from the uncaptioned figure on page 6 of the datasheet. A USB controller and a USB port are joined by VBUS, D-, D+ and GND rows. The TVS sits above the D- row: pin 4 (VCC) to the VBUS row, pin 3 (I/O2) to the D- row, pin 2 (I/O1) to the D+ row, pin 1 (GND) to the GND row, with the pin 1 and pin 2 leads crossing the rows above them with no dot. Each data row has a shunt capacitor to GND next to the controller and a series resistor R_T after it. The body's internal network is drawn as printed.</desc>
+<rect class="sch-ic" x="10" y="20" width="100" height="609" rx="3"/>
+<text class="sch-ictitle" x="60" y="262" text-anchor="middle">USB</text>
+<text class="sch-ictitle" x="60" y="280" text-anchor="middle">Controller</text>
+<rect class="sch-ic" x="837" y="293" width="104" height="336" rx="3"/>
+<text class="sch-ictitle" x="889" y="455" text-anchor="middle">USB</text>
+<text class="sch-ictitle" x="889" y="473" text-anchor="middle">Port</text>
+<rect class="sch-ic" x="361" y="186" width="289" height="130" rx="2"/>
+<rect class="sch-ic" x="388" y="130" width="44" height="56" rx="2"/>
+<text class="sch-pin" x="410" y="162" text-anchor="middle">4</text>
+<rect class="sch-ic" x="579" y="130" width="44" height="56" rx="2"/>
+<text class="sch-pin" x="601" y="162" text-anchor="middle">3</text>
+<rect class="sch-ic" x="390" y="316" width="83" height="55" rx="2"/>
+<text class="sch-pin" x="431.5" y="347.5" text-anchor="middle">1</text>
+<rect class="sch-ic" x="580" y="316" width="44" height="55" rx="2"/>
+<text class="sch-pin" x="602" y="347.5" text-anchor="middle">2</text>
+<text class="sch-ictitle" x="494" y="252" text-anchor="middle">SY205229AWC</text>
+<text class="sch-val" x="494" y="268" text-anchor="middle">SOT-143</text>
+<path class="sch-w" d="M410 186 L410 207"/>
+<path class="sch-w" d="M410 207 L625 207"/>
+<path class="sch-w" d="M410 304 L410 316"/>
+<path class="sch-w" d="M410 304 L625 304"/>
+<path class="sch-w" d="M410 304 L410 263.5"/>
+<path class="sch-w" d="M410 247.5 L410 207"/>
+<path class="sch-w" d="M402 263.5 L418 263.5 L410 247.5 Z"/>
+<path class="sch-w" d="M402 243.5 L402 247.5 L418 247.5 L418 251.5"/>
+<path class="sch-w" d="M578 256 L578 239.5"/>
+<path class="sch-w" d="M578 223.5 L578 207"/>
+<path class="sch-w" d="M570 239.5 L586 239.5 L578 223.5 Z"/>
+<path class="sch-w" d="M570 223.5 L586 223.5"/>
+<path class="sch-w" d="M578 304 L578 288"/>
+<path class="sch-w" d="M578 272 L578 256"/>
+<path class="sch-w" d="M570 288 L586 288 L578 272 Z"/>
+<path class="sch-w" d="M570 272 L586 272"/>
+<circle class="sch-dot" cx="578" cy="256" r="3"/>
+<path class="sch-w" d="M625 256 L625 239.5"/>
+<path class="sch-w" d="M625 223.5 L625 207"/>
+<path class="sch-w" d="M617 239.5 L633 239.5 L625 223.5 Z"/>
+<path class="sch-w" d="M617 223.5 L633 223.5"/>
+<path class="sch-w" d="M625 304 L625 288"/>
+<path class="sch-w" d="M625 272 L625 256"/>
+<path class="sch-w" d="M617 288 L633 288 L625 272 Z"/>
+<path class="sch-w" d="M617 272 L633 272"/>
+<circle class="sch-dot" cx="625" cy="256" r="3"/>
+<circle class="sch-dot" cx="410" cy="207" r="3"/>
+<circle class="sch-dot" cx="410" cy="304" r="3"/>
+<circle class="sch-dot" cx="578" cy="207" r="3"/>
+<circle class="sch-dot" cx="578" cy="304" r="3"/>
+<path class="sch-w" d="M595 186 L595 256 L578 256"/>
+<path class="sch-w" d="M611 316 L611 256 L625 256"/>
+<path class="sch-w" d="M110 63 L734 63 L734 346 L837 346"/>
+<path class="sch-w" d="M410 130 L410 63"/>
+<circle class="sch-dot" cx="410" cy="63" r="3"/>
+<text class="sch-net" x="138" y="48" text-anchor="start">VBUS</text>
+<text class="sch-net" x="760" y="334" text-anchor="start">VBUS</text>
+<path class="sch-w" d="M110 422 L265 422"/>
+<path class="sch-w" d="M265 422 L280 422 L282.5 416 L287.5 428 L292.5 416 L297.5 428 L302.5 416 L307.5 428 L310 422 L325 422"/>
+<path class="sch-w" d="M325 422 L837 422"/>
+<circle class="sch-dot" cx="154" cy="422" r="3"/>
+<circle class="sch-dot" cx="696" cy="422" r="3"/>
+<path class="sch-w" d="M154 422 L154 450"/>
+<path class="sch-w" d="M143 450 L165 450"/>
+<path class="sch-w" d="M143 458 L165 458"/>
+<path class="sch-w" d="M154 458 L154 578"/>
+<path class="sch-w" d="M623 150 L696 150 L696 422"/>
+<text class="sch-net" x="770" y="410" text-anchor="start">D-</text>
+<path class="sch-w" d="M110 500 L265 500"/>
+<path class="sch-w" d="M265 500 L280 500 L282.5 494 L287.5 506 L292.5 494 L297.5 506 L302.5 494 L307.5 506 L310 500 L325 500"/>
+<path class="sch-w" d="M325 500 L837 500"/>
+<circle class="sch-dot" cx="208" cy="500" r="3"/>
+<circle class="sch-dot" cx="601" cy="500" r="3"/>
+<path class="sch-w" d="M208 500 L208 535"/>
+<path class="sch-w" d="M197 535 L219 535"/>
+<path class="sch-w" d="M197 543 L219 543"/>
+<path class="sch-w" d="M208 543 L208 578"/>
+<path class="sch-w" d="M601 371 L601 500"/>
+<text class="sch-net" x="770" y="488" text-anchor="start">D+</text>
+<path class="sch-w" d="M110 578 L837 578"/>
+<path class="sch-w" d="M431 371 L431 578"/>
+<circle class="sch-dot" cx="154" cy="578" r="3"/>
+<circle class="sch-dot" cx="208" cy="578" r="3"/>
+<circle class="sch-dot" cx="292" cy="578" r="3"/>
+<circle class="sch-dot" cx="431" cy="578" r="3"/>
+<path class="sch-w" d="M292 578 L292 586"/>
+<path class="sch-w" d="M281 586 L303 586"/>
+<path class="sch-w" d="M285 591 L299 591"/>
+<path class="sch-w" d="M289 596 L295 596"/>
+<text class="sch-net" x="770" y="566" text-anchor="start">GND</text>
+<text class="sch-ref" x="170" y="460" text-anchor="start">C<tspan class="sch-sub" dy="2.5">T</tspan></text>
+<text class="sch-ref" x="295" y="458" text-anchor="middle">R<tspan class="sch-sub" dy="2.5">T</tspan></text>
+</svg>
