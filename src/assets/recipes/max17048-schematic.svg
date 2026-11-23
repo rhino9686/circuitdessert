@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 780 360" role="img" aria-labelledby="max17048-t max17048-d">
+<title id="max17048-t">MAX17048 reference circuit</title>
+<desc id="max17048-d">Application circuit of the MAX17048 fuel gauge on a 1S battery pack, redrawn from the datasheet. The pack positive terminal goes to both the VDD and CELL pins, with a 0.1 µF capacitor from that node to ground. CTG, GND and the pack negative terminal are on ground, QSTRT is on ground, and ALRT, SDA and SCL go to the interrupt input and the I2C pins of the system microcontroller.</desc>
+<rect class="sch-ic" x="300" y="110" width="180" height="200" rx="3"/>
+<path class="sch-w" d="M288 150 L300 150"/>
+<text class="sch-pin" x="308" y="154" text-anchor="start">VDD</text>
+<path class="sch-w" d="M288 190 L300 190"/>
+<text class="sch-pin" x="308" y="194" text-anchor="start">CELL</text>
+<path class="sch-w" d="M288 250 L300 250"/>
+<text class="sch-pin" x="308" y="254" text-anchor="start">CTG</text>
+<path class="sch-w" d="M288 290 L300 290"/>
+<text class="sch-pin" x="308" y="294" text-anchor="start">GND</text>
+<path class="sch-w" d="M480 150 L492 150"/>
+<text class="sch-pin" x="472" y="154" text-anchor="end">ALRT</text>
+<path class="sch-w" d="M480 190 L492 190"/>
+<text class="sch-pin" x="472" y="194" text-anchor="end">SDA</text>
+<path class="sch-w" d="M480 250 L492 250"/>
+<text class="sch-pin" x="472" y="254" text-anchor="end">SCL</text>
+<path class="sch-w" d="M480 290 L492 290"/>
+<text class="sch-pin" x="472" y="294" text-anchor="end">QSTRT</text>
+<text class="sch-ictitle" x="390" y="208" text-anchor="middle">MAX17048</text>
+<text class="sch-val" x="390" y="224" text-anchor="middle">U1</text>
+<text class="sch-net" x="84" y="118" text-anchor="start">battery pack</text>
+<line class="sch-w" x1="70" y1="70" x2="70" y2="168"/>
+<line class="sch-w" x1="54" y1="168" x2="86" y2="168"/>
+<line class="sch-w" x1="61" y1="178" x2="79" y2="178"/>
+<line class="sch-w" x1="70" y1="178" x2="70" y2="272"/>
+<text class="sch-net" x="94" y="174" text-anchor="start">1S</text>
+<rect class="sch-ic" x="25" y="272" width="90" height="36"/>
+<text class="sch-net" x="70" y="294" text-anchor="middle">PROTECTION</text>
+<path class="sch-w" d="M70 70 L200 70"/>
+<text class="sch-net" x="78" y="62" text-anchor="start">PACK+</text>
+<path class="sch-w" d="M200 70 L200 190"/>
+<circle class="sch-dot" cx="200" cy="150" r="3"/>
+<path class="sch-w" d="M200 150 L288 150"/>
+<circle class="sch-dot" cx="200" cy="190" r="3"/>
+<path class="sch-w" d="M200 190 L288 190"/>
+<path class="sch-w" d="M200 215 L200 231"/>
+<path class="sch-w" d="M200 255 L200 239"/>
+<path class="sch-w" d="M189 231 L211 231"/>
+<path class="sch-w" d="M189 239 L211 239"/>
+<text class="sch-ref" x="184" y="233" text-anchor="end">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="184" y="246" text-anchor="end">0.1 µF</text>
+<path class="sch-w" d="M200 190 L200 215"/>
+<path class="sch-w" d="M200 255 L200 290"/>
+<path class="sch-w" d="M115 290 L288 290"/>
+<circle class="sch-dot" cx="200" cy="290" r="3"/>
+<circle class="sch-dot" cx="250" cy="290" r="3"/>
+<path class="sch-w" d="M250 250 L250 250 L250 290"/>
+<path class="sch-w" d="M250 250 L288 250"/>
+<path class="sch-w" d="M250 290 L250 298"/>
+<path class="sch-w" d="M239 298 L261 298"/>
+<path class="sch-w" d="M243 303 L257 303"/>
+<path class="sch-w" d="M247 308 L253 308"/>
+<path class="sch-w" d="M492 150 L620 150"/>
+<text class="sch-net" x="628" y="154" text-anchor="start">INTERRUPT</text>
+<path class="sch-w" d="M492 190 L620 190"/>
+<text class="sch-net" x="628" y="194" text-anchor="start">SDA</text>
+<path class="sch-w" d="M492 250 L620 250"/>
+<text class="sch-net" x="628" y="254" text-anchor="start">SCL</text>
+<text class="sch-net" x="628" y="120" text-anchor="start">system µP</text>
+<path class="sch-w" d="M492 290 L560 290"/>
+<path class="sch-w" d="M560 290 L560 298"/>
+<path class="sch-w" d="M549 298 L571 298"/>
+<path class="sch-w" d="M553 303 L567 303"/>
+<path class="sch-w" d="M557 308 L563 308"/>
+<text class="sch-net" x="60" y="360" text-anchor="start">VDD and CELL are the same node: VDD powers the part and CELL is not connected inside.</text>
+</svg>
