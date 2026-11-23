@@ -49,6 +49,7 @@ import { singleInductorBuckBoost } from './designs-tps63020.mjs';
 import { inlineMotorSense, solenoidSense } from './designs-ina240.mjs';
 import { threePhaseMeter } from './designs-ade9039.mjs';
 import { testCircuit as ade9078TestCircuit } from './designs-ade9078.mjs';
+import { meterBasics as meter71m6511Basics } from './designs-71m6511.mjs';
 import { ldoNoiseReduction } from './designs-tps7a8101.mjs';
 import { adapter65w, openFrame30w } from './designs-topswitch-jx.mjs';
 import { flybackTypical, lineSense as top252LineSense, figure42 } from './designs-top258yn.mjs';
@@ -137,6 +138,7 @@ const designs = {
   'sy6045b-schematic.svg': classDAmpTypical({ id: 'sy6045b' }),
   'ade9039-schematic.svg': threePhaseMeter({ id: 'ade9039', part: 'ADE9039' }),
   'ade9078-schematic.svg': ade9078TestCircuit({ id: 'ade9078', part: 'ADE9078' }),
+  '71m6511-schematic.svg': meter71m6511Basics({ id: '71m6511', part: '71M6511' }),
   'sq52201qdq-schematic.svg': powerMonitor1Ch({ id: 'sq52201qdq' }),
   'sq52212xfs-schematic.svg': powerMonitor2Ch({ id: 'sq52212xfs' }),
   'ina240-motor-schematic.svg': inlineMotorSense({ id: 'ina240-motor' }),
