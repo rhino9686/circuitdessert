@@ -51,6 +51,7 @@ import { threePhaseMeter } from './designs-ade9039.mjs';
 import { testCircuit as ade9078TestCircuit } from './designs-ade9078.mjs';
 import { meterBasics as meter71m6511Basics } from './designs-71m6511.mjs';
 import { ldoNoiseReduction } from './designs-tps7a8101.mjs';
+import { fuelGaugeHighSide } from './designs-bq27426.mjs';
 import { adapter65w, openFrame30w } from './designs-topswitch-jx.mjs';
 import { flybackTypical, lineSense as top252LineSense, figure42 } from './designs-top258yn.mjs';
 import { dualPhaseCt } from './designs-sy7m212h.mjs';
@@ -105,6 +106,7 @@ const designs = {
   'sy7070b-schematic.svg': lowVoltageBoostFixed({ id: 'sy7070b', part: 'SY7070B' }),
   'sy2a27352-schematic.svg': ldoWithReset({ id: 'sy2a27352', part: 'SY2A27352' }),
   'tps7a8101-q1-schematic.svg': ldoNoiseReduction({ id: 'tps7a8101-q1', part: 'TPS7A8101-Q1' }),
+  'bq27426-schematic.svg': fuelGaugeHighSide({ id: 'bq27426', part: 'BQ27426' }),
   'top264-271-fig25-schematic.svg': adapter65w({ id: 'top264-271-fig25' }),
   'top264-271-fig26-schematic.svg': openFrame30w({ id: 'top264-271-fig26' }),
   'sy24642-schematic.svg': currentSenseAmp({ id: 'sy24642', part: 'SY24642' }),
