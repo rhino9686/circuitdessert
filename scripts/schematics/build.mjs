@@ -52,6 +52,7 @@ import { testCircuit as ade9078TestCircuit } from './designs-ade9078.mjs';
 import { ldoNoiseReduction } from './designs-tps7a8101.mjs';
 import { adapter65w, openFrame30w } from './designs-topswitch-jx.mjs';
 import { flybackTypical, lineSense as top252LineSense, figure42 } from './designs-top258yn.mjs';
+import { dualPhaseCt } from './designs-sy7m212h.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -144,6 +145,7 @@ const designs = {
   'top252-262-schematic.svg': flybackTypical({ id: 'top252-262' }),
   'top252-262-line-sense-schematic.svg': top252LineSense({ id: 'top252-262-line-sense' }),
   'top258yn-150w-schematic.svg': figure42({ id: 'top258yn-150w' }),
+  'sy7m212h-sy7t231h-schematic.svg': dualPhaseCt({ id: 'sy7m212h-sy7t231h' }),
   'sy21219-schematic.svg': vccBuck({
     id: 'sy21219', part: 'SY21219', vin: '4.5–30 V', vout: '5 V',
     cin1: '47 µF', cin2: '10 µF', cin3: '0.1 µF', couts: ['22 µF', '22 µF', '22 µF'], cbs: '0.1 µF', cvcc: '2.2 µF', cff: '220 pF', rff: '1 kΩ',

@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 14 1000 866" role="img" aria-labelledby="sy7m212h-sy7t231h-t sy7m212h-sy7t231h-d">
+<title id="sy7m212h-sy7t231h-t">SY7M212H dual-phase application with current transformers</title>
+<desc id="sy7m212h-sy7t231h-d">The "Typical Application Circuit (SY7M212H with CTs)" of the SY7M212H / SY7T231H data sheet, redrawn with the values of its Recommended External Components table. Phase A and phase B each pass through a current transformer whose secondary goes to IAP and IAN, or IBP and IBN. A resistor divider from each phase to neutral goes to VA or VB. Neutral is the circuit ground and is joined to GNDA and GNDD. A power-supply block feeds V3P3A and V3P3SYS, which are tied together, with 1.0 µF at each. V3P3D has 0.1 µF. A 32.768 kHz crystal sits across XIN and XOUT with 20 pF from each pin to ground. VBAT goes to a battery and VBAT_RTC to an RTC battery. VDD has 1.0 µF, VLCD 0.1 µF and V3P3RTC 1.0 µF. WAKE_COMP is an open terminal. The data sheet draws no burden resistor, no filter and no divider values.</desc>
+<rect class="sch-ic" x="380" y="190" width="260" height="580" rx="3"/>
+<path class="sch-w" d="M368 230 L380 230"/>
+<text class="sch-pin" x="388" y="234" text-anchor="start">IAP</text>
+<path class="sch-w" d="M368 258 L380 258"/>
+<text class="sch-pin" x="388" y="262" text-anchor="start">IAN</text>
+<path class="sch-w" d="M368 300 L380 300"/>
+<text class="sch-pin" x="388" y="304" text-anchor="start">VA</text>
+<path class="sch-w" d="M368 400 L380 400"/>
+<text class="sch-pin" x="388" y="404" text-anchor="start">IBP</text>
+<path class="sch-w" d="M368 428 L380 428"/>
+<text class="sch-pin" x="388" y="432" text-anchor="start">IBN</text>
+<path class="sch-w" d="M368 470 L380 470"/>
+<text class="sch-pin" x="388" y="474" text-anchor="start">VB</text>
+<path class="sch-w" d="M640 230 L652 230"/>
+<text class="sch-pin" x="632" y="234" text-anchor="end">XIN</text>
+<path class="sch-w" d="M640 292 L652 292"/>
+<text class="sch-pin" x="632" y="296" text-anchor="end">XOUT</text>
+<path class="sch-w" d="M640 350 L652 350"/>
+<text class="sch-pin" x="632" y="354" text-anchor="end">VBAT</text>
+<path class="sch-w" d="M640 450 L652 450"/>
+<text class="sch-pin" x="632" y="454" text-anchor="end">VBAT_RTC</text>
+<path class="sch-w" d="M640 540 L652 540"/>
+<text class="sch-pin" x="632" y="544" text-anchor="end">WAKE_COMP</text>
+<path class="sch-w" d="M640 590 L652 590"/>
+<text class="sch-pin" x="632" y="594" text-anchor="end">V3P3RTC</text>
+<path class="sch-w" d="M640 640 L652 640"/>
+<text class="sch-pin" x="632" y="644" text-anchor="end">VLCD</text>
+<path class="sch-w" d="M640 690 L652 690"/>
+<text class="sch-pin" x="632" y="694" text-anchor="end">VDD</text>
+<path class="sch-w" d="M430 178 L430 190"/>
+<text class="sch-pin" x="430" y="206" text-anchor="middle">V3P3A</text>
+<path class="sch-w" d="M510 178 L510 190"/>
+<text class="sch-pin" x="510" y="206" text-anchor="middle">V3P3SYS</text>
+<path class="sch-w" d="M610 178 L610 190"/>
+<text class="sch-pin" x="610" y="206" text-anchor="middle">V3P3D</text>
+<path class="sch-w" d="M450 770 L450 782"/>
+<text class="sch-pin" x="450" y="762" text-anchor="middle">GNDA</text>
+<path class="sch-w" d="M520 770 L520 782"/>
+<text class="sch-pin" x="520" y="762" text-anchor="middle">GNDD</text>
+<text class="sch-ictitle" x="510" y="474" text-anchor="middle">SY7M212H</text>
+<text class="sch-val" x="510" y="490" text-anchor="middle">LQFP-100 pin names</text>
+<text class="sch-val" x="510" y="504" text-anchor="middle">(SY7T231H: QFN-68, no WAKE_COMP)</text>
+<text class="sch-ref" x="36" y="234" text-anchor="start">Phase A</text>
+<circle class="sch-w" cx="36.5" cy="244" r="3.5"/>
+<path class="sch-w" d="M40 244 L120 244"/>
+<rect class="sch-ic" x="120" y="214" width="80" height="60" rx="3"/>
+<text class="sch-ictitle" x="160" y="248" text-anchor="middle">CT A</text>
+<path class="sch-w" d="M160 274 L160 292"/>
+<circle class="sch-w" cx="160" cy="295.5" r="3.5"/>
+<text class="sch-val" x="172" y="299" text-anchor="start">to load</text>
+<path class="sch-w" d="M200 230 L368 230"/>
+<path class="sch-w" d="M200 258 L368 258"/>
+<text class="sch-ref" x="36" y="404" text-anchor="start">Phase B</text>
+<circle class="sch-w" cx="36.5" cy="414" r="3.5"/>
+<path class="sch-w" d="M40 414 L120 414"/>
+<rect class="sch-ic" x="120" y="384" width="80" height="60" rx="3"/>
+<text class="sch-ictitle" x="160" y="418" text-anchor="middle">CT B</text>
+<path class="sch-w" d="M160 444 L160 462"/>
+<circle class="sch-w" cx="160" cy="465.5" r="3.5"/>
+<text class="sch-val" x="172" y="469" text-anchor="start">to load</text>
+<path class="sch-w" d="M200 400 L368 400"/>
+<path class="sch-w" d="M200 428 L368 428"/>
+<text class="sch-val" x="36" y="188" text-anchor="start">No burden resistor, filter or values</text>
+<text class="sch-val" x="36" y="201" text-anchor="start">are drawn in the data sheet figure</text>
+<circle class="sch-dot" cx="70" cy="244" r="3"/>
+<path class="sch-w" d="M70 244 L70 257 L64 259.5 L76 264.5 L64 269.5 L76 274.5 L64 279.5 L76 284.5 L70 287 L70 300"/>
+<circle class="sch-dot" cx="70" cy="300" r="3"/>
+<path class="sch-w" d="M70 300 L368 300"/>
+<path class="sch-w" d="M70 300 L70 325 L64 327.5 L76 332.5 L64 337.5 L76 342.5 L64 347.5 L76 352.5 L70 355 L70 380"/>
+<path class="sch-w" d="M40 414 L65 414 A5 5 0 0 1 75 414 L120 414"/>
+<path class="sch-w" d="M70 380 L70 540"/>
+<circle class="sch-dot" cx="70" cy="540" r="3"/>
+<circle class="sch-dot" cx="110" cy="414" r="3"/>
+<path class="sch-w" d="M110 414 L110 427 L104 429.5 L116 434.5 L104 439.5 L116 444.5 L104 449.5 L116 454.5 L110 457 L110 470"/>
+<circle class="sch-dot" cx="110" cy="470" r="3"/>
+<path class="sch-w" d="M110 470 L368 470"/>
+<path class="sch-w" d="M110 470 L110 480 L104 482.5 L116 487.5 L104 492.5 L116 497.5 L104 502.5 L116 507.5 L110 510 L110 520"/>
+<path class="sch-w" d="M110 520 L110 540"/>
+<circle class="sch-dot" cx="110" cy="540" r="3"/>
+<path class="sch-w" d="M70 540 L300 540"/>
+<text class="sch-ref" x="120" y="532" text-anchor="start">NEUTRAL</text>
+<path class="sch-w" d="M300 540 L300 548"/>
+<path class="sch-w" d="M289 548 L311 548"/>
+<path class="sch-w" d="M293 553 L307 553"/>
+<path class="sch-w" d="M297 558 L303 558"/>
+<text class="sch-val" x="212" y="340" text-anchor="start">Resistor dividers</text>
+<text class="sch-val" x="212" y="353" text-anchor="start">(values not given)</text>
+<rect class="sch-ic" x="200" y="116" width="124" height="48" rx="3"/>
+<text class="sch-pin" x="262" y="144" text-anchor="middle">POWER SUPPLY</text>
+<path class="sch-w" d="M324 140 L510 140"/>
+<path class="sch-w" d="M430 178 L430 140"/>
+<circle class="sch-dot" cx="430" cy="140" r="3"/>
+<path class="sch-w" d="M510 178 L510 140"/>
+<circle class="sch-dot" cx="510" cy="140" r="3"/>
+<path class="sch-w" d="M430 140 L430 127"/>
+<path class="sch-w" d="M430 106 L430 119"/>
+<path class="sch-w" d="M419 127 L441 127"/>
+<path class="sch-w" d="M419 119 L441 119"/>
+<path class="sch-w" d="M430 106 L430 98"/>
+<path class="sch-w" d="M419 98 L441 98"/>
+<path class="sch-w" d="M423 93 L437 93"/>
+<path class="sch-w" d="M427 88 L433 88"/>
+<path class="sch-w" d="M510 140 L510 127"/>
+<path class="sch-w" d="M510 106 L510 119"/>
+<path class="sch-w" d="M499 127 L521 127"/>
+<path class="sch-w" d="M499 119 L521 119"/>
+<path class="sch-w" d="M510 106 L510 98"/>
+<path class="sch-w" d="M499 98 L521 98"/>
+<path class="sch-w" d="M503 93 L517 93"/>
+<path class="sch-w" d="M507 88 L513 88"/>
+<text class="sch-ref" x="414" y="121" text-anchor="end">C<tspan class="sch-sub" dy="2.5">V3P3A</tspan></text>
+<text class="sch-val" x="414" y="134" text-anchor="end">1.0 µF ±30%</text>
+<text class="sch-ref" x="526" y="121" text-anchor="start">C<tspan class="sch-sub" dy="2.5">V3P3S</tspan></text>
+<text class="sch-val" x="526" y="134" text-anchor="start">1.0 µF ±30%</text>
+<text class="sch-val" x="336" y="158" text-anchor="start">3.0 to 3.6 V</text>
+<path class="sch-w" d="M610 178 L610 150"/>
+<path class="sch-w" d="M610 150 L610 137"/>
+<path class="sch-w" d="M610 116 L610 129"/>
+<path class="sch-w" d="M599 137 L621 137"/>
+<path class="sch-w" d="M599 129 L621 129"/>
+<path class="sch-w" d="M610 116 L610 108"/>
+<path class="sch-w" d="M599 108 L621 108"/>
+<path class="sch-w" d="M603 103 L617 103"/>
+<path class="sch-w" d="M607 98 L613 98"/>
+<text class="sch-ref" x="626" y="131" text-anchor="start">C<tspan class="sch-sub" dy="2.5">V3P3D</tspan></text>
+<text class="sch-val" x="626" y="144" text-anchor="start">0.1 µF ±20%</text>
+<text class="sch-val" x="672" y="164" text-anchor="start">10 µF if low-power modes are used.</text>
+<text class="sch-val" x="672" y="177" text-anchor="start">Do not load this pin.</text>
+<path class="sch-w" d="M652 230 L720 230"/>
+<circle class="sch-dot" cx="720" cy="230" r="3"/>
+<path class="sch-w" d="M652 292 L720 292"/>
+<circle class="sch-dot" cx="720" cy="292" r="3"/>
+<path class="sch-w" d="M720 230 L720 253"/>
+<path class="sch-w" d="M708 253 L732 253"/>
+<rect class="sch-ic" x="713" y="259" width="14" height="14" rx="1"/>
+<path class="sch-w" d="M708 279 L732 279"/>
+<path class="sch-w" d="M720 279 L720 292"/>
+<text class="sch-val" x="744" y="262" text-anchor="start">32.768 kHz</text>
+<text class="sch-ref" x="744" y="275" text-anchor="start">XTAL</text>
+<path class="sch-w" d="M720 230 L756 230"/>
+<path class="sch-w" d="M800 230 L764 230"/>
+<path class="sch-w" d="M756 219 L756 241"/>
+<path class="sch-w" d="M764 219 L764 241"/>
+<path class="sch-w" d="M800 230 L800 238"/>
+<path class="sch-w" d="M789 238 L811 238"/>
+<path class="sch-w" d="M793 243 L807 243"/>
+<path class="sch-w" d="M797 248 L803 248"/>
+<path class="sch-w" d="M720 292 L756 292"/>
+<path class="sch-w" d="M800 292 L764 292"/>
+<path class="sch-w" d="M756 281 L756 303"/>
+<path class="sch-w" d="M764 281 L764 303"/>
+<path class="sch-w" d="M800 292 L800 300"/>
+<path class="sch-w" d="M789 300 L811 300"/>
+<path class="sch-w" d="M793 305 L807 305"/>
+<path class="sch-w" d="M797 310 L803 310"/>
+<text class="sch-ref" x="760" y="199" text-anchor="middle">C<tspan class="sch-sub" dy="2.5">XS</tspan></text>
+<text class="sch-val" x="760" y="212" text-anchor="middle">20 pF ±10%</text>
+<text class="sch-ref" x="760" y="316" text-anchor="middle">CXL</text>
+<text class="sch-val" x="760" y="329" text-anchor="middle">20 pF ±10%</text>
+<path class="sch-w" d="M652 350 L730 350"/>
+<path class="sch-w" d="M730 350 L730 366"/>
+<path class="sch-w" d="M716 366 L744 366"/>
+<rect class="sch-dot" x="722" y="373" width="16" height="4"/>
+<path class="sch-w" d="M730 377 L730 396"/>
+<path class="sch-w" d="M730 396 L730 404"/>
+<path class="sch-w" d="M719 404 L741 404"/>
+<path class="sch-w" d="M723 409 L737 409"/>
+<path class="sch-w" d="M727 414 L733 414"/>
+<text class="sch-val" x="750" y="368" text-anchor="start">+</text>
+<text class="sch-ref" x="762" y="380" text-anchor="start">BATTERY</text>
+<text class="sch-val" x="762" y="394" text-anchor="start">BRN mode supply</text>
+<path class="sch-w" d="M652 450 L730 450"/>
+<path class="sch-w" d="M730 450 L730 466"/>
+<path class="sch-w" d="M716 466 L744 466"/>
+<rect class="sch-dot" x="722" y="473" width="16" height="4"/>
+<path class="sch-w" d="M730 477 L730 496"/>
+<path class="sch-w" d="M730 496 L730 504"/>
+<path class="sch-w" d="M719 504 L741 504"/>
+<path class="sch-w" d="M723 509 L737 509"/>
+<path class="sch-w" d="M727 514 L733 514"/>
+<text class="sch-val" x="750" y="468" text-anchor="start">+</text>
+<text class="sch-ref" x="762" y="480" text-anchor="start">RTC BATTERY</text>
+<text class="sch-val" x="762" y="494" text-anchor="start">RTC and NV-RAM backup</text>
+<path class="sch-w" d="M652 540 L700 540"/>
+<circle class="sch-w" cx="703.5" cy="540" r="3.5"/>
+<text class="sch-val" x="716" y="544" text-anchor="start">Wake input; ground it if unused</text>
+<path class="sch-w" d="M652 590 L700 590"/>
+<circle class="sch-dot" cx="700" cy="590" r="3"/>
+<path class="sch-w" d="M700 590 L722 590"/>
+<path class="sch-w" d="M752 590 L730 590"/>
+<path class="sch-w" d="M722 579 L722 601"/>
+<path class="sch-w" d="M730 579 L730 601"/>
+<path class="sch-w" d="M752 590 L752 598"/>
+<path class="sch-w" d="M741 598 L763 598"/>
+<path class="sch-w" d="M745 603 L759 603"/>
+<path class="sch-w" d="M749 608 L755 608"/>
+<text class="sch-ref" x="768" y="588" text-anchor="start">C<tspan class="sch-sub" dy="2.5">VRTC</tspan></text>
+<text class="sch-val" x="768" y="601" text-anchor="start">1.0 µF ±30%</text>
+<path class="sch-w" d="M652 640 L700 640"/>
+<circle class="sch-dot" cx="700" cy="640" r="3"/>
+<path class="sch-w" d="M700 640 L722 640"/>
+<path class="sch-w" d="M752 640 L730 640"/>
+<path class="sch-w" d="M722 629 L722 651"/>
+<path class="sch-w" d="M730 629 L730 651"/>
+<path class="sch-w" d="M752 640 L752 648"/>
+<path class="sch-w" d="M741 648 L763 648"/>
+<path class="sch-w" d="M745 653 L759 653"/>
+<path class="sch-w" d="M749 658 L755 658"/>
+<text class="sch-ref" x="768" y="638" text-anchor="start">C<tspan class="sch-sub" dy="2.5">VLCD</tspan></text>
+<text class="sch-val" x="768" y="651" text-anchor="start">0.1 µF ±20%</text>
+<path class="sch-w" d="M652 690 L700 690"/>
+<circle class="sch-dot" cx="700" cy="690" r="3"/>
+<path class="sch-w" d="M700 690 L722 690"/>
+<path class="sch-w" d="M752 690 L730 690"/>
+<path class="sch-w" d="M722 679 L722 701"/>
+<path class="sch-w" d="M730 679 L730 701"/>
+<path class="sch-w" d="M752 690 L752 698"/>
+<path class="sch-w" d="M741 698 L763 698"/>
+<path class="sch-w" d="M745 703 L759 703"/>
+<path class="sch-w" d="M749 708 L755 708"/>
+<text class="sch-ref" x="768" y="688" text-anchor="start">C<tspan class="sch-sub" dy="2.5">VDD</tspan></text>
+<text class="sch-val" x="768" y="701" text-anchor="start">1.0 µF ±20%</text>
+<path class="sch-w" d="M450 782 L450 800"/>
+<path class="sch-w" d="M520 782 L520 800"/>
+<path class="sch-w" d="M450 800 L520 800"/>
+<circle class="sch-dot" cx="485" cy="800" r="3"/>
+<path class="sch-w" d="M485 800 L485 808"/>
+<path class="sch-w" d="M474 808 L496 808"/>
+<path class="sch-w" d="M478 813 L492 813"/>
+<path class="sch-w" d="M482 818 L488 818"/>
+<text class="sch-val" x="36" y="850" text-anchor="start">Neutral is drawn as the circuit ground, joined to GNDA and GNDD (our reading of the figure).</text>
+<text class="sch-val" x="36" y="864" text-anchor="start">Not drawn: UART0 to UART5, SPI, I²C, LCD, GPIO, PWM, pulse outputs, SWD, RST, TEST.</text>
+</svg>
