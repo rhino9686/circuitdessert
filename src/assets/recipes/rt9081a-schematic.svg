@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 800 360" role="img" aria-labelledby="rt9081a-t rt9081a-d">
+<title id="rt9081a-t">RT9081A typical application circuit</title>
+<desc id="rt9081a-d">Typical application circuit of the RT9081A adjustable version (Figure 2 of the datasheet), for a 1.2 V output at 500 mA from a 1.5 V input. The input VIN feeds the VIN pin with a 1 microfarad capacitor CIN to ground. A 3.3 V bias supply VBIAS feeds the BIAS pin with a 0.1 microfarad capacitor CBIAS to ground, and the enable pin EN is driven by a separate signal. The VOUT pin is the output with a 4.7 microfarad capacitor COUT to ground. The feedback divider is R1 (10 kilohms) from VOUT to ADJ and R2 (20 kilohms) from ADJ to ground. The GND pin and exposed pad go to ground.</desc>
+<rect class="sch-ic" x="280" y="100" width="150" height="210" rx="3"/>
+<path class="sch-w" d="M268 140 L280 140"/>
+<text class="sch-pin" x="288" y="144" text-anchor="start">VIN</text>
+<path class="sch-w" d="M268 210 L280 210"/>
+<text class="sch-pin" x="288" y="214" text-anchor="start">EN</text>
+<path class="sch-w" d="M268 280 L280 280"/>
+<text class="sch-pin" x="288" y="284" text-anchor="start">BIAS</text>
+<path class="sch-w" d="M430 140 L442 140"/>
+<text class="sch-pin" x="422" y="144" text-anchor="end">VOUT</text>
+<path class="sch-w" d="M430 210 L442 210"/>
+<text class="sch-pin" x="422" y="214" text-anchor="end">ADJ</text>
+<path class="sch-w" d="M360 310 L360 322"/>
+<text class="sch-pin" x="360" y="302" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="355" y="209" text-anchor="middle">RT9081A</text>
+<path class="sch-flag" d="M60 140 L52 132 L14 132 L14 148 L52 148 Z"/>
+<text class="sch-net" x="33" y="144" text-anchor="middle">VIN</text>
+<path class="sch-w" d="M60 140 L268 140"/>
+<circle class="sch-dot" cx="130" cy="140" r="3"/>
+<path class="sch-w" d="M130 140 L130 246"/>
+<path class="sch-w" d="M130 360 L130 254"/>
+<path class="sch-w" d="M119 246 L141 246"/>
+<path class="sch-w" d="M119 254 L141 254"/>
+<path class="sch-w" d="M130 360 L130 368"/>
+<path class="sch-w" d="M119 368 L141 368"/>
+<path class="sch-w" d="M123 373 L137 373"/>
+<path class="sch-w" d="M127 378 L133 378"/>
+<text class="sch-ref" x="114" y="318" text-anchor="end">C<tspan class="sch-sub" dy="2.5">IN</tspan></text>
+<text class="sch-val" x="114" y="331" text-anchor="end">1 µF</text>
+<path class="sch-flag" d="M60 210 L52 202 L14 202 L14 218 L52 218 Z"/>
+<text class="sch-net" x="33" y="214" text-anchor="middle">EN</text>
+<path class="sch-w" d="M60 210 L268 210"/>
+<path class="sch-flag" d="M60 280 L52 272 L14 272 L14 288 L52 288 Z"/>
+<text class="sch-net" x="33" y="284" text-anchor="middle">VBIAS</text>
+<path class="sch-w" d="M60 280 L268 280"/>
+<circle class="sch-dot" cx="215" cy="280" r="3"/>
+<path class="sch-w" d="M215 280 L215 316"/>
+<path class="sch-w" d="M215 360 L215 324"/>
+<path class="sch-w" d="M204 316 L226 316"/>
+<path class="sch-w" d="M204 324 L226 324"/>
+<path class="sch-w" d="M215 360 L215 368"/>
+<path class="sch-w" d="M204 368 L226 368"/>
+<path class="sch-w" d="M208 373 L222 373"/>
+<path class="sch-w" d="M212 378 L218 378"/>
+<text class="sch-ref" x="199" y="318" text-anchor="end">C<tspan class="sch-sub" dy="2.5">BIAS</tspan></text>
+<text class="sch-val" x="199" y="331" text-anchor="end">0.1 µF</text>
+<path class="sch-w" d="M442 140 L720 140"/>
+<path class="sch-flag" d="M720 140 L728 132 L766 132 L766 148 L728 148 Z"/>
+<text class="sch-net" x="747" y="144" text-anchor="middle">VOUT</text>
+<circle class="sch-dot" cx="520" cy="140" r="3"/>
+<circle class="sch-dot" cx="640" cy="140" r="3"/>
+<path class="sch-w" d="M520 140 L520 160 L514 162.5 L526 167.5 L514 172.5 L526 177.5 L514 182.5 L526 187.5 L520 190 L520 210"/>
+<text class="sch-ref" x="536" y="173" text-anchor="start">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="536" y="186" text-anchor="start">10 kΩ</text>
+<circle class="sch-dot" cx="520" cy="210" r="3"/>
+<path class="sch-w" d="M442 210 L520 210"/>
+<path class="sch-w" d="M520 210 L520 270 L514 272.5 L526 277.5 L514 282.5 L526 287.5 L514 292.5 L526 297.5 L520 300 L520 360"/>
+<path class="sch-w" d="M520 360 L520 368"/>
+<path class="sch-w" d="M509 368 L531 368"/>
+<path class="sch-w" d="M513 373 L527 373"/>
+<path class="sch-w" d="M517 378 L523 378"/>
+<text class="sch-ref" x="536" y="283" text-anchor="start">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="536" y="296" text-anchor="start">20 kΩ</text>
+<path class="sch-w" d="M640 140 L640 246"/>
+<path class="sch-w" d="M640 360 L640 254"/>
+<path class="sch-w" d="M629 246 L651 246"/>
+<path class="sch-w" d="M629 254 L651 254"/>
+<path class="sch-w" d="M640 360 L640 368"/>
+<path class="sch-w" d="M629 368 L651 368"/>
+<path class="sch-w" d="M633 373 L647 373"/>
+<path class="sch-w" d="M637 378 L643 378"/>
+<text class="sch-ref" x="656" y="318" text-anchor="start">C<tspan class="sch-sub" dy="2.5">OUT</tspan></text>
+<text class="sch-val" x="656" y="331" text-anchor="start">4.7 µF</text>
+<path class="sch-w" d="M360 322 L360 380"/>
+<path class="sch-w" d="M360 380 L360 388"/>
+<path class="sch-w" d="M349 388 L371 388"/>
+<path class="sch-w" d="M353 393 L367 393"/>
+<path class="sch-w" d="M357 398 L363 398"/>
+</svg>

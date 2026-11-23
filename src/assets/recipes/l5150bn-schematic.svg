@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 760 260" role="img" aria-labelledby="l5150bn-t l5150bn-d">
+<title id="l5150bn-t">L5150BN typical application circuit</title>
+<desc id="l5150bn-d">Application schematic of the L5150BN 5 V LDO, redrawn from the datasheet. The battery VBATT feeds the VS pin through two parallel input capacitors to ground, C1 (100 µF or more, the backup for negative pulses) and C2 (220 nF or more, for line disturbances). The Vo pin is the 5 V output with a ceramic output capacitor CO (220 nF suggested, ESR of 100 mΩ or more) to ground. The GND pin goes to ground.</desc>
+<rect class="sch-ic" x="290" y="110" width="140" height="130" rx="3"/>
+<path class="sch-w" d="M278 160 L290 160"/>
+<text class="sch-pin" x="298" y="164" text-anchor="start">VS</text>
+<path class="sch-w" d="M430 160 L442 160"/>
+<text class="sch-pin" x="422" y="164" text-anchor="end">Vo</text>
+<path class="sch-w" d="M360 240 L360 252"/>
+<text class="sch-pin" x="360" y="232" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="360" y="179" text-anchor="middle">L5150BN</text>
+<path class="sch-flag" d="M60 160 L52 152 L14 152 L14 168 L52 168 Z"/>
+<text class="sch-net" x="33" y="164" text-anchor="middle">VBATT</text>
+<path class="sch-w" d="M60 160 L278 160"/>
+<circle class="sch-dot" cx="130" cy="160" r="3"/>
+<path class="sch-w" d="M130 160 L130 201"/>
+<path class="sch-w" d="M130 250 L130 209"/>
+<path class="sch-w" d="M119 201 L141 201"/>
+<path class="sch-w" d="M119 209 L141 209"/>
+<path class="sch-w" d="M130 250 L130 258"/>
+<path class="sch-w" d="M119 258 L141 258"/>
+<path class="sch-w" d="M123 263 L137 263"/>
+<path class="sch-w" d="M127 268 L133 268"/>
+<text class="sch-ref" x="114" y="203" text-anchor="end">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="114" y="216" text-anchor="end">≥ 100 µF</text>
+<circle class="sch-dot" cx="220" cy="160" r="3"/>
+<path class="sch-w" d="M220 160 L220 201"/>
+<path class="sch-w" d="M220 250 L220 209"/>
+<path class="sch-w" d="M209 201 L231 201"/>
+<path class="sch-w" d="M209 209 L231 209"/>
+<path class="sch-w" d="M220 250 L220 258"/>
+<path class="sch-w" d="M209 258 L231 258"/>
+<path class="sch-w" d="M213 263 L227 263"/>
+<path class="sch-w" d="M217 268 L223 268"/>
+<text class="sch-ref" x="236" y="203" text-anchor="start">C<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="236" y="216" text-anchor="start">≥ 220 nF</text>
+<path class="sch-w" d="M442 160 L700 160"/>
+<path class="sch-flag" d="M700 160 L708 152 L746 152 L746 168 L708 168 Z"/>
+<text class="sch-net" x="727" y="164" text-anchor="middle">Vo</text>
+<circle class="sch-dot" cx="510" cy="160" r="3"/>
+<path class="sch-w" d="M510 160 L510 201"/>
+<path class="sch-w" d="M510 250 L510 209"/>
+<path class="sch-w" d="M499 201 L521 201"/>
+<path class="sch-w" d="M499 209 L521 209"/>
+<path class="sch-w" d="M510 250 L510 258"/>
+<path class="sch-w" d="M499 258 L521 258"/>
+<path class="sch-w" d="M503 263 L517 263"/>
+<path class="sch-w" d="M507 268 L513 268"/>
+<text class="sch-ref" x="494" y="203" text-anchor="end">C<tspan class="sch-sub" dy="2.5">O</tspan></text>
+<text class="sch-val" x="494" y="216" text-anchor="end">220 nF</text>
+<path class="sch-w" d="M360 252 L360 280"/>
+<path class="sch-w" d="M360 280 L360 288"/>
+<path class="sch-w" d="M349 288 L371 288"/>
+<path class="sch-w" d="M353 293 L367 293"/>
+<path class="sch-w" d="M357 298 L363 298"/>
+</svg>

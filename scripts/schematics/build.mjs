@@ -51,6 +51,7 @@ import { threePhaseMeter } from './designs-ade9039.mjs';
 import { testCircuit as ade9078TestCircuit } from './designs-ade9078.mjs';
 import { meterBasics as meter71m6511Basics } from './designs-71m6511.mjs';
 import { ldoNoiseReduction } from './designs-tps7a8101.mjs';
+import { ldoThreePin, ldoEnablePg, ldoAdjustable } from './designs-ldo-basic.mjs';
 import { fuelGaugeHighSide } from './designs-bq27426.mjs';
 import { fuelGauge } from './designs-max17048.mjs';
 import { adapter65w, openFrame30w } from './designs-topswitch-jx.mjs';
@@ -107,6 +108,76 @@ const designs = {
   'sy7070b-schematic.svg': lowVoltageBoostFixed({ id: 'sy7070b', part: 'SY7070B' }),
   'sy2a27352-schematic.svg': ldoWithReset({ id: 'sy2a27352', part: 'SY2A27352' }),
   'tps7a8101-q1-schematic.svg': ldoNoiseReduction({ id: 'tps7a8101-q1', part: 'TPS7A8101-Q1' }),
+  'tps7b6950-q1-schematic.svg': ldoThreePin({
+    id: 'tps7b6950-q1',
+    part: 'TPS7B6950-Q1',
+    pins: { in: 'IN', out: 'OUT', gnd: 'GND' },
+    ports: { in: 'VI', out: 'VO' },
+    cin: [{ ref: 'CIN', val: '10 µF' }],
+    cout: [{ ref: 'COUT', val: '4.7 µF' }],
+    desc:
+      'Typical application circuit of the TPS7B6950-Q1 5 V LDO, redrawn from the datasheet. The input VI (the battery, Vbat in the datasheet) feeds the IN pin and has a 10 µF capacitor CIN to ground. ' +
+      'The OUT pin is the output VO (Vreg in the datasheet), with a 4.7 µF capacitor COUT to ground. The GND pin goes to ground; the SOT-23 package has two GND pins, drawn once, as in the datasheet.',
+  }),
+  'l5150bn-schematic.svg': ldoThreePin({
+    id: 'l5150bn',
+    part: 'L5150BN',
+    pins: { in: 'VS', out: 'Vo', gnd: 'GND' },
+    ports: { in: 'VBATT', out: 'Vo' },
+    cin: [{ ref: 'C1', val: '≥ 100 µF' }, { ref: 'C2', val: '≥ 220 nF' }],
+    cout: [{ ref: 'CO', val: '220 nF' }],
+    desc:
+      'Application schematic of the L5150BN 5 V LDO, redrawn from the datasheet. The battery VBATT feeds the VS pin through two parallel input capacitors to ground, C1 (100 µF or more, the backup for negative pulses) and C2 (220 nF or more, for line disturbances). ' +
+      'The Vo pin is the 5 V output with a ceramic output capacitor CO (220 nF suggested, ESR of 100 mΩ or more) to ground. The GND pin goes to ground.',
+  }),
+  'tda3664-schematic.svg': ldoThreePin({
+    id: 'tda3664',
+    part: 'TDA3664',
+    pins: { in: 'VP', out: 'REG', gnd: 'GND' },
+    ports: { in: 'VP', out: 'VREG' },
+    cin: [{ ref: 'C1', val: '1 µF', dashed: true }],
+    cout: [{ ref: 'C2', val: '10 µF' }],
+    desc:
+      'Test circuit of the TDA3664 5 V regulator in the SO4 package, redrawn from the datasheet. The supply VP feeds pin 1 (VP). An optional 1 µF capacitor C1 from the supply to ground is drawn on a dashed connection. ' +
+      'Pin 3 (REG) is the 5 V output VREG with a 10 µF capacitor C2 to ground. Pins 2 and 4 are both ground and are drawn once.',
+  }),
+  'tps74512-q1-schematic.svg': ldoEnablePg({ id: 'tps74512-q1', part: 'TPS74512-Q1' }),
+  'mic29302a-schematic.svg': ldoAdjustable({
+    id: 'mic29302a', part: 'MIC29302A',
+    pins: { in: 'IN', out: 'OUT', adj: 'ADJ', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'tied',
+    cin: { ref: 'CIN', val: '' }, cout: { ref: 'COUT', val: '10 µF' }, r1: { ref: 'R1', val: '191 Ω' }, r2: { ref: 'R2', val: '187 Ω' },
+    desc: 'Typical application circuit of the MIC29302A adjustable 3 A LDO, redrawn from the front page of the datasheet for a 2.5 V output from 3.3 V. The input VIN feeds the IN pin and is also wired to the EN pin, so the regulator is always enabled. An input capacitor CIN, with no value given in the datasheet, goes to ground. The OUT pin is the output VOUT with a 10 µF output capacitor COUT to ground. The feedback divider is R1 (191 ohms) from VOUT to the ADJ pin and R2 (187 ohms) from ADJ to ground. The GND pin goes to ground.',
+  }),
+  'sc1565-schematic.svg': ldoAdjustable({
+    id: 'sc1565', part: 'SC1565',
+    pins: { in: 'VIN', out: 'VO', adj: 'ADJ', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VO' }, en: 'EN',
+    cin: { ref: 'C1', val: '4.7 µF' }, cout: { ref: 'C2', val: '2.2 µF' }, r1: { ref: 'R1', val: '' }, r2: { ref: 'R2', val: '' },
+    desc: 'Typical application circuit of the SC1565 adjustable 1.5 A LDO in its five-lead TO-220 or TO-263 package, redrawn from the datasheet. The input VIN feeds the VIN pin with an input capacitor C1 to ground, and the enable pin EN is driven by a separate ENABLE signal. The VO pin is the output with an output capacitor C2 to ground. The feedback divider is R1 from VO to the ADJ pin and R2 from ADJ to ground, which set VO = 1.200 times (R1 + R2) divided by R2. The GND pin goes to ground. The datasheet figure has no component values; the capacitor values are the ones its text recommends.',
+  }),
+  'ncp133-schematic.svg': ldoAdjustable({
+    id: 'ncp133', part: 'NCP133',
+    pins: { in: 'IN', out: 'OUT', adj: 'ADJ', en: 'EN', bias: 'BIAS', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN', bias: 'VBIAS',
+    cin: { ref: 'CIN', val: '1 µF' }, cout: { ref: 'COUT', val: '2.2 µF' }, cbias: { ref: 'CBIAS', val: '100 nF' }, r1: { ref: 'R1', val: '19.6 kΩ' }, r2: { ref: 'R2', val: '78.7 kΩ' },
+    desc: 'Typical application circuit of the NCP133 adjustable version, redrawn from the datasheet with the resistor values of its Table 1 for a 1.0 V output. The input VIN feeds the IN pin with a 1 microfarad capacitor CIN to ground. A separate bias supply VBIAS feeds the BIAS pin with a 100 nanofarad capacitor CBIAS to ground, and the enable pin EN is driven by a separate signal. The OUT pin is the output VOUT with a 2.2 microfarad capacitor COUT to ground. The feedback divider is R1 (19.6 kilohms) from VOUT to ADJ and R2 (78.7 kilohms) from ADJ to ground. The GND pin goes to ground.',
+  }),
+  'rt9081a-schematic.svg': ldoAdjustable({
+    id: 'rt9081a', part: 'RT9081A',
+    pins: { in: 'VIN', out: 'VOUT', adj: 'ADJ', en: 'EN', bias: 'BIAS', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN', bias: 'VBIAS',
+    cin: { ref: 'CIN', val: '1 µF' }, cout: { ref: 'COUT', val: '4.7 µF' }, cbias: { ref: 'CBIAS', val: '0.1 µF' }, r1: { ref: 'R1', val: '10 kΩ' }, r2: { ref: 'R2', val: '20 kΩ' },
+    desc: 'Typical application circuit of the RT9081A adjustable version (Figure 2 of the datasheet), for a 1.2 V output at 500 mA from a 1.5 V input. The input VIN feeds the VIN pin with a 1 microfarad capacitor CIN to ground. A 3.3 V bias supply VBIAS feeds the BIAS pin with a 0.1 microfarad capacitor CBIAS to ground, and the enable pin EN is driven by a separate signal. The VOUT pin is the output with a 4.7 microfarad capacitor COUT to ground. The feedback divider is R1 (10 kilohms) from VOUT to ADJ and R2 (20 kilohms) from ADJ to ground. The GND pin and exposed pad go to ground.',
+  }),
+  'sc4215-schematic.svg': ldoAdjustable({
+    id: 'sc4215', part: 'SC4215',
+    pins: { in: 'VIN', out: 'VO', adj: 'ADJ', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VO' }, en: 'EN',
+    cin: { ref: 'C1', val: '≥ 4.7 µF' }, cout: { ref: 'C2', val: '≥ 10 µF' }, r1: { ref: 'R1', val: '' }, r2: { ref: 'R2', val: '' },
+    desc: 'Typical application circuit of the SC4215 adjustable 2 A LDO, redrawn from the front page of the datasheet. The input VIN feeds the VIN pin with an input capacitor C1 to ground, and the enable pin EN is driven by a separate ENABLE signal. The VO pin is the output with an output capacitor C2 to ground. The feedback divider is R1 from VO to the ADJ pin and R2 from ADJ to ground, which set VO = 0.8 times (R1 + R2) divided by R2. The GND pin and exposed pad go to ground. The datasheet figure has no component values; the capacitors are the minimums its pin descriptions give.',
+  }),
+  'rt2515a-schematic.svg': ldoAdjustable({
+    id: 'rt2515a', part: 'RT2515A',
+    pins: { in: 'VIN', out: 'VOUT', adj: 'ADJ', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN',
+    cin: { ref: 'C1', val: '10 µF' }, cout: { ref: 'C2', val: '10 µF' }, r1: { ref: 'R1', val: '' }, r2: { ref: 'R2', val: '' },
+    desc: 'Typical application circuit of the RT2515A adjustable 2 A LDO (Figure 1 of the datasheet). The input VIN feeds the VIN pin with a 10 microfarad capacitor C1 to ground, and the enable pin EN is driven by a separate Chip Enable signal. The VOUT pin is the output with a 10 microfarad capacitor C2 to ground. The feedback divider is R1 from VOUT to the ADJ pin and R2 from ADJ to ground, which set VOUT = 0.5 times (R1 + R2) divided by R2. The GND pin and exposed pad go to ground. The datasheet figure gives no resistor values.',
+  }),
   'bq27426-schematic.svg': fuelGaugeHighSide({ id: 'bq27426', part: 'BQ27426' }),
   'max17048-schematic.svg': fuelGauge({ id: 'max17048', part: 'MAX17048', cells: 1 }),
   'max17049-schematic.svg': fuelGauge({ id: 'max17049', part: 'MAX17049', cells: 2 }),

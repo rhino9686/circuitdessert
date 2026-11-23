@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 800 290" role="img" aria-labelledby="tps74512-q1-t tps74512-q1-d">
+<title id="tps74512-q1-t">TPS74512-Q1 typical application circuit</title>
+<desc id="tps74512-q1-d">Typical application circuit of the TPS74512-Q1 fixed-voltage LDO with power-good, redrawn from the datasheet. The input VIN feeds the IN pin and is also wired to the EN pin, so the regulator is always enabled. An input capacitor CIN (2.2 µF) goes to ground. The OUT pin is the output VOUT (1.2 V) with an output capacitor COUT (2.2 µF) to ground. The open-drain PG pin has a pull-up resistor RPG (10–100 kΩ) to VOUT and is also brought out as the power-good signal. The GND pin goes to ground.</desc>
+<rect class="sch-ic" x="260" y="110" width="150" height="170" rx="3"/>
+<path class="sch-w" d="M248 150 L260 150"/>
+<text class="sch-pin" x="268" y="154" text-anchor="start">IN</text>
+<path class="sch-w" d="M248 230 L260 230"/>
+<text class="sch-pin" x="268" y="234" text-anchor="start">EN</text>
+<path class="sch-w" d="M410 150 L422 150"/>
+<text class="sch-pin" x="402" y="154" text-anchor="end">OUT</text>
+<path class="sch-w" d="M410 230 L422 230"/>
+<text class="sch-pin" x="402" y="234" text-anchor="end">PG</text>
+<path class="sch-w" d="M335 280 L335 292"/>
+<text class="sch-pin" x="335" y="272" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="335" y="199" text-anchor="middle">TPS74512-Q1</text>
+<path class="sch-flag" d="M50 150 L42 142 L4 142 L4 158 L42 158 Z"/>
+<text class="sch-net" x="23" y="154" text-anchor="middle">VIN</text>
+<path class="sch-w" d="M50 150 L248 150"/>
+<circle class="sch-dot" cx="130" cy="150" r="3"/>
+<path class="sch-w" d="M130 150 L130 201"/>
+<path class="sch-w" d="M130 260 L130 209"/>
+<path class="sch-w" d="M119 201 L141 201"/>
+<path class="sch-w" d="M119 209 L141 209"/>
+<path class="sch-w" d="M130 260 L130 268"/>
+<path class="sch-w" d="M119 268 L141 268"/>
+<path class="sch-w" d="M123 273 L137 273"/>
+<path class="sch-w" d="M127 278 L133 278"/>
+<text class="sch-ref" x="114" y="203" text-anchor="end">C<tspan class="sch-sub" dy="2.5">IN</tspan></text>
+<text class="sch-val" x="114" y="216" text-anchor="end">2.2 µF</text>
+<circle class="sch-dot" cx="215" cy="150" r="3"/>
+<path class="sch-w" d="M215 150 L215 230 L248 230"/>
+<path class="sch-w" d="M422 150 L740 150"/>
+<path class="sch-flag" d="M740 150 L748 142 L786 142 L786 158 L748 158 Z"/>
+<text class="sch-net" x="767" y="154" text-anchor="middle">VOUT</text>
+<circle class="sch-dot" cx="510" cy="150" r="3"/>
+<circle class="sch-dot" cx="630" cy="150" r="3"/>
+<path class="sch-w" d="M630 150 L630 201"/>
+<path class="sch-w" d="M630 260 L630 209"/>
+<path class="sch-w" d="M619 201 L641 201"/>
+<path class="sch-w" d="M619 209 L641 209"/>
+<path class="sch-w" d="M630 260 L630 268"/>
+<path class="sch-w" d="M619 268 L641 268"/>
+<path class="sch-w" d="M623 273 L637 273"/>
+<path class="sch-w" d="M627 278 L633 278"/>
+<text class="sch-ref" x="646" y="203" text-anchor="start">C<tspan class="sch-sub" dy="2.5">OUT</tspan></text>
+<text class="sch-val" x="646" y="216" text-anchor="start">2.2 µF</text>
+<path class="sch-w" d="M510 150 L510 175 L504 177.5 L516 182.5 L504 187.5 L516 192.5 L504 197.5 L516 202.5 L510 205 L510 230"/>
+<text class="sch-ref" x="494" y="188" text-anchor="end">R<tspan class="sch-sub" dy="2.5">PG</tspan></text>
+<text class="sch-val" x="494" y="201" text-anchor="end">10–100 kΩ</text>
+<circle class="sch-dot" cx="510" cy="230" r="3"/>
+<path class="sch-w" d="M422 230 L740 230"/>
+<path class="sch-flag" d="M740 230 L748 222 L786 222 L786 238 L748 238 Z"/>
+<text class="sch-net" x="767" y="234" text-anchor="middle">PG</text>
+<path class="sch-w" d="M335 292 L335 320"/>
+<path class="sch-w" d="M335 320 L335 328"/>
+<path class="sch-w" d="M324 328 L346 328"/>
+<path class="sch-w" d="M328 333 L342 333"/>
+<path class="sch-w" d="M332 338 L338 338"/>
+</svg>
