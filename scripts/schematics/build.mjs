@@ -41,6 +41,7 @@ import { supplyPoweredSenseAmp } from './designs-sq52104.mjs';
 import { powerMonitor1Ch, powerMonitor2Ch } from './designs-sq5220x.mjs';
 import { dimmingInterface } from './designs-sy5867z.mjs';
 import { ssdPmicApplication } from './designs-sy70202k.mjs';
+import { ssdPmic70201 } from './designs-sy70201.mjs';
 import { classDAmpTypical } from './designs-sy6045b.mjs';
 import { singleInductorBuckBoost } from './designs-tps63020.mjs';
 import { inlineMotorSense, solenoidSense } from './designs-ina240.mjs';
@@ -123,6 +124,7 @@ const designs = {
   'sy23435-schematic.svg': pdInterface({ id: 'sy23435' }),
   'sq52104e-schematic.svg': supplyPoweredSenseAmp({ id: 'sq52104e', part: 'SQ52104E', gain: '200 V/V' }),
   'sy70202k-schematic.svg': ssdPmicApplication({ id: 'sy70202k' }),
+  'sy70201-schematic.svg': ssdPmic70201({ id: 'sy70201' }),
   'sy5867z-schematic.svg': dimmingInterface({ id: 'sy5867z' }),
   'sy6045b-schematic.svg': classDAmpTypical({ id: 'sy6045b' }),
   'ade9039-schematic.svg': threePhaseMeter({ id: 'ade9039', part: 'ADE9039' }),
