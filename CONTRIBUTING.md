@@ -8,6 +8,8 @@ The full guide lives on the site under **Contribute** (source: `src/content/docs
 - **Add a part**: `src/content/docs/contribute/part.md`
 - **Add images**: `src/content/docs/contribute/images.md`
 
+Writing rules for part pages, recipes, schematics, packages and KiCad files are in [`docs/conventions.md`](docs/conventions.md) and [`docs/page-patterns.md`](docs/page-patterns.md). `npm run parts-index` writes a CSV of every part page (generated from the frontmatter, git-ignored).
+
 ## The short version
 
 1. Fork the repository and create a branch.

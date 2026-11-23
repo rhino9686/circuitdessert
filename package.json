@@ -10,7 +10,8 @@
     "check": "astro check",
     "validate": "node scripts/validate-content.mjs && node scripts/check-media.mjs",
     "schematics": "node scripts/schematics/build.mjs",
-    "kicad": "node scripts/kicad/build.mjs"
+    "kicad": "node scripts/kicad/build.mjs",
+    "parts-index": "node scripts/parts-index.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.4",
