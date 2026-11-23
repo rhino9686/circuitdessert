@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 800 290" role="img" aria-labelledby="spx3819-t spx3819-d">
+<title id="spx3819-t">SPX3819 typical application circuit</title>
+<desc id="spx3819-d">Standard application circuit of the SPX3819 500 mA low-noise LDO, redrawn from the datasheet's Figure 18. The input VIN feeds the VIN pin with an input capacitor CIN to ground. The EN pin is driven by an enable signal and can be tied to VIN. The VOUT pin is the output with an output capacitor COUT to ground, and the optional bypass capacitor CBYP goes from the BYP pin to ground. The GND pin goes to ground.</desc>
+<rect class="sch-ic" x="290" y="100" width="150" height="150" rx="3"/>
+<path class="sch-w" d="M278 140 L290 140"/>
+<text class="sch-pin" x="298" y="144" text-anchor="start">VIN</text>
+<path class="sch-w" d="M278 210 L290 210"/>
+<text class="sch-pin" x="298" y="214" text-anchor="start">EN</text>
+<path class="sch-w" d="M440 140 L452 140"/>
+<text class="sch-pin" x="432" y="144" text-anchor="end">VOUT</text>
+<path class="sch-w" d="M440 210 L452 210"/>
+<text class="sch-pin" x="432" y="214" text-anchor="end">BYP</text>
+<path class="sch-w" d="M365 250 L365 262"/>
+<text class="sch-pin" x="365" y="242" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="365" y="179" text-anchor="middle">SPX3819</text>
+<path class="sch-flag" d="M60 140 L52 132 L14 132 L14 148 L52 148 Z"/>
+<text class="sch-net" x="33" y="144" text-anchor="middle">VIN</text>
+<path class="sch-w" d="M60 140 L278 140"/>
+<circle class="sch-dot" cx="130" cy="140" r="3"/>
+<path class="sch-w" d="M130 140 L130 216"/>
+<path class="sch-w" d="M130 300 L130 224"/>
+<path class="sch-w" d="M119 216 L141 216"/>
+<path class="sch-w" d="M119 224 L141 224"/>
+<path class="sch-w" d="M130 300 L130 308"/>
+<path class="sch-w" d="M119 308 L141 308"/>
+<path class="sch-w" d="M123 313 L137 313"/>
+<path class="sch-w" d="M127 318 L133 318"/>
+<text class="sch-ref" x="114" y="218" text-anchor="end">C<tspan class="sch-sub" dy="2.5">IN</tspan></text>
+<path class="sch-flag" d="M60 210 L52 202 L14 202 L14 218 L52 218 Z"/>
+<text class="sch-net" x="33" y="214" text-anchor="middle">EN</text>
+<path class="sch-w" d="M60 210 L125 210 A5 5 0 0 1 135 210 L278 210"/>
+<path class="sch-w" d="M452 140 L720 140"/>
+<path class="sch-flag" d="M720 140 L728 132 L766 132 L766 148 L728 148 Z"/>
+<text class="sch-net" x="747" y="144" text-anchor="middle">VOUT</text>
+<circle class="sch-dot" cx="600" cy="140" r="3"/>
+<path class="sch-w" d="M600 140 L600 216"/>
+<path class="sch-w" d="M600 300 L600 224"/>
+<path class="sch-w" d="M589 216 L611 216"/>
+<path class="sch-w" d="M589 224 L611 224"/>
+<path class="sch-w" d="M600 300 L600 308"/>
+<path class="sch-w" d="M589 308 L611 308"/>
+<path class="sch-w" d="M593 313 L607 313"/>
+<path class="sch-w" d="M597 318 L603 318"/>
+<text class="sch-ref" x="616" y="218" text-anchor="start">C<tspan class="sch-sub" dy="2.5">OUT</tspan></text>
+<path class="sch-w" d="M452 210 L510 210"/>
+<path class="sch-w" stroke-dasharray="4 3" d="M510 210 L510 240"/>
+<path class="sch-w" d="M510 240 L510 266"/>
+<path class="sch-w" d="M510 300 L510 274"/>
+<path class="sch-w" d="M499 266 L521 266"/>
+<path class="sch-w" d="M499 274 L521 274"/>
+<path class="sch-w" d="M510 300 L510 308"/>
+<path class="sch-w" d="M499 308 L521 308"/>
+<path class="sch-w" d="M503 313 L517 313"/>
+<path class="sch-w" d="M507 318 L513 318"/>
+<text class="sch-ref" x="494" y="268" text-anchor="end">C<tspan class="sch-sub" dy="2.5">BYP</tspan></text>
+<text class="sch-val" x="494" y="281" text-anchor="end">(optional)</text>
+<path class="sch-w" d="M365 262 L365 320"/>
+<path class="sch-w" d="M365 320 L365 328"/>
+<path class="sch-w" d="M354 328 L376 328"/>
+<path class="sch-w" d="M358 333 L372 333"/>
+<path class="sch-w" d="M362 338 L368 338"/>
+</svg>

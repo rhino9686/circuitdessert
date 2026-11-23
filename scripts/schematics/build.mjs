@@ -51,7 +51,8 @@ import { threePhaseMeter } from './designs-ade9039.mjs';
 import { testCircuit as ade9078TestCircuit } from './designs-ade9078.mjs';
 import { meterBasics as meter71m6511Basics } from './designs-71m6511.mjs';
 import { ldoNoiseReduction } from './designs-tps7a8101.mjs';
-import { ldoThreePin, ldoEnablePg, ldoAdjustable } from './designs-ldo-basic.mjs';
+import { ldoThreePin, ldoEnablePg, ldoAdjustable, ldoLowNoise } from './designs-ldo-basic.mjs';
+import { ddrTps51200, ddrRt2568, ddrTps51206, ldoBypass, chargerBq25171, buckTps5139x, ldoUserSet } from './designs-batch2.mjs';
 import { fuelGaugeHighSide } from './designs-bq27426.mjs';
 import { fuelGauge } from './designs-max17048.mjs';
 import { adapter65w, openFrame30w } from './designs-topswitch-jx.mjs';
@@ -142,6 +143,7 @@ const designs = {
       'Pin 3 (REG) is the 5 V output VREG with a 10 µF capacitor C2 to ground. Pins 2 and 4 are both ground and are drawn once.',
   }),
   'tps74512-q1-schematic.svg': ldoEnablePg({ id: 'tps74512-q1', part: 'TPS74512-Q1' }),
+  'tps7a92-schematic.svg': ldoLowNoise({ id: 'tps7a92', part: 'TPS7A92' }),
   'mic29302a-schematic.svg': ldoAdjustable({
     id: 'mic29302a', part: 'MIC29302A',
     pins: { in: 'IN', out: 'OUT', adj: 'ADJ', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'tied',
@@ -178,6 +180,25 @@ const designs = {
     cin: { ref: 'C1', val: '10 µF' }, cout: { ref: 'C2', val: '10 µF' }, r1: { ref: 'R1', val: '' }, r2: { ref: 'R2', val: '' },
     desc: 'Typical application circuit of the RT2515A adjustable 2 A LDO (Figure 1 of the datasheet). The input VIN feeds the VIN pin with a 10 microfarad capacitor C1 to ground, and the enable pin EN is driven by a separate Chip Enable signal. The VOUT pin is the output with a 10 microfarad capacitor C2 to ground. The feedback divider is R1 from VOUT to the ADJ pin and R2 from ADJ to ground, which set VOUT = 0.5 times (R1 + R2) divided by R2. The GND pin and exposed pad go to ground. The datasheet figure gives no resistor values.',
   }),
+  'tps51200-schematic.svg': ddrTps51200({ id: 'tps51200', part: 'TPS51200' }),
+  'rt2568-schematic.svg': ddrRt2568({ id: 'rt2568', part: 'RT2568' }),
+  'tps51206-schematic.svg': ddrTps51206({ id: 'tps51206', part: 'TPS51206' }),
+  'ncv57152-schematic.svg': ldoAdjustable({
+    id: 'ncv57152', part: 'NCV57152', hopEn: true,
+    pins: { in: 'VIN', out: 'VOUT', adj: 'ADJ', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN',
+    cin: { ref: 'CIN', val: '' }, cout: { ref: 'COUT', val: '47 µF' }, r1: { ref: 'R1', val: '' }, r2: { ref: 'R2', val: '' },
+    desc: 'Adjustable-voltage application circuit of the NCP57152 and NCV57152 1.5 A LDO, redrawn from the datasheet\'s Figure 22. The input VIN feeds the VIN pin with an input capacitor CIN to ground, and the enable pin EN is driven by a separate signal. The VOUT pin is the output with a 47 microfarad ceramic output capacitor COUT to ground. The feedback divider is R1 from VOUT to the ADJ pin and R2 from ADJ to ground, which set VOUT = 1.24 times (1 + R1 / R2). The GND pin goes to ground. The datasheet figure gives no resistor values or CIN value.',
+  }),
+  'spx3819-schematic.svg': ldoBypass({ id: 'spx3819', part: 'SPX3819' }),
+  'spx3819-adj-schematic.svg': ldoAdjustable({
+    id: 'spx3819-adj', part: 'SPX3819', hopEn: true,
+    pins: { in: 'VIN', out: 'VOUT', adj: 'ADJ', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN',
+    cin: { ref: 'CIN', val: '' }, cout: { ref: 'COUT', val: '' }, r1: { ref: 'R1', val: '' }, r2: { ref: 'R2', val: '' },
+    desc: 'Adjustable-output application circuit of the SPX3819 500 mA LDO, redrawn from the datasheet\'s Figure 19. The input VIN feeds the VIN pin with an input capacitor CIN to ground, and the enable pin EN is driven by a separate signal. The VOUT pin is the output with an output capacitor COUT to ground. The feedback divider is R1 from VOUT to the ADJ pin and R2 from ADJ to ground, which set VOUT = 1.235 times (1 + R1 / R2). The GND pin goes to ground. The datasheet figure gives no component values.',
+  }),
+  'bq25171-q1-schematic.svg': chargerBq25171({ id: 'bq25171-q1', part: 'BQ25171-Q1' }),
+  'tps5139x-schematic.svg': buckTps5139x({ id: 'tps5139x', part: 'TPS51393 and TPS51395' }),
+  'tps7a7200-ep-schematic.svg': ldoUserSet({ id: 'tps7a7200-ep', part: 'TPS7A7200-EP' }),
   'bq27426-schematic.svg': fuelGaugeHighSide({ id: 'bq27426', part: 'BQ27426' }),
   'max17048-schematic.svg': fuelGauge({ id: 'max17048', part: 'MAX17048', cells: 1 }),
   'max17049-schematic.svg': fuelGauge({ id: 'max17049', part: 'MAX17049', cells: 2 }),

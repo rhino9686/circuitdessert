@@ -107,7 +107,7 @@ export function ldoEnablePg({ id, part, v = {} }) {
  * `en` is 'tied' (EN wired to the input rail) or a port name. `bias` is a port name or absent.
  * R1 runs from the output to ADJ and R2 from ADJ to ground, as in the datasheet figures.
  */
-export function ldoAdjustable({ id, part, pins, ports, en, bias, cin, cout, cbias, r1, r2, desc }) {
+export function ldoAdjustable({ id, part, pins, ports, en, bias, cin, cout, cbias, r1, r2, desc, hopEn = false }) {
   const hasBias = !!bias;
   const w = 800;
   const h = hasBias ? 430 : 370;
@@ -137,7 +137,8 @@ export function ldoAdjustable({ id, part, pins, ports, en, bias, cin, cout, cbia
     s.dot(215, yIN).wire([215, yIN], [215, yEN], [lx, yEN]);
   } else {
     s.port(60, yEN, en, 'in');
-    s.wire([60, yEN], [lx, yEN]);
+    if (hopEn) s.hwire(yEN, 60, lx, [cinX]);
+    else s.wire([60, yEN], [lx, yEN]);
   }
 
   // bias pin and CBIAS
@@ -160,5 +161,67 @@ export function ldoAdjustable({ id, part, pins, ports, en, bias, cin, cout, cbia
 
   // ground pin
   s.wire([gx, ic.y + ic.h + 12], [gx, gndY + 20]).ground(gx, gndY + 20);
+  return s;
+}
+
+/**
+ * TPS7A92 typical application (Figure 7-2 of the datasheet): 2.0 V in, 1.2 V out.
+ * EN and SS_CTRL tied to IN, CNR/SS on the NR/SS pin, R1/R2 with CFF across R1, and an open-drain PG with its pull-up to VOUT.
+ */
+export function ldoLowNoise({ id, part, v = {} }) {
+  const val = {
+    cin: '22 µF', cout: '22 µF', cnr: '100 nF', cff: '10 nF', r1: '5.9 kΩ', r2: '11.8 kΩ', rpg: '20 kΩ', ...v,
+  };
+  const s = new Sheet(840, 430, {
+    top: 70,
+    id,
+    title: `${part} typical application circuit`,
+    desc:
+      `Typical application circuit of the ${part} 2 A low-noise LDO, redrawn from the datasheet's Figure 7-2 for a 1.2 V output from a 2.0 V input. ` +
+      `The input VIN feeds the IN pin with an input capacitor CIN (${val.cin}) to ground, and the EN and SS_CTRL pins are both wired to the input rail. ` +
+      `A noise-reduction and soft-start capacitor CNR/SS (${val.cnr}) goes from the NR/SS pin to ground. ` +
+      `The OUT pin is the output VOUT with an output capacitor COUT (${val.cout}) to ground. The feedback divider is R1 (${val.r1}) from VOUT to the FB pin and R2 (${val.r2}) from FB to ground, ` +
+      `with a feed-forward capacitor CFF (${val.cff}) across R1. The open-drain PG pin has a pull-up resistor RPG (${val.rpg}) to VOUT and is brought out as the power-good signal. The GND pin goes to ground.`,
+  });
+  const ic = { x: 280, y: 100, w: 150, h: 230 };
+  const lx = ic.x - 12;
+  const rx = ic.x + ic.w + 12;
+  const yIN = 140, yEN = 190, ySS = 240, yNR = 290;
+  const yOUT = 140, yFB = 190, yPG = 300;
+  const gx = 360, gnd = 370;
+  s.ic(ic.x, ic.y, ic.w, ic.h, {
+    left: [{ name: 'IN', y: yIN }, { name: 'EN', y: yEN }, { name: 'SS_CTRL', y: ySS }, { name: 'NR/SS', y: yNR }],
+    right: [{ name: 'OUT', y: yOUT }, { name: 'FB', y: yFB }, { name: 'PG', y: yPG }],
+    bottom: [{ name: 'GND', x: gx }],
+  }, { title: part });
+
+  // input rail, CIN, EN and SS_CTRL tied to IN, CNR/SS
+  const cinX = 130, tapX = 215;
+  s.port(60, yIN, 'VIN', 'in');
+  s.wire([60, yIN], [lx, yIN]);
+  s.dot(cinX, yIN).capacitor(cinX, yIN, cinX, gnd).ground(cinX, gnd).label(cinX, gnd - 40, 'CIN', val.cin, 'left');
+  s.dot(tapX, yIN).wire([tapX, yIN], [tapX, ySS]);
+  s.dot(tapX, yEN).wire([tapX, yEN], [lx, yEN]);
+  s.wire([tapX, ySS], [lx, ySS]);
+  s.wire([lx, yNR], [tapX, yNR]);
+  s.capacitor(tapX, yNR, tapX, gnd).ground(tapX, gnd).label(tapX, gnd - 40, 'CNR/SS', val.cnr, 'left');
+
+  // output rail: R1 with CFF across it, R2 to ground, COUT, RPG to the PG node
+  const r1X = 500, cffX = 560, coutX = 640, rpgX = 710, portX = 780;
+  s.wire([rx, yOUT], [portX, yOUT]);
+  s.port(portX, yOUT, 'VOUT', 'out');
+  s.dot(r1X, yOUT).dot(cffX, yOUT).dot(coutX, yOUT).dot(rpgX, yOUT);
+  s.resistor(r1X, yOUT, r1X, yFB).label(r1X, 165, 'R1', val.r1, 'left');
+  s.capacitor(cffX, yOUT, cffX, yFB).label(cffX, 165, 'CFF', val.cff, 'right');
+  s.wire([rx, yFB], [cffX, yFB]);
+  s.dot(r1X, yFB).dot(cffX, yFB);
+  s.resistor(r1X, yFB, r1X, 255).ground(r1X, 255).label(r1X, 222, 'R2', val.r2, 'left');
+  s.capacitor(coutX, yOUT, coutX, gnd).ground(coutX, gnd).label(coutX, gnd - 40, 'COUT', val.cout, 'right');
+  s.resistor(rpgX, yOUT, rpgX, yPG).label(rpgX, 225, 'RPG', val.rpg, 'left');
+  s.wire([rx, yPG], [portX, yPG]);
+  s.dot(rpgX, yPG);
+  s.port(portX, yPG, 'PG', 'out');
+
+  s.wire([gx, ic.y + ic.h + 12], [gx, gnd + 20]).ground(gx, gnd + 20);
   return s;
 }

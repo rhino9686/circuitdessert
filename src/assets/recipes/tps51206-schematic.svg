@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 890 490" role="img" aria-labelledby="tps51206-t tps51206-d">
+<title id="tps51206-t">TPS51206 typical application circuit</title>
+<desc id="tps51206-d">Typical application circuit of the TPS51206 DDR termination regulator with VLDOIN tied to VDDQ, redrawn from the datasheet's Figure 24. The VDDQ rail feeds both VLDOIN and VDDQSNS, with a 10 µF capacitor C1 to ground. The S3 and S5 pins take the sleep-state signals, and the VDD pin takes a 5 V or 3.3 V supply with a 0.1 µF capacitor C2 to ground. VTT is the termination output with a 10 µF capacitor C3 to ground, and VTTSNS is wired to VTT. VTTREF is the buffered reference output with a 0.22 µF capacitor C4 to ground. PGND and GND, with the thermal pad, are tied to ground.</desc>
+<rect class="sch-ic" x="380" y="100" width="170" height="360" rx="3"/>
+<path class="sch-w" d="M368 130 L380 130"/>
+<text class="sch-pin" x="388" y="134" text-anchor="start">VDDQSNS</text>
+<path class="sch-w" d="M368 190 L380 190"/>
+<text class="sch-pin" x="388" y="194" text-anchor="start">VLDOIN</text>
+<path class="sch-w" d="M368 300 L380 300"/>
+<text class="sch-pin" x="388" y="304" text-anchor="start">S3</text>
+<path class="sch-w" d="M368 350 L380 350"/>
+<text class="sch-pin" x="388" y="354" text-anchor="start">S5</text>
+<path class="sch-w" d="M368 410 L380 410"/>
+<text class="sch-pin" x="388" y="414" text-anchor="start">VDD</text>
+<path class="sch-w" d="M550 130 L562 130"/>
+<text class="sch-pin" x="542" y="134" text-anchor="end">VTT</text>
+<path class="sch-w" d="M550 180 L562 180"/>
+<text class="sch-pin" x="542" y="184" text-anchor="end">VTTSNS</text>
+<path class="sch-w" d="M550 330 L562 330"/>
+<text class="sch-pin" x="542" y="334" text-anchor="end">VTTREF</text>
+<path class="sch-w" d="M440 460 L440 472"/>
+<text class="sch-pin" x="440" y="452" text-anchor="middle">PGND</text>
+<path class="sch-w" d="M490 460 L490 472"/>
+<text class="sch-pin" x="490" y="452" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="465" y="284" text-anchor="middle">TPS51206</text>
+<path class="sch-flag" d="M60 190 L52 182 L14 182 L14 198 L52 198 Z"/>
+<text class="sch-net" x="33" y="194" text-anchor="middle">VDDQ</text>
+<path class="sch-w" d="M60 190 L368 190"/>
+<circle class="sch-dot" cx="300" cy="190" r="3"/>
+<path class="sch-w" d="M300 190 L300 130 L368 130"/>
+<circle class="sch-dot" cx="200" cy="190" r="3"/>
+<path class="sch-w" d="M200 190 L200 216"/>
+<path class="sch-w" d="M200 250 L200 224"/>
+<path class="sch-w" d="M189 216 L211 216"/>
+<path class="sch-w" d="M189 224 L211 224"/>
+<path class="sch-w" d="M200 250 L200 258"/>
+<path class="sch-w" d="M189 258 L211 258"/>
+<path class="sch-w" d="M193 263 L207 263"/>
+<path class="sch-w" d="M197 268 L203 268"/>
+<text class="sch-ref" x="216" y="218" text-anchor="start">C<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="216" y="231" text-anchor="start">10 µF</text>
+<path class="sch-flag" d="M60 300 L52 292 L14 292 L14 308 L52 308 Z"/>
+<text class="sch-net" x="33" y="304" text-anchor="middle">S3</text>
+<path class="sch-w" d="M60 300 L368 300"/>
+<path class="sch-flag" d="M60 350 L52 342 L14 342 L14 358 L52 358 Z"/>
+<text class="sch-net" x="33" y="354" text-anchor="middle">S5</text>
+<path class="sch-w" d="M60 350 L368 350"/>
+<path class="sch-flag" d="M60 410 L52 402 L14 402 L14 418 L52 418 Z"/>
+<text class="sch-net" x="33" y="414" text-anchor="middle">VDD</text>
+<path class="sch-w" d="M60 410 L368 410"/>
+<circle class="sch-dot" cx="200" cy="410" r="3"/>
+<path class="sch-w" d="M200 410 L200 431"/>
+<path class="sch-w" d="M200 460 L200 439"/>
+<path class="sch-w" d="M189 431 L211 431"/>
+<path class="sch-w" d="M189 439 L211 439"/>
+<path class="sch-w" d="M200 460 L200 468"/>
+<path class="sch-w" d="M189 468 L211 468"/>
+<path class="sch-w" d="M193 473 L207 473"/>
+<path class="sch-w" d="M197 478 L203 478"/>
+<text class="sch-ref" x="184" y="433" text-anchor="end">C<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="184" y="446" text-anchor="end">0.1 µF</text>
+<path class="sch-w" d="M562 130 L830 130"/>
+<path class="sch-flag" d="M830 130 L838 122 L876 122 L876 138 L838 138 Z"/>
+<text class="sch-net" x="857" y="134" text-anchor="middle">VTT</text>
+<path class="sch-w" d="M562 180 L590 180 L590 130"/>
+<circle class="sch-dot" cx="590" cy="130" r="3"/>
+<circle class="sch-dot" cx="680" cy="130" r="3"/>
+<path class="sch-w" d="M680 130 L680 156"/>
+<path class="sch-w" d="M680 190 L680 164"/>
+<path class="sch-w" d="M669 156 L691 156"/>
+<path class="sch-w" d="M669 164 L691 164"/>
+<path class="sch-w" d="M680 190 L680 198"/>
+<path class="sch-w" d="M669 198 L691 198"/>
+<path class="sch-w" d="M673 203 L687 203"/>
+<path class="sch-w" d="M677 208 L683 208"/>
+<text class="sch-ref" x="664" y="158" text-anchor="end">C<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="664" y="171" text-anchor="end">10 µF</text>
+<path class="sch-w" d="M562 330 L830 330"/>
+<path class="sch-flag" d="M830 330 L838 322 L876 322 L876 338 L838 338 Z"/>
+<text class="sch-net" x="857" y="334" text-anchor="middle">VREF</text>
+<circle class="sch-dot" cx="680" cy="330" r="3"/>
+<path class="sch-w" d="M680 330 L680 356"/>
+<path class="sch-w" d="M680 390 L680 364"/>
+<path class="sch-w" d="M669 356 L691 356"/>
+<path class="sch-w" d="M669 364 L691 364"/>
+<path class="sch-w" d="M680 390 L680 398"/>
+<path class="sch-w" d="M669 398 L691 398"/>
+<path class="sch-w" d="M673 403 L687 403"/>
+<path class="sch-w" d="M677 408 L683 408"/>
+<text class="sch-ref" x="664" y="358" text-anchor="end">C<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="664" y="371" text-anchor="end">0.22 µF</text>
+<path class="sch-w" d="M440 472 L490 472"/>
+<circle class="sch-dot" cx="465" cy="472" r="3"/>
+<path class="sch-w" d="M465 472 L465 480"/>
+<path class="sch-w" d="M454 480 L476 480"/>
+<path class="sch-w" d="M458 485 L472 485"/>
+<path class="sch-w" d="M462 490 L468 490"/>
+</svg>
