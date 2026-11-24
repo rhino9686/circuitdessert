@@ -209,7 +209,7 @@ const designs = {
     cout: [{ ref: 'COUT', val: '4.7 µF' }],
     desc:
       'Typical application circuit of the SA21345G 5 V LDO, redrawn from Figure 1 of the datasheet. The input VIN (4 V to 36 V) feeds the IN pin and has a 10 µF capacitor CIN to ground. ' +
-      'The OUT pin is the 5 V output VOUT, with a 4.7 µF capacitor COUT to ground. The GND pin goes to ground. The SO8 package has four no-connect pins, which are not drawn.',
+      'The OUT pin is the 5 V output VOUT, with a 4.7 µF capacitor COUT to ground. The GND pin goes to ground. The SO8 package has five no-connect pins, which are not drawn.',
   }),
   'sa21308a-schematic.svg': ldoAdjustable({
     id: 'sa21308a', part: 'SA21308A',

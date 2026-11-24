@@ -5,6 +5,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { LIB, PACKAGES, SYMBOLS } from './data.mjs';
 import { padListQuad, footprintQuad, illustrationQuad } from './quad.mjs';
+import { padListTo, footprintTo, illustrationTo } from './to.mjs';
 import { padListTht, footprintTht, illustrationTht, padListSip, footprintSip, illustrationSip } from './tht.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
@@ -22,6 +23,7 @@ export function padList(pk) {
   if (pk.layout === 'quad') return padListQuad(pk);
   if (pk.layout === 'dip-th') return padListTht(pk);
   if (pk.layout === 'sip-th') return padListSip(pk);
+  if (pk.layout === 'to-tab') return padListTo(pk);
   // pin 1 top left, down the left side, then up the right side; an exposed pad, if any, last
   const x = pk.rowCentres / 2, ys = rowYs(pk), k = ys.length;
   const pads = [
@@ -40,6 +42,7 @@ function footprint(pk) {
   if (pk.layout === 'quad') return footprintQuad(pk);
   if (pk.layout === 'dip-th') return footprintTht(pk);
   if (pk.layout === 'sip-th') return footprintSip(pk);
+  if (pk.layout === 'to-tab') return footprintTo(pk);
   if (pk.kind === 'dual-nolead') return footprintDualNoLead(pk);
   const pads = padList(pk);
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2; // half sizes: across, along
@@ -134,6 +137,7 @@ function illustration(pk) {
   if (pk.layout === 'quad') return illustrationQuad(pk);
   if (pk.layout === 'dip-th') return illustrationTht(pk);
   if (pk.layout === 'sip-th') return illustrationSip(pk);
+  if (pk.layout === 'to-tab') return illustrationTo(pk);
   if (pk.kind === 'dual-nolead') return illustrationDualNoLead(pk);
   const S = pk.illustration?.scale ?? 72; // px per mm
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2;
@@ -281,7 +285,7 @@ function footprintDualNoLead(pk) {
 }
 
 function illustrationDualNoLead(pk) {
-  const S = 52; // px per mm
+  const S = pk.illustration?.scale ?? 52; // px per mm
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length) / 2;
   const ll = mid(pk.leadLength), lw = mid(pk.leadWidth) / 2;
   const pads = padListDual(pk), t = pk.thermal;
@@ -289,7 +293,8 @@ function illustrationDualNoLead(pk) {
   const X = (c, v) => n(c + v * S), Y = (v) => n(cy + v * S);
   const poly = (c, pts) => pts.map(([x, y]) => `${X(c, x)},${Y(y)}`).join(' ');
   // package exposed pad: same fingers, but out to the body edge (page 32)
-  const tp = { ...t, along: mid(pk.body.length), centre: t.centre };
+  // a plain rectangular pad (`thermalPkg`) is given its own package-side size
+  const tp = pk.thermalPkg ? { ...t, along: pk.thermalPkg.along, across: pk.thermalPkg.across, centre: pk.thermalPkg.along, finger: pk.thermalPkg.across } : { ...t, along: mid(pk.body.length), centre: t.centre };
   const o = [];
   o.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="${pk.name} package contacts and footprint">`);
   o.push(`<style>

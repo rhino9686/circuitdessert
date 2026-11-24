@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="DFN3×3-8 package contacts and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-lead{fill:var(--cd-muted)}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dim{stroke:var(--cd-muted);stroke-width:1.2;fill:none}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="165" y="24" text-anchor="middle">Package contacts, seen from above</text>
+<rect class="pk-body" x="87" y="92" width="156" height="156" rx="4"/>
+<polygon class="pk-lead" points="123.4,107.6 206.6,107.6 206.6,232.4 123.4,232.4"/>
+<rect class="pk-lead" x="87" y="110.2" width="20.8" height="18.2"/>
+<text class="pk-t" x="80.76" y="123.8" text-anchor="end">1</text>
+<rect class="pk-lead" x="87" y="144" width="20.8" height="18.2"/>
+<text class="pk-t" x="80.76" y="157.6" text-anchor="end">2</text>
+<rect class="pk-lead" x="87" y="177.8" width="20.8" height="18.2"/>
+<text class="pk-t" x="80.76" y="191.4" text-anchor="end">3</text>
+<rect class="pk-lead" x="87" y="211.6" width="20.8" height="18.2"/>
+<text class="pk-t" x="80.76" y="225.2" text-anchor="end">4</text>
+<rect class="pk-lead" x="222.2" y="211.6" width="20.8" height="18.2"/>
+<text class="pk-t" x="249.24" y="225.2" text-anchor="start">5</text>
+<rect class="pk-lead" x="222.2" y="177.8" width="20.8" height="18.2"/>
+<text class="pk-t" x="249.24" y="191.4" text-anchor="start">6</text>
+<rect class="pk-lead" x="222.2" y="144" width="20.8" height="18.2"/>
+<text class="pk-t" x="249.24" y="157.6" text-anchor="start">7</text>
+<rect class="pk-lead" x="222.2" y="110.2" width="20.8" height="18.2"/>
+<text class="pk-t" x="249.24" y="123.8" text-anchor="start">8</text>
+<circle class="pk-dot" cx="102.6" cy="107.6" r="7"/>
+<path class="pk-dim" d="M50.6 92V248M45.6 92h10M45.6 248h10"/>
+<text class="pk-n" transform="translate(42.6 170) rotate(-90)" text-anchor="middle">2.90–3.10</text>
+<path class="pk-dim" d="M87 263.6H243M87 258.6v10M243 258.6v10"/>
+<text class="pk-n" x="165" y="281.6" text-anchor="middle">body 2.90–3.10</text>
+<text class="pk-n" x="165" y="299.6" text-anchor="middle">contacts 0.30–0.50 long, 0.30–0.40 wide</text>
+<text class="pk-h" x="440" y="24" text-anchor="middle">Footprint (land pattern)</text>
+<rect class="pk-out" x="362" y="92" width="156" height="156" rx="4"/>
+<polygon class="pk-pad" points="398.4,107.6 481.6,107.6 481.6,232.4 398.4,232.4"/>
+<text class="pk-t" x="440" y="174.5" text-anchor="middle" style="fill:var(--cd-on-accent)">5</text>
+<rect class="pk-pad" x="343.8" y="110.2" width="41.6" height="18.2" rx="4.55"/>
+<text class="pk-t" x="337.56" y="123.8" text-anchor="end">1</text>
+<rect class="pk-pad" x="343.8" y="144" width="41.6" height="18.2" rx="4.55"/>
+<text class="pk-t" x="337.56" y="157.6" text-anchor="end">2</text>
+<rect class="pk-pad" x="343.8" y="177.8" width="41.6" height="18.2" rx="4.55"/>
+<text class="pk-t" x="337.56" y="191.4" text-anchor="end">3</text>
+<rect class="pk-pad" x="343.8" y="211.6" width="41.6" height="18.2" rx="4.55"/>
+<text class="pk-t" x="337.56" y="225.2" text-anchor="end">4</text>
+<rect class="pk-pad" x="494.6" y="211.6" width="41.6" height="18.2" rx="4.55"/>
+<text class="pk-t" x="542.44" y="225.2" text-anchor="start">5</text>
+<rect class="pk-pad" x="494.6" y="177.8" width="41.6" height="18.2" rx="4.55"/>
+<text class="pk-t" x="542.44" y="191.4" text-anchor="start">6</text>
+<rect class="pk-pad" x="494.6" y="144" width="41.6" height="18.2" rx="4.55"/>
+<text class="pk-t" x="542.44" y="157.6" text-anchor="start">7</text>
+<rect class="pk-pad" x="494.6" y="110.2" width="41.6" height="18.2" rx="4.55"/>
+<text class="pk-t" x="542.44" y="123.8" text-anchor="start">8</text>
+<path class="pk-dim" d="M364.6 248H515.4M364.6 243v10M515.4 243v10"/>
+<text class="pk-n" x="440" y="266" text-anchor="middle">2.90 between pad rows</text>
+<text class="pk-n" x="440" y="284" text-anchor="middle">pads 0.80 × 0.35, pitch 0.65</text>
+<text class="pk-n" x="440" y="302" text-anchor="middle">exposed pad 2.40 × 1.60</text>
+</svg>

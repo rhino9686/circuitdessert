@@ -61,7 +61,7 @@ export function footprintQuad(pk) {
 }
 
 export function illustrationQuad(pk) {
-  const S = 33; // px per mm
+  const S = pk.illustration?.scale ?? 33; // px per mm
   const b = mid(pk.body.length) / 2;
   const k = pk.padsPerSide, p = pk.pitch;
   const lw = mid(pk.leadWidth) / 2, ll = mid(pk.leadLength);
@@ -121,7 +121,7 @@ export function illustrationQuad(pk) {
   labels(bx, pk.pad.centre + pk.pad.long / 2);
   o.push(`<text class="pk-n" x="${bx}" y="${n(ty)}" text-anchor="middle">pads ${pk.pad.long.toFixed(2)} × ${pk.pad.wide.toFixed(2)} mm</text>`);
   o.push(`<text class="pk-n" x="${bx}" y="${n(ty + 18)}" text-anchor="middle">exposed pad ${pk.ep.size.toFixed(2)} square, number ${4 * k + 1}</text>`);
-  o.push(`<text class="pk-n" x="${bx}" y="${n(ty + 36)}" text-anchor="middle">pad sizes are ours, not ADI's</text>`);
+  o.push(`<text class="pk-n" x="${bx}" y="${n(ty + 36)}" text-anchor="middle">${pk.padNote ?? "pad sizes are ours, not ADI's"}</text>`);
   o.push('</svg>');
   return o.join('\n') + '\n';
 }

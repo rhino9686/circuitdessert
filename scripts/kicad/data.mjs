@@ -97,6 +97,193 @@ export const PACKAGES = {
     // Our additions, not from the datasheet: courtyard margin, silkscreen and fab-layer conventions.
     courtyardMargin: 0.25,
   },
+  // Silergy DFN and QFN packages (batch 3). Land patterns are the datasheets' recommended PCB layouts ("reference only"). KiCad orientation: pin 1 top left,
+  // the datasheet's land-pattern view turned 90 degrees clockwise so that the pad rows run down the sides; the exposed pad is numbered after the last lead
+  // (ours) unless the datasheet gives it a number.
+  'dfn2x2-6': {
+    kind: 'dual-nolead',
+    name: 'DFN2×2-6',
+    file: 'DFN-6_2x2mm_P0.65mm_EP1.6x0.9mm',
+    descr: 'DFN2x2-6 (Silergy), 0.65 mm pitch, 2 x 2 mm body, 1.6 x 0.9 mm exposed pad; land pattern from the SA21308A00DED datasheet (Rev. 1.0, PDF page 12)',
+    tags: 'DFN2x2-6 DFN-6 SA21308A',
+    source: { part: 'SA21308A00DED', revision: 'Rev. 1.0', page: 12 },
+    pitch: 0.65,
+    pinsPerSide: 3,
+    // Recommended PCB layout (reference only), checked on the rendered page: rows of pads 2.0 apart centre to centre, 6 pads 0.3 wide (along the row) by 0.7 long.
+    rowCentres: 2.0,
+    pad: { long: 0.7, wide: 0.3 },
+    padRadius: 0.075, // the drawing gives no corner radius; 0.25 of the pad width, as on our other footprints
+    // Package outline. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 1.9, max: 2.1 }, width: { min: 1.9, max: 2.1 } },
+    leadWidth: { min: 0.25, max: 0.35 },
+    leadLength: { min: 0.25, max: 0.35 },
+    // Exposed pad: a plain rectangle on the land pattern (1.6 along the rows by 0.9 across). The package's own pad is drawn at the midpoint of its printed ranges (ours).
+    thermal: { num: '7', along: 1.6, across: 0.9, centre: 1.6, finger: 0.9, gap: 0, fingers: 1 },
+    thermalPkg: { along: 1.6, across: 0.9 },
+    // Our additions, not from the datasheet: courtyard margin, silkscreen and fab-layer conventions.
+    courtyardMargin: 0.25,
+    illustration: { scale: 80 },
+  },
+  'dfn1p2x1p2-6': {
+    kind: 'dual-nolead',
+    name: 'DFN1.2×1.2-6',
+    file: 'DFN-6_1.2x1.2mm_P0.4mm_EP1.05x0.4mm',
+    descr: 'DFN1.2x1.2-6 (Silergy), 0.4 mm pitch, 1.2 x 1.2 mm body, 1.05 x 0.4 mm exposed pad; land pattern from the SY6307B datasheet (Rev. 1.0a, PDF page 11)',
+    tags: 'DFN1.2x1.2-6 DFN-6 SY6307B',
+    source: { part: 'SY6307B', revision: 'Rev. 1.0a', page: 11 },
+    pitch: 0.4,
+    pinsPerSide: 3,
+    // Recommended PCB layout (reference only), checked on the rendered page: rows of pads 1.1 apart centre to centre, 6 pads 0.25 wide (along the row) by 0.4 long.
+    rowCentres: 1.1,
+    pad: { long: 0.4, wide: 0.25 },
+    padRadius: 0.0625, // the drawing gives no corner radius; 0.25 of the pad width, as on our other footprints
+    // Package outline. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 1.1, max: 1.3 }, width: { min: 1.1, max: 1.3 } },
+    leadWidth: { min: 0.12, max: 0.24 },
+    leadLength: { min: 0.22, max: 0.38 },
+    // Exposed pad: a plain rectangle on the land pattern (1.05 along the rows by 0.4 across). The package's own pad is drawn at the midpoint of its printed ranges (ours).
+    thermal: { num: '7', along: 1.05, across: 0.4, centre: 1.05, finger: 0.4, gap: 0, fingers: 1 },
+    thermalPkg: { along: 0.94, across: 0.2 },
+    // Our additions, not from the datasheet: courtyard margin, silkscreen and fab-layer conventions.
+    courtyardMargin: 0.25,
+    illustration: { scale: 110 },
+  },
+  'dfn2x3-8': {
+    kind: 'dual-nolead',
+    name: 'DFN2×3-8',
+    file: 'DFN-8_2x3mm_P0.5mm_EP1.8x1.7mm',
+    descr: 'DFN2x3-8 (Silergy), 0.5 mm pitch, 2 x 3 mm body, 1.8 x 1.7 mm exposed pad; land pattern from the SQ24345H datasheet (Rev. 0.9, PDF pages 10 and 11)',
+    tags: 'DFN2x3-8 DFN-8 SQ24345H',
+    source: { part: 'SQ24345H', revision: 'Rev. 0.9', page: 11 },
+    pitch: 0.5,
+    pinsPerSide: 4,
+    // Recommended PCB layout (reference only), checked on the rendered page: rows of pads 2.85 apart centre to centre, 8 pads 0.3 wide (along the row) by 0.55 long.
+    rowCentres: 2.85,
+    pad: { long: 0.55, wide: 0.3 },
+    padRadius: 0.075, // the drawing gives no corner radius; 0.25 of the pad width, as on our other footprints
+    // Package outline. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 1.9, max: 2.1 }, width: { min: 2.9, max: 3.1 } },
+    leadWidth: { min: 0.15, max: 0.35 },
+    leadLength: { min: 0.2, max: 0.5 },
+    // Exposed pad: a plain rectangle on the land pattern (1.8 along the rows by 1.7 across). The package's own pad is drawn at the midpoint of its printed ranges (ours).
+    thermal: { num: '9', along: 1.8, across: 1.7, centre: 1.8, finger: 1.7, gap: 0, fingers: 1 },
+    thermalPkg: { along: 1.5, across: 1.4 },
+    // Our additions, not from the datasheet: courtyard margin, silkscreen and fab-layer conventions.
+    courtyardMargin: 0.25,
+    illustration: { scale: 60 },
+  },
+  'dfn3x3-8': {
+    kind: 'dual-nolead',
+    name: 'DFN3×3-8',
+    file: 'DFN-8_3x3mm_P0.65mm_EP2.4x1.6mm',
+    descr: 'DFN3x3-8 (Silergy), 0.65 mm pitch, 3 x 3 mm body, 2.4 x 1.6 mm exposed pad; land pattern from the SQ24302DAC datasheet (Rev. 1.0, PDF page 11)',
+    tags: 'DFN3x3-8 DFN-8 SQ24302DAC',
+    source: { part: 'SQ24302DAC', revision: 'Rev. 1.0', page: 11 },
+    pitch: 0.65,
+    pinsPerSide: 4,
+    // Recommended PCB layout (reference only), checked on the rendered page: rows of pads 2.9 apart centre to centre, 8 pads 0.35 wide (along the row) by 0.8 long.
+    rowCentres: 2.9,
+    pad: { long: 0.8, wide: 0.35 },
+    padRadius: 0.0875, // the drawing gives no corner radius; 0.25 of the pad width, as on our other footprints
+    // Package outline. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 2.9, max: 3.1 }, width: { min: 2.9, max: 3.1 } },
+    leadWidth: { min: 0.3, max: 0.4 },
+    leadLength: { min: 0.3, max: 0.5 },
+    // Exposed pad: a plain rectangle on the land pattern (2.4 along the rows by 1.6 across). The package's own pad is drawn at the midpoint of its printed ranges (ours).
+    thermal: { num: '5', along: 2.4, across: 1.6, centre: 2.4, finger: 1.6, gap: 0, fingers: 1 },
+    thermalPkg: { along: 2.4, across: 1.6 },
+    // Our additions, not from the datasheet: courtyard margin, silkscreen and fab-layer conventions.
+    courtyardMargin: 0.25,
+    illustration: { scale: 52 },
+  },
+  'dfn3x3-10': {
+    kind: 'dual-nolead',
+    name: 'DFN3×3-10',
+    file: 'DFN-10_3x3mm_P0.5mm_EP2.6x1.75mm',
+    descr: 'DFN3x3-10 (Silergy), 0.5 mm pitch, 3 x 3 mm body, 2.6 x 1.75 mm exposed pad; land pattern from the SY6355 datasheet (Rev. 0.9, PDF page 11)',
+    tags: 'DFN3x3-10 DFN-10 SY6355 SQ24335',
+    source: { part: 'SY6355', revision: 'AN Rev. 0.9', page: 11 },
+    pitch: 0.5,
+    pinsPerSide: 5,
+    // Recommended PCB layout (reference only), checked on the rendered page: rows of pads 2.9 apart centre to centre, 10 pads 0.3 wide (along the row) by 0.75 long.
+    rowCentres: 2.9,
+    pad: { long: 0.75, wide: 0.3 },
+    padRadius: 0.075, // the drawing gives no corner radius; 0.25 of the pad width, as on our other footprints
+    // Package outline. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 2.9, max: 3.1 }, width: { min: 2.9, max: 3.1 } },
+    leadWidth: { min: 0.2, max: 0.3 },
+    leadLength: { min: 0.3, max: 0.5 },
+    // Exposed pad: a plain rectangle on the land pattern (2.6 along the rows by 1.75 across). The package's own pad is drawn at the midpoint of its printed ranges (ours).
+    thermal: { num: '11', along: 2.6, across: 1.75, centre: 2.6, finger: 1.75, gap: 0, fingers: 1 },
+    thermalPkg: { along: 2.4, across: 1.7 },
+    // Our additions, not from the datasheet: courtyard margin, silkscreen and fab-layer conventions.
+    courtyardMargin: 0.25,
+    illustration: { scale: 52 },
+  },
+  'qfn2p5x2p5-16': {
+    layout: 'quad',
+    name: 'QFN2.5×2.5-16',
+    file: 'QFN-16_2.5x2.5mm_P0.45mm_EP0.6x0.6mm',
+    descr: 'QFN2.5x2.5-16 (Silergy), 0.45 mm pitch, 2.5 x 2.5 mm body, 0.6 x 0.6 mm exposed pad; land pattern from the SY8388B datasheet (Rev. 0.9A, PDF page 18), corner pad chamfers omitted',
+    tags: 'QFN2.5x2.5-16 QFN-16 SY8388B',
+    source: { part: 'SY8388B', revision: 'Rev. 0.9A', page: 18 },
+    pitch: 0.45,
+    padsPerSide: 4,
+    // Package outline, page 18. Ranges as printed; the body is square.
+    body: { length: { min: 2.4, max: 2.6 }, width: { min: 2.4, max: 2.6 }, height: { min: 0.45, max: 0.65 } },
+    leadWidth: { min: 0.12, max: 0.28 },
+    leadLength: { min: 0.3, max: 0.5 },
+    epSquare: { min: 0.5, max: 0.7 },
+    // Recommended PCB layout (reference only), checked on the rendered page: 3.2 overall, pads 0.80 long by 0.25 wide at 0.45 pitch (so their centres are 1.20 from the middle), exposed pad 0.60 square.
+    pad: { long: 0.8, wide: 0.25, centre: 1.2 },
+    ep: { size: 0.6 },
+    padNote: 'pad corner chamfers not drawn',
+    courtyardMargin: 0.25,
+    illustration: { scale: 60 },
+  },
+  'to263-5': {
+    layout: 'to-tab',
+    name: 'TO263-5',
+    file: 'TO-263-5_Tab_P1.7mm',
+    descr: 'TO263-5 (Silergy), 1.7 mm lead pitch, metal tab as pin 3; land pattern from the SY6103 datasheet (Rev. 1.0A, PDF page 11), checked against the SQ24333 datasheet',
+    tags: 'TO263-5 TO-263-5 D2PAK-5 SY6103 SQ24333',
+    source: { part: 'SY6103', revision: 'Rev. 1.0A', page: 11 },
+    // Recommended PCB layout (reference only), checked on the rendered page: 15.9 from the tab end to the lead-pad ends, five pads 1.05 wide by 2.85 long at 1.7 pitch, and a tab pad 10.8 wide with a 8.2 wide stem, 8.12 high. Pin 1 at the left, the tab at the top.
+    overall: 15.9,
+    pad: { w: 1.05, l: 2.85 },
+    leads: { count: 5, pitch: 1.7 },
+    tab: { num: '3', top: { w: 10.8, h: 1.9 }, stem: { w: 8.2 }, height: 8.12 },
+    // Package outline. Ranges as printed; the midpoint is used for drawing only (ours). The fab outline and the drawing place the package on the land pattern's tab end (ours).
+    body: { width: { min: 9.78, max: 10.28 }, length: { min: 8.15, max: 8.65 } },
+    tabWidth: { min: 7.6, max: 8.0 },
+    tabExt: { min: 1.48, max: 1.81 },
+    packageLength: { min: 15.04, max: 15.64 },
+    leadLength: { min: 5.03, max: 5.53 },
+    leadWidth: { min: 0.71, max: 0.91 },
+    courtyardMargin: 0.25,
+  },
+  'to252-5': {
+    layout: 'to-tab',
+    name: 'TO252-5',
+    file: 'TO-252-5_Tab_P1.27mm',
+    descr: 'TO252-5 (Silergy), 1.27 mm lead pitch, metal tab as pin 3; land pattern from the SY6103 datasheet (Rev. 1.0A, PDF page 12)',
+    tags: 'TO252-5 TO-252-5 DPAK-5 SY6103',
+    source: { part: 'SY6103', revision: 'Rev. 1.0A', page: 12 },
+    // Recommended PCB layout (reference only), checked on the rendered page: 10.2 from the tab end to the lead-pad ends, five pads 0.7 wide by 2.3 long at 1.27 pitch, and a tab pad 5.3 wide, 4.93 high. Pin 1 at the left, the tab at the top.
+    overall: 10.2,
+    pad: { w: 0.7, l: 2.3 },
+    leads: { count: 5, pitch: 1.27 },
+    tab: { num: '3', top: { w: 5.3, h: 4.93 }, height: 4.93 },
+    // Package outline. Ranges as printed; the midpoint is used for drawing only (ours). The fab outline and the drawing place the package on the land pattern's tab end (ours).
+    body: { width: { min: 6.35, max: 6.65 }, length: { min: 5.4, max: 5.7 } },
+    tabWidth: { min: 5.2, max: 5.4 },
+    // tabExt and leadLength are not dimensioned in the datasheet: scaled from the top view (ours), used for the drawing only
+    tabExt: { min: 1.42, max: 1.42 },
+    packageLength: { min: 9.5, max: 9.9 },
+    leadLength: { min: 2.75, max: 2.75 },
+    leadWidth: { min: 0.4, max: 0.6 },
+    courtyardMargin: 0.25,
+  },
   // Two eight-lead gull-wing packages from the INA240-Q1 datasheet (SBOS808E): TI's D0008A (SOIC) and PW0008A (TSSOP), no exposed pad.
   // KiCad orientation: pin 1 top left, pins 1-4 down the left side, 5-8 up the right side, as in the datasheet's drawings.
   'soic-8': {
@@ -439,6 +626,193 @@ export const SYMBOLS = {
       { numbers: { 'edip-12b': '10', 'esop-12b': '10' }, name: 'S', type: 'power_in', side: 'bottom', pos: 2.54 },
       { numbers: { 'edip-12b': '11', 'esop-12b': '11' }, name: 'S', type: 'power_in', side: 'bottom', pos: 5.08 },
       { numbers: { 'edip-12b': '12', 'esop-12b': '12' }, name: 'S', type: 'power_in', side: 'bottom', pos: 7.62 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 0.9). Five of the eight pins are NC, kept as passive pins. Layout and pin types are ours.
+  'SA21345G': {
+    package: 'soic-8',
+    half: 7.62,
+    description: '150 mA fixed 5 V linear regulator, 4-36 V input (40 V absolute maximum), 15 uA quiescent current, AEC-Q100 grade 1, SO8',
+    keywords: 'ldo linear regulator 5V automotive SA21345GFAA',
+    datasheet: 'https://www.silergy.com/download/downloadFile?id=5036&type=product&ftype=note',
+    pins: [
+      { number: '8', name: 'IN', type: 'power_in', side: 'top', pos: 0 },
+      { number: '3', name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+      { number: '1', name: 'OUT', type: 'power_out', side: 'right', pos: 0 },
+      { number: '2', name: 'NC', type: 'passive', side: 'left', pos: 5.08 },
+      { number: '4', name: 'NC', type: 'passive', side: 'left', pos: 2.54 },
+      { number: '5', name: 'NC', type: 'passive', side: 'left', pos: 0 },
+      { number: '6', name: 'NC', type: 'passive', side: 'left', pos: -2.54 },
+      { number: '7', name: 'NC', type: 'passive', side: 'left', pos: -5.08 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 1.0). The exposed pad is listed as "Pad" with no number; 7 is ours (the footprint's exposed pad). Layout and pin types are ours.
+  'SA21308A00DED': {
+    package: 'dfn2x2-6',
+    half: 5.08,
+    description: '500 mA adjustable LDO, 1.62-6 V input, 0.55 V reference, enable and power-good, DFN2x2-6',
+    keywords: 'ldo linear regulator adjustable power-good SA21308A',
+    datasheet: 'https://www.silergy.com/download/downloadFile?id=6278&type=product&ftype=note',
+    pins: [
+      { number: '6', name: 'IN', type: 'power_in', side: 'left', pos: 2.54 },
+      { number: '4', name: 'EN', type: 'input', side: 'left', pos: -2.54 },
+      { number: '1', name: 'OUT', type: 'power_out', side: 'right', pos: 2.54 },
+      { number: '2', name: 'FB', type: 'input', side: 'right', pos: 0 },
+      { number: '5', name: 'PG', type: 'open_collector', side: 'right', pos: -2.54 },
+      { number: '3', name: 'GND', type: 'power_in', side: 'bottom', pos: -2.54 },
+      { number: '7', name: 'EP', type: 'passive', side: 'bottom', pos: 2.54 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 1.0A); both packages number the pins the same way. The tab is pin 3 (GND). Layout and pin types are ours.
+  'SY6103': {
+    packages: ['to263-5', 'to252-5'],
+    half: 5.08,
+    description: '3 A adjustable low-dropout regulator, 3-18 V input, 1.24 V reference, enable, 4.5 A current limit, TO263-5 and TO252-5',
+    keywords: 'ldo linear regulator adjustable 3A',
+    datasheet: 'https://us1.silergy.com/download/downloadFile?id=3965&type=product&ftype=note',
+    pins: [
+      { numbers: { 'to263-5': '1', 'to252-5': '1' }, name: 'EN', type: 'input', side: 'left', pos: 0 },
+      { numbers: { 'to263-5': '2', 'to252-5': '2' }, name: 'IN', type: 'power_in', side: 'top', pos: 0 },
+      { numbers: { 'to263-5': '3', 'to252-5': '3' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+      { numbers: { 'to263-5': '4', 'to252-5': '4' }, name: 'OUT', type: 'power_out', side: 'right', pos: 2.54 },
+      { numbers: { 'to263-5': '5', 'to252-5': '5' }, name: 'FB', type: 'input', side: 'right', pos: -2.54 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 1.0A). The tab is pin 3 (GND). Layout and pin types are ours.
+  'SQ24333': {
+    package: 'to263-5',
+    half: 5.08,
+    description: '3 A adjustable low-dropout regulator, 3-18 V input, 1.24 V reference, enable, 4.5 A current limit, TO263-5',
+    keywords: 'ldo linear regulator adjustable 3A',
+    datasheet: 'https://www.silergy.com/',
+    pins: [
+      { number: '1', name: 'EN', type: 'input', side: 'left', pos: 0 },
+      { number: '2', name: 'IN', type: 'power_in', side: 'top', pos: 0 },
+      { number: '3', name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+      { number: '4', name: 'OUT', type: 'power_out', side: 'right', pos: 2.54 },
+      { number: '5', name: 'FB', type: 'input', side: 'right', pos: -2.54 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 1.0a). The package drawing shows an exposed pad that the pin table does not mention, so the symbol has no pin for it (the footprint's pad 7 is ours and stays unconnected). Layout and pin types are ours.
+  'SY6307B': {
+    package: 'dfn1p2x1p2-6',
+    half: 5.08,
+    description: 'Adjustable LDO with a separate bias supply, 0.8-5.5 V input, 2.4-5.5 V bias, enable, DFN1.2x1.2-6',
+    keywords: 'ldo linear regulator adjustable bias supply',
+    datasheet: 'https://www.silergy.com/download/downloadFile?id=3962&type=product&ftype=note',
+    pins: [
+      { number: '6', name: 'IN', type: 'power_in', side: 'left', pos: 2.54 },
+      { number: '4', name: 'Bias', type: 'power_in', side: 'left', pos: 0 },
+      { number: '3', name: 'EN', type: 'input', side: 'left', pos: -2.54 },
+      { number: '1', name: 'OUT', type: 'power_out', side: 'right', pos: 2.54 },
+      { number: '2', name: 'ADJ', type: 'input', side: 'right', pos: -2.54 },
+      { number: '5', name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 0.9). The exposed pad is listed as "Pad" with no number (ground); 9 is ours (the footprint's exposed pad). Layout and pin types are ours.
+  'SQ24345H': {
+    package: 'dfn2x3-8',
+    half: 7.62,
+    description: 'Adjustable LDO with enable, DFN2x3-8',
+    keywords: 'ldo linear regulator adjustable',
+    datasheet: 'https://www.silergy.com/',
+    pins: [
+      { number: '3', name: 'IN', type: 'power_in', side: 'left', pos: 5.08 },
+      { number: '1', name: 'EN', type: 'input', side: 'left', pos: 2.54 },
+      { number: '5', name: 'OUT', type: 'power_out', side: 'right', pos: 5.08 },
+      { number: '8', name: 'ADJ', type: 'input', side: 'right', pos: 2.54 },
+      { number: '2', name: 'NC', type: 'passive', side: 'right', pos: 0 },
+      { number: '4', name: 'NC', type: 'passive', side: 'right', pos: -2.54 },
+      { number: '6', name: 'NC', type: 'passive', side: 'right', pos: -5.08 },
+      { number: '7', name: 'GND', type: 'power_in', side: 'bottom', pos: -2.54 },
+      { number: '9', name: 'EP', type: 'passive', side: 'bottom', pos: 2.54 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 1.0). GND is listed as "5, Exposed Pad", so the footprint's exposed pad is also numbered 5 and one GND pin covers both. Layout and pin types are ours.
+  'SQ24302DAC': {
+    package: 'dfn3x3-8',
+    half: 7.62,
+    description: 'Adjustable LDO with enable, DFN3x3-8',
+    keywords: 'ldo linear regulator adjustable',
+    datasheet: 'https://www.silergy.com/',
+    pins: [
+      { number: '7', name: 'IN', type: 'power_in', side: 'left', pos: 5.08 },
+      { number: '4', name: 'EN', type: 'input', side: 'left', pos: 2.54 },
+      { number: '2', name: 'OUT', type: 'power_out', side: 'right', pos: 5.08 },
+      { number: '3', name: 'ADJ', type: 'input', side: 'right', pos: 2.54 },
+      { number: '1', name: 'NC', type: 'passive', side: 'right', pos: 0 },
+      { number: '6', name: 'NC', type: 'passive', side: 'right', pos: -2.54 },
+      { number: '8', name: 'NC', type: 'passive', side: 'right', pos: -5.08 },
+      { number: '5', name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 0.9, application note). The exposed pad is listed as "Pad" with no number (ground); 11 is ours (the footprint's exposed pad). Layout and pin types are ours.
+  'SY6355': {
+    package: 'dfn3x3-10',
+    half: 7.62,
+    description: 'DDR termination regulator (VTT sink and source), 1.1-3.5 V output stage supply, buffered reference, enable and power-good, DFN3x3-10',
+    keywords: 'ddr termination vtt ldo regulator',
+    datasheet: 'https://www.silergy.com/',
+    pins: [
+      { number: '10', name: 'VIN', type: 'power_in', side: 'left', pos: 5.08 },
+      { number: '2', name: 'VLDOIN', type: 'power_in', side: 'left', pos: 2.54 },
+      { number: '7', name: 'EN', type: 'input', side: 'left', pos: 0 },
+      { number: '1', name: 'REFIN', type: 'input', side: 'left', pos: -2.54 },
+      { number: '5', name: 'VOSNS', type: 'input', side: 'left', pos: -5.08 },
+      { number: '3', name: 'VO', type: 'power_out', side: 'right', pos: 5.08 },
+      { number: '6', name: 'REFOUT', type: 'output', side: 'right', pos: 2.54 },
+      { number: '9', name: 'PGOOD', type: 'open_collector', side: 'right', pos: 0 },
+      { number: '8', name: 'GND', type: 'power_in', side: 'bottom', pos: -2.54 },
+      { number: '4', name: 'PGND', type: 'power_in', side: 'bottom', pos: 0 },
+      { number: '11', name: 'EP', type: 'passive', side: 'bottom', pos: 2.54 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 0.9, application note). The exposed pad is listed as "Pad" with no number (ground); 11 is ours (the footprint's exposed pad). Layout and pin types are ours.
+  'SQ24335': {
+    package: 'dfn3x3-10',
+    half: 7.62,
+    description: 'DDR termination regulator (VTT sink and source), 1.1-3.5 V output stage supply, buffered reference, enable and power-good, DFN3x3-10',
+    keywords: 'ddr termination vtt ldo regulator',
+    datasheet: 'https://www.silergy.com/',
+    pins: [
+      { number: '10', name: 'VIN', type: 'power_in', side: 'left', pos: 5.08 },
+      { number: '2', name: 'VLDOIN', type: 'power_in', side: 'left', pos: 2.54 },
+      { number: '7', name: 'EN', type: 'input', side: 'left', pos: 0 },
+      { number: '1', name: 'REFIN', type: 'input', side: 'left', pos: -2.54 },
+      { number: '5', name: 'VOSNS', type: 'input', side: 'left', pos: -5.08 },
+      { number: '3', name: 'VO', type: 'power_out', side: 'right', pos: 5.08 },
+      { number: '6', name: 'REFOUT', type: 'output', side: 'right', pos: 2.54 },
+      { number: '9', name: 'PGOOD', type: 'open_collector', side: 'right', pos: 0 },
+      { number: '8', name: 'GND', type: 'power_in', side: 'bottom', pos: -2.54 },
+      { number: '4', name: 'PGND', type: 'power_in', side: 'bottom', pos: 0 },
+      { number: '11', name: 'EP', type: 'passive', side: 'bottom', pos: 2.54 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 0.9A). The table lists EP among the GND pins; the footprint's exposed pad is numbered 17 (ours). IN, LX and GND each exist on several pins; LX is passive so that the pins of one net do not trip the ERC. Layout and pin types are ours.
+  'SY8388B': {
+    package: 'qfn2p5x2p5-16',
+    body: { halfW: 7.62, halfH: 10.16 },
+    description: 'Synchronous buck converter with a 3.3 V LDO, enable inputs, power-good and feedforward, QFN2.5x2.5-16',
+    keywords: 'buck converter dc-dc ldo synchronous',
+    datasheet: 'https://www.silergy.com/',
+    pins: [
+      { number: '2', name: 'IN', type: 'power_in', side: 'left', pos: 7.62 },
+      { number: '3', name: 'IN', type: 'power_in', side: 'left', pos: 5.08 },
+      { number: '4', name: 'IN', type: 'power_in', side: 'left', pos: 2.54 },
+      { number: '9', name: 'EN1', type: 'input', side: 'left', pos: 0 },
+      { number: '8', name: 'EN2', type: 'input', side: 'left', pos: -2.54 },
+      { number: '10', name: 'FF', type: 'input', side: 'left', pos: -5.08 },
+      { number: '7', name: 'PG', type: 'open_collector', side: 'left', pos: -7.62 },
+      { number: '5', name: 'LX', type: 'passive', side: 'right', pos: 7.62 },
+      { number: '15', name: 'LX', type: 'passive', side: 'right', pos: 5.08 },
+      { number: '16', name: 'LX', type: 'passive', side: 'right', pos: 2.54 },
+      { number: '11', name: 'OUT', type: 'input', side: 'right', pos: 0 },
+      { number: '13', name: 'LDO', type: 'power_out', side: 'right', pos: -2.54 },
+      { number: '12', name: 'TEST', type: 'passive', side: 'right', pos: -5.08 },
+      { number: '1', name: 'BS', type: 'passive', side: 'top', pos: 0 },
+      { number: '6', name: 'GND', type: 'power_in', side: 'bottom', pos: -2.54 },
+      { number: '14', name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+      { number: '17', name: 'GND', type: 'power_in', side: 'bottom', pos: 2.54 },
     ],
   },
 };

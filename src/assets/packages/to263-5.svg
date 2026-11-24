@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 471" role="img" aria-label="TO263-5 package top view and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-lead{fill:var(--cd-muted)}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dim{stroke:var(--cd-muted);stroke-width:1.2;fill:none}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="175" y="24" text-anchor="middle">Package, top view</text>
+<rect class="pk-lead" x="89.2" y="46.1" width="171.6" height="36.19"/>
+<rect class="pk-body" x="64.67" y="82.29" width="220.66" height="184.8" rx="3"/>
+<rect class="pk-lead" x="91.29" y="267.42" width="17.82" height="116.16"/>
+<text class="pk-t" x="100.2" y="399.58" text-anchor="middle">1</text>
+<rect class="pk-lead" x="128.69" y="267.42" width="17.82" height="116.16"/>
+<text class="pk-t" x="137.6" y="399.58" text-anchor="middle">2</text>
+<rect class="pk-lead" x="166.09" y="267.42" width="17.82" height="116.16"/>
+<text class="pk-t" x="175" y="399.58" text-anchor="middle">3</text>
+<rect class="pk-lead" x="203.49" y="267.42" width="17.82" height="116.16"/>
+<text class="pk-t" x="212.4" y="399.58" text-anchor="middle">4</text>
+<rect class="pk-lead" x="240.89" y="267.42" width="17.82" height="116.16"/>
+<text class="pk-t" x="249.8" y="399.58" text-anchor="middle">5</text>
+<text class="pk-n" x="175" y="178.69" text-anchor="middle">tab = pin 3</text>
+<text class="pk-h" x="470" y="24" text-anchor="middle">Footprint (recommended pads)</text>
+<polygon class="pk-pad" points="351.2,46.1 588.8,46.1 588.8,87.9 560.2,87.9 560.2,224.74 379.8,224.74 379.8,87.9 351.2,87.9"/>
+<text class="pk-t" x="470" y="140.42" text-anchor="middle" style="fill:var(--cd-on-accent)">3</text>
+<rect class="pk-pad" x="383.65" y="333.2" width="23.1" height="62.7" rx="5.775"/>
+<text class="pk-t" x="395.2" y="369.55" text-anchor="middle" style="fill:var(--cd-on-accent)">1</text>
+<rect class="pk-pad" x="421.05" y="333.2" width="23.1" height="62.7" rx="5.775"/>
+<text class="pk-t" x="432.6" y="369.55" text-anchor="middle" style="fill:var(--cd-on-accent)">2</text>
+<rect class="pk-pad" x="458.45" y="333.2" width="23.1" height="62.7" rx="5.775"/>
+<text class="pk-t" x="470" y="369.55" text-anchor="middle" style="fill:var(--cd-on-accent)">3</text>
+<rect class="pk-pad" x="495.85" y="333.2" width="23.1" height="62.7" rx="5.775"/>
+<text class="pk-t" x="507.4" y="369.55" text-anchor="middle" style="fill:var(--cd-on-accent)">4</text>
+<rect class="pk-pad" x="533.25" y="333.2" width="23.1" height="62.7" rx="5.775"/>
+<text class="pk-t" x="544.8" y="369.55" text-anchor="middle" style="fill:var(--cd-on-accent)">5</text>
+<text class="pk-n" x="470" y="419.9" text-anchor="middle">pads 1.05 × 2.85, pitch 1.70</text>
+<text class="pk-n" x="470" y="437.9" text-anchor="middle">tab pad 10.80 wide, 8.12 high, 15.90 overall</text>
+<text class="pk-n" x="175" y="419.9" text-anchor="middle">body 9.78–10.28 × 8.15–8.65</text>
+<text class="pk-n" x="175" y="437.9" text-anchor="middle">leads 0.71–0.91 wide, pitch 1.70</text>
+</svg>

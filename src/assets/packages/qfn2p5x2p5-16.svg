@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 362" role="img" aria-label="QFN2.5×2.5-16 package top view and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-lead{fill:var(--cd-muted);fill-opacity:.55}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="165" y="24" text-anchor="middle">Package, top view</text>
+<rect class="pk-body" x="90" y="90" width="150" height="150" rx="4"/>
+<rect class="pk-lead" x="90" y="118.5" width="24" height="12"/>
+<rect class="pk-lead" x="90" y="145.5" width="24" height="12"/>
+<rect class="pk-lead" x="90" y="172.5" width="24" height="12"/>
+<rect class="pk-lead" x="90" y="199.5" width="24" height="12"/>
+<rect class="pk-lead" x="118.5" y="216" width="12" height="24"/>
+<rect class="pk-lead" x="145.5" y="216" width="12" height="24"/>
+<rect class="pk-lead" x="172.5" y="216" width="12" height="24"/>
+<rect class="pk-lead" x="199.5" y="216" width="12" height="24"/>
+<rect class="pk-lead" x="216" y="199.5" width="24" height="12"/>
+<rect class="pk-lead" x="216" y="172.5" width="24" height="12"/>
+<rect class="pk-lead" x="216" y="145.5" width="24" height="12"/>
+<rect class="pk-lead" x="216" y="118.5" width="24" height="12"/>
+<rect class="pk-lead" x="199.5" y="90" width="12" height="24"/>
+<rect class="pk-lead" x="172.5" y="90" width="12" height="24"/>
+<rect class="pk-lead" x="145.5" y="90" width="12" height="24"/>
+<rect class="pk-lead" x="118.5" y="90" width="12" height="24"/>
+<rect class="pk-out" x="147" y="147" width="36" height="36"/>
+<text class="pk-n" x="165" y="169" text-anchor="middle">exposed pad</text>
+<circle class="pk-dot" cx="114" cy="114" r="6"/>
+<text class="pk-t" x="84" y="129.5" text-anchor="end">1</text>
+<text class="pk-t" x="84" y="210.5" text-anchor="end">4</text>
+<text class="pk-t" x="124.5" y="257" text-anchor="middle">5</text>
+<text class="pk-t" x="205.5" y="257" text-anchor="middle">8</text>
+<text class="pk-t" x="246" y="210.5" text-anchor="start">9</text>
+<text class="pk-t" x="246" y="129.5" text-anchor="start">12</text>
+<text class="pk-t" x="205.5" y="82" text-anchor="middle">13</text>
+<text class="pk-t" x="124.5" y="82" text-anchor="middle">16</text>
+<text class="pk-n" x="165" y="299" text-anchor="middle">body 2.40–2.60 square, 0.45 pitch</text>
+<text class="pk-n" x="165" y="317" text-anchor="middle">leads 0.12–0.28 wide, 0.30–0.50 long</text>
+<text class="pk-n" x="165" y="335" text-anchor="middle">exposed pad 0.50–0.70 square</text>
+<text class="pk-h" x="440" y="24" text-anchor="middle">Footprint (our pads)</text>
+<rect class="pk-out" x="365" y="90" width="150" height="150" rx="4"/>
+<rect class="pk-pad" x="344" y="117" width="48" height="15" rx="3.75"/>
+<rect class="pk-pad" x="344" y="144" width="48" height="15" rx="3.75"/>
+<rect class="pk-pad" x="344" y="171" width="48" height="15" rx="3.75"/>
+<rect class="pk-pad" x="344" y="198" width="48" height="15" rx="3.75"/>
+<rect class="pk-pad" x="392" y="213" width="15" height="48" rx="3.75"/>
+<rect class="pk-pad" x="419" y="213" width="15" height="48" rx="3.75"/>
+<rect class="pk-pad" x="446" y="213" width="15" height="48" rx="3.75"/>
+<rect class="pk-pad" x="473" y="213" width="15" height="48" rx="3.75"/>
+<rect class="pk-pad" x="488" y="198" width="48" height="15" rx="3.75"/>
+<rect class="pk-pad" x="488" y="171" width="48" height="15" rx="3.75"/>
+<rect class="pk-pad" x="488" y="144" width="48" height="15" rx="3.75"/>
+<rect class="pk-pad" x="488" y="117" width="48" height="15" rx="3.75"/>
+<rect class="pk-pad" x="473" y="69" width="15" height="48" rx="3.75"/>
+<rect class="pk-pad" x="446" y="69" width="15" height="48" rx="3.75"/>
+<rect class="pk-pad" x="419" y="69" width="15" height="48" rx="3.75"/>
+<rect class="pk-pad" x="392" y="69" width="15" height="48" rx="3.75"/>
+<rect class="pk-pad" x="422" y="147" width="36" height="36" rx="1.8"/>
+<text class="pk-t" x="440" y="170" text-anchor="middle" style="fill:var(--cd-on-accent)">17</text>
+<text class="pk-t" x="338" y="129.5" text-anchor="end">1</text>
+<text class="pk-t" x="338" y="210.5" text-anchor="end">4</text>
+<text class="pk-t" x="399.5" y="278" text-anchor="middle">5</text>
+<text class="pk-t" x="480.5" y="278" text-anchor="middle">8</text>
+<text class="pk-t" x="542" y="210.5" text-anchor="start">9</text>
+<text class="pk-t" x="542" y="129.5" text-anchor="start">12</text>
+<text class="pk-t" x="480.5" y="61" text-anchor="middle">13</text>
+<text class="pk-t" x="399.5" y="61" text-anchor="middle">16</text>
+<text class="pk-n" x="440" y="299" text-anchor="middle">pads 0.80 × 0.25 mm</text>
+<text class="pk-n" x="440" y="317" text-anchor="middle">exposed pad 0.60 square, number 17</text>
+<text class="pk-n" x="440" y="335" text-anchor="middle">pad corner chamfers not drawn</text>
+</svg>

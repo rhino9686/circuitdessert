@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 760 260" role="img" aria-labelledby="sa21345g-t sa21345g-d">
 <title id="sa21345g-t">SA21345G typical application circuit</title>
-<desc id="sa21345g-d">Typical application circuit of the SA21345G 5 V LDO, redrawn from Figure 1 of the datasheet. The input VIN (4 V to 36 V) feeds the IN pin and has a 10 µF capacitor CIN to ground. The OUT pin is the 5 V output VOUT, with a 4.7 µF capacitor COUT to ground. The GND pin goes to ground. The SO8 package has four no-connect pins, which are not drawn.</desc>
+<desc id="sa21345g-d">Typical application circuit of the SA21345G 5 V LDO, redrawn from Figure 1 of the datasheet. The input VIN (4 V to 36 V) feeds the IN pin and has a 10 µF capacitor CIN to ground. The OUT pin is the 5 V output VOUT, with a 4.7 µF capacitor COUT to ground. The GND pin goes to ground. The SO8 package has five no-connect pins, which are not drawn.</desc>
 <rect class="sch-ic" x="290" y="110" width="140" height="130" rx="3"/>
 <path class="sch-w" d="M278 160 L290 160"/>
 <text class="sch-pin" x="298" y="164" text-anchor="start">IN</text>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="DFN3×3-10 package contacts and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-lead{fill:var(--cd-muted)}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dim{stroke:var(--cd-muted);stroke-width:1.2;fill:none}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="165" y="24" text-anchor="middle">Package contacts, seen from above</text>
+<rect class="pk-body" x="87" y="92" width="156" height="156" rx="4"/>
+<polygon class="pk-lead" points="120.8,107.6 209.2,107.6 209.2,232.4 120.8,232.4"/>
+<rect class="pk-lead" x="87" y="111.5" width="20.8" height="13"/>
+<text class="pk-t" x="80.76" y="122.5" text-anchor="end">1</text>
+<rect class="pk-lead" x="87" y="137.5" width="20.8" height="13"/>
+<text class="pk-t" x="80.76" y="148.5" text-anchor="end">2</text>
+<rect class="pk-lead" x="87" y="163.5" width="20.8" height="13"/>
+<text class="pk-t" x="80.76" y="174.5" text-anchor="end">3</text>
+<rect class="pk-lead" x="87" y="189.5" width="20.8" height="13"/>
+<text class="pk-t" x="80.76" y="200.5" text-anchor="end">4</text>
+<rect class="pk-lead" x="87" y="215.5" width="20.8" height="13"/>
+<text class="pk-t" x="80.76" y="226.5" text-anchor="end">5</text>
+<rect class="pk-lead" x="222.2" y="215.5" width="20.8" height="13"/>
+<text class="pk-t" x="249.24" y="226.5" text-anchor="start">6</text>
+<rect class="pk-lead" x="222.2" y="189.5" width="20.8" height="13"/>
+<text class="pk-t" x="249.24" y="200.5" text-anchor="start">7</text>
+<rect class="pk-lead" x="222.2" y="163.5" width="20.8" height="13"/>
+<text class="pk-t" x="249.24" y="174.5" text-anchor="start">8</text>
+<rect class="pk-lead" x="222.2" y="137.5" width="20.8" height="13"/>
+<text class="pk-t" x="249.24" y="148.5" text-anchor="start">9</text>
+<rect class="pk-lead" x="222.2" y="111.5" width="20.8" height="13"/>
+<text class="pk-t" x="249.24" y="122.5" text-anchor="start">10</text>
+<circle class="pk-dot" cx="102.6" cy="107.6" r="7"/>
+<path class="pk-dim" d="M50.6 92V248M45.6 92h10M45.6 248h10"/>
+<text class="pk-n" transform="translate(42.6 170) rotate(-90)" text-anchor="middle">2.90–3.10</text>
+<path class="pk-dim" d="M87 263.6H243M87 258.6v10M243 258.6v10"/>
+<text class="pk-n" x="165" y="281.6" text-anchor="middle">body 2.90–3.10</text>
+<text class="pk-n" x="165" y="299.6" text-anchor="middle">contacts 0.30–0.50 long, 0.20–0.30 wide</text>
+<text class="pk-h" x="440" y="24" text-anchor="middle">Footprint (land pattern)</text>
+<rect class="pk-out" x="362" y="92" width="156" height="156" rx="4"/>
+<polygon class="pk-pad" points="394.5,102.4 485.5,102.4 485.5,237.6 394.5,237.6"/>
+<text class="pk-t" x="440" y="174.5" text-anchor="middle" style="fill:var(--cd-on-accent)">11</text>
+<rect class="pk-pad" x="345.1" y="110.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="338.86" y="122.5" text-anchor="end">1</text>
+<rect class="pk-pad" x="345.1" y="136.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="338.86" y="148.5" text-anchor="end">2</text>
+<rect class="pk-pad" x="345.1" y="162.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="338.86" y="174.5" text-anchor="end">3</text>
+<rect class="pk-pad" x="345.1" y="188.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="338.86" y="200.5" text-anchor="end">4</text>
+<rect class="pk-pad" x="345.1" y="214.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="338.86" y="226.5" text-anchor="end">5</text>
+<rect class="pk-pad" x="495.9" y="214.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="541.14" y="226.5" text-anchor="start">6</text>
+<rect class="pk-pad" x="495.9" y="188.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="541.14" y="200.5" text-anchor="start">7</text>
+<rect class="pk-pad" x="495.9" y="162.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="541.14" y="174.5" text-anchor="start">8</text>
+<rect class="pk-pad" x="495.9" y="136.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="541.14" y="148.5" text-anchor="start">9</text>
+<rect class="pk-pad" x="495.9" y="110.2" width="39" height="15.6" rx="3.9"/>
+<text class="pk-t" x="541.14" y="122.5" text-anchor="start">10</text>
+<path class="pk-dim" d="M364.6 253.2H515.4M364.6 248.2v10M515.4 248.2v10"/>
+<text class="pk-n" x="440" y="271.2" text-anchor="middle">2.90 between pad rows</text>
+<text class="pk-n" x="440" y="289.2" text-anchor="middle">pads 0.75 × 0.30, pitch 0.50</text>
+<text class="pk-n" x="440" y="307.2" text-anchor="middle">exposed pad 2.60 × 1.75</text>
+</svg>
