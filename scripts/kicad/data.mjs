@@ -1616,4 +1616,20 @@ export const SYMBOLS = {
       { number: "41", name: "EP", type: "passive", side: "bottom", pos: 7.62 },
     ],
   },
+  // SY80082ABT, SY80082FABT and SY80082LABT have the same pinout, so one symbol serves all three. Pin numbers and names are from the datasheet's pin table and pinout (SOT23-6, top view). PG is an open drain output, pulled up through a resistor; LX is passive because it is a switching node. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
+  "SY80082x": {
+    fpFilter: "SOT-23-6*",
+    half: 5.08,
+    description: "2.5-5.5 V input, 2 A synchronous buck, 1.5 MHz, power good, adjustable output from a 0.6 V reference, SOT23-6. One symbol for SY80082ABT, SY80082FABT and SY80082LABT",
+    keywords: "buck converter synchronous step-down 2A power good SY80082 SY80082ABT SY80082FABT SY80082LABT SOT23-6",
+    datasheet: "https://www.silergy.com/download/downloadFile?id=6668&type=product&ftype=note",
+    pins: [
+      { number: "4", name: "IN", type: "power_in", side: "left", pos: 2.54 },
+      { number: "1", name: "EN", type: "input", side: "left", pos: 0 },
+      { number: "6", name: "FB", type: "input", side: "left", pos: -2.54 },
+      { number: "3", name: "LX", type: "passive", side: "right", pos: 2.54 },
+      { number: "5", name: "PG", type: "open_collector", side: "right", pos: 0 },
+      { number: "2", name: "GND", type: "power_in", side: "bottom", pos: 0 },
+    ],
+  },
 };
