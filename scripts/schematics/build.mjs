@@ -46,7 +46,6 @@ import { usbEsdApplication, pinConnections } from './designs-sy205229awc.mjs';
 import { classDAmpTypical } from './designs-sy6045b.mjs';
 import { singleInductorBuckBoost } from './designs-tps63020.mjs';
 import { inlineMotorSense, solenoidSense } from './designs-ina240.mjs';
-import { threePhaseMeter } from './designs-ade9039.mjs';
 import { testCircuit as ade9078TestCircuit } from './designs-ade9078.mjs';
 import { meterBasics as meter71m6511Basics } from './designs-71m6511.mjs';
 import { ldoNoiseReduction } from './designs-tps7a8101.mjs';
@@ -296,7 +295,6 @@ const designs = {
   'sy205229awc-pin-connections.svg': pinConnections({ id: 'sy205229awc-pin-connections', part: 'SY205229AWC' }),
   'sy5867z-schematic.svg': dimmingInterface({ id: 'sy5867z' }),
   'sy6045b-schematic.svg': classDAmpTypical({ id: 'sy6045b' }),
-  'ade9039-schematic.svg': threePhaseMeter({ id: 'ade9039', part: 'ADE9039' }),
   'ade9078-schematic.svg': ade9078TestCircuit({ id: 'ade9078', part: 'ADE9078' }),
   '71m6511-schematic.svg': meter71m6511Basics({ id: '71m6511', part: '71M6511' }),
   'sq52201qdq-schematic.svg': powerMonitor1Ch({ id: 'sq52201qdq' }),
