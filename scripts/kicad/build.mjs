@@ -79,7 +79,7 @@ function footprint(pk) {
 }
 
 // ---------------------------------------------------------------- symbol
-// A symbol file holds one symbol, or one per package when `packages` is given (a part whose packages number the pins differently):
+// A symbol file holds one symbol, or one per package when `packages` (verified footprints) or `variants` (no footprint yet) is given (a part whose packages number the pins differently):
 // then each pin has `numbers: { <package slug>: '<pin number>' }` and the symbols are named <PART>_<package name>.
 function symbolBlock(name, value, s, pk, numberOf) {
   const plen = 2.54;
@@ -119,10 +119,14 @@ function symbolBlock(name, value, s, pk, numberOf) {
 
 function symbol(name, s) {
   const L = [`(kicad_symbol_lib (version 20220914) (generator kicad_symbol_editor)`];
-  if (s.packages) {
-    for (const slug of s.packages) {
+  if (s.packages || s.variants) {
+    for (const slug of s.packages ?? []) {
       const pk = PACKAGES[slug];
       L.push(...symbolBlock(`${name}_${pk.name}`, name, s, pk, (p) => p.numbers[slug]));
+    }
+    // `variants`: packages with no verified footprint on this site. Same as `packages`, but the Footprint field stays empty and the footprint filter is the variant's own.
+    for (const [key, v] of Object.entries(s.variants ?? {})) {
+      L.push(...symbolBlock(`${name}_${v.name}`, name, { ...s, fpFilter: v.fpFilter }, null, (p) => p.numbers[key]));
     }
   } else {
     // a symbol can come before its footprint: then Footprint stays empty
