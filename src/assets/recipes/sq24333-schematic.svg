@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 800 300" role="img" aria-labelledby="sq24333-t sq24333-d">
+<title id="sq24333-t">SQ24333 typical application circuit</title>
+<desc id="sq24333-d">Adjustable-output application circuit of the SQ24333 3 A LDO, redrawn from Figure 1 of the datasheet. The input VIN feeds the IN pin with an input capacitor CIN to ground, and the enable pin EN is driven by a separate signal. The OUT pin is the output VOUT with an output capacitor COUT to ground. The feedback divider is R1 from VOUT to the FB pin and R2 from FB to ground, which set VOUT = 1.24 times (1 + R1 / R2). The GND pin goes to ground. The datasheet figure gives no component values.</desc>
+<rect class="sch-ic" x="280" y="100" width="150" height="150" rx="3"/>
+<path class="sch-w" d="M268 140 L280 140"/>
+<text class="sch-pin" x="288" y="144" text-anchor="start">IN</text>
+<path class="sch-w" d="M268 210 L280 210"/>
+<text class="sch-pin" x="288" y="214" text-anchor="start">EN</text>
+<path class="sch-w" d="M430 140 L442 140"/>
+<text class="sch-pin" x="422" y="144" text-anchor="end">OUT</text>
+<path class="sch-w" d="M430 210 L442 210"/>
+<text class="sch-pin" x="422" y="214" text-anchor="end">FB</text>
+<path class="sch-w" d="M360 250 L360 262"/>
+<text class="sch-pin" x="360" y="242" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="355" y="179" text-anchor="middle">SQ24333</text>
+<path class="sch-flag" d="M60 140 L52 132 L14 132 L14 148 L52 148 Z"/>
+<text class="sch-net" x="33" y="144" text-anchor="middle">VIN</text>
+<path class="sch-w" d="M60 140 L268 140"/>
+<circle class="sch-dot" cx="130" cy="140" r="3"/>
+<path class="sch-w" d="M130 140 L130 216"/>
+<path class="sch-w" d="M130 300 L130 224"/>
+<path class="sch-w" d="M119 216 L141 216"/>
+<path class="sch-w" d="M119 224 L141 224"/>
+<path class="sch-w" d="M130 300 L130 308"/>
+<path class="sch-w" d="M119 308 L141 308"/>
+<path class="sch-w" d="M123 313 L137 313"/>
+<path class="sch-w" d="M127 318 L133 318"/>
+<text class="sch-ref" x="114" y="258" text-anchor="end">C<tspan class="sch-sub" dy="2.5">IN</tspan></text>
+<path class="sch-flag" d="M60 210 L52 202 L14 202 L14 218 L52 218 Z"/>
+<text class="sch-net" x="33" y="214" text-anchor="middle">EN</text>
+<path class="sch-w" d="M60 210 L268 210"/>
+<path class="sch-w" d="M442 140 L720 140"/>
+<path class="sch-flag" d="M720 140 L728 132 L766 132 L766 148 L728 148 Z"/>
+<text class="sch-net" x="747" y="144" text-anchor="middle">VOUT</text>
+<circle class="sch-dot" cx="520" cy="140" r="3"/>
+<circle class="sch-dot" cx="640" cy="140" r="3"/>
+<path class="sch-w" d="M520 140 L520 160 L514 162.5 L526 167.5 L514 172.5 L526 177.5 L514 182.5 L526 187.5 L520 190 L520 210"/>
+<text class="sch-ref" x="536" y="173" text-anchor="start">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<circle class="sch-dot" cx="520" cy="210" r="3"/>
+<path class="sch-w" d="M442 210 L520 210"/>
+<path class="sch-w" d="M520 210 L520 240 L514 242.5 L526 247.5 L514 252.5 L526 257.5 L514 262.5 L526 267.5 L520 270 L520 300"/>
+<path class="sch-w" d="M520 300 L520 308"/>
+<path class="sch-w" d="M509 308 L531 308"/>
+<path class="sch-w" d="M513 313 L527 313"/>
+<path class="sch-w" d="M517 318 L523 318"/>
+<text class="sch-ref" x="536" y="253" text-anchor="start">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<path class="sch-w" d="M640 140 L640 216"/>
+<path class="sch-w" d="M640 300 L640 224"/>
+<path class="sch-w" d="M629 216 L651 216"/>
+<path class="sch-w" d="M629 224 L651 224"/>
+<path class="sch-w" d="M640 300 L640 308"/>
+<path class="sch-w" d="M629 308 L651 308"/>
+<path class="sch-w" d="M633 313 L647 313"/>
+<path class="sch-w" d="M637 318 L643 318"/>
+<text class="sch-ref" x="656" y="258" text-anchor="start">C<tspan class="sch-sub" dy="2.5">OUT</tspan></text>
+<path class="sch-w" d="M360 262 L360 320"/>
+<path class="sch-w" d="M360 320 L360 328"/>
+<path class="sch-w" d="M349 328 L371 328"/>
+<path class="sch-w" d="M353 333 L367 333"/>
+<path class="sch-w" d="M357 338 L363 338"/>
+</svg>

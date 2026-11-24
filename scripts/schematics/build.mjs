@@ -52,6 +52,7 @@ import { testCircuit as ade9078TestCircuit } from './designs-ade9078.mjs';
 import { meterBasics as meter71m6511Basics } from './designs-71m6511.mjs';
 import { ldoNoiseReduction } from './designs-tps7a8101.mjs';
 import { ldoThreePin, ldoEnablePg, ldoAdjustable, ldoLowNoise } from './designs-ldo-basic.mjs';
+import { buckSy8388b } from './designs-batch3.mjs';
 import { ddrTps51200, ddrRt2568, ddrTps51206, ldoBypass, chargerBq25171, buckTps5139x, ldoUserSet } from './designs-batch2.mjs';
 import { fuelGaugeHighSide } from './designs-bq27426.mjs';
 import { fuelGauge } from './designs-max17048.mjs';
@@ -199,6 +200,68 @@ const designs = {
   'bq25171-q1-schematic.svg': chargerBq25171({ id: 'bq25171-q1', part: 'BQ25171-Q1' }),
   'tps5139x-schematic.svg': buckTps5139x({ id: 'tps5139x', part: 'TPS51393 and TPS51395' }),
   'tps7a7200-ep-schematic.svg': ldoUserSet({ id: 'tps7a7200-ep', part: 'TPS7A7200-EP' }),
+  'sa21345g-schematic.svg': ldoThreePin({
+    id: 'sa21345g',
+    part: 'SA21345G',
+    pins: { in: 'IN', out: 'OUT', gnd: 'GND' },
+    ports: { in: 'VIN', out: 'VOUT' },
+    cin: [{ ref: 'CIN', val: '10 µF' }],
+    cout: [{ ref: 'COUT', val: '4.7 µF' }],
+    desc:
+      'Typical application circuit of the SA21345G 5 V LDO, redrawn from Figure 1 of the datasheet. The input VIN (4 V to 36 V) feeds the IN pin and has a 10 µF capacitor CIN to ground. ' +
+      'The OUT pin is the 5 V output VOUT, with a 4.7 µF capacitor COUT to ground. The GND pin goes to ground. The SO8 package has four no-connect pins, which are not drawn.',
+  }),
+  'sa21308a-schematic.svg': ldoAdjustable({
+    id: 'sa21308a', part: 'SA21308A',
+    pins: { in: 'IN', out: 'OUT', adj: 'FB', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'tied',
+    cin: { ref: 'CIN', val: '1 µF' }, cout: { ref: 'COUT', val: '2.2 µF' }, r1: { ref: 'RH', val: '100 kΩ' }, r2: { ref: 'RL', val: '20 kΩ' },
+    desc: 'Typical application circuit of the SA21308A adjustable 500 mA LDO, redrawn from Figure 1 of the datasheet, which gives 3.3 V out. The input VIN feeds the IN pin with a 1 µF capacitor CIN to ground, and the EN pin is wired to the input so the regulator is always on. The OUT pin is the output VOUT with a 2.2 µF capacitor COUT to ground. The feedback divider is RH (100 kilohms) from VOUT to the FB pin and RL (20 kilohms) from FB to ground. The GND pin goes to ground. The datasheet figure also shows the optional 100 pF feedforward capacitor CFF across RH, the power-good pull-up RPG (100 kilohms) and an enable resistor REN (1 megohm) with a jumper; none of these is drawn here.',
+  }),
+  'sy6103-schematic.svg': ldoAdjustable({
+    id: 'sy6103', part: 'SY6103',
+    pins: { in: 'IN', out: 'OUT', adj: 'FB', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN',
+    cin: { ref: 'CIN', val: '' }, cout: { ref: 'COUT', val: '' }, r1: { ref: 'R1', val: '' }, r2: { ref: 'R2', val: '' },
+    desc: 'Adjustable-output application circuit of the SY6103 3 A LDO, redrawn from Figure 1 of the datasheet. The input VIN feeds the IN pin with an input capacitor CIN to ground, and the enable pin EN is driven by a separate signal. The OUT pin is the output VOUT with an output capacitor COUT to ground. The feedback divider is R1 from VOUT to the FB pin and R2 from FB to ground, which set VOUT = 1.24 times (1 + R1 / R2). The GND pin goes to ground. The datasheet figure gives no component values.',
+  }),
+  'sq24333-schematic.svg': ldoAdjustable({
+    id: 'sq24333', part: 'SQ24333',
+    pins: { in: 'IN', out: 'OUT', adj: 'FB', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN',
+    cin: { ref: 'CIN', val: '' }, cout: { ref: 'COUT', val: '' }, r1: { ref: 'R1', val: '' }, r2: { ref: 'R2', val: '' },
+    desc: 'Adjustable-output application circuit of the SQ24333 3 A LDO, redrawn from Figure 1 of the datasheet. The input VIN feeds the IN pin with an input capacitor CIN to ground, and the enable pin EN is driven by a separate signal. The OUT pin is the output VOUT with an output capacitor COUT to ground. The feedback divider is R1 from VOUT to the FB pin and R2 from FB to ground, which set VOUT = 1.24 times (1 + R1 / R2). The GND pin goes to ground. The datasheet figure gives no component values.',
+  }),
+  'sy6307b-schematic.svg': ldoAdjustable({
+    id: 'sy6307b', part: 'SY6307B', hopEn: true,
+    pins: { in: 'IN', out: 'OUT', adj: 'ADJ', en: 'EN', bias: 'Bias', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN', bias: 'VBIAS',
+    cin: { ref: 'CIN', val: '1 µF' }, cout: { ref: 'COUT', val: '2.2 µF' }, cbias: { ref: 'CBIAS', val: '0.1 µF' }, r1: { ref: 'RH', val: '49.9 kΩ' }, r2: { ref: 'RL', val: '200 kΩ' },
+    desc: 'Typical application circuit of the SY6307B 500 mA bias-rail LDO, redrawn from Figure 1 of the datasheet for a 1.0 V output from a 1.2 V input. The input VIN feeds the IN pin with a 1 µF capacitor CIN to ground. A separate bias supply VBIAS (above 2.4 V) feeds the Bias pin with a 0.1 µF capacitor CBIAS to ground, and the enable pin EN is driven by a separate signal. The OUT pin is the output VOUT with a 2.2 µF capacitor COUT to ground. The feedback divider is RH (49.9 kilohms) from VOUT to the ADJ pin and RL (200 kilohms) from ADJ to ground, which set VOUT = 0.8 times (1 + RH / RL). The GND pin goes to ground.',
+  }),
+  'sq24345h-schematic.svg': ldoAdjustable({
+    id: 'sq24345h', part: 'SQ24345H',
+    pins: { in: 'IN', out: 'OUT', adj: 'ADJ', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN',
+    cin: { ref: 'CIN', val: '' }, cout: { ref: 'COUT', val: '' }, r1: { ref: 'R1', val: '' }, r2: { ref: 'R2', val: '' },
+    desc: 'Adjustable-output application circuit of the SQ24345H 36 V, 500 mA LDO, redrawn from Figure 1 of the datasheet. The input VIN feeds the IN pin with an input capacitor CIN to ground, and the enable pin EN is driven by a separate signal. The OUT pin is the output VOUT with an output capacitor COUT to ground. The feedback divider is R1 from VOUT to the ADJ pin and R2 from ADJ to ground, which set VOUT = 1.235 times (1 + R1 / R2). The GND pin goes to ground. The datasheet figure gives no component values.',
+  }),
+  'sq24302dac-schematic.svg': ldoAdjustable({
+    id: 'sq24302dac', part: 'SQ24302DAC',
+    pins: { in: 'IN', out: 'OUT', adj: 'ADJ', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'EN',
+    cin: { ref: 'C1', val: '10 µF' }, cout: { ref: 'C2', val: '22 µF' }, r1: { ref: 'R3', val: '' }, r2: { ref: 'R2', val: '' },
+    desc: 'Adjustable-output application circuit of the SQ24302DAC 2 A low-input LDO, redrawn from Figure 1 of the datasheet. The input VIN feeds the IN pin with a 10 µF capacitor C1 to ground, and the enable pin EN is driven by a separate signal. The OUT pin is the output VOUT with a 22 µF capacitor C2 to ground. The feedback divider is R3 from VOUT to the ADJ pin and R2 from ADJ to ground, which set VOUT = 0.5 times (R3 + R2) / R2. The GND pin and exposed pad go to ground. The datasheet figure also shows a resistor R1 on the EN pin and a capacitor C3 across R3, which are not drawn, and gives no resistor values. The capacitor values are the ones the datasheet text recommends.',
+  }),
+  'sy6355-schematic.svg': ddrTps51200({
+    id: 'sy6355', part: 'SY6355',
+    desc:
+      'Typical application circuit of the SY6355 DDR termination regulator, redrawn from Figure 1 of the datasheet. The VIN pin is fed from the 3.3 V rail with a 4.7 µF capacitor C6 to ground, and the same rail pulls up the open-drain PGOOD pin through a 100 kΩ resistor R3. ' +
+      'The VDDQ rail reaches REFIN through R1 (10 kΩ), with R2 (10 kΩ) and C4 (1 nF) from REFIN to ground, and also feeds VLDOIN, which has two 10 µF capacitors C7 and C8 to ground. The enable pin EN is driven by the chip-enable signal; the figure also shows a 1 MΩ resistor R6 and a jumper K1 from the supply to EN, which are not drawn. ' +
+      'VO is the termination output with three 10 µF capacitors C1 to C3 to ground, and VOSNS is wired to VO. REFOUT is the buffered reference output with a 0.1 µF capacitor C5 to ground. PGND and GND are tied to ground.',
+  }),
+  'sq24335-schematic.svg': ddrTps51200({
+    id: 'sq24335', part: 'SQ24335',
+    desc:
+      'Typical application circuit of the SQ24335 DDR termination regulator, redrawn from Figure 1 of the datasheet. The VIN pin is fed from the 3.3 V rail with a 4.7 µF capacitor C6 to ground, and the same rail pulls up the open-drain PGOOD pin through a 100 kΩ resistor R3. ' +
+      'The VDDQ rail reaches REFIN through R1 (10 kΩ), with R2 (10 kΩ) and C4 (1 nF) from REFIN to ground, and also feeds VLDOIN, which has two 10 µF capacitors C7 and C8 to ground. The enable pin EN is driven by the chip-enable signal; the figure also shows a 1 MΩ resistor R6 and a jumper K1 from the supply to EN, which are not drawn. ' +
+      'VO is the termination output with three 10 µF capacitors C1 to C3 to ground, and VOSNS is wired to VO. REFOUT is the buffered reference output with a 0.1 µF capacitor C5 to ground. PGND and GND are tied to ground.',
+  }),
+  'sy8388b-schematic.svg': buckSy8388b({ id: 'sy8388b', part: 'SY8388B' }),
   'bq27426-schematic.svg': fuelGaugeHighSide({ id: 'bq27426', part: 'BQ27426' }),
   'max17048-schematic.svg': fuelGauge({ id: 'max17048', part: 'MAX17048', cells: 1 }),
   'max17049-schematic.svg': fuelGauge({ id: 'max17049', part: 'MAX17049', cells: 2 }),

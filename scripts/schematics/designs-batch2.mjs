@@ -16,12 +16,12 @@ function capUp(s, x, y, ref, val, side = 'left') {
 /**
  * TPS51200 Figure 7-1: 3.3 V input, DDR3 (VDDQ = 1.5 V, VTT = 0.75 V).
  */
-export function ddrTps51200({ id, part }) {
+export function ddrTps51200({ id, part, desc: descOverride }) {
   const s = new Sheet(890, 570, {
     top: 50,
     id,
     title: `${part} typical application circuit`,
-    desc:
+    desc: descOverride ??
       `Typical application circuit of the ${part} DDR termination regulator, redrawn from the datasheet's Figure 7-1 for a 3.3 V input and DDR3 memory. ` +
       `The VIN pin is fed from the 3.3 V rail with a 4.7 µF capacitor C6 to ground, and the same rail pulls up the open-drain PGOOD pin through a 100 kΩ resistor R3. ` +
       `The VDDQ rail (1.5 V) reaches REFIN through R1 (10 kΩ), with R2 (10 kΩ) and C4 (1000 pF) from REFIN to ground, and also feeds VLDOIN, which has two 10 µF capacitors C7 and C8 to ground. ` +
