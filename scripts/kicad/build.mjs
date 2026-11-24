@@ -6,6 +6,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { LIB, PACKAGES, SYMBOLS } from './data.mjs';
 import { padListQuad, footprintQuad, illustrationQuad } from './quad.mjs';
 import { padListTo, footprintTo, illustrationTo } from './to.mjs';
+import { padListBga, footprintBga, illustrationBga } from './bga.mjs';
 import { padListTht, footprintTht, illustrationTht, padListSip, footprintSip, illustrationSip } from './tht.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
@@ -21,6 +22,7 @@ const rowYs = (pk) => Array.from({ length: pinsPerSide(pk) }, (_, i) => (i - (pi
 
 export function padList(pk) {
   if (pk.layout === 'quad') return padListQuad(pk);
+  if (pk.layout === 'bga') return padListBga(pk);
   if (pk.layout === 'dip-th') return padListTht(pk);
   if (pk.layout === 'sip-th') return padListSip(pk);
   if (pk.layout === 'to-tab') return padListTo(pk);
@@ -40,6 +42,7 @@ export function padList(pk) {
 
 function footprint(pk) {
   if (pk.layout === 'quad') return footprintQuad(pk);
+  if (pk.layout === 'bga') return footprintBga(pk);
   if (pk.layout === 'dip-th') return footprintTht(pk);
   if (pk.layout === 'sip-th') return footprintSip(pk);
   if (pk.layout === 'to-tab') return footprintTo(pk);
@@ -139,6 +142,7 @@ function symbol(name, s) {
 // ---------------------------------------------------------------- illustration
 function illustration(pk) {
   if (pk.layout === 'quad') return illustrationQuad(pk);
+  if (pk.layout === 'bga') return illustrationBga(pk);
   if (pk.layout === 'dip-th') return illustrationTht(pk);
   if (pk.layout === 'sip-th') return illustrationSip(pk);
   if (pk.layout === 'to-tab') return illustrationTo(pk);

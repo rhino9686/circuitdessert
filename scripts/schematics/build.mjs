@@ -54,6 +54,7 @@ import { ldoThreePin, ldoEnablePg, ldoAdjustable, ldoLowNoise } from './designs-
 import { buckSy8388b } from './designs-batch3.mjs';
 import { ddrTps51200, ddrRt2568, ddrTps51206, ldoBypass, chargerBq25171, buckTps5139x, ldoUserSet } from './designs-batch2.mjs';
 import { fuelGaugeHighSide } from './designs-bq27426.mjs';
+import { pmicChargerBq25190 } from './designs-bq25190.mjs';
 import { fuelGauge } from './designs-max17048.mjs';
 import { adapter65w, openFrame30w } from './designs-topswitch-jx.mjs';
 import { flybackTypical, lineSense as top252LineSense, figure42 } from './designs-top258yn.mjs';
@@ -262,6 +263,7 @@ const designs = {
   }),
   'sy8388b-schematic.svg': buckSy8388b({ id: 'sy8388b', part: 'SY8388B' }),
   'bq27426-schematic.svg': fuelGaugeHighSide({ id: 'bq27426', part: 'BQ27426' }),
+  'bq25190-schematic.svg': pmicChargerBq25190({ id: 'bq25190', part: 'BQ25190' }),
   'max17048-schematic.svg': fuelGauge({ id: 'max17048', part: 'MAX17048', cells: 1 }),
   'max17049-schematic.svg': fuelGauge({ id: 'max17049', part: 'MAX17049', cells: 2 }),
   'top264-271-fig25-schematic.svg': adapter65w({ id: 'top264-271-fig25' }),

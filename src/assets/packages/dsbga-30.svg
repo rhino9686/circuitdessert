@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 365" role="img" aria-label="DSBGA-30 package, balls seen from above, and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-lead{fill:var(--cd-muted);fill-opacity:.55}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-mask{fill:none;stroke:var(--cd-faint);stroke-width:1;stroke-dasharray:3 2}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="165" y="24" text-anchor="middle">Package, balls seen from above</text>
+<rect class="pk-body" x="76.52" y="66.52" width="176.96" height="216.96" rx="4"/>
+<circle class="pk-dot" cx="89.32" cy="79.32" r="4"/>
+<circle class="pk-lead" cx="101" cy="95" r="10"/>
+<circle class="pk-lead" cx="133" cy="95" r="10"/>
+<circle class="pk-lead" cx="165" cy="95" r="10"/>
+<circle class="pk-lead" cx="197" cy="95" r="10"/>
+<circle class="pk-lead" cx="229" cy="95" r="10"/>
+<circle class="pk-lead" cx="101" cy="127" r="10"/>
+<circle class="pk-lead" cx="133" cy="127" r="10"/>
+<circle class="pk-lead" cx="165" cy="127" r="10"/>
+<circle class="pk-lead" cx="197" cy="127" r="10"/>
+<circle class="pk-lead" cx="229" cy="127" r="10"/>
+<circle class="pk-lead" cx="101" cy="159" r="10"/>
+<circle class="pk-lead" cx="133" cy="159" r="10"/>
+<circle class="pk-lead" cx="165" cy="159" r="10"/>
+<circle class="pk-lead" cx="197" cy="159" r="10"/>
+<circle class="pk-lead" cx="229" cy="159" r="10"/>
+<circle class="pk-lead" cx="101" cy="191" r="10"/>
+<circle class="pk-lead" cx="133" cy="191" r="10"/>
+<circle class="pk-lead" cx="165" cy="191" r="10"/>
+<circle class="pk-lead" cx="197" cy="191" r="10"/>
+<circle class="pk-lead" cx="229" cy="191" r="10"/>
+<circle class="pk-lead" cx="101" cy="223" r="10"/>
+<circle class="pk-lead" cx="133" cy="223" r="10"/>
+<circle class="pk-lead" cx="165" cy="223" r="10"/>
+<circle class="pk-lead" cx="197" cy="223" r="10"/>
+<circle class="pk-lead" cx="229" cy="223" r="10"/>
+<circle class="pk-lead" cx="101" cy="255" r="10"/>
+<circle class="pk-lead" cx="133" cy="255" r="10"/>
+<circle class="pk-lead" cx="165" cy="255" r="10"/>
+<circle class="pk-lead" cx="197" cy="255" r="10"/>
+<circle class="pk-lead" cx="229" cy="255" r="10"/>
+<text class="pk-t" x="64.52" y="100" text-anchor="end">A</text>
+<text class="pk-t" x="64.52" y="132" text-anchor="end">B</text>
+<text class="pk-t" x="64.52" y="164" text-anchor="end">C</text>
+<text class="pk-t" x="64.52" y="196" text-anchor="end">D</text>
+<text class="pk-t" x="64.52" y="228" text-anchor="end">E</text>
+<text class="pk-t" x="64.52" y="260" text-anchor="end">F</text>
+<text class="pk-t" x="101" y="56.52" text-anchor="middle">1</text>
+<text class="pk-t" x="133" y="56.52" text-anchor="middle">2</text>
+<text class="pk-t" x="165" y="56.52" text-anchor="middle">3</text>
+<text class="pk-t" x="197" y="56.52" text-anchor="middle">4</text>
+<text class="pk-t" x="229" y="56.52" text-anchor="middle">5</text>
+<text class="pk-n" x="165" y="311.48" text-anchor="middle">body 2.182–2.242 × 2.682–2.742</text>
+<text class="pk-n" x="165" y="329.48" text-anchor="middle">5 × 6 balls, 0.40 pitch</text>
+<text class="pk-n" x="165" y="347.48" text-anchor="middle">ball ⌀0.23–0.27, height 0.14–0.20</text>
+<text class="pk-h" x="440" y="24" text-anchor="middle">Footprint (recommended land pattern)</text>
+<rect class="pk-out" x="351.52" y="66.52" width="176.96" height="216.96" rx="4"/>
+<circle class="pk-mask" cx="376" cy="95" r="13.2"/>
+<circle class="pk-pad" cx="376" cy="95" r="9.2"/>
+<circle class="pk-mask" cx="408" cy="95" r="13.2"/>
+<circle class="pk-pad" cx="408" cy="95" r="9.2"/>
+<circle class="pk-mask" cx="440" cy="95" r="13.2"/>
+<circle class="pk-pad" cx="440" cy="95" r="9.2"/>
+<circle class="pk-mask" cx="472" cy="95" r="13.2"/>
+<circle class="pk-pad" cx="472" cy="95" r="9.2"/>
+<circle class="pk-mask" cx="504" cy="95" r="13.2"/>
+<circle class="pk-pad" cx="504" cy="95" r="9.2"/>
+<circle class="pk-mask" cx="376" cy="127" r="13.2"/>
+<circle class="pk-pad" cx="376" cy="127" r="9.2"/>
+<circle class="pk-mask" cx="408" cy="127" r="13.2"/>
+<circle class="pk-pad" cx="408" cy="127" r="9.2"/>
+<circle class="pk-mask" cx="440" cy="127" r="13.2"/>
+<circle class="pk-pad" cx="440" cy="127" r="9.2"/>
+<circle class="pk-mask" cx="472" cy="127" r="13.2"/>
+<circle class="pk-pad" cx="472" cy="127" r="9.2"/>
+<circle class="pk-mask" cx="504" cy="127" r="13.2"/>
+<circle class="pk-pad" cx="504" cy="127" r="9.2"/>
+<circle class="pk-mask" cx="376" cy="159" r="13.2"/>
+<circle class="pk-pad" cx="376" cy="159" r="9.2"/>
+<circle class="pk-mask" cx="408" cy="159" r="13.2"/>
+<circle class="pk-pad" cx="408" cy="159" r="9.2"/>
+<circle class="pk-mask" cx="440" cy="159" r="13.2"/>
+<circle class="pk-pad" cx="440" cy="159" r="9.2"/>
+<circle class="pk-mask" cx="472" cy="159" r="13.2"/>
+<circle class="pk-pad" cx="472" cy="159" r="9.2"/>
+<circle class="pk-mask" cx="504" cy="159" r="13.2"/>
+<circle class="pk-pad" cx="504" cy="159" r="9.2"/>
+<circle class="pk-mask" cx="376" cy="191" r="13.2"/>
+<circle class="pk-pad" cx="376" cy="191" r="9.2"/>
+<circle class="pk-mask" cx="408" cy="191" r="13.2"/>
+<circle class="pk-pad" cx="408" cy="191" r="9.2"/>
+<circle class="pk-mask" cx="440" cy="191" r="13.2"/>
+<circle class="pk-pad" cx="440" cy="191" r="9.2"/>
+<circle class="pk-mask" cx="472" cy="191" r="13.2"/>
+<circle class="pk-pad" cx="472" cy="191" r="9.2"/>
+<circle class="pk-mask" cx="504" cy="191" r="13.2"/>
+<circle class="pk-pad" cx="504" cy="191" r="9.2"/>
+<circle class="pk-mask" cx="376" cy="223" r="13.2"/>
+<circle class="pk-pad" cx="376" cy="223" r="9.2"/>
+<circle class="pk-mask" cx="408" cy="223" r="13.2"/>
+<circle class="pk-pad" cx="408" cy="223" r="9.2"/>
+<circle class="pk-mask" cx="440" cy="223" r="13.2"/>
+<circle class="pk-pad" cx="440" cy="223" r="9.2"/>
+<circle class="pk-mask" cx="472" cy="223" r="13.2"/>
+<circle class="pk-pad" cx="472" cy="223" r="9.2"/>
+<circle class="pk-mask" cx="504" cy="223" r="13.2"/>
+<circle class="pk-pad" cx="504" cy="223" r="9.2"/>
+<circle class="pk-mask" cx="376" cy="255" r="13.2"/>
+<circle class="pk-pad" cx="376" cy="255" r="9.2"/>
+<circle class="pk-mask" cx="408" cy="255" r="13.2"/>
+<circle class="pk-pad" cx="408" cy="255" r="9.2"/>
+<circle class="pk-mask" cx="440" cy="255" r="13.2"/>
+<circle class="pk-pad" cx="440" cy="255" r="9.2"/>
+<circle class="pk-mask" cx="472" cy="255" r="13.2"/>
+<circle class="pk-pad" cx="472" cy="255" r="9.2"/>
+<circle class="pk-mask" cx="504" cy="255" r="13.2"/>
+<circle class="pk-pad" cx="504" cy="255" r="9.2"/>
+<circle class="pk-dot" cx="341.92" cy="56.92" r="4"/>
+<text class="pk-t" x="339.52" y="100" text-anchor="end">A</text>
+<text class="pk-t" x="339.52" y="132" text-anchor="end">B</text>
+<text class="pk-t" x="339.52" y="164" text-anchor="end">C</text>
+<text class="pk-t" x="339.52" y="196" text-anchor="end">D</text>
+<text class="pk-t" x="339.52" y="228" text-anchor="end">E</text>
+<text class="pk-t" x="339.52" y="260" text-anchor="end">F</text>
+<text class="pk-t" x="376" y="56.52" text-anchor="middle">1</text>
+<text class="pk-t" x="408" y="56.52" text-anchor="middle">2</text>
+<text class="pk-t" x="440" y="56.52" text-anchor="middle">3</text>
+<text class="pk-t" x="472" y="56.52" text-anchor="middle">4</text>
+<text class="pk-t" x="504" y="56.52" text-anchor="middle">5</text>
+<text class="pk-n" x="440" y="311.48" text-anchor="middle">pads ⌀0.23, mask opening up to ⌀0.33</text>
+<text class="pk-n" x="440" y="329.48" text-anchor="middle">paste 0.25 square, R0.05 (0.1 mm stencil)</text>
+<text class="pk-n" x="440" y="347.48" text-anchor="middle">non-solder-mask-defined pads</text>
+</svg>
