@@ -450,6 +450,33 @@ export const PACKAGES = {
     leadThickness: { min: 0.28, max: 0.41 },
     courtyardMargin: 0.25,
   },
+  // Standard 2.54 mm dual in-line package with one position skipped (Silergy DIP7). The datasheet's top view and pin configuration agree: pins 1-4 down
+  // the left side in the ordinary DIP order, and on the right 5, then no pin, then 6 and 7 (the DIP-8 positions 5, 7 and 8 are used; 6 is absent).
+  // `padNumbers` renames the slots: slot 7 is pin 6 and slot 8 is pin 7. The datasheet gives the outline only, so hole and pad sizes are ours.
+  'dip7': {
+    layout: 'dip-th',
+    name: 'DIP7',
+    file: 'DIP7',
+    descr: 'DIP7 (Silergy), 7 pins on a 2.54 mm pitch in two rows 7.62 mm apart, one DIP-8 position skipped; outline from the SQ38576B datasheet (Rev. 1.0, PDF page 16), hole and pad size ours',
+    tags: 'DIP7 DIP-8 THT flyback switcher SQ38576',
+    source: { part: 'SQ38576B', revision: 'Rev. 1.0', page: 16 },
+    pinsPerSide: 4,
+    pin1: 'left',
+    missing: ['6'],
+    padNumbers: { 7: '6', 8: '7' },
+    holeSizeOurs: true,
+    pitch: 2.54,
+    // Side view B: "7.62 Ref" between the lead centre lines; 7.62-9.30 is the overall lead span.
+    rowCentres: 7.62,
+    // The datasheet gives no hole or pad size. Ours: the lead is 0.38-0.57 wide and 0.20-0.40 thick, so its largest diagonal is about 0.70;
+    // a 0.90 drill leaves about 0.10 around it, and a 1.60 pad leaves a 0.35 ring and 0.94 between pads in a row.
+    pad: { drill: 0.9, diameter: 1.6 },
+    // Top view: body 9.00-9.50 along the rows by 6.10-6.60 across them; side view A: standoff 3.00-3.60, lead length below the body 2.50-4.50.
+    body: { length: { min: 9.0, max: 9.5 }, width: { min: 6.1, max: 6.6 } },
+    leadWidth: { min: 0.38, max: 0.57 },
+    leadThickness: { min: 0.2, max: 0.4 },
+    courtyardMargin: 0.25,
+  },
 };
 
 // Symbols: one per part. Pin numbers and names from the datasheet pin table. `type` is our reading.
@@ -1692,6 +1719,123 @@ export const SYMBOLS = {
       { number: "B5", name: "GND", type: "power_in", side: "bottom", pos: -2.54 },
       { number: "A3", name: "BKGND", type: "power_in", side: "bottom", pos: 2.54 },
       { number: "F3", name: "BBGND", type: "power_in", side: "bottom", pos: 5.08 },
+    ],
+  },
+  // Pin numbers and names are from the datasheet's pin table and pinout (top view). BS is the bootstrap pin, 0.1 uF to LX. The exposed pad is listed as EP, not connected, and is not numbered in the table; 7 is ours. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
+  "SY81153": {
+    fpFilter: "DFN1.6x1.6-6*",
+    half: 5.08,
+    description: "4.5-18 V input synchronous buck regulator, adjustable output from a 0.6 V reference, DFN1.6x1.6-6",
+    keywords: "buck converter synchronous step-down regulator SY81153 DFN1.6x1.6-6",
+    datasheet: "https://www.silergy.com/download/downloadFile?id=6633&type=product&ftype=note",
+    pins: [
+      { number: "1", name: "IN", type: "power_in", side: "left", pos: 2.54 },
+      { number: "5", name: "EN", type: "input", side: "left", pos: 0 },
+      { number: "6", name: "FB", type: "input", side: "left", pos: -2.54 },
+      { number: "4", name: "BS", type: "passive", side: "right", pos: 2.54 },
+      { number: "2", name: "LX", type: "passive", side: "right", pos: 0 },
+      { number: "3", name: "GND", type: "power_in", side: "bottom", pos: -2.54 },
+      { number: "7", name: "NC", type: "passive", side: "bottom", pos: 2.54 },
+    ],
+  },
+  // Pin numbers and names are from the datasheet's pin table and pinout (DIP7, top view): pins 6 and 7 are both DRAIN. COMP goes directly to an optocoupler; CONT detects the input voltage (brown-in) or is left floating. DRAIN is passive because it is the high-voltage switch node. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
+  "SQ38576A": {
+    fpFilter: "DIP-7*",
+    half: 7.62,
+    description: "Off-line flyback PWM controller with integrated 650 V power MOSFET and high-voltage start-up, DIP7",
+    keywords: "offline flyback controller integrated mosfet SQ38576A DIP7",
+    datasheet: "https://www.silergy.com/productsview/SQ38576AFIB",
+    pins: [
+      { number: "4", name: "COMP", type: "input", side: "left", pos: 2.54 },
+      { number: "5", name: "CONT", type: "input", side: "left", pos: 0 },
+      { number: "1", name: "ISEN", type: "input", side: "left", pos: -2.54 },
+      { number: "3", name: "VCC", type: "power_in", side: "right", pos: 2.54 },
+      { number: "6", name: "DRAIN", type: "passive", side: "right", pos: 0 },
+      { number: "7", name: "DRAIN", type: "passive", side: "right", pos: -2.54 },
+      { number: "2", name: "GND", type: "power_in", side: "bottom", pos: 0 },
+    ],
+  },
+  // The datasheet's pin table prints the ball ID in the Pin Name column and the signal name in the Pin Num. column; the pinout figure confirms ball A1 is IN+1, B1 IN-1, A2 VBUS1, A3 ALERT, A4 VS, B2 and C2 DNC, B3 EN, B4 GND, C1 IN-2, C3 A1, C4 SCL, D1 IN+2, D2 VBUS2, D3 A0, D4 SDA. DNC means do not connect. The ALERT and SDA pins are open drain. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
+  "SQ52212": {
+    fpFilter: "CSP*1.51*16*",
+    body: { halfW: 10.16, halfH: 12.7 },
+    description: "Dual-channel bus voltage and current monitor with I2C and alert output, 2.7-5.5 V supply, CSP1.51x1.51-16",
+    keywords: "current monitor power monitor dual channel i2c shunt SQ52212 CSP",
+    datasheet: "https://www.silergy.com/download/downloadFile?id=6485&type=product&ftype=note",
+    pins: [
+      { number: "A1", name: "IN+1", type: "input", side: "left", pos: 7.62 },
+      { number: "B1", name: "IN-1", type: "input", side: "left", pos: 5.08 },
+      { number: "A2", name: "VBUS1", type: "input", side: "left", pos: 2.54 },
+      { number: "D1", name: "IN+2", type: "input", side: "left", pos: 0 },
+      { number: "C1", name: "IN-2", type: "input", side: "left", pos: -2.54 },
+      { number: "D2", name: "VBUS2", type: "input", side: "left", pos: -5.08 },
+      { number: "A4", name: "VS", type: "power_in", side: "right", pos: 7.62 },
+      { number: "B3", name: "EN", type: "input", side: "right", pos: 5.08 },
+      { number: "D3", name: "A0", type: "input", side: "right", pos: 2.54 },
+      { number: "C3", name: "A1", type: "input", side: "right", pos: 0 },
+      { number: "C4", name: "SCL", type: "input", side: "right", pos: -2.54 },
+      { number: "D4", name: "SDA", type: "bidirectional", side: "right", pos: -5.08 },
+      { number: "A3", name: "ALERT", type: "open_collector", side: "right", pos: -7.62 },
+      { number: "B2", name: "DNC", type: "passive", side: "bottom", pos: -2.54 },
+      { number: "C2", name: "DNC", type: "passive", side: "bottom", pos: 0 },
+      { number: "B4", name: "GND", type: "power_in", side: "bottom", pos: 2.54 },
+    ],
+  },
+  // Pins 6, 7, 8, 14, 15 and 16 are all NC (no internal connection). The exposed pad can be connected to ground or left floating, and is not numbered in the pin table; 17 is ours. ALERT and SDA are open drain. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
+  "SQ52201QDQ": {
+    fpFilter: "QFN*3x3*16*",
+    body: { halfW: 10.16, halfH: 12.7 },
+    description: "Bus voltage and current monitor with I2C and alert output, 2.7-5.5 V supply, QFN3x3-16",
+    keywords: "current monitor power monitor i2c shunt SQ52201 QFN3x3-16",
+    datasheet: "https://www.silergy.com/download/downloadFile?id=6487&type=product&ftype=note",
+    pins: [
+      { number: "13", name: "IN+", type: "input", side: "left", pos: 5.08 },
+      { number: "12", name: "IN-", type: "input", side: "left", pos: 2.54 },
+      { number: "11", name: "VBUS", type: "input", side: "left", pos: 0 },
+      { number: "1", name: "A1", type: "input", side: "right", pos: 7.62 },
+      { number: "2", name: "A0", type: "input", side: "right", pos: 5.08 },
+      { number: "5", name: "SCL", type: "input", side: "right", pos: 2.54 },
+      { number: "4", name: "SDA", type: "bidirectional", side: "right", pos: 0 },
+      { number: "3", name: "ALERT", type: "open_collector", side: "right", pos: -2.54 },
+      { number: "9", name: "VS", type: "power_in", side: "top", pos: 0 },
+      { number: "10", name: "GND", type: "power_in", side: "bottom", pos: -2.54 },
+      { number: "17", name: "EP", type: "passive", side: "bottom", pos: 0 },
+      { number: "6", name: "NC", type: "passive", side: "top", pos: -7.62 },
+      { number: "7", name: "NC", type: "passive", side: "top", pos: -5.08 },
+      { number: "8", name: "NC", type: "passive", side: "top", pos: -2.54 },
+      { number: "14", name: "NC", type: "passive", side: "top", pos: 2.54 },
+      { number: "15", name: "NC", type: "passive", side: "top", pos: 5.08 },
+      { number: "16", name: "NC", type: "passive", side: "top", pos: 7.62 },
+    ],
+  },
+  // One symbol serves all four output-voltage versions, which share a pinout. Pin 3 must be left floating or connected to pin 2. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
+  "SQ82550": {
+    fpFilter: "SOT-23*",
+    half: 5.08,
+    description: "Precision shunt voltage reference, SQ82550AOT 5 V, BAOT 4.096 V, CAOT 3.3 V, DAOT 2.5 V, SOT-23",
+    keywords: "shunt voltage reference precision SQ82550 SOT-23",
+    datasheet: "https://www.silergy.com/download/downloadFile?id=5434&type=product&ftype=note",
+    pins: [
+      { number: "1", name: "CATHODE", type: "passive", side: "left", pos: 2.54 },
+      { number: "2", name: "ANODE", type: "passive", side: "left", pos: -2.54 },
+      { number: "3", name: "NC", type: "passive", side: "right", pos: 0 },
+    ],
+  },
+  // Pin numbers and names are from the datasheet's pin table and pinout (DIP7, top view): pins 6 and 7 are both DRAIN, and pin 5 is not connected. COMP goes directly to an optocoupler. DRAIN is passive because it is the high-voltage switch node. Layout and pin types are ours.
+  "SQ38576B": {
+    package: "dip7",
+    half: 7.62,
+    description: "Off-line flyback PWM/PFM secondary-side-regulation switcher with integrated 1000 V power MOSFET and high-voltage start-up, DIP7",
+    keywords: "offline flyback ssr switcher integrated mosfet SQ38576B DIP7",
+    datasheet: "https://www.silergy.com/productsview/SQ38576BFIB",
+    pins: [
+      { number: "4", name: "COMP", type: "input", side: "left", pos: 2.54 },
+      { number: "1", name: "ISEN", type: "input", side: "left", pos: 0 },
+      { number: "3", name: "VCC", type: "power_in", side: "right", pos: 2.54 },
+      { number: "5", name: "NC", type: "passive", side: "right", pos: 0 },
+      { number: "6", name: "DRAIN", type: "passive", side: "right", pos: -2.54 },
+      { number: "7", name: "DRAIN", type: "passive", side: "right", pos: -5.08 },
+      { number: "2", name: "GND", type: "power_in", side: "bottom", pos: 0 },
     ],
   },
 };

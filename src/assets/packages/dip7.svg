@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="DIP7 package top view and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-ep{fill:var(--cd-muted);fill-opacity:.35;stroke:var(--cd-muted);stroke-width:1}
+.pk-lead{fill:var(--cd-muted)}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-hole{fill:var(--cd-surface-2)}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dim{stroke:var(--cd-muted);stroke-width:1.2;fill:none}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="175" y="24" text-anchor="middle">Package, top view</text>
+<rect class="pk-lead" x="83.56" y="77.86" width="15.24" height="11.4"/>
+<text class="pk-t" x="71.56" y="88.06" text-anchor="end">1</text>
+<rect class="pk-lead" x="83.56" y="138.82" width="15.24" height="11.4"/>
+<text class="pk-t" x="71.56" y="149.02" text-anchor="end">2</text>
+<rect class="pk-lead" x="83.56" y="199.78" width="15.24" height="11.4"/>
+<text class="pk-t" x="71.56" y="209.98" text-anchor="end">3</text>
+<rect class="pk-lead" x="83.56" y="260.74" width="15.24" height="11.4"/>
+<text class="pk-t" x="71.56" y="270.94" text-anchor="end">4</text>
+<rect class="pk-lead" x="251.2" y="260.74" width="15.24" height="11.4"/>
+<text class="pk-t" x="278.44" y="270.94" text-anchor="start">5</text>
+<rect class="pk-lead" x="251.2" y="138.82" width="15.24" height="11.4"/>
+<text class="pk-t" x="278.44" y="149.02" text-anchor="start">6</text>
+<rect class="pk-lead" x="251.2" y="77.86" width="15.24" height="11.4"/>
+<text class="pk-t" x="278.44" y="88.06" text-anchor="start">7</text>
+<rect class="pk-body" x="98.8" y="64" width="152.4" height="222" rx="4"/>
+<circle class="pk-dot" cx="113.2" cy="78.4" r="6"/>
+<path class="pk-dim" d="M98.8 296.8H251.2M98.8 291.8v10M251.2 291.8v10"/>
+<text class="pk-n" x="175" y="314.8" text-anchor="middle">body 6.10–6.60 across, 9.00–9.50 along the rows</text>
+<text class="pk-n" x="175" y="332.8" text-anchor="middle">lead width 0.38–0.57</text>
+<text class="pk-h" x="530" y="24" text-anchor="middle">Footprint (hole and pad size ours)</text>
+<rect class="pk-out" x="453.8" y="64" width="152.4" height="222" rx="4"/>
+<rect class="pk-pad" x="419.36" y="64.36" width="38.4" height="38.4" rx="9.6"/>
+<circle class="pk-hole" cx="438.56" cy="83.56" r="10.8"/>
+<text class="pk-t" x="414.56" y="88.06" text-anchor="end">1</text>
+<circle class="pk-pad" cx="438.56" cy="144.52" r="19.2"/>
+<circle class="pk-hole" cx="438.56" cy="144.52" r="10.8"/>
+<text class="pk-t" x="414.56" y="149.02" text-anchor="end">2</text>
+<circle class="pk-pad" cx="438.56" cy="205.48" r="19.2"/>
+<circle class="pk-hole" cx="438.56" cy="205.48" r="10.8"/>
+<text class="pk-t" x="414.56" y="209.98" text-anchor="end">3</text>
+<circle class="pk-pad" cx="438.56" cy="266.44" r="19.2"/>
+<circle class="pk-hole" cx="438.56" cy="266.44" r="10.8"/>
+<text class="pk-t" x="414.56" y="270.94" text-anchor="end">4</text>
+<circle class="pk-pad" cx="621.44" cy="266.44" r="19.2"/>
+<circle class="pk-hole" cx="621.44" cy="266.44" r="10.8"/>
+<text class="pk-t" x="645.44" y="270.94" text-anchor="start">5</text>
+<circle class="pk-pad" cx="621.44" cy="144.52" r="19.2"/>
+<circle class="pk-hole" cx="621.44" cy="144.52" r="10.8"/>
+<text class="pk-t" x="645.44" y="149.02" text-anchor="start">6</text>
+<circle class="pk-pad" cx="621.44" cy="83.56" r="19.2"/>
+<circle class="pk-hole" cx="621.44" cy="83.56" r="10.8"/>
+<text class="pk-t" x="645.44" y="88.06" text-anchor="start">7</text>
+<circle class="pk-out" cx="621.44" cy="205.48" r="19.2"/>
+<text class="pk-n" x="645.44" y="209.98" text-anchor="start">no pad</text>
+<path class="pk-dim" d="M438.56 296.8H621.44M438.56 291.8v10M621.44 291.8v10"/>
+<text class="pk-n" x="530" y="314.8" text-anchor="middle">7.62 between rows, pitch 2.54</text>
+<text class="pk-n" x="530" y="332.8" text-anchor="middle">pads 1.60 round, drill 0.90</text>
+</svg>

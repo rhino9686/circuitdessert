@@ -12,7 +12,8 @@ export function padListTht(pk) {
   for (let i = 0; i < k; i++) slots.push({ num: String(i + 1), x: s * x, y: (i - (k - 1) / 2) * pk.pitch });
   for (let i = 0; i < k; i++) slots.push({ num: String(k + 1 + i), x: -s * x, y: ((k - 1) / 2 - i) * pk.pitch });
   const missing = new Set(pk.missing ?? []);
-  return slots.filter((p) => !missing.has(p.num)).map((p) => ({ ...p, d: pk.pad.diameter, drill: pk.pad.drill }));
+  // `padNumbers` renames slots whose datasheet number differs from the slot's place in the DIP order (the DIP7 skips a position).
+  return slots.filter((p) => !missing.has(p.num)).map((p) => ({ ...p, num: pk.padNumbers?.[p.num] ?? p.num, d: pk.pad.diameter, drill: pk.pad.drill }));
 }
 
 export function footprintTht(pk) {
@@ -100,7 +101,7 @@ export function illustrationTht(pk) {
   o.push(`<text class="pk-n" x="${ax}" y="${n(by + 18)}" text-anchor="middle">body ${rng(pk.body.width)} across, ${rng(pk.body.length)} along the rows</text>`);
   o.push(`<text class="pk-n" x="${ax}" y="${n(by + 36)}" text-anchor="middle">lead width ${rng(pk.leadWidth)}</text>`);
   // panel B: footprint
-  o.push(`<text class="pk-h" x="${bx}" y="24" text-anchor="middle">Footprint (datasheet hole pattern)</text>`);
+  o.push(`<text class="pk-h" x="${bx}" y="24" text-anchor="middle">${pk.holeSizeOurs ? "Footprint (hole and pad size ours)" : "Footprint (datasheet hole pattern)"}</text>`);
   o.push(`<rect class="pk-out" x="${X(bx, -bw)}" y="${Y(-bl)}" width="${n(bw * 2 * S)}" height="${n(bl * 2 * S)}" rx="4"/>`);
   for (const p of pads) {
     if (p.num === '1') {
@@ -117,7 +118,7 @@ export function illustrationTht(pk) {
     const y = i < k ? (i - (k - 1) / 2) * pk.pitch : ((k - 1) / 2 - (i - k)) * pk.pitch;
     const side = x < 0 ? -1 : 1;
     o.push(`<circle class="pk-out" cx="${X(bx, x)}" cy="${Y(y)}" r="${n(r * S)}"/>`);
-    o.push(`<text class="pk-n" x="${X(bx, x + side * (r + 0.2))}" y="${n(cy + y * S + 4.5)}" text-anchor="${side < 0 ? 'end' : 'start'}">no pin ${m}</text>`);
+    o.push(`<text class="pk-n" x="${X(bx, x + side * (r + 0.2))}" y="${n(cy + y * S + 4.5)}" text-anchor="${side < 0 ? 'end' : 'start'}">${pk.padNumbers ? 'no pad' : 'no pin ' + m}</text>`);
   }
   const ry = cy + (bl + 0.45) * S;
   o.push(`<path class="pk-dim" d="M${X(bx, -span)} ${n(ry)}H${X(bx, span)}M${X(bx, -span)} ${n(ry - 5)}v10M${X(bx, span)} ${n(ry - 5)}v10"/>`);
