@@ -124,6 +124,33 @@ export const PACKAGES = {
     courtyardMargin: 0.25,
     illustration: { scale: 80 },
   },
+  // DFN2x2-6 as drawn in the SY6340 datasheet (Silergy Rev. 1.0). Unlike the 'dfn2x2-6' entry (SA21308A00DED) the exposed pad is T-shaped: a block with a stem out to the middle lead of one row.
+  // The pinout figure (PDF page 2) joins the pad to pin 5 (GND), so the tab pad is pin 5 (`tabStem`). KiCad orientation: pin 1 top left, pins 1-3 down the left side, 4-6 up the right side.
+  'dfn2x2-6-sy6340': {
+    kind: 'dual-nolead',
+    name: 'DFN2x2-6', // the symbol is named <PART>_<name>: SY6340_DFN2x2-6, as before it had a footprint
+    file: 'DFN-6_2x2mm_P0.65mm_EP1.7x0.9mm_SY6340',
+    descr: 'DFN2x2-6 (Silergy SY6340), 0.65 mm pitch, 2 x 2 mm body, T-shaped exposed pad joined to pin 5 (GND); land pattern from the SY6340 datasheet (Rev. 1.0, PDF page 11)',
+    tags: 'DFN2x2-6 DFN-6 SY6340',
+    source: { part: 'SY6340', revision: 'Rev. 1.0', page: 11 },
+    pitch: 0.65,
+    pinsPerSide: 3,
+    // Recommended PCB layout, PDF page 11 (read on a 250-300 dpi render): six pads 0.38 wide (along the row) by 0.50 long, 0.65 pitch; block 1.70 along the rows by 0.90 across; 0.15 between the block and the pads of the row without the stem.
+    // Our reading, not printed: the same 0.15 gap on the other row (the drawing shows equal gaps), which puts the rows 0.25 + 0.15 + 0.90 + 0.15 + 0.25 = 1.70 apart centre to centre, and a stem as wide as a pad (0.38).
+    rowCentres: 1.7,
+    pad: { long: 0.5, wide: 0.38 },
+    padRadius: 0.095, // the drawing gives no corner radius; 0.25 of the pad width, as on our other footprints
+    tabStem: { w: 0.38 },
+    // Package outline, PDF page 11. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 1.9, max: 2.1 }, width: { min: 1.9, max: 2.1 } },
+    leadWidth: { min: 0.2, max: 0.4 },
+    leadLength: { min: 0.2, max: 0.4 },
+    // Exposed pad: the block of the land pattern (the stem is `tabStem`, out to the end of the row's pads). The package's own block is 1.40-1.80 by 0.80-1.10 with a stem out to the body edge (drawing only: its midpoint, a stem as wide as the leads).
+    thermal: { num: '5', along: 1.7, across: 0.9, centre: 1.7, finger: 0.9, gap: 0, fingers: 1 },
+    thermalPkg: { along: 1.6, across: 0.95 },
+    courtyardMargin: 0.25,
+    illustration: { scale: 80 },
+  },
   'dfn1p2x1p2-6': {
     kind: 'dual-nolead',
     name: 'DFN1.2×1.2-6',
@@ -325,6 +352,27 @@ export const PACKAGES = {
     // Package outline, PDF page 22. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
     body: { length: { min: 2.82, max: 3.1 }, width: { min: 1.5, max: 1.7 }, height: { max: 1.45 } },
     leadSpan: { min: 2.65, max: 3.0 },
+    leadWidth: { min: 0.3, max: 0.5 },
+    footLength: { min: 0.3, max: 0.6 },
+    courtyardMargin: 0.25,
+  },
+  // SOT-23-5 as drawn in the SY6340 datasheet (Silergy Rev. 1.0): the same outline as the 'sot23-5' entry (Diodes AP2202) but narrower, shorter pads. Same orientation and numbering as that entry:
+  // pin 1 top left, pins 1-3 down the left side, 4 bottom right, 5 top right; the middle position on the right has no lead (`missing`) and slot 6 is pin 5 (`padNumbers`).
+  'sot23-5-sy6340': {
+    name: 'SOT23-5', // the symbol is named <PART>_<name>: SY6340_SOT23-5, as before it had a footprint
+    file: 'SOT-23-5_SY6340',
+    descr: 'SOT-23-5, 0.95 mm pitch, pad layout from the SY6340 datasheet (Silergy Rev. 1.0, PDF page 10)',
+    tags: 'SOT-23-5 SOT23-5 SY6340',
+    source: { part: 'SY6340', revision: 'Rev. 1.0', page: 10 },
+    pitch: 0.95,
+    missing: ['5'],
+    padNumbers: { '6': '5' },
+    // Recommended pad layout, PDF page 10 (read on a 300 dpi render): pads 0.55 wide (along the row) by 0.80 long (across the body), 0.95 pitch; the 2.40 dimension runs between the pad centres of the two rows.
+    rowCentres: 2.4,
+    pad: { long: 0.8, wide: 0.55 },
+    // Package outline, PDF page 10. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows; 2.70-3.00 is the lead tip to lead tip width across the body.
+    body: { length: { min: 2.8, max: 3.1 }, width: { min: 1.5, max: 1.7 }, height: { min: 1.0, max: 1.3 } },
+    leadSpan: { min: 2.7, max: 3.0 },
     leadWidth: { min: 0.3, max: 0.5 },
     footLength: { min: 0.3, max: 0.6 },
     courtyardMargin: 0.25,
@@ -1948,23 +1996,20 @@ export const SYMBOLS = {
       { numbers: { 'sot23-5': '4' }, name: 'NC', type: 'passive', side: 'top', pos: 2.54 },
     ],
   },
-  // The SOT23-5 and DFN2x2-6 number the pins differently. Pin numbers and names are from the pin table and the pinouts (Rev. 1.0); the DFN's pin 2 is NC in the pinout but not in the pin table. The DFN pinout also labels the exposed pad "GND", but the pin table does not list or number it, so the symbol has no pin for it. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawings with the footprints here (the SOT-23-5 page is built from a Diodes drawing with different pads, and the DFN2x2-6 page from another Silergy datasheet).
+  // The SOT23-5 and DFN2x2-6 number the pins differently. Pin numbers and names are from the pin table and the pinouts (Rev. 1.0); the DFN's pin 2 is NC in the pinout but not in the pin table. The DFN's exposed pad is pin 5 (GND): the pinout draws it joined to that pin, so the footprint's tab pad is numbered 5 and the symbol has no separate pin for it. Layout and pin types are ours. Footprints are the datasheet's own recommended pads (pages 10 and 11), on their own package pages.
   'SY6340': {
-    variants: {
-      'sot23-5': { name: 'SOT23-5', fpFilter: 'SOT-23-5*' },
-      'dfn2x2-6': { name: 'DFN2x2-6', fpFilter: 'DFN-6_2x2mm*' },
-    },
+    packages: ['sot23-5-sy6340', 'dfn2x2-6-sy6340'],
     half: 5.08,
     description: 'Adjustable 150 mA LDO, 2.3-30 V input, 0.6 V reference, +/-2% accuracy, enable, reverse-input protection, SOT23-5 or DFN2x2-6',
     keywords: 'ldo linear regulator adjustable wide input 150mA',
     datasheet: 'https://www.silergy.com/productsview/SY6340AAC',
     pins: [
-      { numbers: { 'sot23-5': '1', 'dfn2x2-6': '3' }, name: 'IN', type: 'power_in', side: 'left', pos: 2.54 },
-      { numbers: { 'sot23-5': '3', 'dfn2x2-6': '1' }, name: 'EN', type: 'input', side: 'left', pos: -2.54 },
-      { numbers: { 'sot23-5': '5', 'dfn2x2-6': '4' }, name: 'OUT', type: 'power_out', side: 'right', pos: 2.54 },
-      { numbers: { 'sot23-5': '4', 'dfn2x2-6': '6' }, name: 'ADJ', type: 'input', side: 'right', pos: -2.54 },
-      { numbers: { 'sot23-5': '2', 'dfn2x2-6': '5' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
-      { numbers: { 'dfn2x2-6': '2' }, name: 'NC', type: 'passive', side: 'top', pos: 0 },
+      { numbers: { 'sot23-5-sy6340': '1', 'dfn2x2-6-sy6340': '3' }, name: 'IN', type: 'power_in', side: 'left', pos: 2.54 },
+      { numbers: { 'sot23-5-sy6340': '3', 'dfn2x2-6-sy6340': '1' }, name: 'EN', type: 'input', side: 'left', pos: -2.54 },
+      { numbers: { 'sot23-5-sy6340': '5', 'dfn2x2-6-sy6340': '4' }, name: 'OUT', type: 'power_out', side: 'right', pos: 2.54 },
+      { numbers: { 'sot23-5-sy6340': '4', 'dfn2x2-6-sy6340': '6' }, name: 'ADJ', type: 'input', side: 'right', pos: -2.54 },
+      { numbers: { 'sot23-5-sy6340': '2', 'dfn2x2-6-sy6340': '5' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+      { numbers: { 'dfn2x2-6-sy6340': '2' }, name: 'NC', type: 'passive', side: 'top', pos: 0 },
     ],
   },
 };

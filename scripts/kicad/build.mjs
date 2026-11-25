@@ -232,7 +232,16 @@ export function padListDual(pk) {
   const x = pk.rowCentres / 2, k = pk.pinsPerSide, pads = [];
   for (let i = 0; i < k; i++) pads.push({ num: String(i + 1), x: -x, y: (i - (k - 1) / 2) * pk.pitch, w: pk.pad.long, h: pk.pad.wide });
   for (let i = 0; i < k; i++) pads.push({ num: String(k + 1 + i), x, y: ((k - 1) / 2 - i) * pk.pitch, w: pk.pad.long, h: pk.pad.wide });
-  return pads;
+  // `tabStem`: the exposed pad has a stem running out to one lead position (SY6340 DFN2x2-6, pin 5), so that lead is part of the tab pad, not a pad of its own
+  return pk.tabStem ? pads.filter((p) => p.num !== pk.thermal.num) : pads;
+}
+
+// Outline of a T-shaped exposed pad: the block (`t.across` x `t.along`) plus a stem of width `stem.w` out to x = side * stem.to, on the side of the lead it is joined to.
+export const tabSide = (pk) => (Number(pk.thermal.num) <= pk.pinsPerSide ? -1 : 1);
+export function tabStemOutline(t, stem, side) {
+  const a = t.across / 2, h = t.along / 2, w = stem.w / 2, e = stem.to;
+  const pts = [[-a, -h], [a, -h], [a, -w], [e, -w], [e, w], [a, w], [a, h], [-a, h]];
+  return side < 0 ? pts.map(([x, y]) => [-x, y]) : pts;
 }
 
 // Outline of the comb-shaped exposed pad as a closed list of [x, y] points (x across the body, y along it).
@@ -291,7 +300,8 @@ function footprintDualNoLead(pk) {
     L.push(`  (pad "${p.num}" smd roundrect (at ${n(p.x)} ${n(p.y)}) (size ${n(p.w)} ${n(p.h)}) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio ${n(padRatio(pk, p))}))`);
   }
   // exposed pad: a custom pad whose shape is the comb outline
-  const poly = thermalOutline(t).map(([x, y]) => `(xy ${n(x)} ${n(y)})`).join(' ');
+  const tabOut = pk.tabStem ? tabStemOutline(t, { w: pk.tabStem.w, to: pk.rowCentres / 2 + pk.pad.long / 2 }, tabSide(pk)) : thermalOutline(t);
+  const poly = tabOut.map(([x, y]) => `(xy ${n(x)} ${n(y)})`).join(' ');
   L.push(`  (pad "${t.num}" smd custom (at 0 0) (size ${n(t.across)} ${n(t.centre)}) (layers "F.Cu" "F.Paste" "F.Mask")\n    (options (clearance outline) (anchor rect))\n    (primitives\n      (gr_poly (pts ${poly}) (width 0) (fill yes))\n    )\n  )`);
   L.push(')');
   return L.join('\n') + '\n';
@@ -324,7 +334,9 @@ function illustrationDualNoLead(pk) {
   // panel A: the package's contacts, drawn in the footprint's orientation (seen from above through the body)
   o.push(`<text class="pk-h" x="${ax}" y="24" text-anchor="middle">Package contacts, seen from above</text>`);
   o.push(`<rect class="pk-body" x="${X(ax, -bw)}" y="${Y(-bl)}" width="${n(bw * 2 * S)}" height="${n(bl * 2 * S)}" rx="4"/>`);
-  o.push(`<polygon class="pk-lead" points="${poly(ax, thermalOutline(tp))}"/>`);
+  const side5 = pk.tabStem ? tabSide(pk) : 0;
+  o.push(`<polygon class="pk-lead" points="${poly(ax, pk.tabStem ? tabStemOutline(tp, { w: mid(pk.leadWidth), to: side5 * bw }, side5) : thermalOutline(tp))}"/>`);
+  if (pk.tabStem) o.push(`<text class="pk-t" x="${X(ax, side5 * (bw + 0.12))}" y="${n(cy + 4.5)}" text-anchor="${side5 < 0 ? 'end' : 'start'}">${t.num}</text>`);
   for (const p of pads) {
     const side = p.x < 0 ? -1 : 1;
     const x0 = side < 0 ? -bw : bw - ll;
@@ -342,7 +354,7 @@ function illustrationDualNoLead(pk) {
   // panel B: footprint
   o.push(`<text class="pk-h" x="${bx}" y="24" text-anchor="middle">Footprint (land pattern)</text>`);
   o.push(`<rect class="pk-out" x="${X(bx, -bw)}" y="${Y(-bl)}" width="${n(bw * 2 * S)}" height="${n(bl * 2 * S)}" rx="4"/>`);
-  o.push(`<polygon class="pk-pad" points="${poly(bx, thermalOutline(t))}"/>`);
+  o.push(`<polygon class="pk-pad" points="${poly(bx, pk.tabStem ? tabStemOutline(t, { w: pk.tabStem.w, to: pk.rowCentres / 2 + pk.pad.long / 2 }, tabSide(pk)) : thermalOutline(t))}"/>`);
   o.push(`<text class="pk-t" x="${n(bx)}" y="${n(cy + 4.5)}" text-anchor="middle" style="fill:var(--cd-on-accent)">${t.num}</text>`);
   for (const p of pads) {
     o.push(`<rect class="pk-pad" x="${X(bx, p.x - p.w / 2)}" y="${Y(p.y - p.h / 2)}" width="${n(p.w * S)}" height="${n(p.h * S)}" rx="${n(Math.min(p.w, p.h) * S * padRatio(pk, p))}"/>`);
@@ -353,7 +365,7 @@ function illustrationDualNoLead(pk) {
   o.push(`<path class="pk-dim" d="M${X(bx, -rx)} ${n(ry)}H${X(bx, rx)}M${X(bx, -rx)} ${n(ry - 5)}v10M${X(bx, rx)} ${n(ry - 5)}v10"/>`);
   o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 18)}" text-anchor="middle">${pk.rowCentres.toFixed(2)} between pad rows</text>`);
   o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 36)}" text-anchor="middle">pads ${pk.pad.long.toFixed(2)} × ${pk.pad.wide.toFixed(2)}, pitch ${pk.pitch.toFixed(2)}</text>`);
-  o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 54)}" text-anchor="middle">exposed pad ${t.along.toFixed(2)} × ${t.across.toFixed(2)}</text>`);
+  o.push(`<text class="pk-n" x="${bx}" y="${n(ry + 54)}" text-anchor="middle">${pk.tabStem ? `T-shaped exposed pad (pin ${t.num}) ` : 'exposed pad '}${t.along.toFixed(2)} × ${t.across.toFixed(2)}</text>`);
   o.push('</svg>');
   return o.join('\n') + '\n';
 }
