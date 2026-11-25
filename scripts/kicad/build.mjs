@@ -20,6 +20,10 @@ export const pinsPerSide = (pk) => pk.pinsPerSide ?? 3;
 // y of the pins on one side, top to bottom
 const rowYs = (pk) => Array.from({ length: pinsPerSide(pk) }, (_, i) => (i - (pinsPerSide(pk) - 1) / 2) * pk.pitch);
 
+// Slots are numbered 1..2n (down the left, then up the right). A package with a missing middle pin on one side keeps the slot
+// (`missing`) and may give the later slots their real numbers with `padNumbers: { slot: number }`.
+const padNum = (pk, slot) => pk.padNumbers?.[slot] ?? slot;
+
 export function padList(pk) {
   if (pk.layout === 'quad') return padListQuad(pk);
   if (pk.layout === 'bga') return padListBga(pk);
@@ -32,6 +36,7 @@ export function padList(pk) {
     ...ys.map((y, i) => ({ num: String(i + 1), x: -x, y })),
     ...ys.map((_, j) => ({ num: String(k + 1 + j), x, y: ys[k - 1 - j] })),
   ].filter((p) => !(pk.missing ?? []).includes(p.num)) // positions with no pin (eSOP-12B pin 5) keep their slot but get no pad
+    .map((p) => ({ ...p, num: padNum(pk, p.num) })) // `padNumbers` renumbers slots that have a pad (SOT-23-5: slot 6 is pin 5)
     .map((p) => ({ ...p, w: pk.pad.long, h: pk.pad.wide, ...(pk.pad.ratio !== undefined && { ratio: pk.pad.ratio }) }));
   if (pk.thermalPad) {
     const t = pk.thermalPad;
@@ -179,8 +184,8 @@ function illustration(pk) {
       const x0 = side < 0 ? -span : bw;
       o.push(`<rect class="pk-lead" x="${X(ax, x0)}" y="${Y(y - lw)}" width="${n((span - bw) * S)}" height="${n(lw * 2 * S)}"/>`);
     }
-    if (!gone.has(String(i + 1))) o.push(`<text class="pk-t" x="${X(ax, -span - 0.12)}" y="${n(cy + y * S + 5)}" text-anchor="end">${i + 1}</text>`);
-    if (!gone.has(String(2 * k - i))) o.push(`<text class="pk-t" x="${X(ax, span + 0.12)}" y="${n(cy + y * S + 5)}">${2 * k - i}</text>`);
+    if (!gone.has(String(i + 1))) o.push(`<text class="pk-t" x="${X(ax, -span - 0.12)}" y="${n(cy + y * S + 5)}" text-anchor="end">${padNum(pk, String(i + 1))}</text>`);
+    if (!gone.has(String(2 * k - i))) o.push(`<text class="pk-t" x="${X(ax, span + 0.12)}" y="${n(cy + y * S + 5)}">${padNum(pk, String(2 * k - i))}</text>`);
   }
   o.push(`<circle class="pk-dot" cx="${X(ax, -bw + 0.3)}" cy="${Y(-bl + 0.3)}" r="9"/>`);
   o.push(`<text class="pk-n" x="${n(ax + (-bw + 0.3) * S + Math.max(0.2 * S, 14))}" y="${n(cy + (-bl + 0.3) * S + 5)}">pin 1</text>`);

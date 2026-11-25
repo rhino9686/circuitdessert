@@ -306,6 +306,55 @@ export const PACKAGES = {
     leadWidth: { min: 0.4, max: 0.6 },
     courtyardMargin: 0.25,
   },
+  // SOT-23-5 as drawn in the AP2202 datasheet (Diodes, DS38214 Rev. 6-2). The SA21340IAAT (Silergy) draws the same outline with slightly different ranges and smaller pads: see the package page.
+  // KiCad orientation: pin 1 top left, pins 1-3 down the left side, 4 bottom right, 5 top right, as in both datasheets' pinout figures. The middle position on the right has no lead:
+  // it keeps its slot (`missing`), and the top right slot, number 6 in the six-slot scheme, is pin 5 (`padNumbers`).
+  'sot23-5': {
+    name: 'SOT-23-5',
+    file: 'SOT-23-5',
+    descr: 'SOT-23-5, 0.95 mm pitch, pad layout from the AP2202 datasheet (Diodes DS38214 Rev. 6-2, PDF page 24)',
+    tags: 'SOT-23-5 SOT23-5',
+    source: { part: 'AP2202', revision: 'DS38214 Rev. 6-2', page: 24 },
+    pitch: 0.95,
+    missing: ['5'],
+    padNumbers: { '6': '5' },
+    // Suggested pad layout, PDF page 24: Z 3.60 overall, G 1.60 between the rows, X 0.70 wide, Y 1.00 long (across the body), E1 0.95 pitch, E2 1.90.
+    // Rows are Z - Y = 2.60 apart centre to centre.
+    rowCentres: 2.6,
+    pad: { long: 1.0, wide: 0.7 },
+    // Package outline, PDF page 22. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
+    body: { length: { min: 2.82, max: 3.1 }, width: { min: 1.5, max: 1.7 }, height: { max: 1.45 } },
+    leadSpan: { min: 2.65, max: 3.0 },
+    leadWidth: { min: 0.3, max: 0.5 },
+    footLength: { min: 0.3, max: 0.6 },
+    courtyardMargin: 0.25,
+  },
+  // SOT-89 as drawn in the AP2202 datasheet (Diodes, DS38214 Rev. 6-2). Metal tab at the top, three leads at the bottom, pin 1 at the left; the centre lead (pin 2) is joined to the tab, so the tab pad is pin 2.
+  // The land pattern's T-shaped pad is the tab band (X1 wide) plus the centre lead's stem (X2 wide) running to the lead-pad end (Z overall).
+  'sot89': {
+    layout: 'to-tab',
+    name: 'SOT-89',
+    file: 'SOT-89',
+    descr: 'SOT-89, 1.5 mm lead pitch, metal tab joined to the centre lead (pin 2); land pattern from the AP2202 datasheet (Diodes DS38214 Rev. 6-2, PDF page 25)',
+    tags: 'SOT-89 SOT89 SOT-89-3',
+    source: { part: 'AP2202', revision: 'DS38214 Rev. 6-2', page: 25 },
+    // Suggested pad layout, PDF page 25: Z 4.60 overall; outer pads X 0.55 wide by Y 1.30 long at E 1.50 from the centre line; tab pad X1 1.85 wide for Z - Y1 = 3.125, then the X2 0.80 wide stem for Y1 1.475.
+    overall: 4.6,
+    pad: { w: 0.55, l: 1.3 },
+    leads: { count: 3, pitch: 1.5, merged: ['2'] },
+    tab: { num: '2', top: { w: 1.85, h: 3.125 }, stem: { w: 0.8 }, height: 4.6 },
+    // Package outline, PDF page 23. Ranges as printed; the midpoint is used for drawing only (ours). The fab outline and the drawing place the package on the land pattern's tab end (ours).
+    body: { width: { min: 4.4, max: 4.6 }, length: { min: 2.3, max: 2.6 } },
+    packageLength: { min: 3.95, max: 4.25 },
+    leadLength: { min: 0.9, max: 1.2 },
+    leadWidth: { min: 0.32, max: 0.54 },
+    centreLeadWidth: { min: 0.48, max: 0.62 },
+    // tabWidth is the Option 1 base width (1.55 REF) and tabExt is scaled from the top view (ours): drawing only. Option 2 draws a wider tab (1.62-1.83).
+    tabWidth: { min: 1.55, max: 1.55 },
+    tabExt: { min: 0.65, max: 0.65 },
+    courtyardMargin: 0.25,
+    illustration: { scale: 40, width: 640 },
+  },
   // Two eight-lead gull-wing packages from the INA240-Q1 datasheet (SBOS808E): TI's D0008A (SOIC) and PW0008A (TSSOP), no exposed pad.
   // KiCad orientation: pin 1 top left, pins 1-4 down the left side, 5-8 up the right side, as in the datasheet's drawings.
   'soic-8': {
@@ -1866,6 +1915,37 @@ export const SYMBOLS = {
       { number: "A2", name: "IN-", type: "input", side: "left", pos: 0 },
       { number: "B2", name: "OUT", type: "output", side: "right", pos: 2.54 },
       { number: "B1", name: "GND", type: "power_in", side: "right", pos: 0 },
+    ],
+  },
+  // The SOT-23-5 has the enable and bypass/adjust pins and a different pin order from the SOT-89, which has neither (a fixed 3.3 V part). BYP/ADJ is the reference bypass pin on the fixed versions and the feedback input on the adjustable one, so it is passive here.
+  // Pin numbers and names are from the pin table (DS38214 Rev. 6-2); layout and pin types are ours. The SOT-89 tab is pin 2 (GND).
+  'AP2202': {
+    packages: ['sot23-5', 'sot89'],
+    half: 5.08,
+    description: '150 mA ultra-low-dropout RF LDO, fixed 2.5-3.3 V or adjustable, enable, 165 mV typical dropout at 150 mA, 75 dB PSRR, SOT-23-5 or SOT-89',
+    keywords: 'ldo linear regulator low noise rf ultra low dropout adjustable fixed 150mA',
+    datasheet: 'https://www.diodes.com/assets/Datasheets/AP2202.pdf',
+    pins: [
+      { numbers: { 'sot23-5': '1', 'sot89': '3' }, name: 'VIN', type: 'power_in', side: 'left', pos: 2.54 },
+      { numbers: { 'sot23-5': '3' }, name: 'EN', type: 'input', side: 'left', pos: -2.54 },
+      { numbers: { 'sot23-5': '5', 'sot89': '1' }, name: 'VOUT', type: 'power_out', side: 'right', pos: 2.54 },
+      { numbers: { 'sot23-5': '4' }, name: 'BYP/ADJ', type: 'passive', side: 'right', pos: -2.54 },
+      { numbers: { 'sot23-5': '2', 'sot89': '2' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+    ],
+  },
+  // Pin numbers and names are from the pin table (Rev. 1.0). The part has no enable pin; pins 3 and 4 are no-connects. Layout and pin types are ours.
+  'SA21340IAAT': {
+    packages: ['sot23-5'],
+    half: 5.08,
+    description: 'Automotive 150 mA fixed 3.3 V LDO, 4-36 V input (40 V absolute maximum), 15 uA quiescent current, AEC-Q100 grade 1, SOT23-5',
+    keywords: 'ldo linear regulator 3.3V automotive wide input 150mA',
+    datasheet: 'https://www.silergy.com/download/downloadFile?id=6281&type=product&ftype=note',
+    pins: [
+      { numbers: { 'sot23-5': '1' }, name: 'IN', type: 'power_in', side: 'left', pos: 0 },
+      { numbers: { 'sot23-5': '5' }, name: 'OUT', type: 'power_out', side: 'right', pos: 0 },
+      { numbers: { 'sot23-5': '2' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+      { numbers: { 'sot23-5': '3' }, name: 'NC', type: 'passive', side: 'top', pos: -2.54 },
+      { numbers: { 'sot23-5': '4' }, name: 'NC', type: 'passive', side: 'top', pos: 2.54 },
     ],
   },
 };

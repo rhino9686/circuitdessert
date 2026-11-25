@@ -8,12 +8,16 @@ const n = (v) => String(+v.toFixed(4));
 const mid = (r) => (r.min + r.max) / 2;
 const rng = (r, d = 2) => (r.min === r.max ? r.min.toFixed(d) : `${r.min.toFixed(d)}–${r.max.toFixed(d)}`);
 
-export function padListTo(pk) {
+// A lead whose pad is part of the tab pad (the SOT-89 centre lead, joined to the tab) is listed in `leads.merged` and gets no pad of its own.
+// The tab pad then carries that lead's number (`tab.num`) and its stem reaches the lead-pad end of the land pattern.
+export function leadList(pk) {
   const H = pk.overall, count = pk.leads.count;
   const y = H / 2 - pk.pad.l / 2;
-  const pads = [];
-  for (let i = 0; i < count; i++) pads.push({ num: String(i + 1), x: (i - (count - 1) / 2) * pk.leads.pitch, y, w: pk.pad.w, h: pk.pad.l });
-  return pads;
+  return Array.from({ length: count }, (_, i) => ({ num: String(i + 1), x: (i - (count - 1) / 2) * pk.leads.pitch, y, w: pk.pad.w, h: pk.pad.l }));
+}
+
+export function padListTo(pk) {
+  return leadList(pk).filter((p) => !(pk.leads.merged ?? []).includes(p.num));
 }
 
 // Outline of the tab pad as a closed list of [x, y] points. `top` is the full-width band at the tab end, `stem` the narrower part below it.
@@ -64,7 +68,7 @@ export function footprintTo(pk) {
 export function illustrationTo(pk) {
   const S = pk.illustration?.scale ?? 22; // px per mm
   const H = pk.overall;
-  const pads = padListTo(pk), count = pk.leads.count;
+  const pads = padListTo(pk), leads = leadList(pk);
   const bw = mid(pk.body.width) / 2, bl = mid(pk.body.length), tw = mid(pk.tabWidth) / 2;
   const leadLen = mid(pk.leadLength), lw = mid(pk.leadWidth) / 2, tabExt = pk.tabExt ? mid(pk.tabExt) : 0;
   const il = pk.illustration ?? {};
@@ -90,8 +94,9 @@ export function illustrationTo(pk) {
   o.push(`<text class="pk-h" x="${ax}" y="24" text-anchor="middle">Package, top view</text>`);
   o.push(`<rect class="pk-lead" x="${X(ax, -tw)}" y="${Y(top)}" width="${n(tw * 2 * S)}" height="${n(Math.max(tabExt, 0.8) * S)}"/>`);
   o.push(`<rect class="pk-body" x="${X(ax, -bw)}" y="${Y(bodyTop)}" width="${n(bw * 2 * S)}" height="${n(bl * S)}" rx="3"/>`);
-  for (const p of pads) {
-    o.push(`<rect class="pk-lead" x="${X(ax, p.x - lw)}" y="${Y(top + plen - leadLen)}" width="${n(lw * 2 * S)}" height="${n(leadLen * S)}"/>`);
+  for (const p of leads) { // every lead of the package, including one that is merged into the tab pad on the land pattern
+    const w = p.num === pk.tab.num && pk.centreLeadWidth ? mid(pk.centreLeadWidth) / 2 : lw;
+    o.push(`<rect class="pk-lead" x="${X(ax, p.x - w)}" y="${Y(top + plen - leadLen)}" width="${n(w * 2 * S)}" height="${n(leadLen * S)}"/>`);
     o.push(`<text class="pk-t" x="${X(ax, p.x)}" y="${n(cy + (top + plen) * S + 16)}" text-anchor="middle">${p.num}</text>`);
   }
   o.push(`<text class="pk-n" x="${ax}" y="${n(cy + (bodyTop + bl / 2) * S + 4)}" text-anchor="middle">tab = pin ${pk.tab.num}</text>`);
@@ -105,7 +110,7 @@ export function illustrationTo(pk) {
   }
   const ty = cy + (H / 2) * S + 24;
   o.push(`<text class="pk-n" x="${bx}" y="${n(ty)}" text-anchor="middle">pads ${pk.pad.w.toFixed(2)} × ${pk.pad.l.toFixed(2)}, pitch ${pk.leads.pitch.toFixed(2)}</text>`);
-  o.push(`<text class="pk-n" x="${bx}" y="${n(ty + 18)}" text-anchor="middle">tab pad ${pk.tab.top.w.toFixed(2)} wide, ${pk.tab.height.toFixed(2)} high, ${H.toFixed(2)} overall</text>`);
+  o.push(`<text class="pk-n" x="${bx}" y="${n(ty + 18)}" text-anchor="middle">tab pad ${pk.tab.top.w.toFixed(2)} wide, ${pk.tab.height === H ? '' : `${pk.tab.height.toFixed(2)} high, `}${H.toFixed(2)} overall</text>`);
   o.push(`<text class="pk-n" x="${ax}" y="${n(ty)}" text-anchor="middle">body ${rng(pk.body.width)} × ${rng(pk.body.length)}</text>`);
   o.push(`<text class="pk-n" x="${ax}" y="${n(ty + 18)}" text-anchor="middle">leads ${rng(pk.leadWidth)} wide, pitch ${pk.leads.pitch.toFixed(2)}</text>`);
   o.push('</svg>');

@@ -59,6 +59,8 @@ import { adapter65w, openFrame30w } from './designs-topswitch-jx.mjs';
 import { flybackTypical, lineSense as top252LineSense, figure42 } from './designs-top258yn.mjs';
 import { dualPhaseCt } from './designs-sy7m212h.mjs';
 import { essentialConnections as sy7m7xxjConnections } from './designs-sy7m7xxj.mjs';
+import { ap2202Fixed, ap2202Adjustable } from './designs-ap2202.mjs';
+import { sy6340Typical } from './designs-sy6340.mjs';
 
 const out = (name) => fileURLToPath(new URL(`../../src/assets/recipes/${name}`, import.meta.url));
 
@@ -210,6 +212,20 @@ const designs = {
       'Typical application circuit of the SA21345G 5 V LDO, redrawn from Figure 1 of the datasheet. The input VIN (4 V to 36 V) feeds the IN pin and has a 10 µF capacitor CIN to ground. ' +
       'The OUT pin is the 5 V output VOUT, with a 4.7 µF capacitor COUT to ground. The GND pin goes to ground. The SO8 package has five no-connect pins, which are not drawn.',
   }),
+  'sa21340iaat-schematic.svg': ldoThreePin({
+    id: 'sa21340iaat',
+    part: 'SA21340I',
+    pins: { in: 'IN', out: 'OUT', gnd: 'GND' },
+    ports: { in: 'VIN', out: 'VOUT' },
+    cin: [{ ref: 'C1', val: '1 µF' }],
+    cout: [{ ref: 'C2', val: '4.7 µF' }],
+    desc:
+      'Typical application circuit of the SA21340I 3.3 V LDO, redrawn from Figure 1 of the datasheet. The input VIN (4 V to 36 V) feeds the IN pin and has a 1 microfarad capacitor C1 to ground. ' +
+      'The OUT pin is the 3.3 V output VOUT, with a 4.7 microfarad capacitor C2 to ground. The GND pin goes to ground. The two no-connect pins of the SOT23-5 package are not drawn.',
+  }),
+  'ap2202-schematic.svg': ap2202Fixed({ id: 'ap2202' }),
+  'ap2202-adj-schematic.svg': ap2202Adjustable({ id: 'ap2202-adj' }),
+  'sy6340-schematic.svg': sy6340Typical({ id: 'sy6340' }),
   'sa21308a-schematic.svg': ldoAdjustable({
     id: 'sa21308a', part: 'SA21308A',
     pins: { in: 'IN', out: 'OUT', adj: 'FB', en: 'EN', gnd: 'GND' }, ports: { in: 'VIN', out: 'VOUT' }, en: 'tied',

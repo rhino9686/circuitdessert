@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 305" role="img" aria-label="SOT-89 package top view and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-lead{fill:var(--cd-muted)}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dim{stroke:var(--cd-muted);stroke-width:1.2;fill:none}
+.pk-t{fill:var(--cd-text);font:600 13px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="175" y="24" text-anchor="middle">Package, top view</text>
+<rect class="pk-lead" x="144" y="46" width="62" height="32"/>
+<rect class="pk-body" x="85" y="72" width="180" height="98" rx="3"/>
+<rect class="pk-lead" x="106.4" y="168" width="17.2" height="42"/>
+<text class="pk-t" x="115" y="226" text-anchor="middle">1</text>
+<rect class="pk-lead" x="164" y="168" width="22" height="42"/>
+<text class="pk-t" x="175" y="226" text-anchor="middle">2</text>
+<rect class="pk-lead" x="226.4" y="168" width="17.2" height="42"/>
+<text class="pk-t" x="235" y="226" text-anchor="middle">3</text>
+<text class="pk-n" x="175" y="125" text-anchor="middle">tab = pin 2</text>
+<text class="pk-h" x="470" y="24" text-anchor="middle">Footprint (recommended pads)</text>
+<polygon class="pk-pad" points="433,46 507,46 507,171 486,171 486,230 454,230 454,171 433,171"/>
+<text class="pk-t" x="470" y="143" text-anchor="middle" style="fill:var(--cd-on-accent)">2</text>
+<rect class="pk-pad" x="399" y="178" width="22" height="52" rx="5.5"/>
+<text class="pk-t" x="410" y="209" text-anchor="middle" style="fill:var(--cd-on-accent)">1</text>
+<rect class="pk-pad" x="519" y="178" width="22" height="52" rx="5.5"/>
+<text class="pk-t" x="530" y="209" text-anchor="middle" style="fill:var(--cd-on-accent)">3</text>
+<text class="pk-n" x="470" y="254" text-anchor="middle">pads 0.55 × 1.30, pitch 1.50</text>
+<text class="pk-n" x="470" y="272" text-anchor="middle">tab pad 1.85 wide, 4.60 overall</text>
+<text class="pk-n" x="175" y="254" text-anchor="middle">body 4.40–4.60 × 2.30–2.60</text>
+<text class="pk-n" x="175" y="272" text-anchor="middle">leads 0.32–0.54 wide, pitch 1.50</text>
+</svg>

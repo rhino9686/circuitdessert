@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 800 290" role="img" aria-labelledby="sy6340-t sy6340-d">
+<title id="sy6340-t">SY6340 typical application circuit</title>
+<desc id="sy6340-d">Typical application circuit of the SY6340 adjustable 150 mA LDO, redrawn from Figure 1 of the datasheet. The input VIN feeds the IN pin with a 2.2 microfarad capacitor C2 to ground. The EN pin is driven by an enable signal. The OUT pin is the output VOUT with a 2.2 microfarad capacitor C3 to ground. A 100 kilohm resistor R1 runs from the output to the ADJ pin, with a 47 picofarad capacitor C4 in parallel with it, and a 22.1 kilohm resistor R2 runs from the ADJ pin to ground. The GND pin goes to ground. The datasheet text says this resistor pair sets 3.3 volts.</desc>
+<rect class="sch-ic" x="290" y="100" width="150" height="150" rx="3"/>
+<path class="sch-w" d="M278 140 L290 140"/>
+<text class="sch-pin" x="298" y="144" text-anchor="start">IN</text>
+<path class="sch-w" d="M278 210 L290 210"/>
+<text class="sch-pin" x="298" y="214" text-anchor="start">EN</text>
+<path class="sch-w" d="M440 140 L452 140"/>
+<text class="sch-pin" x="432" y="144" text-anchor="end">OUT</text>
+<path class="sch-w" d="M440 210 L452 210"/>
+<text class="sch-pin" x="432" y="214" text-anchor="end">ADJ</text>
+<path class="sch-w" d="M365 250 L365 262"/>
+<text class="sch-pin" x="365" y="242" text-anchor="middle">GND</text>
+<text class="sch-ictitle" x="365" y="179" text-anchor="middle">SY6340</text>
+<path class="sch-flag" d="M60 140 L52 132 L14 132 L14 148 L52 148 Z"/>
+<text class="sch-net" x="33" y="144" text-anchor="middle">VIN</text>
+<path class="sch-w" d="M60 140 L278 140"/>
+<circle class="sch-dot" cx="130" cy="140" r="3"/>
+<path class="sch-w" d="M130 140 L130 216"/>
+<path class="sch-w" d="M130 300 L130 224"/>
+<path class="sch-w" d="M119 216 L141 216"/>
+<path class="sch-w" d="M119 224 L141 224"/>
+<path class="sch-w" d="M130 300 L130 308"/>
+<path class="sch-w" d="M119 308 L141 308"/>
+<path class="sch-w" d="M123 313 L137 313"/>
+<path class="sch-w" d="M127 318 L133 318"/>
+<text class="sch-ref" x="114" y="213" text-anchor="end">C<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="114" y="226" text-anchor="end">2.2 µF</text>
+<path class="sch-flag" d="M215 210 L207 202 L169 202 L169 218 L207 218 Z"/>
+<text class="sch-net" x="188" y="214" text-anchor="middle">EN</text>
+<text class="sch-val" x="190" y="232" text-anchor="middle">enable signal</text>
+<path class="sch-w" d="M215 210 L278 210"/>
+<path class="sch-w" d="M452 210 L530 210"/>
+<path class="sch-w" d="M452 140 L740 140"/>
+<path class="sch-flag" d="M740 140 L748 132 L786 132 L786 148 L748 148 Z"/>
+<text class="sch-net" x="767" y="144" text-anchor="middle">VOUT</text>
+<circle class="sch-dot" cx="530" cy="140" r="3"/>
+<circle class="sch-dot" cx="600" cy="140" r="3"/>
+<circle class="sch-dot" cx="680" cy="140" r="3"/>
+<circle class="sch-dot" cx="530" cy="210" r="3"/>
+<circle class="sch-dot" cx="600" cy="210" r="3"/>
+<path class="sch-w" d="M530 140 L530 160 L524 162.5 L536 167.5 L524 172.5 L536 177.5 L524 182.5 L536 187.5 L530 190 L530 210"/>
+<text class="sch-ref" x="514" y="173" text-anchor="end">R<tspan class="sch-sub" dy="2.5">1</tspan></text>
+<text class="sch-val" x="514" y="186" text-anchor="end">100 kΩ</text>
+<path class="sch-w" d="M530 210 L600 210"/>
+<path class="sch-w" d="M600 140 L600 171"/>
+<path class="sch-w" d="M600 210 L600 179"/>
+<path class="sch-w" d="M589 171 L611 171"/>
+<path class="sch-w" d="M589 179 L611 179"/>
+<text class="sch-ref" x="616" y="173" text-anchor="start">C<tspan class="sch-sub" dy="2.5">4</tspan></text>
+<text class="sch-val" x="616" y="186" text-anchor="start">47 pF</text>
+<path class="sch-w" d="M530 210 L530 240 L524 242.5 L536 247.5 L524 252.5 L536 257.5 L524 262.5 L536 267.5 L530 270 L530 300"/>
+<path class="sch-w" d="M530 300 L530 308"/>
+<path class="sch-w" d="M519 308 L541 308"/>
+<path class="sch-w" d="M523 313 L537 313"/>
+<path class="sch-w" d="M527 318 L533 318"/>
+<text class="sch-ref" x="514" y="253" text-anchor="end">R<tspan class="sch-sub" dy="2.5">2</tspan></text>
+<text class="sch-val" x="514" y="266" text-anchor="end">22.1 kΩ</text>
+<path class="sch-w" d="M680 140 L680 216"/>
+<path class="sch-w" d="M680 300 L680 224"/>
+<path class="sch-w" d="M669 216 L691 216"/>
+<path class="sch-w" d="M669 224 L691 224"/>
+<path class="sch-w" d="M680 300 L680 308"/>
+<path class="sch-w" d="M669 308 L691 308"/>
+<path class="sch-w" d="M673 313 L687 313"/>
+<path class="sch-w" d="M677 318 L683 318"/>
+<text class="sch-ref" x="696" y="213" text-anchor="start">C<tspan class="sch-sub" dy="2.5">3</tspan></text>
+<text class="sch-val" x="696" y="226" text-anchor="start">2.2 µF</text>
+<path class="sch-w" d="M365 262 L365 320"/>
+<path class="sch-w" d="M365 320 L365 328"/>
+<path class="sch-w" d="M354 328 L376 328"/>
+<path class="sch-w" d="M358 333 L372 333"/>
+<path class="sch-w" d="M362 338 L368 338"/>
+</svg>
