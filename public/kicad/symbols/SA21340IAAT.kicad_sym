@@ -2,11 +2,11 @@
   (symbol "SA21340IAAT_SOT-23-5" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
     (property "Reference" "U" (id 0) (at 0 8.89 0) (effects (font (size 1.27 1.27))))
     (property "Value" "SA21340IAAT" (id 1) (at 0 -8.89 0) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "circuitdessert:SOT-23-5" (id 2) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Footprint" "circuitdessert:SOT-23-5_SA21340IAAT" (id 2) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
     (property "Datasheet" "https://www.silergy.com/download/downloadFile?id=6281&type=product&ftype=note" (id 3) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
     (property "Description" "Automotive 150 mA fixed 3.3 V LDO, 4-36 V input (40 V absolute maximum), 15 uA quiescent current, AEC-Q100 grade 1, SOT23-5" (id 4) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
     (property "ki_keywords" "ldo linear regulator 3.3V automotive wide input 150mA" (id 5) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
-    (property "ki_fp_filters" "SOT-23-5*" (id 6) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "ki_fp_filters" "SOT-23-5_SA21340IAAT*" (id 6) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
     (symbol "SA21340IAAT_SOT-23-5_0_1"
       (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254) (type default)) (fill (type background)))
     )

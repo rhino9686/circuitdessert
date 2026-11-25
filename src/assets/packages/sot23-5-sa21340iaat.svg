@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 361" role="img" aria-label="SOT-23-5 package top view and footprint">
+<style>
+.pk-body{fill:var(--cd-surface-2);stroke:var(--cd-border-strong);stroke-width:2}
+.pk-lead{fill:var(--cd-muted)}
+.pk-pad{fill:var(--cd-accent);fill-opacity:.85}
+.pk-out{fill:none;stroke:var(--cd-faint);stroke-width:1.5;stroke-dasharray:6 4}
+.pk-dim{stroke:var(--cd-muted);stroke-width:1.2;fill:none}
+.pk-dot{fill:var(--cd-text)}
+.pk-t{fill:var(--cd-text);font:600 14px system-ui,sans-serif}
+.pk-n{fill:var(--cd-muted);font:12.5px system-ui,sans-serif}
+.pk-h{fill:var(--cd-text);font:600 15px system-ui,sans-serif}
+</style>
+<text class="pk-h" x="165" y="24" text-anchor="middle">Package, top view</text>
+<rect class="pk-body" x="107.4" y="55.6" width="115.2" height="208.8" rx="4"/>
+<rect class="pk-lead" x="64.2" y="77.2" width="43.2" height="28.8"/>
+<rect class="pk-lead" x="222.6" y="77.2" width="43.2" height="28.8"/>
+<text class="pk-t" x="55.56" y="96.6" text-anchor="end">1</text>
+<text class="pk-t" x="274.44" y="96.6">5</text>
+<rect class="pk-lead" x="64.2" y="145.6" width="43.2" height="28.8"/>
+<text class="pk-t" x="55.56" y="165" text-anchor="end">2</text>
+<rect class="pk-lead" x="64.2" y="214" width="43.2" height="28.8"/>
+<rect class="pk-lead" x="222.6" y="214" width="43.2" height="28.8"/>
+<text class="pk-t" x="55.56" y="233.4" text-anchor="end">3</text>
+<text class="pk-t" x="274.44" y="233.4">4</text>
+<circle class="pk-dot" cx="129" cy="77.2" r="9"/>
+<text class="pk-n" x="143.4" y="82.2">pin 1</text>
+<path class="pk-dim" d="M19.56 55.6V264.4M14.56 55.6h10M14.56 264.4h10"/>
+<text class="pk-n" transform="translate(11.56 160) rotate(-90)" text-anchor="middle">2.75–3.05</text>
+<path class="pk-dim" d="M107.4 286H222.6M107.4 281v10M222.6 281v10"/>
+<text class="pk-n" x="165" y="304" text-anchor="middle">body 1.45–1.75</text>
+<text class="pk-n" x="165" y="322" text-anchor="middle">lead tip to tip 2.60–3.00</text>
+<text class="pk-n" x="165" y="340" text-anchor="middle">lead width 0.30–0.50</text>
+<text class="pk-h" x="440" y="24" text-anchor="middle">Footprint (recommended pads)</text>
+<rect class="pk-out" x="382.4" y="55.6" width="115.2" height="208.8" rx="4"/>
+<rect class="pk-pad" x="317.6" y="70" width="72" height="43.2" rx="10.8"/>
+<text class="pk-t" x="353.6" y="96.6" text-anchor="middle" style="fill:var(--cd-on-accent)">1</text>
+<rect class="pk-pad" x="317.6" y="138.4" width="72" height="43.2" rx="10.8"/>
+<text class="pk-t" x="353.6" y="165" text-anchor="middle" style="fill:var(--cd-on-accent)">2</text>
+<rect class="pk-pad" x="317.6" y="206.8" width="72" height="43.2" rx="10.8"/>
+<text class="pk-t" x="353.6" y="233.4" text-anchor="middle" style="fill:var(--cd-on-accent)">3</text>
+<rect class="pk-pad" x="490.4" y="206.8" width="72" height="43.2" rx="10.8"/>
+<text class="pk-t" x="526.4" y="233.4" text-anchor="middle" style="fill:var(--cd-on-accent)">4</text>
+<rect class="pk-pad" x="490.4" y="70" width="72" height="43.2" rx="10.8"/>
+<text class="pk-t" x="526.4" y="96.6" text-anchor="middle" style="fill:var(--cd-on-accent)">5</text>
+<path class="pk-dim" d="M353.6 273.04H526.4M353.6 268.04v10M526.4 268.04v10"/>
+<text class="pk-n" x="440" y="291.04" text-anchor="middle">2.40 between pad centres</text>
+<path class="pk-dim" d="M440 160V228.4M435 160h10M435 228.4h10"/>
+<text class="pk-n" x="448" y="198.2">0.95</text>
+<text class="pk-n" x="440" y="309.04" text-anchor="middle">pads 1.00 × 0.60 mm</text>
+</svg>

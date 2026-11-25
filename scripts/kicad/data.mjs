@@ -333,7 +333,7 @@ export const PACKAGES = {
     leadWidth: { min: 0.4, max: 0.6 },
     courtyardMargin: 0.25,
   },
-  // SOT-23-5 as drawn in the AP2202 datasheet (Diodes, DS38214 Rev. 6-2). The SA21340IAAT (Silergy) draws the same outline with slightly different ranges and smaller pads: see the package page.
+  // SOT-23-5 as drawn in the AP2202 datasheet (Diodes, DS38214 Rev. 6-2). The SA21340IAAT and SY6340 (Silergy) draw the same outline with slightly different ranges and smaller pads: they have their own entries below.
   // KiCad orientation: pin 1 top left, pins 1-3 down the left side, 4 bottom right, 5 top right, as in both datasheets' pinout figures. The middle position on the right has no lead:
   // it keeps its slot (`missing`), and the top right slot, number 6 in the six-slot scheme, is pin 5 (`padNumbers`).
   'sot23-5': {
@@ -352,6 +352,27 @@ export const PACKAGES = {
     // Package outline, PDF page 22. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows.
     body: { length: { min: 2.82, max: 3.1 }, width: { min: 1.5, max: 1.7 }, height: { max: 1.45 } },
     leadSpan: { min: 2.65, max: 3.0 },
+    leadWidth: { min: 0.3, max: 0.5 },
+    footLength: { min: 0.3, max: 0.6 },
+    courtyardMargin: 0.25,
+  },
+  // SOT-23-5 as drawn in the SA21340IAAT datasheet (Silergy Rev. 1.0, PDF page 9). Same orientation and numbering as the 'sot23-5' entry (Diodes AP2202): pin 1 top left, pins 1-3 down the left side, 4 bottom right, 5 top right;
+  // the middle position on the right has no lead (`missing`) and slot 6 is pin 5 (`padNumbers`).
+  'sot23-5-sa21340iaat': {
+    name: 'SOT-23-5', // the symbol is named <PART>_<name>: SA21340IAAT_SOT-23-5, as before it had its own footprint
+    file: 'SOT-23-5_SA21340IAAT',
+    descr: 'SOT-23-5, 0.95 mm pitch, pad layout from the SA21340IAAT datasheet (Silergy Rev. 1.0, PDF page 9)',
+    tags: 'SOT-23-5 SOT23-5 SA21340IAAT',
+    source: { part: 'SA21340IAAT', revision: 'Rev. 1.0', page: 9 },
+    pitch: 0.95,
+    missing: ['5'],
+    padNumbers: { '6': '5' },
+    // Recommended PCB pad layout (reference only), PDF page 9 (read on a 130 dpi render; the 2.40 extension lines meet the pad centres): pads 0.60 wide (along the row) by 1.00 long (across the body), 0.95 pitch, 1.90 between the two top pads.
+    rowCentres: 2.4,
+    pad: { long: 1.0, wide: 0.6 },
+    // Package outline, PDF page 9. Ranges as printed; the midpoint is used for drawing only (ours). Length runs along the pad rows; 2.60-3.00 is the lead tip to lead tip width across the body.
+    body: { length: { min: 2.75, max: 3.05 }, width: { min: 1.45, max: 1.75 }, height: { max: 1.25 } },
+    leadSpan: { min: 2.6, max: 3.0 },
     leadWidth: { min: 0.3, max: 0.5 },
     footLength: { min: 0.3, max: 0.6 },
     courtyardMargin: 0.25,
@@ -1983,17 +2004,17 @@ export const SYMBOLS = {
   },
   // Pin numbers and names are from the pin table (Rev. 1.0). The part has no enable pin; pins 3 and 4 are no-connects. Layout and pin types are ours.
   'SA21340IAAT': {
-    packages: ['sot23-5'],
+    packages: ['sot23-5-sa21340iaat'],
     half: 5.08,
     description: 'Automotive 150 mA fixed 3.3 V LDO, 4-36 V input (40 V absolute maximum), 15 uA quiescent current, AEC-Q100 grade 1, SOT23-5',
     keywords: 'ldo linear regulator 3.3V automotive wide input 150mA',
     datasheet: 'https://www.silergy.com/download/downloadFile?id=6281&type=product&ftype=note',
     pins: [
-      { numbers: { 'sot23-5': '1' }, name: 'IN', type: 'power_in', side: 'left', pos: 0 },
-      { numbers: { 'sot23-5': '5' }, name: 'OUT', type: 'power_out', side: 'right', pos: 0 },
-      { numbers: { 'sot23-5': '2' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
-      { numbers: { 'sot23-5': '3' }, name: 'NC', type: 'passive', side: 'top', pos: -2.54 },
-      { numbers: { 'sot23-5': '4' }, name: 'NC', type: 'passive', side: 'top', pos: 2.54 },
+      { numbers: { 'sot23-5-sa21340iaat': '1' }, name: 'IN', type: 'power_in', side: 'left', pos: 0 },
+      { numbers: { 'sot23-5-sa21340iaat': '5' }, name: 'OUT', type: 'power_out', side: 'right', pos: 0 },
+      { numbers: { 'sot23-5-sa21340iaat': '2' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+      { numbers: { 'sot23-5-sa21340iaat': '3' }, name: 'NC', type: 'passive', side: 'top', pos: -2.54 },
+      { numbers: { 'sot23-5-sa21340iaat': '4' }, name: 'NC', type: 'passive', side: 'top', pos: 2.54 },
     ],
   },
   // The SOT23-5 and DFN2x2-6 number the pins differently. Pin numbers and names are from the pin table and the pinouts (Rev. 1.0); the DFN's pin 2 is NC in the pinout but not in the pin table. The DFN's exposed pad is pin 5 (GND): the pinout draws it joined to that pin, so the footprint's tab pad is numbered 5 and the symbol has no separate pin for it. Layout and pin types are ours. Footprints are the datasheet's own recommended pads (pages 10 and 11), on their own package pages.
