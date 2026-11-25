@@ -1948,4 +1948,23 @@ export const SYMBOLS = {
       { numbers: { 'sot23-5': '4' }, name: 'NC', type: 'passive', side: 'top', pos: 2.54 },
     ],
   },
+  // The SOT23-5 and DFN2x2-6 number the pins differently. Pin numbers and names are from the pin table and the pinouts (Rev. 1.0); the DFN's pin 2 is NC in the pinout but not in the pin table. The DFN pinout also labels the exposed pad "GND", but the pin table does not list or number it, so the symbol has no pin for it. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawings with the footprints here (the SOT-23-5 page is built from a Diodes drawing with different pads, and the DFN2x2-6 page from another Silergy datasheet).
+  'SY6340': {
+    variants: {
+      'sot23-5': { name: 'SOT23-5', fpFilter: 'SOT-23-5*' },
+      'dfn2x2-6': { name: 'DFN2x2-6', fpFilter: 'DFN-6_2x2mm*' },
+    },
+    half: 5.08,
+    description: 'Adjustable 150 mA LDO, 2.3-30 V input, 0.6 V reference, +/-2% accuracy, enable, reverse-input protection, SOT23-5 or DFN2x2-6',
+    keywords: 'ldo linear regulator adjustable wide input 150mA',
+    datasheet: 'https://www.silergy.com/productsview/SY6340AAC',
+    pins: [
+      { numbers: { 'sot23-5': '1', 'dfn2x2-6': '3' }, name: 'IN', type: 'power_in', side: 'left', pos: 2.54 },
+      { numbers: { 'sot23-5': '3', 'dfn2x2-6': '1' }, name: 'EN', type: 'input', side: 'left', pos: -2.54 },
+      { numbers: { 'sot23-5': '5', 'dfn2x2-6': '4' }, name: 'OUT', type: 'power_out', side: 'right', pos: 2.54 },
+      { numbers: { 'sot23-5': '4', 'dfn2x2-6': '6' }, name: 'ADJ', type: 'input', side: 'right', pos: -2.54 },
+      { numbers: { 'sot23-5': '2', 'dfn2x2-6': '5' }, name: 'GND', type: 'power_in', side: 'bottom', pos: 0 },
+      { numbers: { 'dfn2x2-6': '2' }, name: 'NC', type: 'passive', side: 'top', pos: 0 },
+    ],
+  },
 };
