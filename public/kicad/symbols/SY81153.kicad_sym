@@ -5,7 +5,7 @@
     (property "Footprint" "" (id 2) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
     (property "Datasheet" "https://www.silergy.com/download/downloadFile?id=6633&type=product&ftype=note" (id 3) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
     (property "Description" "4.5-18 V input synchronous buck regulator, adjustable output from a 0.6 V reference, DFN1.6x1.6-6" (id 4) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
-    (property "ki_keywords" "buck converter synchronous step-down regulator SY81153 DFN1.6x1.6-6" (id 5) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "ki_keywords" "buck converter synchronous step-down regulator SY81152 SY81153 DFN1.6x1.6-6" (id 5) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
     (property "ki_fp_filters" "DFN1.6x1.6-6*" (id 6) (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
     (symbol "SY81153_0_1"
       (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254) (type default)) (fill (type background)))

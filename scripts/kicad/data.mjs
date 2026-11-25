@@ -1721,12 +1721,12 @@ export const SYMBOLS = {
       { number: "F3", name: "BBGND", type: "power_in", side: "bottom", pos: 5.08 },
     ],
   },
-  // Pin numbers and names are from the datasheet's pin table and pinout (top view). BS is the bootstrap pin, 0.1 uF to LX. The exposed pad is listed as EP, not connected, and is not numbered in the table; 7 is ours. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
+  // SY81152 has the same pinout and package, so this one symbol serves both. Pin numbers and names are from the datasheet's pin table and pinout (top view). BS is the bootstrap pin, 0.1 uF to LX. The exposed pad is listed as EP, not connected, and is not numbered in the table; 7 is ours. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
   "SY81153": {
     fpFilter: "DFN1.6x1.6-6*",
     half: 5.08,
     description: "4.5-18 V input synchronous buck regulator, adjustable output from a 0.6 V reference, DFN1.6x1.6-6",
-    keywords: "buck converter synchronous step-down regulator SY81153 DFN1.6x1.6-6",
+    keywords: "buck converter synchronous step-down regulator SY81152 SY81153 DFN1.6x1.6-6",
     datasheet: "https://www.silergy.com/download/downloadFile?id=6633&type=product&ftype=note",
     pins: [
       { number: "1", name: "IN", type: "power_in", side: "left", pos: 2.54 },
@@ -1836,6 +1836,36 @@ export const SYMBOLS = {
       { number: "6", name: "DRAIN", type: "passive", side: "right", pos: -2.54 },
       { number: "7", name: "DRAIN", type: "passive", side: "right", pos: -5.08 },
       { number: "2", name: "GND", type: "power_in", side: "bottom", pos: 0 },
+    ],
+  },
+  // Pin numbers and names are from the datasheet's pin table and pinout (SOT563, top view). The pins have the same names and numbers as the SY81153's, which is in a DFN, but this package has no exposed pad. BS is the bootstrap pin, 0.1 uF to LX. Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
+  "SY81154U": {
+    fpFilter: "SOT-563*",
+    half: 5.08,
+    description: "Synchronous buck regulator, adjustable output from a 0.6 V reference, SOT563",
+    keywords: "buck converter synchronous step-down regulator SY81154U SOT563",
+    datasheet: "https://www.silergy.com/download/downloadFile?id=6515&type=product&ftype=note",
+    pins: [
+      { number: "1", name: "IN", type: "power_in", side: "left", pos: 2.54 },
+      { number: "5", name: "EN", type: "input", side: "left", pos: 0 },
+      { number: "6", name: "FB", type: "input", side: "left", pos: -2.54 },
+      { number: "4", name: "BS", type: "passive", side: "right", pos: 2.54 },
+      { number: "2", name: "LX", type: "passive", side: "right", pos: 0 },
+      { number: "3", name: "GND", type: "power_in", side: "bottom", pos: 0 },
+    ],
+  },
+  // One symbol serves the SQ52104EWMS (200 V/V) and the SQ52104WMS (100 V/V), which share a pinout and a package. IN+ is both the supply and the positive sense input. Ball names come from the pin table and the pinout (top view). Layout and pin types are ours. No footprint is linked: this page has not compared its package drawing with any footprint here.
+  "SQ52104E": {
+    fpFilter: "CSP*0.76*4*",
+    half: 5.08,
+    description: "Current-sense amplifier with a fixed gain of 200 V/V (SQ52104EWMS; the SQ52104WMS has 100 V/V), supply taken from the sense input, CSP0.76x0.76-4",
+    keywords: "current sense amplifier fixed gain SQ52104E SQ52104 CSP",
+    datasheet: "https://www.silergy.com/download/downloadFile?id=6476&type=product&ftype=note",
+    pins: [
+      { number: "A1", name: "IN+", type: "power_in", side: "left", pos: 2.54 },
+      { number: "A2", name: "IN-", type: "input", side: "left", pos: 0 },
+      { number: "B2", name: "OUT", type: "output", side: "right", pos: 2.54 },
+      { number: "B1", name: "GND", type: "power_in", side: "right", pos: 0 },
     ],
   },
 };
